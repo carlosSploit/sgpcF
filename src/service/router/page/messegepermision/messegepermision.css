@@ -1,0 +1,56 @@
+@import url("../../../../res/typogramic/typogramic.css");
+
+.messe_permi_Container {
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.messe_permi_Container_subcontent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.messe_permi_Container_subcontent_title {
+    color: #9686C3;
+    text-align: center;
+    font-size: 150px;
+    font-family: Montserrat-bold;
+}
+
+.messe_permi_Container_subcontent_subtitle {
+    width: auto;
+    max-width: 350px;
+    color: #5D718F;
+    text-align: center;
+    font-size: 20px;
+    font-family: Poppins-bold;
+}
+
+.messe_permi_Container_subcontent_text {
+    width: auto;
+    max-width: 500px;
+    color: #5D718F;
+    text-align: center;
+    font-family: Poppins-regular;
+}
+
+@media (max-width: 500px) {
+    .messe_permi_Container_subcontent_title {
+        font-size: 80px;
+    }
+
+    .messe_permi_Container_subcontent_subtitle {
+        font-size: 16px;
+    }
+
+    .messe_permi_Container_subcontent_text {
+        max-width: auto;
+        font-size: 12px;
+    }
+}

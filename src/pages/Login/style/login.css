@@ -1,0 +1,109 @@
+@import url('../../../service/morvius-service/masterVarial.css');
+
+.container_login {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-backgraud);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_login_subcontent {
+    width: 300px;
+    height: auto;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.container_login_form {
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+.container_login_title {
+    width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    color: #EFCB4B;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_login_descripccion {
+    /* background-color: #9686C3; */
+    width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 14px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_login_logo {
+    width: 200px;
+    height: 40px;
+    margin: auto auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.container_title_login {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: 600;
+    color: #183152;
+}
+
+.container_login_back {
+    width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: var(--color-secundary);
+}
+
+.container_login_information {
+    width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_login_information_photo {
+    height: 90px;
+    width: 90px;
+    background-color: var(--color-backgraud);
+    border-radius: 50px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.container_login_information_username {
+    color: var(--color-secundary);
+    font-size: 14px;
+}
+
+.container_login_information_correo {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 14px;
+}

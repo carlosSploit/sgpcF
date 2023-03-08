@@ -1,0 +1,29 @@
+@import url('../../../../../res/typogramic/typogramic.css');
+/* cuerpo de la tabla*/
+
+.content-table{
+    border: hidden;
+    width:100%;
+}
+
+.content-table-encabezado{
+    font-family: Poppins-bold;
+    font-display: auto;
+    /* font-weight: bold; */
+    color: #856FC5;
+    font-size: 18px;
+}
+
+.content-table-encabezado + .cent{
+    text-align: center;
+}
+
+.content-table-encabezado + .lef{
+    text-align: start;
+}
+
+@media (max-width: 500px){
+    .content-table-encabezado + .ocp{
+        display: none;
+    }
+}

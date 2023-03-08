@@ -1,0 +1,31 @@
+.container_view_puntoclass_container_title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 98%;
+}
+
+.container_view_puntoclass_subtitle_text{
+    width: 100%;
+    color: #9686C3;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+/* contenedor de puntos class */
+
+.container_view_puntoclass_body{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.container_view_puntoclass_body:last-child{
+    margin-right: 0px;
+}

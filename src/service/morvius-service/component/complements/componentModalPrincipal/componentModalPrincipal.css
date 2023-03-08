@@ -1,0 +1,185 @@
+.component_modalPrin{
+    /* display: none; */
+    width: 100vw;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 999999;
+}
+
+.component_modalPrin_container{
+    height: 100%;
+    width: 500px;
+    position: absolute;
+    right: 0;
+    top:0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* encabezado del modal  */
+
+.component_modalPrin_header{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    /* flex-direction: row; */
+    /* background-color: #9686C3; */
+    background-color: red;
+    padding: 10px;
+    position: relative;
+}
+
+.component_modalPrin_close{
+    width: 30px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: gold; */
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+
+
+.component_modalPrin_close_icon{
+    color: white;
+    font-size: 20px;
+}
+
+.component_modalPrin_header_container{
+    width: calc(100% - 30px);
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    /* background-color: aqua; */
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+.component_modalPrin_header_title{
+    color: white;
+    width: 90%;
+    height: auto;
+    font-size: 24px;
+    overflow: hidden;
+    text-overflow: clip;
+    line-height: 24px;
+    /* letter-spacing: 1px; */
+    /* asling contenido al centro */
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.component_modalPrin_header_fot{
+    width: 100%;
+    background-color: #9686C3;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    padding-bottom: 10px;
+}
+
+.component_modalPrin_tabs_activate{
+    color: #9686C3;
+    background-color: white;
+    margin-right: 10px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 10px;
+    border-radius: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.component_modalPrin_tabs{
+    color: white;
+    margin-right: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.component_modalPrin_header{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    /* flex-direction: row; */
+    background-color: #9686C3;
+    padding: 10px;
+    position: relative;
+}
+
+.component_modalPrin_header_list_tabs{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    /* flex-direction: row; */
+    background-color: #9686C3;
+    padding: 10px;
+    position: relative;
+}
+
+.component_modalPrin_body{
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;    
+}
+
+.component_modalPrin_body::-webkit-scrollbar{
+    width: 5px;
+    background-color: transparent;
+}
+
+.component_modalPrin_body::-webkit-scrollbar-thumb{
+    width: 5px;
+    background: linear-gradient(185deg, rgba(150,134,195,1) 0%, rgba(150,134,195,1) 36%, rgba(239,203,75,1) 100%, rgba(105,78,78,1) 120%);
+    border-radius: 20px;
+}
+
+.component_modalPrin_body_container{
+    width: 95%;
+    margin: auto;
+    /* background-color: red; */
+}
+
+.component_modalPrin_footer{
+    width: 100%;
+    height: 80px;
+    background-color: #3f3164;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.component_modalPrin_footer_container{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}

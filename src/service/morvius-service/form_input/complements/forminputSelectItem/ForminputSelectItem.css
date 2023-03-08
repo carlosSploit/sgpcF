@@ -1,0 +1,112 @@
+.form_conteiner_seletItem {
+    /* background-color: aqua; */
+    width: 95% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-left: 10px !important;
+    /* margin-right: 20px!important;
+     */
+}
+
+.form_seletItem_conteiner {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_seletItem_conteiner_buttton {
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #9686C3;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.form_seletItem_input_conteiner {
+    width: 100% !important;
+    height: 27px !important;
+    /* aling */
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background-color: white !important;
+    /* border */
+    border-radius: 13.5px !important;
+    border-color: #9686C3 !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+    /* posicion */
+    position: relative;
+}
+
+.form_seletItem_conteiner_itemScelecciont {
+    border: 0px solid transparent !important;
+    outline: none !important;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.container_item_selectItem_contentItem {
+    margin-left: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 2px;
+    height: 24px;
+    border-radius: 12.5px;
+    background-color: rgba(150, 134, 195, 0.65);
+}
+
+.container_seletItem_icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+.container_seletItem_text {
+    font-size: 14px;
+    text-align: center;
+}
+
+.form_seletItem_conteiner_itemScelecciont_textdefault {
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 14px;
+}
+
+.container_item_selectItem_subcont {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_item_selectItem_subcontaion_photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* font-size: 30px; */
+    width: 20px;
+    height: 20px;
+    background-color: gray;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+}
+
+.container_item_selectItem_subcontaion_nametext {
+    font-size: 14px;
+    color: white;
+    text-align: center;
+}

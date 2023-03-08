@@ -1,0 +1,103 @@
+.container_addprofesor{
+    width: 100px;
+}
+
+.container_addprofesor_descripccion{
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 100%;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.container_Itemprofesor_conten_actions_item{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_Itemprofesor_conten_actions_icon{
+    color: #9686C3;
+    font-size: 25px;
+}
+
+.container_view_tarea_contain_info_url{
+    width: 100%;
+    border-radius: 20px;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #b4a8d2;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.container_view_resulttar_contain_info_contain_title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 98%;
+}
+
+.container_view_resulttar_component_header_video{
+    background-color: red;
+    width: 80%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.container_view-resulttar-component-header{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+}
+
+.container_view_resulttar_contain_info{
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.container_view_resulttar_contain_info_title{
+    width: 100%;
+    color: #9686C3;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.container_view_resulttar_contain_info_body{
+    width: 100%;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 15px
+}
+
+.container_view_resulttar_contain_info_tiempo{
+    width: 100%;
+    border-radius: 20px;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #F2F2F2;
+    display: flex;
+    justify-content: center;
+    color: #9686C3;
+}
+
+.container_view_resulttar_contain_info_presio{
+    background-color: white;
+    color: #9686C3;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: 500;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}

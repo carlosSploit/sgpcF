@@ -1,0 +1,27 @@
+.componet-colapse-footer{
+    width: 100%;
+    background-color: red;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+}
+
+.componet-colapse-footer-bott{
+    width: 50%;
+    height: 100%;
+    background-color: #46376f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.componet-colapse-footer-bott-inv{
+    width: 50%;
+    height: 100%;
+    background-color: #8d7cbe;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}

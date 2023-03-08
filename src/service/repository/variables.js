@@ -1,0 +1,9 @@
+// export const domain_api = "https://canvaritechaback-production-c1a2.up.railway.app/api2";
+export const domain_api = "http://localhost:5001/api/v1";
+export const domain_socket = "http://localhost:5001";
+export const seecion = "5ed9a551-150f-4818-ae3a-ee1dae15c813";
+export const keyseccion = "cabvi";
+export const keyapikey = "cabvikeyapi";
+export const keyresolution = "cabvires";
+export const keyDataUser = "cabvidatus";
+export const keypage = "cabvipage";

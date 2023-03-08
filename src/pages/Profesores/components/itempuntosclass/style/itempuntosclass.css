@@ -1,0 +1,63 @@
+/* puntos class */
+
+.container_item_puntosclass_conte_bueno{
+    width: 95px;
+    height: 130px;
+    background-color: white;
+    margin-right: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: forestgreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.container_item_puntosclass_conte_bueno::after{
+    background-color: forestgreen;
+}
+
+.container_item_puntosclass_conte_puntos{
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background-color: forestgreen;
+    border-radius: 10px;
+    
+}
+
+.container_item_puntosclass_conte_puntos_text{
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.container_item_puntosclass_subcontaion{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_item_puntosclass_subcontaion_text{
+    font-size: 14px;
+    color: forestgreen;
+    text-align: center;
+}
+
+.container_item_puntosclass_subcontaion_text_cont_icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}

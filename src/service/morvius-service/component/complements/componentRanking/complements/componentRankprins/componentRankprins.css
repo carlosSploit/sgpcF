@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito Sans");
+
+.conten_ranking_general_rankbasic_Item_subcontent{
+    width: 100px;
+    height: auto;
+    margin-right: 12px;
+    background-color: transparent;
+}
+
+.conten_ranking_general_rankbasic_subcontent{
+    width: 100px;
+    height: 120px;
+    background-color: #9686C3;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.conten_ranking_general_rankbasic_subcontent_photo{
+    height: 30px;
+    width: 30px;
+    background-color: grey;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    position: absolute;
+    top: -15px;
+    right: 0px;
+    left: 0px;
+    margin: auto;
+}
+
+.conten_ranking_general_rankbasic_subcontent_nameuser{
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+    margin-bottom: 20px;
+    height: 14px;
+    color: #9686C3;
+    overflow-y: hidden;
+}
+
+.conten_ranking_general_rankbasic_subcontent_contentInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.conten_ranking_general_rankbasic_subcontent_contentInfo_posision{
+    color: white;
+    font-size: 30px;
+}
+
+.conten_ranking_general_rankbasic_subcontent_contentInfo_value{
+    color: white;
+    font-size: 12px;
+}

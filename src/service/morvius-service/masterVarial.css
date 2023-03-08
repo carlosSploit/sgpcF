@@ -1,0 +1,8 @@
+:root {
+    --color-master: #183152;
+    --color-secundary: #375D81;
+    --color-backgraud: #E1E6FA;
+    --color-backgroud2: #C4D7ED;
+    --with-submenu: 250px;
+    --higth-submenu: calc(100vh - 55px);
+}

@@ -1,0 +1,77 @@
+/* puntos class */
+
+.container_item_selectItem_conte_bueno{
+    width: 98%;
+    height: 40px;
+    background-color: white;
+    margin-right: 10px;
+    margin-top: 10px;
+    border-radius: 20px;
+    /* 
+    border-style: solid;
+    border-width: 2px;
+    border-color: forestgreen; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.container_item_selectItem_conte_bueno::after{
+    background-color: forestgreen;
+}
+
+.container_item_selectItem_subcontaion{
+    /* background-color: rebeccapurple; */
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container_item_selectItem_conte_puntos{
+    /* background-color: forestgreen; */
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.container_item_selectItem_conte_puntos_text{
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.container_item_selectItem_subcontaion_text_cont{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_item_selectItem_subcontaion_text{
+    font-size: 14px;
+    color: forestgreen;
+    text-align: center;
+}
+
+.container_item_selectItem_subcontaion_text_cont_icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* font-size: 30px; */
+    width: 30px;
+    height: 30px;
+    background-color: gray;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+}

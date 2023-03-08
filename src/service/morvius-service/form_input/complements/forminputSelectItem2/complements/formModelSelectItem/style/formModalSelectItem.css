@@ -1,0 +1,31 @@
+.form_selectIcon_conteiner_buttton{
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #9686C3;
+    border-radius: 50%;
+    /* posicion */
+    position: absolute;
+    top: 2px;
+    right: 2px;
+}
+
+.container_view_selectItem_body_content{
+    width: 100%;
+    background-color: white;
+    height: 300px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.container_view_selectItem_body_content::-webkit-scrollbar{
+    width: 5px;
+    background-color: transparent;
+}
+
+.container_view_selectItem_body_content::-webkit-scrollbar-thumb{
+    width: 5px;
+    background: linear-gradient(185deg, rgba(150,134,195,1) 0%, rgba(150,134,195,1) 36%, rgba(239,203,75,1) 100%, rgba(105,78,78,1) 120%);
+    border-radius: 20px;
+}

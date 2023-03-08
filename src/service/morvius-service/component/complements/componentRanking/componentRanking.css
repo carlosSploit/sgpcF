@@ -1,0 +1,26 @@
+/* components ranking */
+
+.conten_ranking_general {
+    height: auto;
+    width: 100%;
+    background-color: transparent;
+}
+
+.conten_ranking_general_rankbasic {
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.conten_ranking_general_rankbasic:last-child {
+    margin-right: 0px;
+}
+
+.conten_ranking_general_subtitle {
+    color: rgba(0, 0, 0, 0.5);
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
