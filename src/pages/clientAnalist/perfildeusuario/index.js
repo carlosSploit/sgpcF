@@ -68,7 +68,7 @@ export function PerfildeUsuario(props){
         // urlRedirect(pathRedirect);
     }
 
-    return (<ComponentModalFloting statemode={ismodalvisible} onClosechange={()=>{setismodalvisible(false);}}>
+    return (<ComponentModalFloting statemode={ismodalvisible} width = {'400px'} >
                 <ComponentModalFlotingHeader title="Editar a un usaurio" colorTitle={'#183152'} onClosechange={()=>{setismodalvisible(false);}} />
                 <ComponentModalFlotingBody descripccion={""}>
                 <ComponentModalPrincipalListtabs
@@ -79,7 +79,7 @@ export function PerfildeUsuario(props){
                     indexinitial = {listOpt[0].id}
                 ></ComponentModalPrincipalListtabs>
                 <div className="LinerSeparator"></div>
-                <div style={{height: '10px'}}></div>
+                <div style={{height: '20px'}}></div>
                 {listview[index]}
                 </ComponentModalFlotingBody>
             </ComponentModalFloting>);

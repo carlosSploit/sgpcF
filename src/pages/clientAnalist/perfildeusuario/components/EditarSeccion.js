@@ -33,7 +33,7 @@ export function EditarUsuarioSecion(props){
 
         let data = {
             correo : event.target[`correo${informationDataGeneral.id_cliente}`].value,
-            pass : event.target[`passC${informationDataGeneral.id_cliente}`].value
+            pass : event.target[`pass${informationDataGeneral.id_cliente}`].value
         };
         let resul = await updateClientAnalistInforSecion(informationDataGeneral.id_cliente, data);
         handleNewNotification(dispatch,resul.messege, resul.status);

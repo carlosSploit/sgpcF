@@ -74,12 +74,12 @@ export function ComponentModal(props){
 }
 
 export function ComponentModalFloting(props){
-    const {color="white", children, zindex = 1,statemode = true, onClosechange=()=>{}} = props;
+    const {color="white", children, zindex = 1,statemode = true, width = '500px'} = props;
     return(
         <>
             {/* onClick={onClosechange} */}
             <div className={"component_modalFloting"} style={{zIndex: `${zindex*9999}`,display:`${(!statemode)?"none":"block"}`}}>
-                <div className={"component_modalFloting_container"} style={{background:`${color}`}} >
+                <div className={"component_modalFloting_container"} style={{background:`${color}`, width: `${width}`}} >
                     {children}
                 </div>
             </div>
@@ -93,7 +93,6 @@ export function ComponentModalFlotingHeader(props){
         <>
             <div className="component_modalFloting_header" style={{backgroundColor: `${colorBackgroud}`}}>
                 <div onClick={onClosechange} className="component_modalFloting_close"><CloseOutlined className="component_modalFloting_close_icon" style={{color: `${colorTitle}`}}/></div>
-                <div style={{width:"5px"}}/>
                 <div className="component_modalFloting_header_container">
                     <div className="component_modalFloting_header_title" style={{color: `${colorTitle}`}}>{title}</div>
                     {children}

@@ -55,11 +55,11 @@ export function Forminput(props){
 
     return (
         <>
-            <div style={{height: "5px"}}/>
+            {/* <div style={{height: "5px"}}/> */}
             <div className="form_conteiner">
                 <div className="form_input_conteiner"
                     style={{
-                        borderColor:`${(isdisable)?"#cfcfcf":(!valuestade)?"#9686C3":"#f44336"}`
+                        borderColor:`${(isdisable)?"#cfcfcf":(!valuestade)?"#375D81":"#f44336"}`
                         //borderColor:`${(isdisable)?"#cfcfcf":((!valuestade)?"#375D81":"#375D81")}`
                     }}
                 >
@@ -87,7 +87,7 @@ export function Forminput(props){
                         }}
                     />
                 </div>
-                <div style={{height: "10px"}}/>
+                {(valuestade && isVisibleErrorLabel)?<div style={{height: "5px"}}/>:<div></div>}
                 {(valuestade && isVisibleErrorLabel)?<div className="form_input_validator">{messValidator}</div>:<div></div>}
                 {(valuestade && isVisibleErrorLabel)?<div style={{height: "5px"}}/>:<div></div>}
             </div>
@@ -213,7 +213,7 @@ export function ForminputArea(props){
             <div className="form_conteiner">
                 <div className="form_input_conteiner"
                     style={{
-                        borderColor:`${(!valuestade)?"#9686C3":"#f44336"}`
+                        borderColor:`${(!valuestade)?"#375D81":"#f44336"}`
                     }}
                 >
                     <textarea
@@ -289,11 +289,11 @@ export function Forminputpassword(props){
 
     return (
         <>
-            <div style={{height: "5px"}}/>
+            {/* <div style={{height: "5px"}}/> */}
             <div className="form_conteiner">
                 <div className= "form_input_conteiner"
                     style={{
-                        borderColor:`${(!valuestade)?"#9686C3":"#f44336"}`
+                        borderColor:`${(!valuestade)?"#375D81":"#f44336"}`
                     }}
                 >
                     <input
@@ -322,7 +322,7 @@ export function Forminputpassword(props){
                         }}
                     >{(visipass)?<EyeInvisibleOutlined />:<EyeOutlined />}</div>
                 </div>
-                <div style={{height: "10px"}}/>
+                {(valuestade && isVisibleErrorLabel)?<div style={{height: "5px"}}/>:<div></div>}
                 {(valuestade && isVisibleErrorLabel)?<div className="form_input_validator">{messValidator}</div>:<div></div>}
                 {(valuestade && isVisibleErrorLabel)?<div style={{height: "5px"}}/>:<div></div>}
             </div>
@@ -371,6 +371,7 @@ export function ForminputpasswordEdit(props){
                     <div className="Container_ForminputEdit_subContainer_information" style={{display: `${(!BottonData)?'none':'block'}`}}>
                         <div style={{width: '95%'}}>
                             <Forminputpassword valuestade = {provaluestade} setvaluestade = {prosetvaluestade} isdisable={isdisable} keyname={keyname} onError={onError} placeHolder={placeHolder} textinput={textinput} settextinput={settextinput} Limitchar={Limitchar} isVisibleErrorLabel = {isVisibleErrorLabel}></Forminputpassword>
+                            <div style={{height: '5px'}}></div>
                             <Forminputpassword valuestade = {provaluestade} setvaluestade = {prosetvaluestade} isdisable={isdisable} keyname={keynameC} onError={onError} placeHolder={`Confirmar ${placeHolder}`} textinput={textinputC} settextinput={settextinputC} Limitchar={Limitchar} isVisibleErrorLabel = {isVisibleErrorLabel}></Forminputpassword>
                         </div>
                     </div>
@@ -460,7 +461,7 @@ export function Forminputnumber(props){
             <div className="form_conteiner">
             <div className="form_input_conteiner"
                 style={{
-                    borderColor:`${(!valuestade)?"#9686C3":"#f44336"}`
+                    borderColor:`${(!valuestade)?"#375D81":"#f44336"}`
                 }}
             >
                 <input
@@ -494,6 +495,18 @@ export function Forminputnumber(props){
         </>
     );
 }
+
+/**
+ * <input para form de tipo emailt, con ocultar o desocultar texto>
+ * @param   {<string>} key <Id del input>
+ * @param   {<string>} valueInit <Palabra de inicio de cada input>
+ * @param   {<string>} placeHolder <Mensaje de gia de cada input>
+ * @param   {<string>} Limitchar <Limite de caracteres de un textinput>
+ * @param   {<string>} onValitador <Metodo que te permite validar el texto de entrada, si retorna true, sale un error>
+ * @param   {<string>} messValidator <Mensaje de error cuando se ejecute el onValitado>
+ * @param   {<string>} onChangeinput <Metodo que tiene como parametro el texto escrito en el input>
+ * @return  {<type>}        <description>
+ */
 
 export function Forminputmail(props){
     // encabezados
@@ -540,7 +553,7 @@ export function Forminputmail(props){
                 <div
                     className="form_input_conteiner"
                     style={{
-                        borderColor:`${(!valuestade)?"#9686C3":"#f44336"}`
+                        borderColor:`${(!valuestade)?"#375D81":"#f44336"}`
                     }}
                 >
                     <input
