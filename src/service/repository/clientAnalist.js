@@ -47,6 +47,19 @@ export async function updateclientAnalist(id, jsondat = {}) {
   return result.data;
 }
 
+export async function updateClientAnalistInforSecion(id, jsondat = {}) {
+  const id_negocio = id;
+  const data = jsondat;
+  const url = `${domain_api}/clientAnalit/infoCuenta/${id_negocio}`;
+  const result = await axios.put(url, data, {
+    headers: {
+      Authorization: `Bearer ${await gettoken()}`,
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+  });
+  return result.data;
+}
+
 // export async function deletealumno(id) {
 //   const id_admin = id;
 //   const url = `${domain_api}/alumn/${id_admin}`;

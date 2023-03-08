@@ -1,4 +1,4 @@
-.component_modalFloting{
+.component_modalFloting {
     /* display: none; */
     width: 100vw;
     height: 100%;
@@ -9,12 +9,14 @@
     z-index: 999999;
 }
 
-.component_modalFloting_container{
+.component_modalFloting_container {
     height: auto;
     width: 500px;
     position: absolute;
-    top: 50%;  /* position the top  edge of the element at the middle of the parent */
-    left: 50%; /* position the left edge of the element at the middle of the parent */
+    top: 50%;
+    /* position the top  edge of the element at the middle of the parent */
+    left: 50%;
+    /* position the left edge of the element at the middle of the parent */
     transform: translate(-50%, -50%);
     overflow: hidden;
     border-radius: 20px;
@@ -22,7 +24,7 @@
     margin-bottom: 10px;
 }
 
-.component_modalFloting_header{
+.component_modalFloting_header {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -35,26 +37,27 @@
     position: relative;
 }
 
-.component_modalFloting_close{
+.component_modalFloting_close {
     width: 30px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-left: 10px;
 }
 
-.component_modalFloting_close_icon{
+.component_modalFloting_close_icon {
     color: #9686C3;
     font-size: 20px;
 }
 
-.component_modalFloting_header_container{
+.component_modalFloting_header_container {
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.component_modalFloting_header_title{
+.component_modalFloting_header_title {
     color: #9686C3;
     width: 90%;
     height: 40px;
@@ -66,7 +69,7 @@
     font-weight: 600;
 }
 
-.component_modalFloting_body{
+.component_modalFloting_body {
     width: 100%;
     height: auto;
     min-height: 80px;
@@ -80,12 +83,12 @@
     display: none;
 }
 
-.component_modalFloting_body_container{
+.component_modalFloting_body_container {
     width: 95%;
     margin: auto;
 }
 
-.container_modalFloting_descripccion{
+.container_modalFloting_descripccion {
     /* margin-left: 20px; */
     /* margin-right: 20px; */
     width: 100%;

@@ -231,6 +231,9 @@
     margin-right: 15px;
     border-radius: 50%;
     position: relative;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }
 
 .container_Menubar_loginUsername {
@@ -240,23 +243,184 @@
 }
 
 .container_Menubar_Perfil_container {
-    width: 250px;
+    width: 350px;
     height: auto;
-    background-color: red;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
     position: absolute;
-    right: 45px;
+    z-index: 999999999;
+    top: 55px;
+    right: 14px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px var(--color-master-shadow), 0 1px 2px var(--color-master-shadow);
 }
 
 .container_Menubar_Perfil_container_header {
-    width: 250px;
-    height: auto;
-    background-color: red;
-    position: absolute;
-    right: 45px;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.container_Menubar_Perfil_container_header_close {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    display: none;
+    padding: 10px;
+}
+
+.container_Menubar_Perfil_container_header_close_container {
+    height: 30px;
+    width: 30px;
+    background-color: blueviolet;
+}
+
+.container_Menubar_Perfil_container_header_close_icon {
+    color: rgba(0, 0, 0, 0.3);
+    font-size: 14px;
+}
+
+.container_Menubar_Perfil_container_header_photo_container {
+    width: 15%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_Menubar_Perfil_container_header_photo {
+    height: 40px;
+    width: 40px;
+    background-color: var(--color-backgraud);
+    border-radius: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.container_Menubar_Perfil_container_header_informat_container {
+    width: calc(75% - 15px);
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+}
+
+.container_Menubar_Perfil_container_header_informat_correo {
+    width: 100%;
+    font-size: 14px;
+    color: var(--color-master);
+    font-weight: 600;
+}
+
+.container_Menubar_Perfil_container_header_informat_user {
+    width: 100%;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.container_Menubar_Perfil_container_header_lineBorder {
+    width: 100%;
+    height: 0.5px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.container_Menubar_Perfil_container_body_item {
+    min-height: 30px;
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_Menubar_Perfil_container_body {
+    min-height: 40px;
+    margin: 5px;
+    width: 95%;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_Menubar_Perfil_container_body:hover {
+    background-color: var(--color-backgraud);
+}
+
+.container_Menubar_Perfil_container_body_opccion {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_Menubar_Perfil_container_body_opccion_photo_container {
+    width: 15%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_Menubar_Perfil_container_body_opccion_photo_subcontainer {
+    height: 30px;
+    width: 30px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.container_Menubar_Perfil_container_body_opccion_photo {
+    font-size: 20px;
+    color: var(--color-master);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_Menubar_Perfil_container_body_opccion_informat_container {
+    width: calc(75% - 15px);
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    margin-left: 15px;
+}
+
+.container_Menubar_Perfil_container_body_opccion_informat_correo {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 14px;
+}
+
 
 @media (max-width: 500px) {
     .container_Menubar_body {
         display: block;
+    }
+
+    .container_Menubar_Perfil_container {
+        width: 100vw;
+        position: absolute;
+        top: -0px;
+        right: -0px;
+        border-radius: 0px;
+        height: 100vh;
+    }
+
+    .container_Menubar_Perfil_container_header_close {
+        display: flex;
     }
 }

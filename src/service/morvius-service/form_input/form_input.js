@@ -1,4 +1,4 @@
-import { PictureOutlined,EyeOutlined,EyeInvisibleOutlined, LeftOutlined, RightOutlined, CloseOutlined, SendOutlined, CloseCircleOutlined } from "@ant-design/icons";
+import { PictureOutlined,EyeOutlined,EyeInvisibleOutlined, LeftOutlined, RightOutlined, CloseOutlined, SendOutlined, CloseCircleOutlined, EditOutlined } from "@ant-design/icons";
 import React,{useState,useRef,useEffect} from "react";
 // import ImageGalery from "../res/ImageGalery";
 import { LisObjIcons } from "../res/resSvgtoJS/objListIcon.react";
@@ -91,6 +91,76 @@ export function Forminput(props){
                 {(valuestade && isVisibleErrorLabel)?<div className="form_input_validator">{messValidator}</div>:<div></div>}
                 {(valuestade && isVisibleErrorLabel)?<div style={{height: "5px"}}/>:<div></div>}
             </div>
+        </>
+    );
+}
+
+export function ForminputEdit(props){
+    // encabezados
+    const [statetextinput, changesettextinput] = useState("");
+    const [textinputmemory, changesettextinputmemory] = useState("");
+    let {
+    refMant,
+    textinput = statetextinput,
+    isdisable = false,
+    settextinput = changesettextinput,
+    keyname="keyinputgeneric",
+    onError=()=>{},
+    valueInit= "",
+    placeHolder = "name",
+    Limitchar = 999,
+    isVisibleErrorLabel = false,
+    onValitador=(textinput)=>{
+        if(textinput === "") onError();
+        return (textinput === "");
+    },
+    messValidator="Error. La casilla esta vacia.",
+    onChangeinput=(text)=>{
+        //console.log(text);
+    },
+    onValidFilter=(text)=>{
+        return text;
+    }} = props;
+    // estados del componentes
+    //const [textinput, settextinput] = useState(valueInit);
+    const [valuestade,setvaluestade] = useState(false);
+    const [BottonData,setBottonData] = useState(false);
+    // const refInput = useRef();
+
+    useEffect(()=>{
+        settextinput(valueInit);
+        changesettextinputmemory(valueInit);
+    },[]);
+
+    return (
+        <>
+            <div className="Container_ForminputEdit_principal_master">
+                <div className="Container_ForminputEdit_principal">
+                    {(!BottonData)?<div className="Container_ForminputEdit_subContainer_information">
+                        <div className="Container_ForminputEdit_subContainer_information_value">{textinput}</div>
+                        <div className="Container_ForminputEdit_subContainer_information_placeholder">{placeHolder}</div>
+                    </div>:<></>}
+                    <div className="Container_ForminputEdit_subContainer_information" style={{display: `${(!BottonData)?'none':'block'}`}}>
+                        <div style={{width: '95%'}}>
+                            <Forminput isdisable={isdisable} keyname={keyname} onError={onError} placeHolder={placeHolder} textinput={textinput} settextinput={settextinput} Limitchar={Limitchar} isVisibleErrorLabel = {isVisibleErrorLabel}></Forminput>
+                        </div>
+                    </div>
+                    {(!BottonData)?<div className="Container_ForminputEdit_subContainer_bottonEdit"> 
+                        <div className={"Container_ForminputEdit_subContainer_bottonEdit_botonEdit"} onClick={()=>{setBottonData(!BottonData)}}>
+                            <EditOutlined className="Container_ForminputEdit_subContainer_bottonEdit_botonEdit_icon"/>
+                        </div>
+                    </div>:<div className="Container_ForminputEdit_subContainer_bottonEdit"> 
+                        <div className={(BottonData)?"Container_ForminputEdit_subContainer_bottonEdit_botonEdit_actic":"Container_ForminputEdit_subContainer_bottonEdit_botonEdit"} onClick={()=>{setBottonData(!BottonData)}}>
+                            <EditOutlined className="Container_ForminputEdit_subContainer_bottonEdit_botonEdit_icon"/>
+                        </div>
+                        <div style={{marginRight: '5px'}}></div>
+                        <div className={(!BottonData)?"Container_ForminputEdit_subContainer_bottonEdit_botonEdit_actic":"Container_ForminputEdit_subContainer_bottonEdit_botonEdit"} onClick={()=>{settextinput(textinputmemory);setBottonData(!BottonData);}}>
+                            <CloseOutlined className="Container_ForminputEdit_subContainer_bottonEdit_botonEdit_icon"/>
+                        </div>
+                    </div>}
+                </div>
+            </div>
+            {/*  */}
         </>
     );
 }
@@ -188,14 +258,17 @@ export function ForminputArea(props){
 export function Forminputpassword(props){
     // encabezados
     const [statetextinput, changesettextinput] = useState("");
+    const [provaluestade,prosetvaluestade] = useState(false);
     const {
     keyname="keyinputpassword",
+    valuestade = provaluestade,setvaluestade = prosetvaluestade,
     textinput = statetextinput,
     settextinput = changesettextinput,
     valueInit= "",
     onError=()=>{},
     placeHolder = "password",
     Limitchar = 15,
+    isVisibleErrorLabel = false,
     onValitador=(textinput)=>{
         if(textinput === "") onError();
         return (textinput === "");
@@ -208,7 +281,6 @@ export function Forminputpassword(props){
         return text;
     }} = props;
     // estados del componentes
-    const [valuestade,setvaluestade] = useState(false);
     const [visipass,setvisipass] = useState(false);
 
     useEffect(()=>{
@@ -251,9 +323,82 @@ export function Forminputpassword(props){
                     >{(visipass)?<EyeInvisibleOutlined />:<EyeOutlined />}</div>
                 </div>
                 <div style={{height: "10px"}}/>
-                {(valuestade)?<div className="form_input_validator">{messValidator}</div>:<div></div>}
-                {(valuestade)?<div style={{height: "5px"}}/>:<div></div>}
+                {(valuestade && isVisibleErrorLabel)?<div className="form_input_validator">{messValidator}</div>:<div></div>}
+                {(valuestade && isVisibleErrorLabel)?<div style={{height: "5px"}}/>:<div></div>}
             </div>
+        </>
+    );
+}
+
+export function ForminputpasswordEdit(props){
+    // encabezados
+    const [statetextinput, changesettextinput] = useState("");
+    const [statetextinput1, changesettextinput1] = useState("");
+    const [textinputmemory, changesettextinputmemory] = useState("");
+    let {
+    textinput = statetextinput,
+    textinputC = statetextinput1,
+    isdisable = false,
+    settextinput = changesettextinput,
+    settextinputC = changesettextinput1,
+    keyname="keyinputgeneric",
+    keynameC="keyinputgeneric",
+    onError=()=>{},
+    valueInit= "",
+    placeHolder = "name",
+    Limitchar = 999,
+    isVisibleErrorLabel = false,
+    } = props;
+    // estados del componentes
+    //const [textinput, settextinput] = useState(valueInit);
+    const [provaluestade,prosetvaluestade] = useState(false);
+    const [BottonData,setBottonData] = useState(false);
+    // const refInput = useRef();
+
+    useEffect(()=>{
+        settextinput(valueInit);
+        changesettextinputmemory(valueInit);
+    },[]);
+
+    return (
+        <>
+            <div className="Container_ForminputEdit_principal_master">
+                <div className="Container_ForminputEdit_principal">
+                    {(!BottonData)?<div className="Container_ForminputEdit_subContainer_information">
+                        <div className="Container_ForminputEdit_subContainer_information_value">{textinput}</div>
+                        <div className="Container_ForminputEdit_subContainer_information_placeholder">{placeHolder}</div>
+                    </div>:<></>}
+                    <div className="Container_ForminputEdit_subContainer_information" style={{display: `${(!BottonData)?'none':'block'}`}}>
+                        <div style={{width: '95%'}}>
+                            <Forminputpassword valuestade = {provaluestade} setvaluestade = {prosetvaluestade} isdisable={isdisable} keyname={keyname} onError={onError} placeHolder={placeHolder} textinput={textinput} settextinput={settextinput} Limitchar={Limitchar} isVisibleErrorLabel = {isVisibleErrorLabel}></Forminputpassword>
+                            <Forminputpassword valuestade = {provaluestade} setvaluestade = {prosetvaluestade} isdisable={isdisable} keyname={keynameC} onError={onError} placeHolder={`Confirmar ${placeHolder}`} textinput={textinputC} settextinput={settextinputC} Limitchar={Limitchar} isVisibleErrorLabel = {isVisibleErrorLabel}></Forminputpassword>
+                        </div>
+                    </div>
+                    {(!BottonData)?<div className="Container_ForminputEdit_subContainer_bottonEdit"> 
+                        <div className={"Container_ForminputEdit_subContainer_bottonEdit_botonEdit"} onClick={()=>{setBottonData(!BottonData)}}>
+                            <EditOutlined className="Container_ForminputEdit_subContainer_bottonEdit_botonEdit_icon"/>
+                        </div>
+                    </div>:<div className="Container_ForminputEdit_subContainer_bottonEdit"> 
+                        <div className={(BottonData)?"Container_ForminputEdit_subContainer_bottonEdit_botonEdit_actic":"Container_ForminputEdit_subContainer_bottonEdit_botonEdit"} onClick={()=>{
+                                if(textinput != textinputC){prosetvaluestade(true); return}
+                                prosetvaluestade(false);
+                                setBottonData(!BottonData);
+                            }}>
+                            <EditOutlined className="Container_ForminputEdit_subContainer_bottonEdit_botonEdit_icon"/>
+                        </div>
+                        <div style={{marginRight: '5px'}}></div>
+                        <div className={(!BottonData)?"Container_ForminputEdit_subContainer_bottonEdit_botonEdit_actic":"Container_ForminputEdit_subContainer_bottonEdit_botonEdit"} onClick={()=>{
+                                settextinput(textinputmemory);
+                                settextinputC('');
+                                prosetvaluestade(false);
+                                setBottonData(!BottonData);
+                            }}>
+                            <CloseOutlined className="Container_ForminputEdit_subContainer_bottonEdit_botonEdit_icon"/>
+                        </div>
+                    </div>}
+                </div>
+            </div>
+            {/*  */}
         </>
     );
 }
@@ -361,6 +506,7 @@ export function Forminputmail(props){
     placeHolder = "correo",
     onError=()=>{},
     Limitchar = 999,
+    isVisibleErrorLabel = false,
     onValitador=(text)=>{
         if (!esMail(text) || text === "" ) onError();
         return (!esMail(text) || text === "" );
@@ -416,9 +562,78 @@ export function Forminputmail(props){
                     />
                 </div>
                 <div style={{height: "10px"}}/>
-                {(valuestade)?<div className="form_input_validator">{messValidator}</div>:<div></div>}
-                {(valuestade)?<div style={{height: "5px"}}/>:<div></div>}
+                {(valuestade && isVisibleErrorLabel)?<div className="form_input_validator">{messValidator}</div>:<div></div>}
+                {(valuestade && isVisibleErrorLabel)?<div style={{height: "5px"}}/>:<div></div>}
             </div>
+        </>
+    );
+}
+
+export function ForminputmailEdit(props){
+    // encabezados
+    const [statetextinput, changesettextinput] = useState("");
+    const [textinputmemory, changesettextinputmemory] = useState("");
+    let {
+    textinput = statetextinput,
+    isdisable = false,
+    settextinput = changesettextinput,
+    keyname="keyinputgeneric",
+    onError=()=>{},
+    valueInit= "",
+    placeHolder = "name",
+    Limitchar = 999,
+    isVisibleErrorLabel = false,
+    // onValitador=(textinput)=>{
+    //     if(textinput === "") onError();
+    //     return (textinput === "");
+    // },
+    // messValidator="Error. La casilla esta vacia.",
+    // onChangeinput=(text)=>{
+    //     //console.log(text);
+    // },
+    // onValidFilter=(text)=>{
+    //     return text;
+    // }
+    } = props;
+    // estados del componentes
+    //const [textinput, settextinput] = useState(valueInit);
+    const [BottonData,setBottonData] = useState(false);
+    // const refInput = useRef();
+
+    useEffect(()=>{
+        settextinput(valueInit);
+        changesettextinputmemory(valueInit);
+    },[]);
+
+    return (
+        <>
+            <div className="Container_ForminputEdit_principal_master">
+                <div className="Container_ForminputEdit_principal">
+                    {(!BottonData)?<div className="Container_ForminputEdit_subContainer_information">
+                        <div className="Container_ForminputEdit_subContainer_information_value">{textinput}</div>
+                        <div className="Container_ForminputEdit_subContainer_information_placeholder">{placeHolder}</div>
+                    </div>:<></>}
+                    <div className="Container_ForminputEdit_subContainer_information" style={{display: `${(!BottonData)?'none':'block'}`}}>
+                        <div style={{width: '95%'}}>
+                            <Forminputmail isdisable={isdisable} keyname={keyname} onError={onError} placeHolder={placeHolder} textinput={textinput} settextinput={settextinput} Limitchar={Limitchar} isVisibleErrorLabel = {isVisibleErrorLabel}></Forminputmail>
+                        </div>
+                    </div>
+                    {(!BottonData)?<div className="Container_ForminputEdit_subContainer_bottonEdit"> 
+                        <div className={"Container_ForminputEdit_subContainer_bottonEdit_botonEdit"} onClick={()=>{setBottonData(!BottonData)}}>
+                            <EditOutlined className="Container_ForminputEdit_subContainer_bottonEdit_botonEdit_icon"/>
+                        </div>
+                    </div>:<div className="Container_ForminputEdit_subContainer_bottonEdit"> 
+                        <div className={(BottonData)?"Container_ForminputEdit_subContainer_bottonEdit_botonEdit_actic":"Container_ForminputEdit_subContainer_bottonEdit_botonEdit"} onClick={()=>{setBottonData(!BottonData)}}>
+                            <EditOutlined className="Container_ForminputEdit_subContainer_bottonEdit_botonEdit_icon"/>
+                        </div>
+                        <div style={{marginRight: '5px'}}></div>
+                        <div className={(!BottonData)?"Container_ForminputEdit_subContainer_bottonEdit_botonEdit_actic":"Container_ForminputEdit_subContainer_bottonEdit_botonEdit"} onClick={()=>{settextinput(textinputmemory);setBottonData(!BottonData);}}>
+                            <CloseOutlined className="Container_ForminputEdit_subContainer_bottonEdit_botonEdit_icon"/>
+                        </div>
+                    </div>}
+                </div>
+            </div>
+            {/*  */}
         </>
     );
 }

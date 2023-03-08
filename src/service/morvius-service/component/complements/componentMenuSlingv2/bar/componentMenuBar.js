@@ -1,4 +1,4 @@
-import { CloseOutlined, FileExclamationOutlined, MenuOutlined } from "@ant-design/icons";
+import { CloseCircleOutlined, CloseOutlined, FileExclamationOutlined, MenuOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import { keyresolution } from '../../../../../repository/variables';
 import "./componentMenuBar.css";
@@ -11,8 +11,31 @@ export function ComponentMenuBar(props){
         isocultmenu = propisocultmenu,
         setisocultmenu = propsetisocultmenu,
         onOcultMenu = () => {} ,
+        onChangePerfil = () => {},
         propiskeyoptions = iskeyoptions,
         propsetiskeyoptions = setiskeyoptions,
+        informationData = {
+            nameUser: 'Carlos Arturo Guerrero Castillo',
+            user: '@arturo14212000',
+            photo: 'https://nyrevconnect.com/wp-content/uploads/2017/06/Placeholder_staff_photo-e1505825573317.png'
+        },
+        opccionSistem = [
+            {
+                label: "options",
+                icon: CloseCircleOutlined,
+                onChange: () => {}
+            },
+            {
+                label: "options",
+                icon: CloseCircleOutlined,
+                onChange: () => {}
+            },
+            {
+                label: "options",
+                icon: CloseCircleOutlined,
+                onChange: () => {}
+            }
+        ],
         onchangeoption=(id)=>{},databasic = [
         {
             label: "options1",
@@ -43,6 +66,7 @@ export function ComponentMenuBar(props){
 
     // const [collapesemenu, setcollapsemenu] = useState(false);
     const [memoricollapse,setmemoricollapse] = useState([]); // lista de los componentes con su historial de collapso
+    const [isVisiblePerfilOpctions,setisVisiblePerfilOpctions] = useState(false);
     // const [isresolutiocomp, setisresolutiocomp] = useState(false);
 
     
@@ -105,13 +129,47 @@ export function ComponentMenuBar(props){
                 <MenuOutlined className="container_Menubar_icon" />
             </div>
             <div className="container_Menubar_loginUsername"></div>
-            <div className="container_Menubar_imagePerfil">
-                <div className="container_Menubar_Perfil_container">
-                    <div className="container_Menubar_Perfil_container_header">
-                        <div className="container_Menubar_Perfil_container_header_photo_container"></div>
+            <div className="container_Menubar_imagePerfil" style={{backgroundImage: `url('${informationData.photo}')`}} onClick={()=>{
+                setisVisiblePerfilOpctions(!isVisiblePerfilOpctions);
+            }}></div>
+            {(isVisiblePerfilOpctions)?<div className="container_Menubar_Perfil_container">
+                    <div className="container_Menubar_Perfil_container_header_close">
+                        <CloseOutlined className="container_Menubar_Perfil_container_header_close_icon" />
                     </div>
-                </div>
-            </div>
+                    <div className="container_Menubar_Perfil_container_header" onClick={()=>{
+                        onChangePerfil();
+                        setisVisiblePerfilOpctions(false);
+                    }}>
+                        {/* <div style={{height: "30px"}}></div> */}
+                        <div className="container_Menubar_Perfil_container_header_photo_container">
+                            <div className="container_Menubar_Perfil_container_header_photo" style={{backgroundImage: `url('${informationData.photo}')`}}></div>
+                        </div>
+                        <div className="container_Menubar_Perfil_container_header_informat_container">
+                            <div className="container_Menubar_Perfil_container_header_informat_correo">{informationData.nameUser}</div>
+                            <div className="container_Menubar_Perfil_container_header_informat_user">{informationData.user}</div>
+                        </div>
+                    </div>
+                    <div className="container_Menubar_Perfil_container_header_lineBorder" />
+                    {/* imtem ----------------------------------------------------------- */}
+                    <div style={{height: '10px'}}></div>
+                    {opccionSistem.map((item)=>{
+                        return (<div className="container_Menubar_Perfil_container_body_item" onClick={item.onChange}>
+                                    <div className="container_Menubar_Perfil_container_body">
+                                        <div className="container_Menubar_Perfil_container_body_opccion">
+                                            <div className="container_Menubar_Perfil_container_body_opccion_photo_container">
+                                                <div className="container_Menubar_Perfil_container_body_opccion_photo_subcontainer">
+                                                    <item.icon className="container_Menubar_Perfil_container_body_opccion_photo" />
+                                                </div>
+                                            </div>
+                                            <div className="container_Menubar_Perfil_container_body_opccion_informat_container">
+                                                <div className="container_Menubar_Perfil_container_body_opccion_informat_correo">{item.label}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>);
+                    })}
+                    <div style={{height: '10px'}}></div>
+                </div>:<></>}
             {(isocultmenu)?<div className="container_Menubar_body">
                 <div className="container_Menubar_body_head" >
                     <div onClick={()=>{

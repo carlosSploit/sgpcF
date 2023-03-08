@@ -9,18 +9,40 @@ import { FormOutlined, CloseCircleOutlined } from "@ant-design/icons";
 import { PICurso } from "./Academico/PICurso/PICurso";
 // import { useParams } from "react-router-dom";
 // import { RedirectLink, redirectRutaOptions, valueRouteActual } from "../../service/router/routerscontroler";
-import { getkeypage, setkeypage } from "../../service/repository/mithelworks";
+import { getKeysesion, getkeypage, setkeypage } from "../../service/repository/mithelworks";
 import { redirectRutaOptions } from "../../service/router/routerscontroler";
 // import { routerLinks } from "../../service/router/routers";
 import { useNavigate } from "react-router";
+import { readclientAnalist } from "../../service/repository/clientAnalist";
+import { ConsuldataLog } from "../../service/repository/Usuarios";
+import NotificationProvider from "../../service/Notifications/NotificationProvider";
+import { PerfildeUsuario } from "./perfildeusuario";
 
 export function ClientAnalist(props){
 
-    const { idPageLoad = -1, onCerrarSecion = ()=>{} } = props;
+    const { 
+        idPageLoad = -1, 
+        onCerrarSecion = ()=>{}} = props;
     const [indexinterfacememori, setindexinterfacememori] = useState(-1);
     const [indexinterface, setindexinterface] = useState(-1);
+    const [iisperfilinfo, setisperfilinfo] = useState(false);
     const [interfaces, setinterfaces] = useState(<Admin/>);
     const urlRedirect = useNavigate();
+    const [informationData, setinformationData] = useState({
+        nameUser: 'Carlos Arturo Guerrero Castillo',
+        user: '@arturo14212000',
+        photo: 'https://nyrevconnect.com/wp-content/uploads/2017/06/Placeholder_staff_photo-e1505825573317.png'
+    });
+
+    const [opccionSistem, setopccionSistem] = useState([
+        {
+            label: "Cerrar secion",
+            icon: CloseCircleOutlined,
+            onChange: () => {
+                onCerrarSecion();
+            }
+        }
+    ]);
     
     const opcciones = [
         {
@@ -56,12 +78,6 @@ export function ClientAnalist(props){
                     key: 4
                 }
             ]
-        },
-        {
-            label: "Cerrar Sesion",
-            Icon: CloseCircleOutlined,
-            key: 999,
-            options:[]
         }
     ]
 
@@ -76,10 +92,6 @@ export function ClientAnalist(props){
             setinterfaces(listInterface[id])
             setindexinterface(id);
             setindexinterfacememori(id);
-        }else{
-            if(id == 999){
-                onCerrarSecion();
-            }
         }
         
     }
@@ -87,6 +99,18 @@ export function ClientAnalist(props){
     // useRedirect({urlPatch: urlredirect});
 
     useEffect(()=>{
+
+        (async () => {
+            let seskey = await getKeysesion();
+            let dataRed = await ConsuldataLog({seccionkey: seskey})
+            let result = await readclientAnalist(dataRed.id_inform);
+            setinformationData({
+                nameUser: result.nombre + ' ' + result.apellidos,
+                user: result.usaio,
+                photo: result.photo
+            })
+        })();
+
         // si no se a inizializado una pagina por una ruta
         if (idPageLoad != -1){
             setindexinterface(idPageLoad);
@@ -104,9 +128,12 @@ export function ClientAnalist(props){
     },[]);
 
     return (<>
-    <BasicSqueleton propiskeyoptions = {indexinterface} propsetiskeyoptions = {setindexinterface} iskeyinit = {indexinterface} onchageoption={onchageoption} databasic={opcciones}>
-        {interfaces}
-        {/* <Profesor/> */}
-    </BasicSqueleton>
+    <NotificationProvider>
+        {(iisperfilinfo)?<PerfildeUsuario ismodalvisible = {iisperfilinfo} setismodalvisible = {setisperfilinfo} ></PerfildeUsuario>:<></>}
+        <BasicSqueleton onChangePerfil = {()=>{ setisperfilinfo(true); console.log('abrir el perfil de datos')}} opccionSistem = {opccionSistem} informationData = {informationData} propiskeyoptions = {indexinterface} propsetiskeyoptions = {setindexinterface} iskeyinit = {indexinterface} onchageoption={onchageoption} databasic={opcciones}>
+            {interfaces}
+            {/* <Profesor/> */}
+        </BasicSqueleton>
+    </NotificationProvider>
     </>);
 }
