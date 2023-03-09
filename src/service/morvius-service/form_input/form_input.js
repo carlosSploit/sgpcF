@@ -243,6 +243,76 @@ export function ForminputArea(props){
     );
 }
 
+export function ForminputAreatEdit(props){
+    // encabezados
+    const [statetextinput, changesettextinput] = useState("");
+    const [textinputmemory, changesettextinputmemory] = useState("");
+    let {
+    refMant,
+    textinput = statetextinput,
+    isdisable = false,
+    settextinput = changesettextinput,
+    keyname="keyinputgeneric",
+    onError=()=>{},
+    valueInit= "",
+    placeHolder = "name",
+    Limitchar = 999,
+    isVisibleErrorLabel = false,
+    onValitador=(textinput)=>{
+        if(textinput === "") onError();
+        return (textinput === "");
+    },
+    messValidator="Error. La casilla esta vacia.",
+    onChangeinput=(text)=>{
+        //console.log(text);
+    },
+    onValidFilter=(text)=>{
+        return text;
+    }} = props;
+    // estados del componentes
+    //const [textinput, settextinput] = useState(valueInit);
+    const [valuestade,setvaluestade] = useState(false);
+    const [BottonData,setBottonData] = useState(false);
+    // const refInput = useRef();
+
+    useEffect(()=>{
+        settextinput(valueInit);
+        changesettextinputmemory(valueInit);
+    },[]);
+
+    return (
+        <>
+            <div className="Container_ForminputEdit_principal_master">
+                <div className="Container_ForminputEdit_principal">
+                    {(!BottonData)?<div className="Container_ForminputEdit_subContainer_information">
+                        <div className="Container_ForminputEdit_subContainer_information_value">{textinput}</div>
+                        <div className="Container_ForminputEdit_subContainer_information_placeholder">{placeHolder}</div>
+                    </div>:<></>}
+                    <div className="Container_ForminputEdit_subContainer_information" style={{display: `${(!BottonData)?'none':'block'}`}}>
+                        <div style={{width: '95%'}}>
+                            <ForminputArea isdisable={isdisable} keyname={keyname} onError={onError} placeHolder={placeHolder} textinput={textinput} settextinput={settextinput} Limitchar={Limitchar} isVisibleErrorLabel = {isVisibleErrorLabel} />
+                        </div>
+                    </div>
+                    {(!BottonData)?<div className="Container_ForminputEdit_subContainer_bottonEdit"> 
+                        <div className={"Container_ForminputEdit_subContainer_bottonEdit_botonEdit"} onClick={()=>{setBottonData(!BottonData)}}>
+                            <EditOutlined className="Container_ForminputEdit_subContainer_bottonEdit_botonEdit_icon"/>
+                        </div>
+                    </div>:<div className="Container_ForminputEdit_subContainer_bottonEdit"> 
+                        <div className={(BottonData)?"Container_ForminputEdit_subContainer_bottonEdit_botonEdit_actic":"Container_ForminputEdit_subContainer_bottonEdit_botonEdit"} onClick={()=>{setBottonData(!BottonData)}}>
+                            <EditOutlined className="Container_ForminputEdit_subContainer_bottonEdit_botonEdit_icon"/>
+                        </div>
+                        <div style={{marginRight: '5px'}}></div>
+                        <div className={(!BottonData)?"Container_ForminputEdit_subContainer_bottonEdit_botonEdit_actic":"Container_ForminputEdit_subContainer_bottonEdit_botonEdit"} onClick={()=>{settextinput(textinputmemory);setBottonData(!BottonData);}}>
+                            <CloseOutlined className="Container_ForminputEdit_subContainer_bottonEdit_botonEdit_icon"/>
+                        </div>
+                    </div>}
+                </div>
+            </div>
+            {/*  */}
+        </>
+    );
+}
+
 /**
  * <input para form de tipo password, con ocultar o desocultar texto>
  * @param   {<string>} key <Id del input>

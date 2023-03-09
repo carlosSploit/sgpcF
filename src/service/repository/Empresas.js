@@ -12,16 +12,16 @@ export async function getEmpresas(idUsername = 0) {
   return result.data;
 }
 
-export async function readprofesor(id) {
-  const id_admin = id;
-  const url = `${domain_api}/profe/read/${id_admin}`;
-  const result = await axios.get(url, {
-    headers: {
-      Authorization: `Bearer ${await gettoken()}`,
-    },
-  });
-  return result.data;
-}
+// export async function readprofesor(id) {
+//   const id_admin = id;
+//   const url = `${domain_api}/profe/read/${id_admin}`;
+//   const result = await axios.get(url, {
+//     headers: {
+//       Authorization: `Bearer ${await gettoken()}`,
+//     },
+//   });
+//   return result.data;
+// }
 
 export async function addEmpresa(jsondat = {}) {
   const data = jsondat;
@@ -46,10 +46,10 @@ export async function addEmpresa(jsondat = {}) {
 //   return result.data;
 // }
 
-export async function updateprofe(id, jsondat = {}) {
+export async function updateEmpresa(id, jsondat = {}) {
   const id_negocio = id;
   const data = jsondat;
-  const url = `${domain_api}/profe/${id_negocio}`;
+  const url = `${domain_api}/empresa/${id_negocio}`;
   const result = await axios.put(url, data, {
     headers: {
       Authorization: `Bearer ${await gettoken()}`,
@@ -59,9 +59,8 @@ export async function updateprofe(id, jsondat = {}) {
   return result.data;
 }
 
-export async function deletprofesor(id) {
-  const id_admin = id;
-  const url = `${domain_api}/profe/${id_admin}`;
+export async function deleteEmpresa({id_empresa, id_clienAnalit}) {
+  const url = `${domain_api}/empresa/${id_clienAnalit}/${id_empresa}`;
   const result = await axios.delete(url, {
     headers: {
       Authorization: `Bearer ${await gettoken()}`,

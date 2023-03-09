@@ -34,6 +34,7 @@
     /* color: #9686C3; */
     padding: 10px;
     position: relative;
+    margin-top: 10px;
 }
 
 .component_modalFloting_close {
@@ -67,6 +68,8 @@
     height: 40px;
     font-size: 24px;
     /* asling contenido al centro */
+    text-align: center;
+    line-height: 23px;
     display: flex;
     align-items: center;
     justify-content: center;

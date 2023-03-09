@@ -85,3 +85,13 @@
 .Container_ItemEmpresa_conten_InfoData_Descrip {
     color: var(--color-text-secundary);
 }
+
+@media (max-width: 600px) {
+    .Container_ItemEmpresa_conten_secondary_seleccion_suInfor {
+        display: none;
+    }
+
+    .Container_ItemEmpresa_conten_secondary_seleccion_conten_information {
+        justify-content: flex-start;
+    }
+}
