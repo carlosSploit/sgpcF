@@ -4,10 +4,14 @@ import React from "react";
 import "./style/itemCardSelect.css";
 
 export default function itemCardSelect(props){
-    const { keyid = 0, name = "puntos", value = 0, photo = "", onchange=(Keyicono)=>{}, keySelet = 0} = props;
+    const { keyid = 0, name = "puntos", value = 0, photo = "", onchange=(Keyicono)=>{}, keySelet = 0, isVisibleFoto = false} = props;
 
+    const colorItemBackgroundSeleter = () => {
+        return  (keyid != keySelet)? "transparent": "#375D81";
+    }
+    
     const colorItemBackground = () => {
-        return  (keyid != keySelet)? "#ffff": "#856FC5";
+        return  (keyid != keySelet)? "#f8f9fd": "#375D81";
     }
 
     const colorItem = () => {
@@ -27,13 +31,16 @@ export default function itemCardSelect(props){
             <div className="container_item_selectItem_subcontaion" >
                 <div className="container_item_selectItem_subcontaion_text_cont" style={{color: `${colorItem()}`}}>
                     <div style={{width:"10px"}}/>
-                    <div className="container_item_selectItem_subcontaion_text_cont_icon" style={{backgroundImage: `url('${photo}')`}} ></div>
+                    {(isVisibleFoto)?
+                        <div className="container_item_selectItem_subcontaion_text_cont_icon" style={{backgroundImage: `url('${photo}')`}} ></div>
+                    :<></>}
+                    
                     <div style={{width:"10px"}}/> 
                     <div className="container_item_selectItem_subcontaion_text" style={{color: `${colorItemText()}`}}> {name}</div>
                 </div>
-                <div className="container_item_selectItem_conte_puntos" style={{backgroundColor: `${colorItem()}`}}>
-                    <div className="container_item_selectItem_conte_puntos_text">
-                        <CheckCircleOutlined />
+                <div className="container_item_selectItem_conte_puntos">
+                    <div className="container_item_selectItem_conte_puntos_text" style={{backgroundColor: `${colorItemBackgroundSeleter()}`}}>
+                        {/* <CheckCircleOutlined /> */}
                     </div>
                 </div>
             </div>

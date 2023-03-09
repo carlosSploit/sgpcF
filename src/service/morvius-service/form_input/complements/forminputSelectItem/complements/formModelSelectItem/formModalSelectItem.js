@@ -10,18 +10,26 @@ import "./style/formModalSelectItem.css";
 export function FormModalSelectItem(props){
 
     const [ismodalvisibleIN, setismodalvisibleIN] = useState(false);
+    const [proplistaObj, propsetlistaObj] = useState([
+        {
+            id: 1,
+            name: "basic1",
+            photo: "https://idisl.info/wp-content/uploads/2015/07/generic-avatar.png"
+        },
+        {
+            id: 2,
+            name: "basic2",
+            photo: "https://idisl.info/wp-content/uploads/2015/07/generic-avatar.png"
+        }
+    ]);
     const {
         nameTitle = "",
+        isVisibleFoto = false,
         onChangeSelect = (key) => {},
         propismodalvisible = ismodalvisibleIN,
         propsetismodalvisible = setismodalvisibleIN,
-        listaObj=[
-            {
-                id: 1,
-                name: "basic",
-                photo: "https://idisl.info/wp-content/uploads/2015/07/generic-avatar.png"
-            }
-        ]
+        listaObj = proplistaObj,
+        setlistaObj = propsetlistaObj
     } = props;
     const [isSelectIcon, setisSelectIcon] = useState(0);
     const [listIcons, setlistIcons] = useState([]);
@@ -65,7 +73,7 @@ export function FormModalSelectItem(props){
     return (
         <>
             {/* <ComponentItemPuntosClass onchange={onchange} id_puntos = {item.id_tipo_puntos} name = {item.nombre} value = {item.value_point} photo = {item.photo} /> */}
-            <PopModal propismodalvisible = {propismodalvisible} propsetismodalvisible = {propsetismodalvisible} namemodal={nameTitle}>
+            <PopModal colorTitle={'#183152'} propismodalvisible = {propismodalvisible} propsetismodalvisible = {propsetismodalvisible} namemodal={nameTitle}>
                 <ComponentModalFlotingBody>
                     <div style={{height:"10px"}} ></div>
                     <Componentsearch height= "30px" onChangeseach = {onChangeseach} onChangekey = {onChangekey}/>
@@ -73,7 +81,7 @@ export function FormModalSelectItem(props){
                     <div className="container_view_selectItem_body_content">
                         <div className="container_view_selectItem_body">
                             {histlistIcons.map((item)=>{
-                                return <CartsItemsIcons keyid={item.id} name={item.name} value={item.id} photo={item.photo} onchange={onchange} keySelet={isSelectIcon}/>
+                                return <CartsItemsIcons isVisibleFoto={isVisibleFoto} keyid={item.id} name={item.name} value={item.id} photo={item.photo} onchange={onchange} keySelet={isSelectIcon}/>
                             })}
                         </div>
                     </div>

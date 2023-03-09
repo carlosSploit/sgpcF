@@ -74,7 +74,9 @@ export function Login(props){
                         style={{
                             margin: "0",
                             padding: "0",
-                            width: "100%"
+                            width: "90%",
+                            marginLeft: '5%',
+                            marginRight: '5%'
                         }}
                         layout="vertical"
                         onSubmit={handleSubmit}
@@ -86,6 +88,7 @@ export function Login(props){
                         <div style={{display: `${(stadenotLogin)?'none':'block'}`}}>
                             <Forminput placeHolder="correo" keyname ={"corus"}/>
                         </div>
+                        <div style={{height:"6px"}} />
                         <Forminputpassword  placeHolder="contraseña" keyname ={"conpas"}/>
                         <div style={{height:"10px"}} />
                         <ForminputBottonSubmit label={"Iniciar"}/>

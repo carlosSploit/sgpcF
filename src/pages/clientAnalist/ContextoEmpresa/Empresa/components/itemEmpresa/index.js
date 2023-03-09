@@ -18,12 +18,6 @@ export function ItemEmpresa(props){
 
     return (<div className="Container_ItemEmpresa_conten_Pri">
         <div className="Container_ItemEmpresa_conten_secondary">
-            <div className="Container_ItemEmpresa_conten_secondary_seleccion">
-                <div onClick={()=>{
-                    onSelecteItem(keyitem,!isSeleteItem);
-                    setisSeleteItem(!isSeleteItem);
-                }} className={`Container_ItemEmpresa_conten_secondary_seleccion_radio${(isSeleteItem)?' active':''}`}><div></div></div>
-            </div>
             <div className="Container_ItemEmpresa_conten_secondary_seleccion_conten_information" onClick={()=>{
                 onChange(keyitem);
             }}>
@@ -35,6 +29,12 @@ export function ItemEmpresa(props){
                 <div className="Container_ItemEmpresa_conten_secondary_seleccion_suInfor">
                     <div className="Container_ItemEmpresa_conten_InfoData_Descrip" >{descrip}</div>
                 </div>
+            </div>
+            <div className="Container_ItemEmpresa_conten_secondary_seleccion">
+                <div onClick={()=>{
+                    onSelecteItem(keyitem,!isSeleteItem);
+                    setisSeleteItem(!isSeleteItem);
+                }} className={`Container_ItemEmpresa_conten_secondary_seleccion_radio${(isSeleteItem)?' active':''}`}><div></div></div>
             </div>
         </div>
     </div>);

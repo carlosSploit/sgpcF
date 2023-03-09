@@ -23,7 +23,7 @@
 }
 
 .container_login_form {
-    margin-left: 10px;
+    margin-left: 20px;
     margin-right: 20px;
 }
 
@@ -111,17 +111,34 @@
 }
 
 .conteiner_input_data {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.conteiner_input_data_item {
+    width: 45%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 10px;
-    margin-right: 10px;
 }
 
-.conteiner_input_data:nth-child() {}
+.conteiner_input_data_space {
+    width: 8%;
+}
 
 @media (max-width: 500px) {
     .conteiner_input_data {
         flex-direction: column;
+    }
+
+    .conteiner_input_data_item {
+        width: 100%;
+    }
+
+    .conteiner_input_data_space {
+        height: 5px;
     }
 }

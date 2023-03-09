@@ -13,7 +13,6 @@ import { EditarEmpresaInformation } from "./components/EditarInformacion/Editar"
 import { ComponentModalFloting, ComponentModalFlotingBody, ComponentModalFlotingHeader, ComponentModalPrincipalListtabs } from "../../../../../../service/morvius-service/components";
 import { getKeysesion } from "../../../../../../service/repository/mithelworks";
 import { ConsuldataLogm } from "../../../../../../service/repository/mithelworks";
-import { AreasEmpresas } from "./components/AreasEmpresa";
 
 export function EditarEmpresa(props){
 
@@ -52,8 +51,7 @@ export function EditarEmpresa(props){
         setlistview([<EditarEmpresaInformation onAction={async () => {
             await actualizeData();
             await onAction();
-        }} onUpdate={onAction} informationDataGeneral={ListdataUser[0]}/>,
-        <AreasEmpresas informationDataGeneral={ListdataUser[0]}/>])
+        }} onUpdate={onAction} informationDataGeneral={ListdataUser[0]}/>])
     }
 
     const listOpt = [
@@ -90,7 +88,7 @@ export function EditarEmpresa(props){
                     indexinitial = {listOpt[0].id}
                 ></ComponentModalPrincipalListtabs>
                 <div className="LinerSeparator"></div>
-                <div style={{height: '5px'}}></div>
+                <div style={{height: '20px'}}></div>
                 {listview[index]}
                 </ComponentModalFlotingBody>
             </ComponentModalFloting>);

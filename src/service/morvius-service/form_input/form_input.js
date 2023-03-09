@@ -744,7 +744,7 @@ export function ForminputRadioSlice(props){
 
     return (
         <>
-            <div style={{height: "5px"}}/>
+            {/* <div style={{height: "5px"}}/> */}
             <div className="form_conteiner">
                 <div
                     className="form_input_radioslice_conteiner"

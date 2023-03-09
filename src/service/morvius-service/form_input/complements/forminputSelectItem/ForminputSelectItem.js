@@ -5,23 +5,26 @@ import "./ForminputSelectItem.css";
 
 export function ForminputSelectItem(props){
     const [stateSelectItem, changestateSelectItem] = useState("");
+    const [proplistaObj, propsetlistaObj] = useState([
+        {
+            id: 1,
+            name: "basic1",
+            photo: "https://idisl.info/wp-content/uploads/2015/07/generic-avatar.png"
+        },
+        {
+            id: 2,
+            name: "basic2",
+            photo: "https://idisl.info/wp-content/uploads/2015/07/generic-avatar.png"
+        }
+    ]);
     let {
         nameTitle = "Selecciona el item",
         keyname = "KeySelectIcon",
+        isVisibleFoto = false,
         checkbox = stateSelectItem,
         setcheckbox = changestateSelectItem,
-        listaObj = [
-            {
-                id: 1,
-                name: "basic1",
-                photo: "https://idisl.info/wp-content/uploads/2015/07/generic-avatar.png"
-            },
-            {
-                id: 2,
-                name: "basic2",
-                photo: "https://idisl.info/wp-content/uploads/2015/07/generic-avatar.png"
-            }
-        ],
+        listaObj = proplistaObj,
+        setlistaObj = propsetlistaObj,
         valueInit = 0,
         onChangeinput=(json)=>{}
     } = props;
@@ -95,7 +98,7 @@ export function ForminputSelectItem(props){
                         }
                     </div>
                     <div className="form_seletItem_conteiner_buttton" onClick={onchange} >
-                        <SendOutlined style={{color: "white"}} />
+                        <SendOutlined className="form_seletItem_conteiner_buttton_icon" />
                     </div>
                 </div>
                 <input
@@ -105,7 +108,7 @@ export function ForminputSelectItem(props){
                     name={`${keyname}`} 
                     value={checkbox}
                 />
-                <FormModalSelectItem nameTitle={nameTitle} listaObj={listaObj} propismodalvisible={ismodalvisible} propsetismodalvisible={setismodalvisible} onChangeSelect={onChangeSelect} />
+                <FormModalSelectItem isVisibleFoto={isVisibleFoto} nameTitle={nameTitle} listaObj={listaObj} setlistaObj = {setlistaObj} propismodalvisible={ismodalvisible} propsetismodalvisible={setismodalvisible} onChangeSelect={onChangeSelect} />
                 <div style={{height: "10px"}}/>
                 {(valuestade)?<div className="form_input_validator">{messValidator}</div>:<div></div>}
                 {(valuestade)?<div style={{height: "5px"}}/>:<div></div>}

@@ -65,7 +65,7 @@ export function ComponentModal(props){
 
     return(
         <>
-            <ComponentModalFloting zindex={zvisible} statemode={propismodalvisible} onClosechange={()=>{propsetismodalvisible(false);}}>
+            <ComponentModalFloting width = {'400px'} zindex={zvisible} statemode={propismodalvisible} onClosechange={()=>{propsetismodalvisible(false);}}>
                <ComponentModalFlotingHeader colorBackgroud={colorBackgroud} colorTitle={colorTitle} title={namemodal} onClosechange={()=>{onClosechange();propsetismodalvisible(false);}} />
                {children}
            </ComponentModalFloting>
@@ -92,7 +92,6 @@ export function ComponentModalFlotingHeader(props){
     return(
         <>
             <div className="component_modalFloting_header" style={{backgroundColor: `${colorBackgroud}`}}>
-                <div style={{height: '20px'}}></div>
                 <div onClick={onClosechange} className="component_modalFloting_close"><CloseOutlined className="component_modalFloting_close_icon" style={{color: `${colorTitle}`}}/></div>
                 <div className="component_modalFloting_header_container">
                     <div className="component_modalFloting_header_title" style={{color: `${colorTitle}`}}>{title}</div>

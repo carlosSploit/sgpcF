@@ -80,16 +80,33 @@ export function RegisterCliente(props){
                         
                         <div style={{height:"20px"}}></div>
                         <div className="conteiner_input_data">
-                            <Forminput placeHolder="Nombre" keyname ={"nombr"}/>
-                            <Forminput placeHolder="Apellidos" keyname ={"apell"}/>
+                            <div className="conteiner_input_data_item">
+                                <Forminput placeHolder="Nombre" keyname ={"nombr"}/>
+                            </div>
+                            <div className="conteiner_input_data_space"></div>
+                            <div className="conteiner_input_data_item">
+                                <Forminput placeHolder="Apellidos" keyname ={"apell"}/>
+                            </div>
                         </div>
+                        <div style={{height:"5px"}}></div>
                         <div className="conteiner_input_data">
-                            <Forminput placeHolder="Telefono" keyname ={"telf"}/>
-                            <Forminput placeHolder="Correo" keyname ={"corre"}/>
+                            <div className="conteiner_input_data_item">
+                                <Forminput placeHolder="Telefono" keyname ={"telf"}/>
+                            </div>
+                            <div className="conteiner_input_data_space"></div>
+                            <div className="conteiner_input_data_item">
+                                <Forminput placeHolder="Correo" keyname ={"corre"}/>
+                            </div>
                         </div>
+                        <div style={{height:"5px"}}></div>
                         <div className="conteiner_input_data">
-                            <Forminputpassword  placeHolder="Contraseña" keyname ={"passs"}/>
-                            <Forminputpassword  placeHolder="Confirmar Contrasena" keyname ={"conpas"}/>
+                            <div className="conteiner_input_data_item">
+                                <Forminputpassword  placeHolder="Contraseña" keyname ={"passs"}/>
+                            </div>
+                            <div className="conteiner_input_data_space"></div>
+                            <div className="conteiner_input_data_item">
+                                <Forminputpassword  placeHolder="Confirmar Contrasena" keyname ={"conpas"}/>
+                            </div>
                         </div>
                         <div style={{height:"10px"}} />
                         <ForminputBottonSubmit label={"Iniciar"}/>

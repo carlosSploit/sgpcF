@@ -175,18 +175,19 @@
     border-radius: 15px;
     border-width: 1px;
     border-style: solid;
-    border-color: var(--color-secundary);
+    border-color: grey;
     ;
     display: flex;
     justify-content: start;
-    align-items: flex-end;
+    align-items: center;
+    padding: 1px;
 }
 
 .form_input_radioslice_circle {
     border-radius: 15px;
     background-color: grey;
     height: 15px;
-    width: 20px;
+    width: 15px;
 }
 
 .form_input_radioslice_activate {
@@ -198,23 +199,26 @@
     border-width: 1px;
     border-style: solid;
     border-color: var(--color-secundary);
-    ;
     display: flex;
     justify-content: end;
-    align-items: flex-end;
+    align-items: center;
+    padding: 1px;
 }
 
 .form_input_radioslice_circle_activate {
     border-radius: 15px;
     background-color: var(--color-secundary);
-    ;
     height: 15px;
-    width: 20px;
+    width: 15px;
 }
 
 .form_input_radioslice_name {
+    height: 15px;
     font-size: 14px;
     color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* input text area */

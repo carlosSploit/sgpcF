@@ -35,6 +35,18 @@ export async function addEmpresa(jsondat = {}) {
   return result.data;
 }
 
+export async function addSelectEmpresa(jsondat = {}) {
+  const data = jsondat;
+  const url = `${domain_api}/empresa/enlace`;
+  const result = await axios.post(url, data, {
+    headers: {
+      Authorization: `Bearer ${await gettoken()}`,
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+  });
+  return result.data;
+}
+
 // export async function loggin(jsondat = {}) {
 //   const data = jsondat;
 //   const url = `${domain_api}/user/log`;
