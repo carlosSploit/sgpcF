@@ -190,7 +190,7 @@ export function Componentsearchanimation(props){
         onSpandedAnimate = (stade) => {
 
         },
-        height = "40px"
+        height = "26px"
     } = props;
     const [changseach,setchangseach] = useState("");
     const [isVisible,setisVisible] = useState(false);

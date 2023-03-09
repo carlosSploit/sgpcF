@@ -1,6 +1,7 @@
 @import url('../../../res/typogramic/typogramic.css');
+@import url('../masterVarial.css');
 
-.component_content{
+.component_content {
     width: 90%;
     display: flex;
     flex-direction: column;
@@ -10,7 +11,7 @@
     margin-left: 20px;
 }
 
-.component_collaps_content{
+.component_collaps_content {
     width: 90%;
     display: flex;
     flex-direction: column;
@@ -24,7 +25,7 @@
 }
 
 /* components-collaps */
-.component_collaps_containert{
+.component_collaps_containert {
     width: 100%;
     height: 30px;
     /* background */
@@ -36,7 +37,7 @@
 
 /* components filter */
 
-.component_filter_containert{
+.component_filter_containert {
     width: 100%;
     height: 50px;
     background-color: #F7EBFF;
@@ -47,7 +48,7 @@
     border-radius: 25px;
 }
 
-.component_filter_containert_filtOptions{
+.component_filter_containert_filtOptions {
     width: 80%;
     height: 50px;
     /* margin-top: 10px; */
@@ -59,18 +60,18 @@
     /* background-color: aqua; */
 }
 
-.component_filter_containert_filtOptions::-webkit-scrollbar{
+.component_filter_containert_filtOptions::-webkit-scrollbar {
     width: 5px;
     background-color: transparent;
 }
 
-.component_filter_containert_filtOptions::-webkit-scrollbar-thumb{
+.component_filter_containert_filtOptions::-webkit-scrollbar-thumb {
     width: 5px;
-    background: linear-gradient(185deg, rgba(150,134,195,1) 0%, rgba(150,134,195,1) 36%, rgba(239,203,75,1) 100%, rgba(105,78,78,1) 120%);
+    background: linear-gradient(185deg, rgba(150, 134, 195, 1) 0%, rgba(150, 134, 195, 1) 36%, rgba(239, 203, 75, 1) 100%, rgba(105, 78, 78, 1) 120%);
     border-radius: 20px;
 }
 
-.component_filter_containert_filtButtons{
+.component_filter_containert_filtButtons {
     width: 20%;
     height: 100%;
     display: flex;
@@ -78,7 +79,7 @@
     justify-content: flex-end;
 }
 
-.component_filter_containert_filtButtons_button{
+.component_filter_containert_filtButtons_button {
     width: 80%;
     height: 35px;
     display: flex;
@@ -91,7 +92,7 @@
 }
 
 /* components search */
-.component_content_search{
+.component_content_search {
     width: auto;
     max-width: 90%;
     display: flex;
@@ -102,10 +103,10 @@
     margin-left: 20px;
 }
 
-.component_search_containert{
+.component_search_containert {
     width: auto;
     max-width: 100%;
-    height: 40px;
+    height: 26px;
     /* background */
     background-color: white;
     /* aling */
@@ -117,20 +118,35 @@
     border-radius: 20px;
     border-width: 1px;
     border-style: solid;
-    border-color: #9686C3;
+    border-color: var(--color-secundary);
 }
 
-.component_search_input{
+.component_search_input {
     margin-left: 20px;
     margin-right: 10px;
     border: 0px solid transparent;
     font-size: 14px;
     width: 100%;
     outline: none;
-    color: #9686C3;
+    color: var(--color-text-secundary);
 }
 
-.component_search_input_combofilter{
+.component_search_boton_seach {
+    width: 26px;
+    height: 26px;
+    /* aling */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: red; */
+}
+
+.component_search_boton_seach_icon {
+    color: var(--color-secundary);
+    font-size: 14px;
+}
+
+.component_search_input_combofilter {
     width: 250px;
     height: 40px;
     display: flex;
@@ -139,22 +155,9 @@
     /* background-color: aqua; */
 }
 
-.component_search_boton_seach{
-    width: 40px;
-    height: 40px;
-    /* aling */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.component_search_boton_seach_icon{
-    color: #9686C3;
-    font-size: 20px;
-}
 
 /* comoponent collaps */
-.component_collaps_header{
+.component_collaps_header {
     width: 100%;
     height: 40px;
     background-color: #9686C3;
@@ -164,7 +167,7 @@
     justify-content: center;
 }
 
-.component_collaps_header_title{
+.component_collaps_header_title {
     width: 100%;
     padding-left: 20px;
     padding-right: 5px;
@@ -175,7 +178,7 @@
     justify-content: start;
 }
 
-.component_collaps_header_actioncolap{
+.component_collaps_header_actioncolap {
     height: 40px;
     width: 40px;
     /* icon */
@@ -184,12 +187,12 @@
     justify-content: center;
 }
 
-.component_collaps_header_icon{
+.component_collaps_header_icon {
     font-size: 20px;
     color: white;
 }
 
-.component_selector_options_content{
+.component_selector_options_content {
     height: 20px;
     width: 20px;
     display: flex;
@@ -198,7 +201,7 @@
     position: relative;
 }
 
-.component_selector_options_subcontent{
+.component_selector_options_subcontent {
     position: absolute;
     width: 150px;
     height: auto;
@@ -206,12 +209,12 @@
     left: -175px;
     border-radius: 10px;
     top: 0;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     padding-left: 5px;
     padding-right: 10px;
 }
 
-.component_collaps_Selector_content{
+.component_collaps_Selector_content {
     width: 100%;
     /* background-color: aqua; */
     display: flex;
@@ -221,7 +224,7 @@
     margin-bottom: 5px;
 }
 
-.component_collaps_Selector_icon_content{
+.component_collaps_Selector_icon_content {
     width: 30px;
     height: 30px;
     display: flex;
@@ -230,11 +233,11 @@
     margin-right: 5px;
 }
 
-.component_collaps_Selector_icon_item{
+.component_collaps_Selector_icon_item {
     color: rgba(0, 0, 0, 0.5);
 }
 
-.component_collaps_Selector_text{
+.component_collaps_Selector_text {
     color: rgba(0, 0, 0, 0.5);
     font-size: 14px;
     min-height: 30px;
@@ -243,7 +246,7 @@
     align-items: center;
 }
 
-.component_collaps_body{
+.component_collaps_body {
     background-color: #F4F4F4;
     height: auto;
     width: 100%;
@@ -252,7 +255,7 @@
     border-end-start-radius: 15px;
 }
 
-.component_collaps_body_item{
+.component_collaps_body_item {
     background-color: #F4F4F4;
     height: 40px;
     width: 100%;
@@ -263,7 +266,7 @@
     justify-content: center;
 }
 
-.component_collaps_body_content{
+.component_collaps_body_content {
     height: 100%;
     width: 90%;
     /* aling */
@@ -275,7 +278,7 @@
     background: #F4F4F4;
 }
 
-.component_collaps_body_item_title{
+.component_collaps_body_item_title {
     padding-left: 5px;
     color: #9686C3;
     font-size: 15px;
@@ -286,13 +289,13 @@
     justify-content: start;
 }
 
-.component_collaps_body_item_liner{
+.component_collaps_body_item_liner {
     width: 100%;
     height: 1px;
-    background-color: rgba(0, 0,0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-.component_collaps_body_item_content_icon{
+.component_collaps_body_item_content_icon {
     width: 40px;
     height: 40px;
     display: flex;
@@ -300,14 +303,14 @@
     justify-content: center;
 }
 
-.component_collaps_body_item_icon{
+.component_collaps_body_item_icon {
     font-size: 20px;
     color: #9686C3;
 }
 
 /* component modal */
 
-.component-icon-list-tabs:last-child{
+.component-icon-list-tabs:last-child {
     margin-right: 0px;
 }
 
@@ -454,7 +457,7 @@
 /* --------------- */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
-.component_botton_container_content_invert{
+.component_botton_container_content_invert {
     font-size: 15px;
     width: auto;
     height: 20px;
@@ -474,7 +477,7 @@
     text-overflow: ellipsis;
 }
 
-.component_botton_container_content_invert:hover{
+.component_botton_container_content_invert:hover {
     font-size: 15px;
     height: 20px;
     width: auto;
@@ -491,7 +494,7 @@
     text-overflow: ellipsis;
 }
 
-.component_botton_container_content{
+.component_botton_container_content {
     font-size: 15px;
     height: 20px;
     width: auto;
@@ -508,7 +511,7 @@
     text-overflow: ellipsis;
 }
 
-.component_botton_container_content:hover{
+.component_botton_container_content:hover {
     font-size: 15px;
     height: 20px;
     padding-left: 20px;
@@ -527,7 +530,7 @@
     text-overflow: ellipsis;
 }
 
-.component_botton_container{
+.component_botton_container {
     display: flex;
     align-items: center;
     width: auto;
@@ -537,12 +540,12 @@
 
 /* Components botton chips */
 
-.component-item-chips-activate{
+.component-item-chips-activate {
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 10px;
     padding-right: 10px;
-    
+
     font-size: 15px;
     border-radius: 20px;
     background: #9686C3;
@@ -553,7 +556,7 @@
     justify-content: center;
 }
 
-.component-item-chips{
+.component-item-chips {
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 10px;
@@ -572,11 +575,11 @@
     justify-content: center;
 }
 
-.component-icon-list-chips{
+.component-icon-list-chips {
     color: #9686C3;
 }
 
-.component-item-chips-photo{
+.component-item-chips-photo {
     width: 16px;
     height: 16px;
     border-radius: 50%;
@@ -586,7 +589,7 @@
     margin-right: 10px;
 }
 
-.component-item-chips-action{
+.component-item-chips-action {
     width: 16px;
     height: 16px;
     display: flex;
@@ -594,17 +597,17 @@
     justify-content: center;
 }
 
-.component-item-chips-action-icon{
+.component-item-chips-action-icon {
     color: #9686C3;
     font-size: 14px;
 }
 
-.component-item-chips-action-icon-activate{
+.component-item-chips-action-icon-activate {
     color: white;
     font-size: 14px;
 }
 
-.component-item-chips-label-active{
+.component-item-chips-label-active {
     color: white;
     font-size: 14px;
     white-space: nowrap;
@@ -612,7 +615,7 @@
     text-overflow: ellipsis;
 }
 
-.component-item-chips-label{
+.component-item-chips-label {
     color: #9686C3;
     font-size: 14px;
     white-space: nowrap;
@@ -623,30 +626,30 @@
 
 
 @media (max-width: 500px) {
-    .component_modalPrin_container{
+    .component_modalPrin_container {
         height: 100%;
         width: 100%;
         position: absolute;
         right: 0;
-        top:0;
+        top: 0;
     }
 
-    .component_modalFloting_container{
+    .component_modalFloting_container {
         width: 100%;
         height: 100%;
         border-radius: 0px;
     }
 
-    .component_filter_containert_filter_title{
+    .component_filter_containert_filter_title {
         display: none;
     }
 
-    .component_searchfilter_content{
+    .component_searchfilter_content {
         width: 100%;
         /* background-color: red; */
     }
 
-    .component_modalFloting_header_title{
+    .component_modalFloting_header_title {
         font-size: 24px;
         line-height: 26px;
     }

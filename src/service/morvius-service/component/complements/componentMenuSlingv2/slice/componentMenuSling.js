@@ -5,7 +5,10 @@ import "./componentMenuSling.css";
 // component menu
 export function ComponentMenuSling(props){
     const [iskeyoptions, setiskeyoptions] = useState(0);
+    const [propcollapesemenu, propsetcollapsemenu] = useState(false);
     const {onchangeoption=(id)=>{},
+    collapesemenu = propcollapesemenu,
+    setcollapsemenu = propsetcollapsemenu,
     propiskeyoptions = iskeyoptions,
     propsetiskeyoptions = setiskeyoptions,
     databasic = [
@@ -36,7 +39,6 @@ export function ComponentMenuSling(props){
         }
     ],iskeyinit = 0 } = props;
     // ver de forma importante
-    const [collapesemenu, setcollapsemenu] = useState(false);
     const [memoricollapse,setmemoricollapse] = useState([]); // lista de los componentes con su historial de collapso
 
     const onChangeClick = (id) =>{

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { BasicSqueleton } from "../squeleton/squeleton";
-import { Admin } from "./Mantenimeinto/Admin/Admin";
+import { Empresas } from "./ContextoEmpresa/Empresa/index";
 // import { Alumnos } from "./Mantenimeinto/Alumnos/Alumnos";
-import { Profesor } from "./Mantenimeinto/Profesor/Profesor";
+import { Profesor } from "./ContextoEmpresa/Profesor/Profesor";
 import { MCurso } from "./Academico/MCurso/MCurso";
 // import { keypage } from "../../service/repository/variables";
 import { FormOutlined, CloseCircleOutlined } from "@ant-design/icons";
@@ -26,7 +26,7 @@ export function ClientAnalist(props){
     const [indexinterfacememori, setindexinterfacememori] = useState(-1);
     const [indexinterface, setindexinterface] = useState(-1);
     const [iisperfilinfo, setisperfilinfo] = useState(false);
-    const [interfaces, setinterfaces] = useState(<Admin/>);
+    const [interfaces, setinterfaces] = useState(<Empresas/>);
     const urlRedirect = useNavigate();
     const [informationData, setinformationData] = useState({
         nameUser: 'Carlos Arturo Guerrero Castillo',
@@ -81,7 +81,7 @@ export function ClientAnalist(props){
         }
     ]
 
-    const listInterface = [<Admin/>,<Profesor/>,<MCurso/>,<PICurso/>];
+    const listInterface = [<Empresas/>,<Profesor/>,<MCurso/>,<PICurso/>];
 
     const onchageoption = (id) => {
         let patch_redirect = redirectRutaOptions(id);

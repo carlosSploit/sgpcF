@@ -189,6 +189,7 @@ export function ForminputArea(props){
     placeHolder = "name",
     onError=()=>{},
     Limitchar = 999,
+    isVisibleErrorLabel = false,
     onValitador=(textinput)=>{
         if(textinput === "") onError();
         return (textinput === "");
@@ -209,7 +210,7 @@ export function ForminputArea(props){
 
     return (
         <>
-            <div style={{height: "5px"}}/>
+            {/* <div style={{height: "5px"}}/> */}
             <div className="form_conteiner">
                 <div className="form_input_conteiner"
                     style={{
@@ -234,9 +235,9 @@ export function ForminputArea(props){
                         }}
                     />
                 </div>
-                <div style={{height: "10px"}}/>
-                {(valuestade)?<div className="form_input_validator">{messValidator}</div>:<div></div>}
-                {(valuestade)?<div style={{height: "5px"}}/>:<div></div>}
+                {(valuestade && isVisibleErrorLabel)?<div style={{height: "10px"}}/>:<div></div>}
+                {(valuestade && isVisibleErrorLabel)?<div className="form_input_validator">{messValidator}</div>:<div></div>}
+                {(valuestade && isVisibleErrorLabel)?<div style={{height: "5px"}}/>:<div></div>}
             </div>
         </>
     );
@@ -428,6 +429,7 @@ export function Forminputnumber(props){
     placeHolder = "name",
     onError=()=>{},
     Limitchar = 10,
+    isVisibleErrorLabel = false,
     onValitador=(textinput)=>{
         if(textinput === "") onError();
         return (textinput === "");
@@ -457,7 +459,7 @@ export function Forminputnumber(props){
 
     return (
         <>
-            <div style={{height: "5px"}}/>
+            {/* <div style={{height: "5px"}}/> */}
             <div className="form_conteiner">
             <div className="form_input_conteiner"
                 style={{
@@ -488,9 +490,9 @@ export function Forminputnumber(props){
                     }}
                 />
             </div>
-            <div style={{height: "10px"}}/>
-            {(valuestade)?<div className="form_input_validator">{messValidator}</div>:<div></div>}
-            {(valuestade)?<div style={{height: "5px"}}/>:<div></div>}
+            {(valuestade && isVisibleErrorLabel)?<div style={{height: "10px"}}/>:<div></div>}
+            {(valuestade && isVisibleErrorLabel)?<div className="form_input_validator">{messValidator}</div>:<div></div>}
+            {(valuestade && isVisibleErrorLabel)?<div style={{height: "5px"}}/>:<div></div>}
         </div>
         </>
     );
