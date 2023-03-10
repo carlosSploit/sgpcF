@@ -589,9 +589,36 @@
     border-radius: 15px;
 }
 
+.form_input_ComboBox_conteiner_invert {
+    padding-left: 10px;
+    padding-right: 14px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding: auto;
+    width: 100%;
+    /* aling */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-color: var(--color-secundary);
+    border-width: 1px;
+    border-style: solid;
+    /* border */
+    border-radius: 15px;
+}
+
 .form_input_ComboBox {
     width: 100%;
     color: white;
+    border: 0px solid transparent;
+    outline: none;
+    background-color: transparent;
+}
+
+.form_input_ComboBox_invert {
+    width: 100%;
+    color: var(--color-secundary);
     border: 0px solid transparent;
     outline: none;
     background-color: transparent;

@@ -345,35 +345,62 @@ export function ComponentsearchConbofilter(props){
 
 export function Componentfilter(props){
 
+    const [propsListOpccion, prososetListOpccion] = useState([
+        {
+            nomenclature: 'tecno',
+            keyvalue: 'id',
+            masterLabel: 'label',
+            opccions: [{id:1,label:"tecnologia"},{id:2,label:"computer"},{id:3,label:"cultura"}],
+        },{
+            nomenclature: 'nombrenc',
+            keyvalue: 'id',
+            masterLabel: 'label',
+            opccions: [{id:1,label:"tecnologia"},{id:2,label:"computer"},{id:3,label:"cultura"}],
+        }
+        ]);
+    
     const {
-        keyvalue = "id",
-        keylabel = "label",
-        datacombo = [{id:1,label:"tecnologia"},{id:2,label:"computer"},{id:3,label:"cultura"}],
+        ListOpccion = propsListOpccion,
+        // keyvalue = "id",
+        // keylabel = "label",
+        // datacombo = [{id:1,label:"tecnologia"},{id:2,label:"computer"},{id:3,label:"cultura"}],
+        onSeleccionOpccion = (jsonfilter) =>{
+            // console.log(search,`/`);
+            console.log(jsonfilter);
+        },
         onChangeseach = (jsonfilter) =>{
             // console.log(search,`/`);
             console.log(jsonfilter);
         }
     } = props;
     // const [changseach,setchangseach] = useState("");
-    const [checkfilter,setcheckfilter] = useState({value: '0', label: 'Default'});
+    const [checkfilter,setcheckfilter] = useState({});
 
     return (
         <>
             <div style={{height:"5px"}} />
             <div className="component_content" style={{width: "100%"}}>
                 <div className="component_filter_containert">
+                    {/* --------------------- Iten de Generacion de datatos */}
                     <div className="component_filter_containert_filtOptions">
-                        <div className="component_search_input_combofilter">
-                            {(datacombo != null && datacombo.length != 0)?<ForminputComboBox width={100} height={35} keyvalue={keyvalue} keylabel={keylabel} datacombo={datacombo} isdefault={true} onChangeinput={(jsonval)=>{
-                                setcheckfilter(jsonval);
+                        {(ListOpccion.map((item)=>{
+                            return (<div className="component_search_input_combofilter">
+                            {(item.opccions != null && item.opccions.length != 0)?<ForminputComboBox keyname={item.nomenclature} isInvert={true} width={100} height={35} keyvalue={item.keyvalue} keylabel={item.masterLabel} datacombo={item.opccions} isdefault={true} onChangeinput={(jsonval)=>{
+                                let data = checkfilter;
+                                data[jsonval.nomenclature] = jsonval.value
+                                onSeleccionOpccion(data);
+                                setcheckfilter(data);
                             }} />:<></>}
-                        </div>
+                        </div >);
+                        }))}
                     </div>
+                    {/* --------------------------------------------------- */}
                     <div className="component_filter_containert_filtButtons">
                         <div className="component_filter_containert_filtButtons_button" onClick={()=>{
+                            // console.log(checkfilter);
                             onChangeseach(checkfilter);
                         }}>
-                            Filtrar
+                            Generar
                         </div>
                     </div>
                 </div>

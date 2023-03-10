@@ -40,7 +40,7 @@
 .component_filter_containert {
     width: 100%;
     height: 50px;
-    background-color: #F7EBFF;
+    background-color: #eff1fc;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -57,7 +57,14 @@
     justify-content: flex-start;
     /* overflow-x: scroll; */
     overflow-y: hidden;
+
+    padding-left: 10px;
+    padding-right: 10px;
     /* background-color: aqua; */
+}
+
+.component_filter_containert_filtOptions:last-child {
+    margin-right: 0px;
 }
 
 .component_filter_containert_filtOptions::-webkit-scrollbar {
@@ -85,10 +92,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: white;
+    background-color: var(--color-secundary);
     margin-right: 20px;
     border-radius: 17.5px;
-    color: #856FC5;
+    color: white;
 }
 
 /* components search */
@@ -147,12 +154,21 @@
 }
 
 .component_search_input_combofilter {
-    width: 250px;
-    height: 40px;
+    height: 50px;
     display: flex;
+    flex: 1;
+    max-width: 20%;
     align-items: center;
     justify-content: flex-start;
+    /* background-color: red; */
+    margin-right: 5px;
     /* background-color: aqua; */
+}
+
+.component_search_input_combofilter_liner {
+    height: 50px;
+    width: 2px;
+    background-color: black;
 }
 
 

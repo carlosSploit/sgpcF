@@ -9,17 +9,18 @@
 }
 
 .Container_Squeleton_body {
-    width: auto;
     min-width: calc(100% - 250px);
     display: flex;
-    align-items: center;
+    flex: 1;
+    align-items: start;
     justify-content: center;
     background-color: #F4F4F4;
+    /* background-color: red; */
 }
 
 .Container_Squeleton_body_content {
-    width: 100%;
     display: flex;
+    flex: 1;
     flex-direction: row;
     align-items: start;
     justify-content: center;

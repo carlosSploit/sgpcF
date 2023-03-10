@@ -825,6 +825,7 @@ export function ForminputComboBox(props){
     setcheckbox = changesetcheckbox,
     isdefault= false,
     valueInit = 0,
+    isInvert = false,
     height = 0,
     keyvalue= "id",
     keylabel= "label",
@@ -850,19 +851,19 @@ export function ForminputComboBox(props){
         <>
             <div style={{height: "5px"}}/>
             <div className="form_conteiner" style={(width == 0)?{}:{width: `${width}%`}}>
-                <div className="form_input_ComboBox_conteiner" style={(height == 0)?{}:{height: `${height}px`, padding: "0px"}}>
-                    <select className="form_input_ComboBox" style={(height == 0)?{}:{height: `${height}px`, padding: "0px 10px 0px 10px"}} name={`${keyname}`} id={`${keyname}`} value={checkbox} onChange={(e)=>{
+                <div className={(!isInvert)?"form_input_ComboBox_conteiner":'form_input_ComboBox_conteiner_invert'} style={(height == 0)?{}:{height: `${height}px`, padding: "0px"}}>
+                    <select className={(!isInvert)?"form_input_ComboBox":'form_input_ComboBox_invert'} style={(height == 0)?{}:{height: `${height}px`, padding: "0px 10px 0px 10px"}} name={`${keyname}`} id={`${keyname}`} value={checkbox} onChange={(e)=>{
                         setcheckbox(e.target.value);
                         // si la opccion de default esta activada
                         if(isdefault && e.target.value == "0"){
-                            let json = {value:"0",label:"Default"};
+                            let json = {value:"0",label:"Default", nomenclature:keyname};
                             onChangeinput(json);
                             return;
                         }else{
                             let nameitem = datacombo.filter((item)=>{
                                 return item[keyvalue] == e.target.value;
                             });
-                            let json = {value:(nameitem[0])[keyvalue],label:(nameitem[0])[keylabel]};
+                            let json = {value:(nameitem[0])[keyvalue],label:(nameitem[0])[keylabel], nomenclature:keyname};
                             onChangeinput(json);
                         }
                         //---------------------------------------
