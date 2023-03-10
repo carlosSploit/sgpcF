@@ -3,7 +3,7 @@
 
 .Container_ItemAreaEmpresa_conten_Pri {
     width: 100%;
-    height: 46px;
+    min-height: 46px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,7 +11,8 @@
 
 .Container_ItemAreaEmpresa_conten_secondary {
     width: 98%;
-    height: 40px;
+    height: auto;
+    min-height: 40px;
     background-color: var(--color-backgraud);
     display: flex;
     align-items: center;
@@ -52,6 +53,8 @@
     align-items: center;
     justify-content: center;
     margin-left: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .Container_ItemAreaEmpresa_conten_secondary_seleccion_Infor {

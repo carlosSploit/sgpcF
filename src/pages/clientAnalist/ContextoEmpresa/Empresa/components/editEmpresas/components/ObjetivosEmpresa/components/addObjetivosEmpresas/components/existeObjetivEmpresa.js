@@ -5,8 +5,9 @@ import { useNotification } from "../../../../../../../../../../../service/Notifi
 import { handleNewNotification } from "../../../../../../../../../../../service/Notifications/useNotificacion";
 import { Forminput, ForminputArea, ForminputBotton, ForminputBottonSubmit } from "../../../../../../../../../../../service/morvius-service/form";
 import { addAreasEmpresa } from "../../../../../../../../../../../service/repository/RTAreasEmpresas";
+import { addObjetivEmpresa } from "../../../../../../../../../../../service/repository/RTObjetivEmpresas";
 
-export function ExisteAreaEmpresa(props){
+export function ExisteObjetivoEmpresa(props){
 
     const [propinformationDataGeneral, propsetinformationDataGeneral] = useState({});
     const { onInsert=()=>{} ,informationDataGeneral = propinformationDataGeneral } = props;
@@ -27,10 +28,9 @@ export function ExisteAreaEmpresa(props){
 
         let data = {
             "id_empresa" : informationDataGeneral.id_empresa,
-            "nombrearea": event.target.nombrEmp.value,
-            "descriparea" :  event.target.descr.value
+            "nombreObje": event.target.nombrEmp.value
         };
-        let resul = await addAreasEmpresa(data);
+        let resul = await addObjetivEmpresa(data);
         handleNewNotification(dispatch,resul.messege, resul.status);
         setTimeout(() => {
             (async ()=>{await onInsert();})();
@@ -62,11 +62,9 @@ export function ExisteAreaEmpresa(props){
                 <>{/* apace cuando no se a seleccionado nada */}
                 <div style={{height:'5px'}} />
                 <Forminput textinput ={textname} settextinput = {settextname} placeHolder="Nombre" keyname ={`nombrEmp`}/>
-                <div style={{height:'5px'}} />
-                <ForminputArea textinput ={textdescrip} settextinput = {settextdescrip} placeHolder="Descripccion" keyname ={`descr`}/>
                 <div style={{height: '20px'}}></div></>
                 <ForminputBottonSubmit label = {'Registrar Area de la Empresa'} />
-                <ForminputBotton label = {'Cancelar'} isInvertColor = {true} />
+                <ForminputBotton label = {'Cancelar'} isInvertColor = {true} onChange={limpiartext} />
                 {/* <ForminputBotton label = {"Cancelar"} isInvertColor = {true} /> */}
             </form>
         </>

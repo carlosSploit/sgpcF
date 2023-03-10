@@ -5,9 +5,10 @@ import './style/index.css';
 import { useNotification } from "../../../../../../../../../../service/Notifications/NotificationProvider";
 import { getAresEmpresa } from "../../../../../../../../../../service/repository/RTAreasEmpresas";
 import { handleNewNotification } from "../../../../../../../../../../service/Notifications/useNotificacion";
-import { EditarAreasEmpresaInformation } from "./components/EditarInformacion/Editar";
+import { EditarAreasEmpresaInformation, EditarObjetivEmpresaInformation } from "./components/EditarInformacion/Editar";
 import { ComponentModalFlotingBody } from "../../../../../../../../../../service/morvius-service/components";
 import { PopModal } from "../../../../../../../../../../service/morvius-service/component/complements/componentModal/componentModal";
+import { getObjetivEmpresa } from "../../../../../../../../../../service/repository/RTObjetivEmpresas";
 // import { EditarUsuario } from "./components/Editar";
 // import { getKeysesion } from "../../../service/repository/mithelworks";
 // import { ConsuldataLog } from "../../../service/repository/Usuarios";
@@ -22,7 +23,7 @@ import { PopModal } from "../../../../../../../../../../service/morvius-service/
 // import { getAresEmpresa } from "../../../../../../../../../../service/repository/RTAreasEmpresas";
 // import { PopModal } from "../../../../../../../../../../service/morvius-service/component/complements/componentModal/componentModal";
 
-export function EditarAreasEmpresa(props){
+export function EditarObjetivEmpresa(props){
 
     const [propismodalvisible,propsetismodalvisible ] = useState(false);
     const [propiskeyDatos,propsetiskeyDatos ] = useState(0);
@@ -43,8 +44,8 @@ export function EditarAreasEmpresa(props){
 
     const actualizeData = async () => {
         console.log(informationDataGeneralEmpre);
-        let result = await getAresEmpresa(informationDataGeneralEmpre.id_empresa);
-        let ListdataUser = result.filter((item)=>{return item.id_areempre == iskeyDatos })
+        let result = await getObjetivEmpresa(informationDataGeneralEmpre.id_empresa);
+        let ListdataUser = result.filter((item)=>{return item.id_objempresa == iskeyDatos })
         if (ListdataUser.length == 0){
             handleNewNotification(dispatch,'Error al cargar la informacion.',404);
             setTimeout(() => {
@@ -52,7 +53,7 @@ export function EditarAreasEmpresa(props){
                 return;
             }, 500);
         }
-        setlistview([<EditarAreasEmpresaInformation onAction={async () => {
+        setlistview([<EditarObjetivEmpresaInformation onAction={async () => {
             await actualizeData();
             await onAction();
         }} onUpdate={onAction} informationDataGeneral={ListdataUser[0]}/>])
@@ -60,7 +61,7 @@ export function EditarAreasEmpresa(props){
 
     return (
             <>
-            <PopModal namemodal = {"Editar una Area de Empresa"} colorTitle={'#183152'} propismodalvisible = {ismodalvisible} propsetismodalvisible = {setismodalvisible}>
+            <PopModal namemodal = {"Editar una Objetivo"} colorTitle={'#183152'} propismodalvisible = {ismodalvisible} propsetismodalvisible = {setismodalvisible}>
                 <ComponentModalFlotingBody descripccion={""}>
                     <div style={{height: '10px'}}></div>
                     {listview[0]}

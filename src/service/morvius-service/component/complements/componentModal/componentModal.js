@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import {v4} from "uuid";
 import "./componentModal.css";
 import { addModal, delectModal, getAccesModal } from "./store.componentModal/componetModal.store";
+import { useRef } from "react";
 
 const portalRoot = document.getElementById('popmodal');
 // const root = ReactDOM.createRoot(portalRoot);
@@ -75,11 +76,38 @@ export function ComponentModal(props){
 
 export function ComponentModalFloting(props){
     const {color="white", children, zindex = 1,statemode = true, width = '500px'} = props;
+    const refMobility = useRef();
+    const [stadePosition, setstadePosition] = useState(false);
+    const [position, setposition] = useState({
+        x: 0,
+        y: 0
+    });
+
+    const handler = (e) => {
+        setposition({
+            x: e.pageX,
+            y: e.pageY
+        });
+    }
+
+    // onMouseDown={()=>{
+    //     document.addEventListener('mousemove', handler);
+    //     setstadePosition(true);
+    // }} onMouseMove = {()=>{
+    //     if(stadePosition){
+    //         refMobility.current.style.left = position.x + 'px';
+    //         refMobility.current.style.top = position.y + 'px';
+    //     }
+    // }} onMouseUp = {()=>{
+    //     document.removeEventListener('mousemove', handler);
+    //     setstadePosition(false);
+    // }}
+
     return(
         <>
             {/* onClick={onClosechange} */}
             <div className={"component_modalFloting"} style={{zIndex: `${zindex*9999}`,display:`${(!statemode)?"none":"block"}`}}>
-                <div className={"component_modalFloting_container"} style={{background:`${color}`, width: `${width}`}} >
+                <div ref={refMobility}  className={"component_modalFloting_container"} style={{background:`${color}`, width: `${width}`}} >
                     {children}
                 </div>
             </div>

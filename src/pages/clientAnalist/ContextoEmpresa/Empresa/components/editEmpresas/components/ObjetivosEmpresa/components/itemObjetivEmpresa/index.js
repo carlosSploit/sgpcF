@@ -3,7 +3,7 @@ import "./style/index.css"
 // import {EditAdmin} from "../editEmpresas/editAdmin"
 // import { useNotification } from "../../../../../../service/Notifications/useNotificacion";
 
-export function ItemObjetiEmpresa(props){
+export function ItemObjetivEmpresa(props){
     const {
         onChange = (id_options) => {}, 
         onSelecteItem = (id_options, stade) => {},
@@ -22,7 +22,8 @@ export function ItemObjetiEmpresa(props){
                 onChange(keyitem);
             }}>
                 <div className="Container_ItemObjetiEmpresa_conten_secondary_seleccion_Infor">
-                    <div className="Container_ItemObjetiEmpresa_conten_InfoData_primary" >{(title.length > 20)? title.substring(0,20) + '...':title}</div>
+                    {/* <div className="Container_ItemObjetiEmpresa_conten_InfoData_primary" >{(title.length > 20)? title.substring(0,20) + '...':title}</div> */}
+                    <div className="Container_ItemObjetiEmpresa_conten_InfoData_primary" >{title}</div>
                     {/* <div style={{height: '1px'}} />
                     <div className="Container_ItemObjetiEmpresa_conten_InfoData_secundary" >{subtitle}</div> */}
                 </div>

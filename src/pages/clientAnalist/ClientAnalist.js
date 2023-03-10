@@ -46,12 +46,12 @@ export function ClientAnalist(props){
     
     const opcciones = [
         {
-            label: "Mantenimiento",
+            label: "Contexto Empresa",
             Icon: FormOutlined,
             key: -1,
             options:[
                 {
-                    label: "Admin",
+                    label: "Empresas",
                     key: 0
                 },
                 {
@@ -93,7 +93,6 @@ export function ClientAnalist(props){
             setindexinterface(id);
             setindexinterfacememori(id);
         }
-        
     }
 
     // useRedirect({urlPatch: urlredirect});

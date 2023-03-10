@@ -111,3 +111,21 @@
     color: #9686C3;
     text-align: center;
 }
+
+@media (max-width: 500px) {
+    .component_modalFloting_container {
+        margin: 0px;
+        width: 100vw !important;
+    }
+
+    .component_modalFloting_body {
+        height: 90vh !important;
+        max-height: 100vh;
+        /* background-color: #9686C3; */
+    }
+
+    /* .component_modalFloting_body_container {
+        height: 100vh;
+        background-color: #9686C3;
+    } */
+}

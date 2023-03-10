@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 // import { ComponentModalFloting, ComponentModalFlotingBody, ComponentModalFlotingHeader, ComponentModalPrincipalListtabs } from "../../../service/morvius-service/components";
-import { EditOutlined, PartitionOutlined } from "@ant-design/icons";
+import { BulbOutlined, EditOutlined, PartitionOutlined } from "@ant-design/icons";
 import './style/index.css';
 // import { EditarUsuario } from "./components/Editar";
 // import { getKeysesion } from "../../../service/repository/mithelworks";
@@ -14,6 +14,7 @@ import { ComponentModalFloting, ComponentModalFlotingBody, ComponentModalFloting
 import { getKeysesion } from "../../../../../../service/repository/mithelworks";
 import { ConsuldataLogm } from "../../../../../../service/repository/mithelworks";
 import { AreasEmpresas } from "./components/AreasEmpresa";
+import { ObjetivEmpresas } from "./components/ObjetivosEmpresa";
 
 export function EditarEmpresa(props){
 
@@ -53,7 +54,7 @@ export function EditarEmpresa(props){
             await actualizeData();
             await onAction();
         }} onUpdate={onAction} informationDataGeneral={ListdataUser[0]}/>,
-        <AreasEmpresas informationDataGeneral={ListdataUser[0]}/>])
+        <AreasEmpresas informationDataGeneral={ListdataUser[0]}/>,<ObjetivEmpresas informationDataGeneral={ListdataUser[0]}/>])
     }
 
     const listOpt = [
@@ -65,6 +66,10 @@ export function EditarEmpresa(props){
             id: 1,
             label : "Areas Empresa",
             icontab : PartitionOutlined
+        },{
+            id: 2,
+            label : "Objetivo Empresa",
+            icontab : BulbOutlined
         }
         //,
         // {
