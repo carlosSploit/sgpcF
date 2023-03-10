@@ -2,8 +2,8 @@ import axios from "axios";
 import { gettoken } from "./mithelworks";
 import { domain_api } from "./variables";
 
-export async function getTrabajEmpresa(idUsername = 0) {
-  const url = `${domain_api}/trabEmpresa/${idUsername}`;
+export async function getProcesEmpresa(idUsername = 0) {
+  const url = `${domain_api}/proceEmpresa/${idUsername}`;
   const result = await axios.get(url, {
     headers: {
       Authorization: `Bearer ${await gettoken()}`,
@@ -59,8 +59,8 @@ export async function updateTrabajEmpresa(id, jsondat = {}) {
   return result.data;
 }
 
-export async function deleteTrabajEmpresa({id_TrabajEmpresa}) {
-  const url = `${domain_api}/trabEmpresa/${id_TrabajEmpresa}`;
+export async function deleteProcesEmpresa({id_ProcesEmpresa}) {
+  const url = `${domain_api}/proceEmpresa/${id_ProcesEmpresa}`;
   const result = await axios.delete(url, {
     headers: {
       Authorization: `Bearer ${await gettoken()}`,

@@ -18,6 +18,7 @@ import { ConsuldataLog } from "../../service/repository/RTUsuarios";
 import NotificationProvider from "../../service/Notifications/NotificationProvider";
 import { PerfildeUsuario } from "./perfildeusuario";
 import { TrabajoEmpresas } from "./ContextoEmpresa/TrabajEmpresa";
+import { ProcesEmpresas } from "./ContextoEmpresa/Procesos";
 
 export function ClientAnalist(props){
 
@@ -60,7 +61,7 @@ export function ClientAnalist(props){
                     key: 1
                 },
                 {
-                    label: "Alumno",
+                    label: "Procesos",
                     key: 2
                 }
             ]
@@ -82,7 +83,7 @@ export function ClientAnalist(props){
         }
     ]
 
-    const listInterface = [<Empresas/>,<TrabajoEmpresas/>,<MCurso/>,<PICurso/>];
+    const listInterface = [<Empresas/>,<TrabajoEmpresas/>,<ProcesEmpresas/>,<PICurso/>];
 
     const onchageoption = (id) => {
         // let patch_redirect = redirectRutaOptions(id);
