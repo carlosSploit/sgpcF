@@ -3,7 +3,7 @@ import "./style/index.css"
 // import {EditAdmin} from "../editEmpresas/editAdmin"
 // import { useNotification } from "../../../../../../service/Notifications/useNotificacion";
 
-export function ItemEmpresa(props){
+export function ItemAreasEmpresa(props){
     const {
         onChange = (id_options) => {}, 
         onSelecteItem = (id_options, stade) => {},

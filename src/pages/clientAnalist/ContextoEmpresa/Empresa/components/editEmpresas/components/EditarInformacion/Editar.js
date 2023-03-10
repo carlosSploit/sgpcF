@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 // import { updateclientAnalist } from "../../../../service/repository/clientAnalist";
 import { ForminputAreatEdit, ForminputBottonSubmit, ForminputEdit } from "../../../../../../../../service/morvius-service/form_input/form_input";
 import { handleNewNotification, useNotification } from "../../../../../../../../service/Notifications/useNotificacion";
-import { updateEmpresa } from "../../../../../../../../service/repository/Empresas";
+import { updateEmpresa } from "../../../../../../../../service/repository/RTEmpresas";
 
 export function EditarEmpresaInformation(props){
 

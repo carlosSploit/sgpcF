@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Forminputpassword,ForminputBottonSubmit, Forminput, ForminputBotton} from "../../service/morvius-service/form";
 import './style/registerCliente.css';
-import { addclientAnalist } from "../../service/repository/clientAnalist";
+import { addclientAnalist } from "../../service/repository/RTclientAnalist";
 
 export function RegisterCliente(props){
 

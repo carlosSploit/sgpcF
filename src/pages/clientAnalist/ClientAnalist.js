@@ -13,8 +13,8 @@ import { getKeysesion, getkeypage, setkeypage } from "../../service/repository/m
 import { redirectRutaOptions } from "../../service/router/routerscontroler";
 // import { routerLinks } from "../../service/router/routers";
 import { useNavigate } from "react-router";
-import { readclientAnalist } from "../../service/repository/clientAnalist";
-import { ConsuldataLog } from "../../service/repository/Usuarios";
+import { readclientAnalist } from "../../service/repository/RTclientAnalist";
+import { ConsuldataLog } from "../../service/repository/RTUsuarios";
 import NotificationProvider from "../../service/Notifications/NotificationProvider";
 import { PerfildeUsuario } from "./perfildeusuario";
 

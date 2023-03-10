@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNotification } from "../../../../../../../service/Notifications/NotificationProvider";
-import {  addSelectEmpresa, getEmpresas } from "../../../../../../../service/repository/Empresas";
+import {  addSelectEmpresa, getEmpresas } from "../../../../../../../service/repository/RTEmpresas";
 import { ConsuldataLogm, getKeysesion } from "../../../../../../../service/repository/mithelworks";
 import { handleNewNotification } from "../../../../../../../service/Notifications/useNotificacion";
 // import { ComponentModalFloting, ComponentModalFlotingBody, ComponentModalFlotingHeader } from "../../../../../../../service/morvius-service/components";

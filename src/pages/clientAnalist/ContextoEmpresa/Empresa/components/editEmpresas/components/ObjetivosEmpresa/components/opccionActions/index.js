@@ -45,8 +45,8 @@ export function OpccionActionsItems(props){
     const {label, Icons = {CloseCircleOutlined}, change = ()=>{} } = props;
 
     return (
-        <div className='Content_AreaEmpresas_principal_opccion_Botton_Actions' onClick={change}>
-            <Icons className='Content_AreaEmpresas_principal_opccion_Botton_Config_icon' />
+        <div className='Content_Empresas_principal_opccion_Botton_Actions' onClick={change}>
+            <Icons className='Content_Empresas_principal_opccion_Botton_Config_icon' />
         </div>
     )
 }

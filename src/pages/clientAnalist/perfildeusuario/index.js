@@ -4,8 +4,8 @@ import { EditOutlined } from "@ant-design/icons";
 import './index.css';
 import { EditarUsuario } from "./components/Editar";
 import { getKeysesion } from "../../../service/repository/mithelworks";
-import { ConsuldataLog } from "../../../service/repository/Usuarios";
-import { readclientAnalist } from "../../../service/repository/clientAnalist";
+import { ConsuldataLog } from "../../../service/repository/RTUsuarios";
+import { readclientAnalist } from "../../../service/repository/RTclientAnalist";
 import { EditarUsuarioSecion } from "./components/EditarSeccion";
 
 export function PerfildeUsuario(props){

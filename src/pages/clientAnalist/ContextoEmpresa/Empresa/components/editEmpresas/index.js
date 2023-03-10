@@ -7,7 +7,7 @@ import './style/index.css';
 // import { ConsuldataLog } from "../../../service/repository/Usuarios";
 // import { readclientAnalist } from "../../../service/repository/clientAnalist";
 // import { EditarUsuarioSecion } from "./components/EditarSeccion";
-import { getEmpresas } from "../../../../../../service/repository/Empresas";
+import { getEmpresas } from "../../../../../../service/repository/RTEmpresas";
 import { handleNewNotification, useNotification } from "../../../../../../service/Notifications/useNotificacion";
 import { EditarEmpresaInformation } from "./components/EditarInformacion/Editar";
 import { ComponentModalFloting, ComponentModalFlotingBody, ComponentModalFlotingHeader, ComponentModalPrincipalListtabs } from "../../../../../../service/morvius-service/components";

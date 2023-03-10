@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { Profesor } from "../../pages/Profesores/Profesores";
+// import { Profesor } from "../../pages/Profesores/Profesores";
 import { closeSesion, ConsuldataLogm, getKeysesion } from "../repository/mithelworks";
 import { MessegePermision } from "./page/messegepermision/messegepermision";
 import { LoadData } from "./page/pagecarga/loadData";
@@ -134,7 +134,7 @@ export const ComponentLoadDataProf = (props) => {
         })();
     },[]);
 
-    return ((datausser.id_info != 0)?<Profesor id_info={datausser.id_info} idPageLoad={idPageLoad} onClose={closeSesion} />:<LoadData />)
+    return ((datausser.id_info != 0)?<></>:<LoadData />)
 }
 // SE encarga de validar si el usuario ya inicio secion y si lo iso imprime el contenido pasado por element
 export function RouterController(props){

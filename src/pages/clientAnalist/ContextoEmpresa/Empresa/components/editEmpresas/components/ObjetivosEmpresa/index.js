@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./styles/index.css"
 import { useNotification } from "../../../../../../../../service/Notifications/NotificationProvider";
-import { ConsuldataLogm, getKeysesion } from "../../../../../../../../service/repository/mithelworks";
-import { deleteEmpresa, getEmpresas } from "../../../../../../../../service/repository/RTEmpresas";
+// import { ConsuldataLogm, getKeysesion } from "../../../../../../../../service/repository/mithelworks";
+// import { deleteEmpresa, getEmpresas } from "../../../../../../../../service/repository/RTEmpresas";
 import { ControlOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { handleNewNotification } from "../../../../../../../../service/Notifications/useNotificacion";
 import { ItemAreasEmpresa, ItemEmpresa } from "./components/itemAreasEmpresa";

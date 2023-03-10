@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNotification } from "../../../../service/Notifications/NotificationProvider";
 import { handleNewNotification } from "../../../../service/Notifications/useNotificacion";
 import { ForminputBottonSubmit, ForminputmailEdit, ForminputpasswordEdit } from "../../../../service/morvius-service/form_input/form_input";
-import { updateClientAnalistInforSecion } from "../../../../service/repository/clientAnalist";
+import { updateClientAnalistInforSecion } from "../../../../service/repository/RTclientAnalist";
 
 export function EditarUsuarioSecion(props){
 

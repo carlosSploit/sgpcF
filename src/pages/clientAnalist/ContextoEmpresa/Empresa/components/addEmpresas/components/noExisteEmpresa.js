@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNotification } from "../../../../../../../service/Notifications/NotificationProvider";
-import { addEmpresa } from "../../../../../../../service/repository/Empresas";
+import { addEmpresa } from "../../../../../../../service/repository/RTEmpresas";
 import { ConsuldataLogm, getKeysesion } from "../../../../../../../service/repository/mithelworks";
 import { handleNewNotification } from "../../../../../../../service/Notifications/useNotificacion";
 import { Forminput, ForminputArea, ForminputBotton, ForminputBottonSubmit, Forminputnumber } from "../../../../../../../service/morvius-service/form";

@@ -6,7 +6,7 @@ import { ItemEmpresa } from './components/itemEmpresa/index';
 import { getadmins } from '../../../../service/repository/Admin';
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { OpccionActions } from "./components/opccionActions";
-import { deleteEmpresa, getEmpresas } from "../../../../service/repository/Empresas";
+import { deleteEmpresa, getEmpresas } from "../../../../service/repository/RTEmpresas";
 import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mithelworks";
 import { EditarEmpresa } from "./components/editEmpresas";
 import { useNotification } from "../../../../service/Notifications/NotificationProvider";

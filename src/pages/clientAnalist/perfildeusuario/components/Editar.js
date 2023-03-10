@@ -3,7 +3,7 @@ import { useNotification } from "../../../../service/Notifications/NotificationP
 import { handleNewNotification } from "../../../../service/Notifications/useNotificacion";
 import { ForminputBotton, ForminputBottonSubmit, ForminputEdit, ForminputImageCircle } from "../../../../service/morvius-service/form_input/form_input";
 import { uploudImage } from "../../../../service/repository/uploudimage";
-import { updateclientAnalist } from "../../../../service/repository/clientAnalist";
+import { updateclientAnalist } from "../../../../service/repository/RTclientAnalist";
 
 export function EditarUsuario(props){
 
