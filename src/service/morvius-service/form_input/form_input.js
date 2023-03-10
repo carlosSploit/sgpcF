@@ -620,7 +620,7 @@ export function Forminputmail(props){
 
     return (
         <>
-            <div style={{height: "5px"}}/>
+            {/* <div style={{height: "5px"}}/> */}
             <div className="form_conteiner">
                 <div
                     className="form_input_conteiner"
@@ -646,7 +646,7 @@ export function Forminputmail(props){
                         }}
                     />
                 </div>
-                <div style={{height: "10px"}}/>
+                {(valuestade && isVisibleErrorLabel)?<div style={{height: "10px"}}/>:<div></div>}
                 {(valuestade && isVisibleErrorLabel)?<div className="form_input_validator">{messValidator}</div>:<div></div>}
                 {(valuestade && isVisibleErrorLabel)?<div style={{height: "5px"}}/>:<div></div>}
             </div>
@@ -793,8 +793,8 @@ export function ForminputBottonSubmit(props){
 
     return (
     <>
-        <div style={{height: "5px"}}/>
-        <div className="form_conteiner" >
+        {/* <div style={{height: "5px"}}/> */}
+        <div className="form_conteiner" style={{width:'100%'}} >
             <button
                 ref={refbotton}
                 style={{display: "none"}}
@@ -849,7 +849,7 @@ export function ForminputComboBox(props){
 
     return (
         <>
-            <div style={{height: "5px"}}/>
+            {/* <div style={{height: "5px"}}/> */}
             <div className="form_conteiner" style={(width == 0)?{}:{width: `${width}%`}}>
                 <div className={(!isInvert)?"form_input_ComboBox_conteiner":'form_input_ComboBox_conteiner_invert'} style={(height == 0)?{}:{height: `${height}px`, padding: "0px"}}>
                     <select className={(!isInvert)?"form_input_ComboBox":'form_input_ComboBox_invert'} style={(height == 0)?{}:{height: `${height}px`, padding: "0px 10px 0px 10px"}} name={`${keyname}`} id={`${keyname}`} value={checkbox} onChange={(e)=>{
@@ -878,6 +878,86 @@ export function ForminputComboBox(props){
         </>
     );
 }
+
+export function ForminputComboBoxEdit(props){
+    // encabezados
+    const [stateindexinput, changesetindexinput] = useState(0);
+    const [indexinputmemory, changesetindexinputmemory] = useState("");
+    const [propdatacombo, changesetpropdatacombo] = useState([{id:1,label:"tecnologia"},{id:2,label:"computer"},{id:3,label:"cultura"}]);
+    const {
+    refMant,
+    datacombo = propdatacombo,
+    setpropdatacombo = changesetpropdatacombo,
+    indexinput = stateindexinput,
+    setindexinput = changesetindexinput,
+    keyname="keyinputgeneric",
+    keyvalue = 'id',
+    keylabel = 'label',
+    onError=()=>{},
+    valueInit= "",
+    placeHolder = "name",
+    // isVisibleErrorLabel = false,
+    // messValidator="Error. La casilla esta vacia.",
+    onChangeinput=(text)=>{
+        //console.log(text);
+    }} = props;
+    // estados del componentes
+    const [textinput, settextinput] = useState('');
+    // const [valuestade,setvaluestade] = useState(false);
+    const [BottonData,setBottonData] = useState(false);
+    // const refInput = useRef();
+
+    useEffect(()=>{
+        // console.log(valueInit)
+        nameIndexCapture({valueInit:valueInit});
+        changesetindexinputmemory(valueInit);
+    },[]);
+
+    const nameIndexCapture = ({valueInit}) => {
+        setindexinput(valueInit);
+        let dataInf = datacombo.filter((item)=>{
+            console.log(`${item[keyvalue]} == ${valueInit}`)
+            return item[keyvalue] == valueInit;
+        })
+        const info = dataInf[0]
+        settextinput(info[keylabel])
+    }
+
+    return (
+        <>
+            <div className="Container_ForminputEdit_principal_master">
+                <div className="Container_ForminputEdit_principal">
+                    {(!BottonData)?<div className="Container_ForminputEdit_subContainer_information">
+                        <div className="Container_ForminputEdit_subContainer_information_value">{textinput}</div>
+                        <div className="Container_ForminputEdit_subContainer_information_placeholder">{placeHolder}</div>
+                    </div>:<></>}
+                    <div className="Container_ForminputEdit_subContainer_information" style={{display: `${(!BottonData)?'none':'block'}`}}>
+                        <div style={{width: '95%'}}>
+                            <ForminputComboBox valueInit={indexinput} keyname={keyname} isInvert={true} width={100} height={28} keyvalue={keyvalue} keylabel={keylabel} datacombo={datacombo} isdefault={true} onChangeinput={(jsonval)=>{
+                                nameIndexCapture({valueInit:jsonval.value})
+                            }}/>
+                        </div>
+                    </div>
+                    {(!BottonData)?<div className="Container_ForminputEdit_subContainer_bottonEdit"> 
+                        <div className={"Container_ForminputEdit_subContainer_bottonEdit_botonEdit"} onClick={()=>{setBottonData(!BottonData)}}>
+                            <EditOutlined className="Container_ForminputEdit_subContainer_bottonEdit_botonEdit_icon"/>
+                        </div>
+                    </div>:<div className="Container_ForminputEdit_subContainer_bottonEdit"> 
+                        <div className={(BottonData)?"Container_ForminputEdit_subContainer_bottonEdit_botonEdit_actic":"Container_ForminputEdit_subContainer_bottonEdit_botonEdit"} onClick={()=>{setBottonData(!BottonData)}}>
+                            <EditOutlined className="Container_ForminputEdit_subContainer_bottonEdit_botonEdit_icon"/>
+                        </div>
+                        <div style={{marginRight: '5px'}}></div>
+                        <div className={(!BottonData)?"Container_ForminputEdit_subContainer_bottonEdit_botonEdit_actic":"Container_ForminputEdit_subContainer_bottonEdit_botonEdit"} onClick={()=>{nameIndexCapture({valueInit:indexinputmemory});setBottonData(!BottonData);}}>
+                            <CloseOutlined className="Container_ForminputEdit_subContainer_bottonEdit_botonEdit_icon"/>
+                        </div>
+                    </div>}
+                </div>
+            </div>
+            {/*  */}
+        </>
+    );
+}
+
 
 export function ForminputImageCircle(props){
     const {keyname="keyimagecircle",oncallbackchange=(file)=>{

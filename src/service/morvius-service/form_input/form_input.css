@@ -225,11 +225,12 @@
 
 .form_input_text_area {
     border: 0px solid transparent;
-    height: 150px;
+    height: 100px;
     font-size: 14px;
     outline: none;
     width: 100%;
     resize: none;
+    color: #81878d;
 }
 
 .form_input_text_area:focus {
@@ -579,7 +580,7 @@
     padding-top: 5px;
     padding-bottom: 5px;
     padding: auto;
-    width: 100%;
+    width: (100% + 20px);
     /* aling */
     display: flex;
     justify-content: center;
@@ -591,11 +592,11 @@
 
 .form_input_ComboBox_conteiner_invert {
     padding-left: 10px;
-    padding-right: 14px;
+    padding-right: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
     padding: auto;
-    width: 100%;
+    width: calc(100% + 20px);
     /* aling */
     display: flex;
     justify-content: center;

@@ -11,7 +11,7 @@ import { ComponentModalFloting, ComponentModalFlotingBody, ComponentModalFloting
 import { NoExisteEmpresa } from "./components/noExisteProcesEmpresa";
 // import { ExisteEmpresa } from "./components/existeEmpresa";
 
-export function AddTrabEmpresas(props){
+export function AddProcesEmpresas(props){
     const [ismodalvisible, setismodalvisible] = useState(false);
     const [isinformacionGeneral, setisSinformacionGeneral] = useState(0);
         
@@ -43,7 +43,7 @@ export function AddTrabEmpresas(props){
     return (
         <>
            <ComponentModalFloting statemode={propismodalvisible} width = {'400px'} >
-                <ComponentModalFlotingHeader title="Insertar una Trabajador Empresa Empresa" colorTitle={'#183152'} onClosechange={()=>{propsetismodalvisible(false);}} />
+                <ComponentModalFlotingHeader title="Insertar un Proceso" colorTitle={'#183152'} onClosechange={()=>{propsetismodalvisible(false);}} />
                 <ComponentModalFlotingBody descripccion={""}>
                 <div style={{height: '10px'}}></div>
                 {/* <ComponentModalPrincipalListtabs

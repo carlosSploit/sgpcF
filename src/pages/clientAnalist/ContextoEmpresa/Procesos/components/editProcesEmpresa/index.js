@@ -9,15 +9,17 @@ import './style/index.css';
 // import { EditarUsuarioSecion } from "./components/EditarSeccion";
 // import { getEmpresas } from "../../../../../../service/repository/RTEmpresas";
 import { handleNewNotification, useNotification } from "../../../../../../service/Notifications/useNotificacion";
-import { EditarTrabjEmpresaInformation } from "./components/EditarInformacion/Editar";
-import { ComponentModalFloting, ComponentModalFlotingBody, ComponentModalFlotingHeader } from "../../../../../../service/morvius-service/components";
+import { EditarProcesEmpresaInformation } from "./components/EditarInformacion/Editar";
+import { ComponentModalFloting, ComponentModalFlotingBody, ComponentModalFlotingHeader, ComponentModalPrincipalListtabs } from "../../../../../../service/morvius-service/components";
 // import { getKeysesion } from "../../../../../../service/repository/mithelworks";
 // import { ConsuldataLogm } from "../../../../../../service/repository/mithelworks";
 // import { AreasEmpresas } from "./components/AreasEmpresa";
 // import { ObjetivEmpresas } from "./components/ObjetivosEmpresa";
-import { getTrabajEmpresa } from "../../../../../../service/repository/RTTrabajEmpresas";
+// import { getTrabajEmpresa } from "../../../../../../service/repository/RTTrabajEmpresas";
+import { EditOutlined, PartitionOutlined, TeamOutlined } from "@ant-design/icons";
+import { getProcesEmpresa } from "../../../../../../service/repository/RTProcesEmpresas";
 
-export function EditarTrabEmpresa(props){
+export function EditarProcesEmpresa(props){
 
     const [propismodalvisible,propsetismodalvisible ] = useState(false);
     const [propiskeyDatos,propsetiskeyDatos ] = useState(0);
@@ -27,7 +29,7 @@ export function EditarTrabEmpresa(props){
         ismodalvisible = propismodalvisible,
         setismodalvisible = propsetismodalvisible,
         onAction = ()=>{}} = props;
-    // const [index,setindex] = useState(0);;
+    const [index,setindex] = useState(0);
     const dispatch = useNotification();
     const [listview,setlistview] = useState([<></>]);
 
@@ -40,10 +42,10 @@ export function EditarTrabEmpresa(props){
     const actualizeData = async () => {
         // let seskey = await getKeysesion();
         // let dataRed = await ConsuldataLogm({seccionkey: seskey});
-        let result = await getTrabajEmpresa(informationDataGeneral);
+        let result = await getProcesEmpresa(informationDataGeneral);
         // console.log(result)
         // console.log(iskeyDatos)
-        let ListdataUser = result.filter((item)=>{return item.Id_trabajador == iskeyDatos })
+        let ListdataUser = result.filter((item)=>{return item.id_proceso == iskeyDatos })
         if (ListdataUser.length == 0){
             handleNewNotification(dispatch,'Error al cargar la informacion.',404);
             setTimeout(() => {
@@ -51,7 +53,7 @@ export function EditarTrabEmpresa(props){
                 return;
             }, 500);
         }
-        setlistview([<EditarTrabjEmpresaInformation onAction={async () => {
+        setlistview([<EditarProcesEmpresaInformation onAction={async () => {
                 await actualizeData();
                 await onAction();
             }} onUpdate={onAction} informationDataGeneral={ListdataUser[0]}/>,
@@ -59,37 +61,37 @@ export function EditarTrabEmpresa(props){
         ])
     }
 
-    // const listOpt = [
-    //     {
-    //         id: 0,
-    //         label : "Editar",
-    //         icontab : EditOutlined
-    //     },{
-    //         id: 1,
-    //         label : "Areas Empresa",
-    //         icontab : PartitionOutlined
-    //     },{
-    //         id: 2,
-    //         label : "Objetivo Empresa",
-    //         icontab : BulbOutlined
-    //     }
-    //     //,
-    //     // {
-    //     //     id: 1,
-    //     //     label : "Editar Informacion",
-    //     //     icontab : EditOutlined
-    //     // }
-    // ];
+    const listOpt = [
+        {
+            id: 0,
+            label : "Editar",
+            icontab : EditOutlined
+        },{
+            id: 1,
+            label : "Areas Intervienen",
+            icontab : PartitionOutlined
+        },{
+            id: 2,
+            label : "Responsables del Proceso",
+            icontab : TeamOutlined
+        }
+        //,
+        // {
+        //     id: 1,
+        //     label : "Editar Informacion",
+        //     icontab : EditOutlined
+        // }
+    ];
 
-    // const onChangeindex = (index,titletab) => {
-    //     setindex(index);
-    // }
+    const onChangeindex = (index,titletab) => {
+        setindex(index);
+    }
 
     return (<ComponentModalFloting statemode={ismodalvisible} width = {'400px'} >
-                <ComponentModalFlotingHeader title="Mantenimiento de Empresa" colorTitle={'#183152'} onClosechange={()=>{setismodalvisible(false);}} />
+                <ComponentModalFlotingHeader title="Mantenimiento de Procesos" colorTitle={'#183152'} onClosechange={()=>{setismodalvisible(false);}} />
                 <ComponentModalFlotingBody descripccion={""}>
                 <div style={{height: '10px'}}></div>
-                {/* <ComponentModalPrincipalListtabs
+                <ComponentModalPrincipalListtabs
                     listOptions = {listOpt}
                     onChangeindex = {onChangeindex}
                     chaindexselect = {index}
@@ -97,8 +99,8 @@ export function EditarTrabEmpresa(props){
                     indexinitial = {listOpt[0].id}
                 ></ComponentModalPrincipalListtabs>
                 <div className="LinerSeparator"></div>
-                <div style={{height: '5px'}}></div> */}
-                {listview[0]}
+                <div style={{height: '5px'}}></div>
+                {listview[index]}
                 </ComponentModalFlotingBody>
             </ComponentModalFloting>);
 }

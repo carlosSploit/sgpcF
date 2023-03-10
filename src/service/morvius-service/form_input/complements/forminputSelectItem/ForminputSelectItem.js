@@ -83,12 +83,13 @@ export function ForminputSelectItem(props){
                             <div className="form_seletItem_conteiner_itemScelecciont">
                                 <div className="container_item_selectItem_subcont">
                                     <div className="container_item_selectItem_contentItem">
-                                        <div className="container_item_selectItem_subcontaion_photo" style={{backgroundImage: `url('${itemIcon.photo}')`}} ></div>
+                                        {(isVisibleFoto)?<div className="container_item_selectItem_subcontaion_photo" style={{backgroundImage: `url('${itemIcon.photo}')`}} ></div>:<></>}
+                                        
                                         <div style={{width:"10px"}}/> 
                                         <div className="container_item_selectItem_subcontaion_nametext"> {itemIcon.name}</div>
                                         <div style={{width:"10px"}}/>
                                         <div onClick={()=>{setcheckbox(0); }}>
-                                            <CloseCircleOutlined style={{color: "white"}} />
+                                            <CloseCircleOutlined className="container_item_selectItem_subcontaion_nametext" />
                                         </div>
                                         <div style={{width:"5px"}}/>
                                     </div>

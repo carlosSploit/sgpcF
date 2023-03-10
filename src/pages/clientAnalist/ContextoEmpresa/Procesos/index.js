@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./styles/index.css"
 import { Componentfilter, Componentsearchanimation} from "../../../../service/morvius-service/component/components";
-import { AddEmpresas, AddTrabEmpresas } from "./components/addProcesEmpresa";
+import { AddEmpresas, AddProcesEmpresas, AddTrabEmpresas } from "./components/addProcesEmpresa";
 import { ItemTrabjEmpresa } from './components/itemProcesEmpresa/index';
 import { getadmins } from '../../../../service/repository/Admin';
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
@@ -13,6 +13,7 @@ import { useNotification } from "../../../../service/Notifications/NotificationP
 import { handleNewNotification } from "../../../../service/Notifications/useNotificacion";
 import { deleteTrabajEmpresa, getTrabajEmpresa } from "../../../../service/repository/RTTrabajEmpresas";
 import { deleteProcesEmpresa, getProcesEmpresa } from "../../../../service/repository/RTProcesEmpresas";
+import { EditarProcesEmpresa } from "./components/editProcesEmpresa";
 
 export function ProcesEmpresas(props){
     const [propsListOpccion, prososetListOpccion] = useState([]);
@@ -166,10 +167,10 @@ export function ProcesEmpresas(props){
                     </div>
                 </div>
             </div>
-            {/* {(ismodeladd)?<AddTrabEmpresas informacionGeneral={indexEmpresa} onInsert={async ()=>{
-                await LoadDataTrabjEmpresa();
-            }} propismodalvisible = {ismodeladd} propsetismodalvisible = {setismodeladd} />:<></>} */}
-            {/* {(ismodelaEdit)?<EditarTrabEmpresa informationDataGeneral = {indexEmpresa} onAction = {LoadDataTrabjEmpresa} iskeyDatos = {indexOptionEmpresa} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>} */}
+            {(ismodeladd)?<AddProcesEmpresas informacionGeneral={indexEmpresa} onInsert={async ()=>{
+                await LoadDataProcesEmpresa();
+            }} propismodalvisible = {ismodeladd} propsetismodalvisible = {setismodeladd} />:<></>}
+            {(ismodelaEdit)?<EditarProcesEmpresa informationDataGeneral = {indexEmpresa} onAction = {LoadDataProcesEmpresa} iskeyDatos = {indexOptionEmpresa} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>}
         </div>
     );
 }

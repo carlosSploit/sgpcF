@@ -23,9 +23,9 @@ export async function getProcesEmpresa(idUsername = 0) {
 //   return result.data;
 // }
 
-export async function addTrabajEmpresa(jsondat = {}) {
+export async function addPrcesEmpresa(jsondat = {}) {
   const data = jsondat;
-  const url = `${domain_api}/trabEmpresa/`;
+  const url = `${domain_api}/proceEmpresa/`;
   const result = await axios.post(url, data, {
     headers: {
       Authorization: `Bearer ${await gettoken()}`,

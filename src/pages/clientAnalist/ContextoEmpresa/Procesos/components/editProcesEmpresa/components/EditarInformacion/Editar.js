@@ -4,41 +4,65 @@ import { useEffect, useState } from "react";
 
 // import { uploudImage } from "../../../../service/repository/uploudimage";
 // import { updateclientAnalist } from "../../../../service/repository/clientAnalist";
-import { ForminputAreatEdit, ForminputBottonSubmit, ForminputEdit, ForminputmailEdit } from "../../../../../../../../service/morvius-service/form_input/form_input";
+import { ForminputAreatEdit, ForminputBottonSubmit, ForminputComboBoxEdit, ForminputEdit, ForminputmailEdit } from "../../../../../../../../service/morvius-service/form_input/form_input";
 import { handleNewNotification, useNotification } from "../../../../../../../../service/Notifications/useNotificacion";
 import { updateEmpresa } from "../../../../../../../../service/repository/RTEmpresas";
 import { updateTrabajEmpresa } from "../../../../../../../../service/repository/RTTrabajEmpresas";
+import { getGerarcProces } from "../../../../../../../../service/repository/RTGerarcProces";
 
-export function EditarTrabjEmpresaInformation(props){
+export function EditarProcesEmpresaInformation(props){
 
     const [propinformationDataGeneral, propsetinformationDataGeneral] = useState({
-        "Id_trabajador": 2,
-        "nombre_apellido": "Carlos Arturo Guerrero Castillo",
-        "cargo": "Gerente General",
-        "descripc": "Encargado de la parte tecnica de la empreasa",
-        "telefono": "985796307",
-        "correo": "arturo14212000@gmail.com",
-        "codTrabajo": "cod-23674382647",
-        "estade": 1,
-        "id_empresa": 1
-    });
+        "id_proceso": 2,
+        "nombreProce": "Proceso de dictado de cursos.",
+        "descripccion": "Proceso donde un procesor dicta el cursos en un sistema E-learning a un alumnos.",
+        "id_gerarProc": 3,
+        "nombre": "SubProceso",
+        "id_tipProce": 2,
+        "nombreTip": "Procesos de apoyo",
+        "isDepProcPadre": 1,
+        "id_DepentProc": 1
+      });
     const {onAction, informationDataGeneral = propinformationDataGeneral, setinformationDataGeneral = propsetinformationDataGeneral} = props;
-    
+    const [textGerarProc, settexGerarProc] = useState(0);
+    // const [textGerarProcMemoryInit, settextGerarProcMemoryInit] = useState(0);
+    const [listGerarProc, setlistGerarProc] = useState([]);
     // const [filephoto, setfilephoto] = useState(null);
     const dispatch = useNotification();
 
-    // const isurl = (url="") =>{
-    //     let arraysplit = url.split("://");
-    //     if (arraysplit.length === 1) return false;
-    //     if (arraysplit[0] !== "https") return false;
-    //     return true;
-    // }
-
     useEffect(()=>{
-        (async () => {
-            console.log(informationDataGeneral)
+        // console.log(informationDataGeneral)
+        (async()=>{
+            // inicializar el tipo de proceso
+            // let result = await getTipoProces();
+            // setlistTipoProc(result);
+            // if(result.length != 0){
+            //     settextTipoProc(result[0].id_tipProce)
+            //     settextTipoProcMemoryInit(result[0].id_tipProce)
+            // }
+            // inicializar la gerarquia de proceso
+            let resultger = await getGerarcProces();
+            setlistGerarProc(resultger);
+            if(resultger.length != 0){
+                settexGerarProc(resultger[0].id_gerarProc)
+            }
+            // inicializar los procesoso
+            // let resultproc = await getProcesEmpresa(informacionGeneral);
+            
+            // console.log(resultproc)
+            // if(resultproc.length != 0){
+            //     let data = resultproc.map((item)=>{
+            //         return {
+            //             id: item.id_proceso,
+            //             name: item.nombreProce
+            //         }
+            //     })
+            //     setlistProcEmpre(data);
+            //     // settexProcEmpre(resultproc[0].id_proceso)
+            //     // settextProcEmpreMemoryInit(resultproc[0].id_proceso)
+            // }
         })();
-    },[]);
+    },[])
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -94,17 +118,35 @@ export function EditarTrabjEmpresaInformation(props){
         {/* <ForminputImageCircle oncallbackchange={oncallbackchange} urlphoto={informationDataGeneral.photo} keyname ={`photo${informationDataGeneral.id_usuario}`}/> */}
         {/* <div style={{height:"20px"}}></div> */}
         <div style={{height:'5px'}} />
-        <ForminputEdit valueInit={informationDataGeneral.nombre_apellido} placeHolder="Nombre" keyname ={`nombrEmp${informationDataGeneral.Id_trabajador}`}/>
+        <ForminputEdit valueInit={informationDataGeneral.nombreProce} placeHolder="Nombre" keyname ={`nombrEmp${informationDataGeneral.id_proceso}`}/>
         <div style={{height:'5px'}} />
+        <ForminputAreatEdit valueInit={informationDataGeneral.descripccion} placeHolder="Descripccion" keyname ={`descr${informationDataGeneral.id_proceso}`}/>
+        <div style={{height:'5px'}} />
+        {(listGerarProc.length != 0)?<ForminputComboBoxEdit 
+            setpropdatacombo = {setlistGerarProc}
+            indexinput = {textGerarProc}
+            setindexinput = {settexGerarProc}
+            valueInit={informationDataGeneral.id_gerarProc}  
+            keyname={`gerproc${informationDataGeneral.id_proceso}`} 
+            isInvert={true} 
+            width={100} 
+            height={28} 
+            keyvalue={'id_gerarProc'} 
+            keylabel={'nombre'} 
+            datacombo={listGerarProc} 
+            placeHolder = {'Gerarquia del proceso'}
+            onChangeinput = {(jsonval)=>{ settexGerarProc(jsonval.value)}} />:<></>}
+        
+        
+        {/* <div style={{height:'5px'}} />
         <ForminputEdit valueInit={informationDataGeneral.cargo} placeHolder="Cargo" keyname ={`carg${informationDataGeneral.Id_trabajador}`}/>
-        <div style={{height:'5px'}} />
-        <ForminputAreatEdit valueInit={informationDataGeneral.descripc} placeHolder="Descripccion" keyname ={`descr${informationDataGeneral.Id_trabajador}`}/>
+        
         <div style={{height:'5px'}} />
         <ForminputEdit valueInit={informationDataGeneral.telefono} placeHolder="Telefono" keyname ={`telf${informationDataGeneral.Id_trabajador}`}/>
         <div style={{height:'5px'}} />
         <ForminputmailEdit valueInit={informationDataGeneral.correo} placeHolder="Correo" keyname ={`correo${informationDataGeneral.Id_trabajador}`}/>
         <div style={{height:'5px'}} />
-        <ForminputEdit valueInit={informationDataGeneral.codTrabajo} placeHolder="Codigo Empresa" keyname ={`codig${informationDataGeneral.Id_trabajador}`}/>
+        <ForminputEdit valueInit={informationDataGeneral.codTrabajo} placeHolder="Codigo Empresa" keyname ={`codig${informationDataGeneral.Id_trabajador}`}/> */}
         <div style={{height: '20px'}}></div>
         <ForminputBottonSubmit label = {'Editar'} />
         {/* <ForminputBotton label = {"Cancelar"} isInvertColor = {true} /> */}
