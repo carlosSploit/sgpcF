@@ -84,10 +84,11 @@ export function ClientAnalist(props){
     const listInterface = [<Empresas/>,<Profesor/>,<MCurso/>,<PICurso/>];
 
     const onchageoption = (id) => {
-        let patch_redirect = redirectRutaOptions(id);
-        urlRedirect(patch_redirect);
+        // let patch_redirect = redirectRutaOptions(id);
+        // urlRedirect(patch_redirect);
         // console.log(patch_redirect)
         if (id <= (listInterface.length -1)){
+            console.log(id)
             setkeypage(id); // guarda la posicio de la ruta en memoria
             setinterfaces(listInterface[id])
             setindexinterface(id);
