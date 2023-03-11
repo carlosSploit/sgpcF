@@ -16,11 +16,10 @@ import { ComponentModalFloting, ComponentModalFlotingBody, ComponentModalFloting
 // import { AreasEmpresas } from "./components/AreasEmpresa";
 // import { ObjetivEmpresas } from "./components/ObjetivosEmpresa";
 // import { getTrabajEmpresa } from "../../../../../../service/repository/RTTrabajEmpresas";
-import { EditOutlined, PartitionOutlined, TeamOutlined, UsbOutlined } from "@ant-design/icons";
+import { EditOutlined, PartitionOutlined, TeamOutlined } from "@ant-design/icons";
 import { getProcesEmpresa } from "../../../../../../service/repository/RTProcesEmpresas";
 import { AreasInterviene } from "./components/AreasInterviene";
 import { TrabajResponsables } from "./components/TrabajResponsables";
-import { ActivosProceso } from "./components/ActivosProceso";
 
 export function EditarProcesEmpresa(props){
 
@@ -61,8 +60,7 @@ export function EditarProcesEmpresa(props){
                 await onAction();
             }} onUpdate={onAction} infoEmpresa={informationDataGeneral} informationDataGeneral={ListdataUser[0]}/>,
             <AreasInterviene informationDataGeneral={ListdataUser[0]} informaDataEmpresa={informationDataGeneral}/>,
-            <TrabajResponsables informationDataGeneral={ListdataUser[0]} informaDataEmpresa={informationDataGeneral}/>,
-            <ActivosProceso informationDataGeneral={ListdataUser[0]} informaDataEmpresa={informationDataGeneral}/>
+            <TrabajResponsables informationDataGeneral={ListdataUser[0]} informaDataEmpresa={informationDataGeneral}/>
             // ,<ObjetivEmpresas informationDataGeneral={ListdataUser[0]}/>
         ])
     }
@@ -80,10 +78,6 @@ export function EditarProcesEmpresa(props){
             id: 2,
             label : "Responsables",
             icontab : TeamOutlined
-        },{
-            id: 3,
-            label : "Activos",
-            icontab : UsbOutlined
         }
         
     ];

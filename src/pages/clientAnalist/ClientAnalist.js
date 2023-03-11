@@ -19,6 +19,7 @@ import NotificationProvider from "../../service/Notifications/NotificationProvid
 import { PerfildeUsuario } from "./perfildeusuario";
 import { TrabajoEmpresas } from "./ContextoEmpresa/TrabajEmpresa";
 import { ProcesEmpresas } from "./ContextoEmpresa/Procesos";
+import { ActivosEmpresa } from "./ContextoEmpresa/Activos";
 
 export function ClientAnalist(props){
 
@@ -63,6 +64,10 @@ export function ClientAnalist(props){
                 {
                     label: "Procesos",
                     key: 2
+                },
+                {
+                    label: "Activos",
+                    key: 3
                 }
             ]
         },
@@ -83,7 +88,7 @@ export function ClientAnalist(props){
         }
     ]
 
-    const listInterface = [<Empresas/>,<TrabajoEmpresas/>,<ProcesEmpresas/>,<PICurso/>];
+    const listInterface = [<Empresas/>,<TrabajoEmpresas/>,<ProcesEmpresas/>,<ActivosEmpresa/>];
 
     const onchageoption = (id) => {
         // let patch_redirect = redirectRutaOptions(id);
