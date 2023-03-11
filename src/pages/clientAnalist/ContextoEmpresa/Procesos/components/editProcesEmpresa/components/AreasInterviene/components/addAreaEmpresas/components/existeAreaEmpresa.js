@@ -1,26 +1,49 @@
 import React, { useEffect, useState } from "react";
+import './index.css';
 import { useNotification } from "../../../../../../../../../../../service/Notifications/NotificationProvider";
 // import { ConsuldataLogm, getKeysesion } from "../../../../../../../../../../../service/repository/mithelworks";
 // import { addEmpresa } from "../../../../../../../../../../../service/repository/RTEmpresas";
 import { handleNewNotification } from "../../../../../../../../../../../service/Notifications/useNotificacion";
-import { Forminput, ForminputArea, ForminputBotton, ForminputBottonSubmit } from "../../../../../../../../../../../service/morvius-service/form";
-import { addAreasEmpresa } from "../../../../../../../../../../../service/repository/RTAreasEmpresas";
+import { Forminput, ForminputArea, ForminputBotton, ForminputBottonSubmit, ForminputSelectItem } from "../../../../../../../../../../../service/morvius-service/form";
+import { addAreasEmpresa, getAresEmpresa } from "../../../../../../../../../../../service/repository/RTAreasEmpresas";
 
-export function ExisteAreaEmpresa(props){
+export function ExisteAreaInterProces(props){
 
     const [propinformationDataGeneral, propsetinformationDataGeneral] = useState({});
-    const { onInsert=()=>{} ,informationDataGeneral = propinformationDataGeneral } = props;
+    const { onInsert=()=>{} ,informationDataGeneral = propinformationDataGeneral, informaDataEmpresa } = props;
 
     // input de contenidos
-    const [textname, settextname] = useState("");
-    const [textdescrip, settextdescrip] = useState("");
+    // const [textname, settextname] = useState("");
+    // const [textdescrip, settextdescrip] = useState("");
+    const [listAreasInteracProc, setlistAreasInteracProc] = useState([]);
+    const [textAreasInteracProc, settextAreasInteracProc] = useState(0);
     const dispatch = useNotification();
 
     useEffect(()=>{
         (async()=>{
-            console.log(informationDataGeneral.id_empresa)
+            console.log(informationDataGeneral)
+            console.log(informaDataEmpresa)
+            await onLoadAreas();
         })();
     },[]);
+
+    const onLoadAreas = async ()=>{
+        let result = await getAresEmpresa(informaDataEmpresa);
+        console.log(result)
+        listAreasInteracProc([]);
+        // setlistdataHistory([]);
+        setTimeout(() => {
+            let data = result.map((item)=>{
+                return {
+                    id: item.id_proceso,
+                    name: item.nombreProce
+                }
+            })
+            console.log(data);
+            setlistAreasInteracProc(data)
+            // setlistdataHistory(result);
+        }, 500);
+    }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -40,8 +63,11 @@ export function ExisteAreaEmpresa(props){
     }
 
     const limpiartext = () =>{
-        settextname("");
-        settextdescrip("");
+        settextAreasInteracProc(0);
+    }
+
+    const onSelectItem = (json) => {
+        textAreasInteracProc(json.id);
     }
 
     return (
@@ -61,11 +87,13 @@ export function ExisteAreaEmpresa(props){
             >
                 <>{/* apace cuando no se a seleccionado nada */}
                 <div style={{height:'5px'}} />
-                <Forminput textinput ={textname} settextinput = {settextname} placeHolder="Nombre" keyname ={`nombrEmp`}/>
-                <div style={{height:'5px'}} />
-                <ForminputArea textinput ={textdescrip} settextinput = {settextdescrip} placeHolder="Descripccion" keyname ={`descr`}/>
+                {(listAreasInteracProc.length != 0)? 
+                    <div className="container_AreaInterProces_selectet_data">
+                        <ForminputSelectItem  listaObj={listAreasInteracProc} setlistaObj = {setlistAreasInteracProc} keyname={"selestProcesoDep"} checkbox={textAreasInteracProc} setcheckbox={settextAreasInteracProc} onChangeinput={onSelectItem} />
+                    </div>
+                :<></>}
                 <div style={{height: '20px'}}></div></>
-                <ForminputBottonSubmit label = {'Registrar Area de la Empresa'} />
+                <ForminputBottonSubmit label = {'Registrar Area que Interviene'} />
                 <ForminputBotton label = {'Cancelar'} isInvertColor = {true} />
                 {/* <ForminputBotton label = {"Cancelar"} isInvertColor = {true} /> */}
             </form>

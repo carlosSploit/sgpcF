@@ -8,48 +8,24 @@ import "./style/index.css";
 // import { addEmpresa, addSelectEmpresa, getEmpresas } from "../../../../../../service/repository/Empresas";
 // import { EditOutlined } from "@ant-design/icons";
 // import { NoExisteEmpresa } from "./components/noExisteEmpresa";
-import { ExisteAreaEmpresa } from "./components/existeAreaEmpresa";
+import { ExisteAreaInterProces } from "./components/existeAreaEmpresa";
 import { ComponentModalFlotingBody } from "../../../../../../../../../../service/morvius-service/component/components";
 import { PopModal } from "../../../../../../../../../../service/morvius-service/component/complements/componentModal/componentModal";
 // import { ExisteEmpresa } from "./components/existeAreaEmpresa";
 
-export function AddAreaEmpresas(props){
+export function AddAreasInteraProces(props){
     const [ismodalvisible, setismodalvisible] = useState(false);
     const [propinformationDataGeneral, propsetinformationDataGeneral] = useState({});
-    const { onInsert=()=>{}, propismodalvisible = ismodalvisible, propsetismodalvisible = setismodalvisible, informationDataGeneral = propinformationDataGeneral , setinformationDataGeneral = propsetinformationDataGeneral } = props;
+    const [propinformaDataEmpresa, propsetinformaDataEmpresa] = useState({});
+    const { onInsert=()=>{}, informaDataEmpresa = propinformaDataEmpresa, setinformaDataEmpresa = propsetinformaDataEmpresa, propismodalvisible = ismodalvisible, propsetismodalvisible = setismodalvisible, informationDataGeneral = propinformationDataGeneral , setinformationDataGeneral = propsetinformationDataGeneral } = props;
     // const [index,setindex] = useState(0);
-    const [listview,setlistview] = useState([<ExisteAreaEmpresa  onInsert = {onInsert} informationDataGeneral = {informationDataGeneral} />]);
-
-    // const listOpt = [
-    //     {
-    //         id: 0,
-    //         label : "No Existe",
-    //         icontab : EditOutlined
-    //     },{
-    //         id: 1,
-    //         label : "Existe",
-    //         icontab : EditOutlined
-    //     }
-    // ];
-
-    // const onChangeindex = (index,titletab) => {
-    //     setindex(index);
-    // }
+    const [listview,setlistview] = useState([<ExisteAreaInterProces informaDataEmpresa={informaDataEmpresa}  onInsert = {onInsert} informationDataGeneral = {informationDataGeneral} />]);
 
     return (
         <>
-            <PopModal namemodal = {"Insertar una Area de Empresa"} colorTitle={'#183152'} propismodalvisible = {propismodalvisible} propsetismodalvisible = {propsetismodalvisible}>
+            <PopModal namemodal = {"Enlazar un Area de Interaccion"} colorTitle={'#183152'} propismodalvisible = {propismodalvisible} propsetismodalvisible = {propsetismodalvisible}>
                 <ComponentModalFlotingBody descripccion={""}>
                 <div style={{height: '10px'}}></div>
-                {/* <ComponentModalPrincipalListtabs
-                    listOptions = {listOpt}
-                    onChangeindex = {onChangeindex}
-                    chaindexselect = {index}
-                    chasetindexselect = {setindex}
-                    indexinitial = {listOpt[0].id}
-                ></ComponentModalPrincipalListtabs>
-                <div className="LinerSeparator"></div>
-                <div style={{height: '20px'}}></div> */}
                 {listview[0]}
                 </ComponentModalFlotingBody>
             </PopModal>

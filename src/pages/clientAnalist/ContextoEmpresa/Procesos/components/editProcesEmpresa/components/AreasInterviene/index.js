@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./styles/index.css"
 import { useNotification } from "../../../../../../../../service/Notifications/NotificationProvider";
-import { ConsuldataLogm, getKeysesion } from "../../../../../../../../service/repository/mithelworks";
-import { deleteEmpresa, getEmpresas } from "../../../../../../../../service/repository/RTEmpresas";
+// import { ConsuldataLogm, getKeysesion } from "../../../../../../../../service/repository/mithelworks";
+// import { deleteEmpresa, getEmpresas } from "../../../../../../../../service/repository/RTEmpresas";
 import { ControlOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { handleNewNotification } from "../../../../../../../../service/Notifications/useNotificacion";
 import { ItemAreasEmpresa, ItemEmpresa } from "./components/itemAreasEmpresa";
 import { OpccionActions } from "./components/opccionActions";
-import { deleteAreasEmpresa, getAresEmpresa } from "../../../../../../../../service/repository/RTAreasEmpresas";
-import { AddAreaEmpresas } from "./components/addAreaEmpresas";
+// import { deleteAreasEmpresa, getAresEmpresa } from "../../../../../../../../service/repository/RTAreasEmpresas";
+import { AddAreasInteraProces } from "./components/addAreaEmpresas";
 import { EditarAreasEmpresa } from "./components/editAreasEmpresas";
 import { deleteAreasInteraProces, getAreasInteraProces } from "../../../../../../../../service/repository/RTAreasInteraProces";
 // import { Componentsearchanimation} from "../../../../service/morvius-service/component/components";
@@ -18,7 +18,7 @@ import { deleteAreasInteraProces, getAreasInteraProces } from "../../../../../..
 
 export function AreasInterviene(props){
 
-    const {informationDataGeneral} = props;
+    const {informationDataGeneral, informaDataEmpresa} = props;
     const [listdata,setlistdata] = useState([]);
     // const [listdataHistory,setlistdataHistory] = useState([]);
     const [ismodeladd,setismodeladd] = useState(false);
@@ -31,7 +31,7 @@ export function AreasInterviene(props){
     useEffect(()=>{
         (async()=>{
             await LoadDataAreasInteraProces();
-            console.log(informationDataGeneral)
+            console.log(informaDataEmpresa)
         })();
     },[]);
 
@@ -130,10 +130,10 @@ export function AreasInterviene(props){
                     })}
                 </div>
             </div>
-            <AddAreaEmpresas informationDataGeneral = {informationDataGeneral} onInsert={async ()=>{
+            <AddAreasInteraProces informaDataEmpresa = {informaDataEmpresa} informationDataGeneral = {informationDataGeneral} onInsert={async ()=>{
                 await LoadDataAreasInteraProces();
             }} propismodalvisible = {ismodeladd} propsetismodalvisible = {setismodeladd} />
-            {(ismodelaEdit)?<EditarAreasEmpresa informationDataGeneralEmpre={informationDataGeneral} onAction = {LoadDataAreasInteraProces} iskeyDatos = {indexOpccionAreasInteraProces} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>}
+            {/* {(ismodelaEdit)?<EditarAreasEmpresa informationDataGeneralEmpre={informationDataGeneral} onAction = {LoadDataAreasInteraProces} iskeyDatos = {indexOpccionAreasInteraProces} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>} */}
             {/* 
              */}
         </>

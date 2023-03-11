@@ -58,7 +58,7 @@ export function EditarProcesEmpresa(props){
                 await actualizeData();
                 await onAction();
             }} onUpdate={onAction} infoEmpresa={informationDataGeneral} informationDataGeneral={ListdataUser[0]}/>,
-            <AreasInterviene informationDataGeneral={ListdataUser[0]}/>
+            <AreasInterviene informationDataGeneral={ListdataUser[0]} informaDataEmpresa={informationDataGeneral}/>
             // ,<ObjetivEmpresas informationDataGeneral={ListdataUser[0]}/>
         ])
     }
