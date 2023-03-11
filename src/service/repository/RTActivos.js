@@ -49,7 +49,7 @@ export async function addActivosEmpresa(jsondat = {}) {
 export async function updateActivosEmpresa(id, jsondat = {}) {
   const id_negocio = id;
   const data = jsondat;
-  const url = `${domain_api}/areempr/${id_negocio}`;
+  const url = `${domain_api}/activos/${id_negocio}`;
   const result = await axios.put(url, data, {
     headers: {
       Authorization: `Bearer ${await gettoken()}`,

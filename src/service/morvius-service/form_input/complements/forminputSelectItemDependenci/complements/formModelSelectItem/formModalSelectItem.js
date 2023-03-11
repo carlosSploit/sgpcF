@@ -474,14 +474,16 @@ export function FormModalSelectItem(props){
             }} colorTitle={'#183152'} propismodalvisible = {propismodalvisible} propsetismodalvisible = {propsetismodalvisible} namemodal={nameTitle}>
                 <ComponentModalFlotingBody>
                     <div style={{height:"10px"}} ></div>
-                        {(listgerargeki.length != 0)?<FormListchipts isInterationsUltime={true} isActionChips={true} listdatos={listgerargeki} keytitle={keylabe} keyitem={keyid} actionChips = {[
-                            {
-                                icon: CloseOutlined,
-                                onAction: (id)=>{
-                                    onchangeDelete(id)
-                                }
-                            }
-                        ]  } />:<></>}
+                    <div style={{width: "96%", marginLeft: "2%"}}>
+                      {(listgerargeki.length != 0)?<FormListchipts isInterationsUltime={true} isActionChips={true} listdatos={listgerargeki} keytitle={keylabe} keyitem={keyid} actionChips = {[
+                          {
+                              icon: CloseOutlined,
+                              onAction: (id)=>{
+                                  onchangeDelete(id)
+                              }
+                          }
+                      ]} />:<></>}
+                    </div>  
                     {/* <div style={{height:"10px"}} ></div>
                     <Componentsearch height= "30px" onChangeseach = {onChangeseach} onChangekey = {onChangekey}/> */}
                     <div style={{height:"10px"}} ></div>

@@ -357,9 +357,8 @@
     display: flex;
     justify-content: left;
     align-items: center;
-    width: 90%;
-    margin-left: 20px;
-    margin-right: 20px;
+    width: 100%;
+    /* background-color: aqua; */
 }
 
 .form-content-list-chips {

@@ -16,6 +16,7 @@ import { handleNewNotification } from "../../../../service/Notifications/useNoti
 // import { EditarProcesEmpresa } from "./components/editProcesEmpresa";
 import { deleteActivosEmpresa, getActivosEmpresa } from "../../../../service/repository/RTActivos";
 import { AddActivoEmpresas } from "./components/addActivos";
+import { EditarActivosEmpresa } from "./components/editActivos";
 
 export function ActivosEmpresa(props){
     const [propsListOpccion, prososetListOpccion] = useState([]);
@@ -172,7 +173,7 @@ export function ActivosEmpresa(props){
             {(ismodeladd)?<AddActivoEmpresas informacionGeneral={indexEmpresa} onInsert={async ()=>{
                 await LoadDataActivosEmpresa();
             }} propismodalvisible = {ismodeladd} propsetismodalvisible = {setismodeladd} />:<></>}
-            {/* {(ismodelaEdit)?<EditarProcesEmpresa informationDataGeneral = {indexEmpresa} onAction = {LoadDataProcesEmpresa} iskeyDatos = {indexOptionEmpresa} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>} */}
+            {(ismodelaEdit)?<EditarActivosEmpresa informationDataGeneral = {indexEmpresa} onAction = {LoadDataActivosEmpresa} iskeyDatos = {indexOptionEmpresa} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>}
         </div>
     );
 }

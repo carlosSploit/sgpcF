@@ -6,10 +6,12 @@ import { useNotification } from "../../../../../../../service/Notifications/Noti
 import { handleNewNotification } from "../../../../../../../service/Notifications/useNotificacion";
 import { Forminput, ForminputArea, ForminputBotton, ForminputBottonSubmit, ForminputComboBox, ForminputRadioSlice, ForminputSelectItem, Forminputmail } from "../../../../../../../service/morvius-service/form";
 // import { addTrabajEmpresa } from "../../../../../../../service/repository/RTTrabajEmpresas";
-import { getTipoProces } from "../../../../../../../service/repository/RTTiposProces";
-import { getGerarcProces } from "../../../../../../../service/repository/RTGerarcProces";
-import { addPrcesEmpresa, getProcesEmpresa } from "../../../../../../../service/repository/RTProcesEmpresas";
+// import { getTipoProces } from "../../../../../../../service/repository/RTTiposProces";
+// import { getGerarcProces } from "../../../../../../../service/repository/RTGerarcProces";
+// import { addPrcesEmpresa, getProcesEmpresa } from "../../../../../../../service/repository/RTProcesEmpresas";
 import { ForminputSelectItemDependenci } from "../../../../../../../service/morvius-service/form_input/complements/forminputSelectItemDependenci/ForminputSelectItem";
+import { getTipoActivos } from "../../../../../../../service/repository/RTTiposActivos";
+import { addActivosEmpresa } from "../../../../../../../service/repository/RTActivos";
 
 export function NoExisteActivpEmpresa(props){
     
@@ -18,54 +20,48 @@ export function NoExisteActivpEmpresa(props){
     // input de contenidos
     const [textname, settextname] = useState("");
     const [textdescrip, settextdescrip] = useState("");
-    const [textTipoProc, settextTipoProc] = useState(0);
-    const [textTipoProcMemoryInit, settextTipoProcMemoryInit] = useState(0);
-    const [textGerarProc, settexGerarProc] = useState(0);
-    const [textGerarProcMemoryInit, settextGerarProcMemoryInit] = useState(0);
-    const [isdependepader, setisdependepader] = useState(false);
-    const [textProcEmpre, settexProcEmpre] = useState(0);
-    const [textProcEmpreMemoryInit, settextProcEmpreMemoryInit] = useState(0);
+    const [textTipoActiv, settextTipoActiv] = useState(0);
 
     // const [textCorreo, settextCorreo] = useState("");
     // const [textCodigo, settextCodigo] = useState("");
     // const [textvision, settextvision] = useState("");
 
-    const [listTipoProc, setlistTipoProc] = useState([]);
-    const [listGerarProc, setlistGerarProc] = useState([]);
-    const [listProcEmpre, setlistProcEmpre] = useState([]);
+    const [listActivProc, setlistActivProc] = useState([]);
+    // const [listGerarProc, setlistGerarProc] = useState([]);
+    // const [listProcEmpre, setlistProcEmpre] = useState([]);
     const dispatch = useNotification();
 
     useEffect(()=>{
         (async()=>{
             // inicializar el tipo de proceso
-            let result = await getTipoProces();
-            setlistTipoProc(result);
-            if(result.length != 0){
-                settextTipoProc(result[0].id_tipProce)
-                settextTipoProcMemoryInit(result[0].id_tipProce)
-            }
+            let result = await getTipoActivos(0);
+            setlistActivProc(result);
+            // if(result.length != 0){
+            //     settextTipoProc(result[0].id_tipProce)
+            //     settextTipoProcMemoryInit(result[0].id_tipProce)
+            // }
             // inicializar la gerarquia de proceso
-            let resultger = await getGerarcProces();
-            setlistGerarProc(resultger);
-            if(resultger.length != 0){
-                settexGerarProc(resultger[0].id_gerarProc)
-                settextGerarProcMemoryInit(resultger[0].id_gerarProc)
-            }
+            // let resultger = await getGerarcProces();
+            // setlistGerarProc(resultger);
+            // if(resultger.length != 0){
+            //     settexGerarProc(resultger[0].id_gerarProc)
+            //     settextGerarProcMemoryInit(resultger[0].id_gerarProc)
+            // }
             // inicializar los procesoso
-            let resultproc = await getProcesEmpresa(informacionGeneral);
+            // let resultproc = await getProcesEmpresa(informacionGeneral);
             
-            console.log(resultproc)
-            if(resultproc.length != 0){
-                let data = resultproc.map((item)=>{
-                    return {
-                        id: item.id_proceso,
-                        name: item.nombreProce
-                    }
-                })
-                setlistProcEmpre(data);
-                // settexProcEmpre(resultproc[0].id_proceso)
-                // settextProcEmpreMemoryInit(resultproc[0].id_proceso)
-            }
+            // console.log(resultproc)
+            // if(resultproc.length != 0){
+            //     let data = resultproc.map((item)=>{
+            //         return {
+            //             id: item.id_proceso,
+            //             name: item.nombreProce
+            //         }
+            //     })
+            //     setlistProcEmpre(data);
+            //     // settexProcEmpre(resultproc[0].id_proceso)
+            //     // settextProcEmpreMemoryInit(resultproc[0].id_proceso)
+            // }
         })();
     },[])
 
@@ -75,14 +71,11 @@ export function NoExisteActivpEmpresa(props){
         let data = {
             "nombre_Activo" : event.target.nombrEmp.value,
             "descripc": event.target.descr.value,
-            "id_gerarProc": textGerarProc,
-            "id_tipProce": textTipoProc,
-            "isDepProcPadre": (isdependepader)?1:0,
-            "id_DepentProc": textProcEmpre,
+            "id_tipoActiv": textTipoActiv,
             "id_empresa" : informacionGeneral
         };
         console.log(data)
-        let resul = await addPrcesEmpresa(data);
+        let resul = await addActivosEmpresa(data);
         handleNewNotification(dispatch,resul.messege, resul.status);
         setTimeout(() => {
             (async ()=>{await onInsert();})();
@@ -94,14 +87,12 @@ export function NoExisteActivpEmpresa(props){
     const limpiartext = () =>{
         settextname("");
         settextdescrip("");
-        settextTipoProc(textTipoProcMemoryInit);
-        settexGerarProc(textGerarProcMemoryInit);
-        setisdependepader(false);
-        settexProcEmpre(textProcEmpreMemoryInit);
+        settextTipoActiv(0);
     }
 
     const onSelectItem = (json) => {
-        settexProcEmpre(json.id);
+        console.log(json)
+        settextTipoActiv(json.id_tipoActivo);
     }
 
     return (
@@ -124,26 +115,12 @@ export function NoExisteActivpEmpresa(props){
                 <Forminput textinput ={textname} settextinput = {settextname} placeHolder="Nombre" keyname ={`nombrEmp`}/>
                 <div style={{height:'5px'}} />
                 <ForminputArea textinput ={textdescrip} settextinput = {settextdescrip} placeHolder="Descripccion" keyname ={`descr`}/>
-                {/* <div style={{height:'5px'}} /> */}
-                {/* <ForminputComboBox valueInit={textTipoProc} keyname={'tiproc'} isInvert={true} width={100} height={28} keyvalue={'id_tipProce'} keylabel={'nombre'} datacombo={listTipoProc} isdefault={true} onChangeinput={(jsonval)=>{
-                    settextTipoProc(jsonval.value)
-                }} />
                 <div style={{height:'5px'}} />
-                <ForminputComboBox valueInit={textGerarProc} keyname={'gerproc'} isInvert={true} width={100} height={28} keyvalue={'id_gerarProc'} keylabel={'nombre'} datacombo={listGerarProc} isdefault={true} onChangeinput={(jsonval)=>{
-                    settexGerarProc(jsonval.value)
-                }} />
-                <div style={{height:'5px'}} />
-                <ForminputRadioSlice checkradio = {isdependepader} setcheckradio = {setisdependepader} label={'El proceso tiene un proceso padre'} onChangeinput={(stade)=>{
-                    console.log(stade)
-                    setisdependepader(stade)
-                }} ></ForminputRadioSlice> */}
-                {/* <Forminput textinput ={texttelefono} settextinput = {settexttelefono} placeHolder="Telefono" keyname ={`telf`}/> */}
-                <div style={{height:'5px'}} />
-                {<div className="container_inserproces_selectet_data">
-                        <ForminputSelectItemDependenci  />
-                    </div>}
+                {(listActivProc.length != 0)?<div className="container_inserproces_selectet_data">
+                    <ForminputSelectItemDependenci keyname = {"keyseletcTipActiv"} keyid = {"id_tipoActivo"} keylabe = {'nombreTipoActivo'} keydepende = {'id_dependeTipoPad'} listaObj={listActivProc} setlistaObj = {setlistActivProc} onChangeinput={onSelectItem} />
+                </div>:<></>}
                 <div style={{height: '20px'}}></div></>
-                <ForminputBottonSubmit label = {'Registrar a la Empresa'} />
+                <ForminputBottonSubmit label = {'Registrar un Activo'} />
                 <ForminputBotton label = {'Cancelar'} isInvertColor = {true} onChange={limpiartext}/>
                 {/* <ForminputBotton label = {"Cancelar"} isInvertColor = {true} /> */}
             </form>

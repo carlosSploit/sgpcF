@@ -393,10 +393,11 @@ export function ForminputSelectItemDependenci(props){
     });
 
     useEffect(()=>{
+        // console.log(valueInit)
         setcheckbox(valueInit);
         if (valueInit != 0){
             let listjsondata = listaObj.filter((item)=>{
-                return item.id == valueInit;
+                return item[keyid] == valueInit;
             });
             let jsondata = (listjsondata.length != 0)? listjsondata[0]: {} 
             setitemIcon(jsondata);
@@ -415,6 +416,8 @@ export function ForminputSelectItemDependenci(props){
             return item[keyid] == key;
         });
         if (jsondata.length != 0){
+            // console.log(itemIcon)
+            // console.log(checkbox)
             setitemIcon(jsondata[0]);
             onChangeinput(jsondata[0]);
         }
@@ -439,9 +442,9 @@ export function ForminputSelectItemDependenci(props){
                                 <div className="container_item_selectItem_subcont">
                                     <div className="container_item_selectItem_contentItem">
                                         {(isVisibleFoto)?<div className="container_item_selectItem_subcontaion_photo" style={{backgroundImage: `url('${itemIcon[keyphoto]}')`}} ></div>:<></>}
-                                        
                                         <div style={{width:"10px"}}/> 
-                                        <div className="container_item_selectItem_subcontaion_nametext"> {(itemIcon[keylabe].length > 40)?itemIcon[keylabe].substring(0,40) + '...': itemIcon[keylabe]}</div>
+                                        {/*  */}
+                                        <div className="container_item_selectItem_subcontaion_nametext"> {(itemIcon[keylabe].length > 30)?itemIcon[keylabe].substring(0,30) + '...': itemIcon[keylabe]}</div>
                                         <div style={{width:"10px"}}/>
                                         <div onClick={()=>{setcheckbox(0); }}>
                                             <CloseCircleOutlined className="container_item_selectItem_subcontaion_nametext" />
@@ -475,12 +478,16 @@ export function ForminputSelectItemDependenci(props){
 
 }
 
-export function ForminputSelectItemEdit(props){
+export function ForminputSelectItemDependenciEdit(props){
     // encabezados
     const [stateindexinput, changesetindexinput] = useState(-1);
     const [indexinputmemory, changesetindexinputmemory] = useState("");
     const [propdatacombo, changesetpropdatacombo] = useState([{id:1,label:"tecnologia"},{id:2,label:"computer"},{id:3,label:"cultura"}]);
     const {
+        keyphoto = "KeySelectIcon",
+        keyid = "id_tipoActivo",
+        keylabe = 'nombreTipoActivo',
+        keydepende = 'id_dependeTipoPad',
         datacombo = propdatacombo,
         setpropdatacombo = changesetpropdatacombo,
         indexinput = stateindexinput,
@@ -498,7 +505,6 @@ export function ForminputSelectItemEdit(props){
     // const refInput = useRef();
 
     useEffect(()=>{
-        console.log(valueInit)
         // console.log(valueInit)
         nameIndexCapture({valueInit:valueInit});
         changesetindexinputmemory(valueInit);
@@ -506,18 +512,19 @@ export function ForminputSelectItemEdit(props){
 
     const nameIndexCapture = ({valueInit}) => {
         setindexinput(valueInit);
-        console.log(datacombo)
-        console.log(valueInit);
+        // console.log(datacombo);
+        // console.log(valueInit);
         let dataInf = datacombo.filter((item)=>{
-            return item.id == valueInit;
+            return item[keyid] == valueInit;
         })
+        // console.log(dataInf);
         if(dataInf.length == 0){
             settextinput('Desconocido');
             setindexinput(0);
             return;
         }
         const info = dataInf[0]
-        settextinput(info.name)
+        settextinput(info[keylabe])
     }
 
     return (
@@ -533,9 +540,10 @@ export function ForminputSelectItemEdit(props){
                             {/* {(indexinput != -1)?<ForminputSelectItem valueInit={indexinput} keyname={keyname} isInvert={true} width={100} height={28} keyvalue={keyvalue} keylabel={keylabel} datacombo={datacombo} isdefault={true} onChangeinput={(jsonval)=>{
                                 nameIndexCapture({valueInit:jsonval.value})
                             }}/>:<></>} */}
-                            {(indexinput != -1)?<ForminputSelectItemDependenci valueInit={indexinput} listaObj={datacombo} setlistaObj = {setpropdatacombo} keyname={keyname} checkbox={indexinput} setcheckbox={setindexinput} onChangeinput={(jsonval)=>{
+                            {/* checkbox={indexinput} setcheckbox={setindexinput} */}
+                            {(indexinput != -1)?<ForminputSelectItemDependenci keydepende={keydepende} keylabe={keylabe} keyid={keyid} keyphoto={keyphoto} valueInit={indexinput} listaObj={datacombo} setlistaObj = {setpropdatacombo} keyname={keyname} onChangeinput={(jsonval)=>{
                                 console.log(jsonval)
-                                nameIndexCapture({valueInit:jsonval.id})
+                                nameIndexCapture({valueInit:jsonval[keyid]})
                             }} />:<></>}
                         </div>
                     </div>
