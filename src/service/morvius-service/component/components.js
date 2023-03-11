@@ -391,7 +391,7 @@ export function Componentfilter(props){
                                 onSeleccionOpccion(data);
                                 setcheckfilter(data);
                             }} />:<></>}
-                        </div >);
+                        </div>);
                         }))}
                     </div>
                     {/* --------------------------------------------------- */}

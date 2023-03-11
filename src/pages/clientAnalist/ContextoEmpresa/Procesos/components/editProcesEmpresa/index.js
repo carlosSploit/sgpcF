@@ -19,6 +19,7 @@ import { ComponentModalFloting, ComponentModalFlotingBody, ComponentModalFloting
 import { EditOutlined, PartitionOutlined, TeamOutlined } from "@ant-design/icons";
 import { getProcesEmpresa } from "../../../../../../service/repository/RTProcesEmpresas";
 import { AreasInterviene } from "./components/AreasInterviene";
+import { TrabajResponsables } from "./components/TrabajResponsables";
 
 export function EditarProcesEmpresa(props){
 
@@ -58,7 +59,8 @@ export function EditarProcesEmpresa(props){
                 await actualizeData();
                 await onAction();
             }} onUpdate={onAction} infoEmpresa={informationDataGeneral} informationDataGeneral={ListdataUser[0]}/>,
-            <AreasInterviene informationDataGeneral={ListdataUser[0]} informaDataEmpresa={informationDataGeneral}/>
+            <AreasInterviene informationDataGeneral={ListdataUser[0]} informaDataEmpresa={informationDataGeneral}/>,
+            <TrabajResponsables informationDataGeneral={ListdataUser[0]} informaDataEmpresa={informationDataGeneral}/>
             // ,<ObjetivEmpresas informationDataGeneral={ListdataUser[0]}/>
         ])
     }

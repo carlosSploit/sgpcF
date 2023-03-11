@@ -4,42 +4,36 @@ import { useNotification } from "../../../../../../../../../../../service/Notifi
 // import { ConsuldataLogm, getKeysesion } from "../../../../../../../../../../../service/repository/mithelworks";
 // import { addEmpresa } from "../../../../../../../../../../../service/repository/RTEmpresas";
 import { handleNewNotification } from "../../../../../../../../../../../service/Notifications/useNotificacion";
-import { Forminput, ForminputArea, ForminputBotton, ForminputBottonSubmit, ForminputSelectItem } from "../../../../../../../../../../../service/morvius-service/form";
+import { ForminputBotton, ForminputBottonSubmit, ForminputSelectItem } from "../../../../../../../../../../../service/morvius-service/form";
 import { addAreasEmpresa, getAresEmpresa } from "../../../../../../../../../../../service/repository/RTAreasEmpresas";
+import { addAreasInteraProces } from "../../../../../../../../../../../service/repository/RTAreasInteraProces";
 
 export function ExisteAreaInterProces(props){
 
     const [propinformationDataGeneral, propsetinformationDataGeneral] = useState({});
     const { onInsert=()=>{} ,informationDataGeneral = propinformationDataGeneral, informaDataEmpresa } = props;
 
-    // input de contenidos
-    // const [textname, settextname] = useState("");
-    // const [textdescrip, settextdescrip] = useState("");
     const [listAreasInteracProc, setlistAreasInteracProc] = useState([]);
     const [textAreasInteracProc, settextAreasInteracProc] = useState(0);
     const dispatch = useNotification();
 
     useEffect(()=>{
         (async()=>{
-            console.log(informationDataGeneral)
-            console.log(informaDataEmpresa)
             await onLoadAreas();
         })();
     },[]);
 
     const onLoadAreas = async ()=>{
         let result = await getAresEmpresa(informaDataEmpresa);
-        console.log(result)
-        listAreasInteracProc([]);
+        setlistAreasInteracProc([]);
         // setlistdataHistory([]);
         setTimeout(() => {
             let data = result.map((item)=>{
                 return {
-                    id: item.id_proceso,
-                    name: item.nombreProce
+                    id: item.id_areempre,
+                    name: item.nombrearea
                 }
             })
-            console.log(data);
             setlistAreasInteracProc(data)
             // setlistdataHistory(result);
         }, 500);
@@ -49,11 +43,10 @@ export function ExisteAreaInterProces(props){
         event.preventDefault();
 
         let data = {
-            "id_empresa" : informationDataGeneral.id_empresa,
-            "nombrearea": event.target.nombrEmp.value,
-            "descriparea" :  event.target.descr.value
+            "id_areaEmpre" : textAreasInteracProc,
+            "id_proceso": informationDataGeneral.id_proceso
         };
-        let resul = await addAreasEmpresa(data);
+        let resul = await addAreasInteraProces(data);
         handleNewNotification(dispatch,resul.messege, resul.status);
         setTimeout(() => {
             (async ()=>{await onInsert();})();
@@ -67,7 +60,7 @@ export function ExisteAreaInterProces(props){
     }
 
     const onSelectItem = (json) => {
-        textAreasInteracProc(json.id);
+        settextAreasInteracProc(json.id);
     }
 
     return (

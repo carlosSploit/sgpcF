@@ -1,22 +1,32 @@
 import React, { useEffect, useState } from "react";
 import "./styles/index.css"
 import { useNotification } from "../../../../../../../../service/Notifications/NotificationProvider";
-// import { ConsuldataLogm, getKeysesion } from "../../../../../../../../service/repository/mithelworks";
-// import { deleteEmpresa, getEmpresas } from "../../../../../../../../service/repository/RTEmpresas";
-import { ControlOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
+import { deleteTrabajRespon, getTrabajRespon } from "../../../../../../../../service/repository/RTTrabajRespon";
+import { deleteAreasInteraProces } from "../../../../../../../../service/repository/RTAreasInteraProces";
+import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { handleNewNotification } from "../../../../../../../../service/Notifications/useNotificacion";
-import { ItemAreasEmpresa, ItemEmpresa } from "./components/itemAreasEmpresa";
-import { OpccionActions } from "./components/opccionActions";
-// import { deleteAreasEmpresa, getAresEmpresa } from "../../../../../../../../service/repository/RTAreasEmpresas";
-import { AddAreasInteraProces } from "./components/addAreasInterviene";
-import { EditarAreasEmpresa } from "./components/editAreasInterviene";
-import { deleteAreasInteraProces, getAreasInteraProces } from "../../../../../../../../service/repository/RTAreasInteraProces";
+import { OpccionActions } from "../AreasInterviene/components/opccionActions";
+import { ItemAreasEmpresa } from "../AreasInterviene/components/itemAreasEmpresa";
+import { AddAreasInteraProces } from "../AreasInterviene/components/addAreasInterviene";
+import { deleteTrabajEmpresa } from "../../../../../../../../service/repository/RTTrabajEmpresas";
+// import { useNotification } from "../../../../../../../../service/Notifications/NotificationProvider";
+// // import { ConsuldataLogm, getKeysesion } from "../../../../../../../../service/repository/mithelworks";
+// // import { deleteEmpresa, getEmpresas } from "../../../../../../../../service/repository/RTEmpresas";
+// import { ControlOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
+// import { handleNewNotification } from "../../../../../../../../service/Notifications/useNotificacion";
+// import { ItemAreasEmpresa, ItemEmpresa } from "./components/itemAreasEmpresa";
+// import { OpccionActions } from "./components/opccionActions";
+// // import { deleteAreasEmpresa, getAresEmpresa } from "../../../../../../../../service/repository/RTAreasEmpresas";
+// import { AddAreasInteraProces } from "./components/addAreasInterviene";
+// // import { EditarAreasEmpresa } from "./components/editAreasInterviene";
+// import { deleteAreasInteraProces } from "../../../../../../../../service/repository/RTAreasInteraProces";
+// import { getTrabajRespon } from "../../../../../../../../service/repository/RTTrabajRespon";
 // import { Componentsearchanimation} from "../../../../service/morvius-service/component/components";
 // import { AddEmpresas } from "./components/addEmpresas";
 // import { getadmins } from '../../../../service/repository/Admin';
 // import { EditarEmpresa } from "./components/editEmpresas";
 
-export function AreasInterviene(props){
+export function TrabajResponsables(props){
 
     const {informationDataGeneral, informaDataEmpresa} = props;
     const [listdata,setlistdata] = useState([]);
@@ -24,43 +34,43 @@ export function AreasInterviene(props){
     const [ismodeladd,setismodeladd] = useState(false);
     const [ismodelaEdit,setismodelaEdit] = useState(false);
     // const [textsearch,settextsearch] = useState("");
-    const [indexOpccionAreasInteraProces,setindexOpccionAreasInteraProcesa] = useState(0);
-    const [indexOpccionAreasEmpresaD,setindexOpccionAreasEmpresaD] = useState([]);
+    // const [indexOpccionAreasInteraProces,setindexOpccionAreasInteraProcesa] = useState(0);
+    const [indexOpccionTrabajResponsablesD,setindexOpccionTrabajResponsablesD] = useState([]);
     const dispatch = useNotification();
     
     useEffect(()=>{
         (async()=>{
-            await LoadDataAreasInteraProces();
+            await LoadDataTrabajResponsables();
             console.log(informaDataEmpresa)
         })();
     },[]);
 
-    const LoadDataAreasInteraProces = async () => {
+    const LoadDataTrabajResponsables = async () => {
         // console.log(informationDataGeneral.id_empresa)
-        let result = await getAreasInteraProces(informationDataGeneral.id_proceso);
+        let result = await getTrabajRespon(informationDataGeneral.id_proceso);
         console.log(result)
         setlistdata([]);
         // setlistdataHistory([]);
         setTimeout(() => {
             setlistdata(result);
-            setindexOpccionAreasEmpresaD([]);
+            setindexOpccionTrabajResponsablesD([]);
             // setlistdataHistory(result);
         }, 500);
     }
 
-    const AddItemDeleteAreasInteraProces = (id_empresa) => {
-        let data = indexOpccionAreasEmpresaD.filter((item)=>{return item == id_empresa})
+    const AddItemDeleteTrabajRespon = (id_empresa) => {
+        let data = indexOpccionTrabajResponsablesD.filter((item)=>{return item == id_empresa})
         if(data.length != 0){
-            setindexOpccionAreasEmpresaD(indexOpccionAreasEmpresaD.filter((item)=>{return item != id_empresa}))
+            setindexOpccionTrabajResponsablesD(indexOpccionTrabajResponsablesD.filter((item)=>{return item != id_empresa}))
             return
         }
-        let listdata = indexOpccionAreasEmpresaD;
+        let listdata = indexOpccionTrabajResponsablesD;
         listdata.push(id_empresa);
-        setindexOpccionAreasEmpresaD(listdata);
+        setindexOpccionTrabajResponsablesD(listdata);
     }
 
-    const DeleteAreasInteraProces = async (id_areasEmpresa) => {
-        await deleteAreasInteraProces({id_areasEmpresa:id_areasEmpresa});
+    const DeleteTrabajRespon = async (id_TrabajEmpresa) => {
+        await deleteTrabajRespon({id_areasEmpresa:id_TrabajEmpresa});
     }
 
     // const onUpdate = async () => {
@@ -100,38 +110,38 @@ export function AreasInterviene(props){
             label: "Eliminar",
             icon: DeleteOutlined,
             onChange: async () => {
-                if(indexOpccionAreasEmpresaD.length == 0){
+                if(indexOpccionTrabajResponsablesD.length == 0){
                     handleNewNotification(dispatch,'Selecciona una o varias empresas para poder eliminar', 404);
                     return
                 }
-                console.log(indexOpccionAreasEmpresaD)
-                for (let index = 0; index < indexOpccionAreasEmpresaD.length; index++) {
-                    const element = indexOpccionAreasEmpresaD[index];
-                    await DeleteAreasInteraProces(element);
+                console.log(indexOpccionTrabajResponsablesD)
+                for (let index = 0; index < indexOpccionTrabajResponsablesD.length; index++) {
+                    const element = indexOpccionTrabajResponsablesD[index];
+                    await DeleteTrabajRespon(element);
                 }
                 handleNewNotification(dispatch,'Se realizo la eliminacion en exito', 200);
-                await LoadDataAreasInteraProces()
+                await LoadDataTrabajResponsables()
             }
         }
     ]
 
     return (
         <>
-            <div className="Container_AreaEmpresas_principal_body">
+            <div className="Container_TrabajResponsables_principal_body">
                 <OpccionActions opccionSistem={opccionSistem} />
-                <div className="Container_AreaEmpresas_principal_body_subContainer">
+                <div className="Container_TrabajResponsables_principal_body_subContainer">
                     {listdata.map((item)=>{
                         return (<ItemAreasEmpresa onSelecteItem={(index)=>{
-                            AddItemDeleteAreasInteraProces(index);
+                            AddItemDeleteTrabajRespon(index);
                         }} onChange={(index)=>{
-                            setindexOpccionAreasInteraProcesa(index);
+                            // setindexOpccionAreasInteraProcesa(index);
                             setismodelaEdit(true);
-                        }} keyitem = {item.id_areaProce} title = {item.nombrearea} descrip = {item.descriparea} />)
+                        }} keyitem = {item.id_resposProce} title = {item.nombre_apellido} descrip = {item.descripc} />)
                     })}
                 </div>
             </div>
             <AddAreasInteraProces informaDataEmpresa = {informaDataEmpresa} informationDataGeneral = {informationDataGeneral} onInsert={async ()=>{
-                await LoadDataAreasInteraProces();
+                await LoadDataTrabajResponsables();
             }} propismodalvisible = {ismodeladd} propsetismodalvisible = {setismodeladd} />
             {/* {(ismodelaEdit)?<EditarAreasEmpresa informationDataGeneralEmpre={informationDataGeneral} onAction = {LoadDataAreasInteraProces} iskeyDatos = {indexOpccionAreasInteraProces} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>} */}
             {/* 
