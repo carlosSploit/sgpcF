@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./styles/index.css"
 import { useNotification } from "../../../../../../../../service/Notifications/NotificationProvider";
 import { deleteTrabajRespon, getTrabajRespon } from "../../../../../../../../service/repository/RTTrabajRespon";
-import { deleteAreasInteraProces } from "../../../../../../../../service/repository/RTAreasInteraProces";
+// import { deleteAreasInteraProces } from "../../../../../../../../service/repository/RTAreasInteraProces";
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { handleNewNotification } from "../../../../../../../../service/Notifications/useNotificacion";
 import { OpccionActions } from "../AreasInterviene/components/opccionActions";
 import { ItemAreasEmpresa } from "../AreasInterviene/components/itemAreasEmpresa";
-import { AddAreasInteraProces } from "../AreasInterviene/components/addAreasInterviene";
-import { deleteTrabajEmpresa } from "../../../../../../../../service/repository/RTTrabajEmpresas";
+// import { AddAreasInteraProces } from "../AreasInterviene/components/addAreasInterviene";
+// import { deleteTrabajEmpresa } from "../../../../../../../../service/repository/RTTrabajEmpresas";
+import { AddTrabajResponsabless } from "./components/addTrabajResponsables";
 // import { useNotification } from "../../../../../../../../service/Notifications/NotificationProvider";
 // // import { ConsuldataLogm, getKeysesion } from "../../../../../../../../service/repository/mithelworks";
 // // import { deleteEmpresa, getEmpresas } from "../../../../../../../../service/repository/RTEmpresas";
@@ -140,7 +141,7 @@ export function TrabajResponsables(props){
                     })}
                 </div>
             </div>
-            <AddAreasInteraProces informaDataEmpresa = {informaDataEmpresa} informationDataGeneral = {informationDataGeneral} onInsert={async ()=>{
+            <AddTrabajResponsabless informaDataEmpresa = {informaDataEmpresa} informationDataGeneral = {informationDataGeneral} onInsert={async ()=>{
                 await LoadDataTrabajResponsables();
             }} propismodalvisible = {ismodeladd} propsetismodalvisible = {setismodeladd} />
             {/* {(ismodelaEdit)?<EditarAreasEmpresa informationDataGeneralEmpre={informationDataGeneral} onAction = {LoadDataAreasInteraProces} iskeyDatos = {indexOpccionAreasInteraProces} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>} */}

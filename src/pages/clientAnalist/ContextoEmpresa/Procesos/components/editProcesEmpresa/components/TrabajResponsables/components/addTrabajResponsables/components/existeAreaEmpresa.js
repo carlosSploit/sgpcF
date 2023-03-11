@@ -7,14 +7,16 @@ import { handleNewNotification } from "../../../../../../../../../../../service/
 import { ForminputBotton, ForminputBottonSubmit, ForminputSelectItem } from "../../../../../../../../../../../service/morvius-service/form";
 import { addAreasEmpresa, getAresEmpresa } from "../../../../../../../../../../../service/repository/RTAreasEmpresas";
 import { addAreasInteraProces } from "../../../../../../../../../../../service/repository/RTAreasInteraProces";
+import { getTrabajEmpresa } from "../../../../../../../../../../../service/repository/RTTrabajEmpresas";
+import { addTrabajRespon } from "../../../../../../../../../../../service/repository/RTTrabajRespon";
 
-export function ExisteAreaInterProces(props){
+export function ExisteTrabajResponsabless(props){
 
     const [propinformationDataGeneral, propsetinformationDataGeneral] = useState({});
     const { onInsert=()=>{} ,informationDataGeneral = propinformationDataGeneral, informaDataEmpresa } = props;
 
-    const [listAreasInteracProc, setlistAreasInteracProc] = useState([]);
-    const [textAreasInteracProc, settextAreasInteracProc] = useState(0);
+    const [listTrabajResponsabless, setlistTrabajResponsabless] = useState([]);
+    const [textTrabajResponsabless, settextTrabajResponsabless] = useState(0);
     const dispatch = useNotification();
 
     useEffect(()=>{
@@ -24,17 +26,17 @@ export function ExisteAreaInterProces(props){
     },[]);
 
     const onLoadAreas = async ()=>{
-        let result = await getAresEmpresa(informaDataEmpresa);
-        setlistAreasInteracProc([]);
+        let result = await getTrabajEmpresa(informaDataEmpresa);
+        setlistTrabajResponsabless([]);
         // setlistdataHistory([]);
         setTimeout(() => {
             let data = result.map((item)=>{
                 return {
-                    id: item.id_areempre,
-                    name: item.nombrearea
+                    id: item.Id_trabajador,
+                    name: item.nombre_apellido
                 }
             })
-            setlistAreasInteracProc(data)
+            setlistTrabajResponsabless(data)
             // setlistdataHistory(result);
         }, 500);
     }
@@ -43,10 +45,10 @@ export function ExisteAreaInterProces(props){
         event.preventDefault();
 
         let data = {
-            "id_areaEmpre" : textAreasInteracProc,
+            "id_trabajador" : textTrabajResponsabless,
             "id_proceso": informationDataGeneral.id_proceso
         };
-        let resul = await addAreasInteraProces(data);
+        let resul = await addTrabajRespon(data);
         handleNewNotification(dispatch,resul.messege, resul.status);
         setTimeout(() => {
             (async ()=>{await onInsert();})();
@@ -56,11 +58,11 @@ export function ExisteAreaInterProces(props){
     }
 
     const limpiartext = () =>{
-        settextAreasInteracProc(0);
+        settextTrabajResponsabless(0);
     }
 
     const onSelectItem = (json) => {
-        settextAreasInteracProc(json.id);
+        settextTrabajResponsabless(json.id);
     }
 
     return (
@@ -80,13 +82,13 @@ export function ExisteAreaInterProces(props){
             >
                 <>{/* apace cuando no se a seleccionado nada */}
                 <div style={{height:'5px'}} />
-                {(listAreasInteracProc.length != 0)? 
+                {(listTrabajResponsabless.length != 0)? 
                     <div className="container_AreaInterProces_selectet_data">
-                        <ForminputSelectItem  listaObj={listAreasInteracProc} setlistaObj = {setlistAreasInteracProc} keyname={"selestProcesoDep"} checkbox={textAreasInteracProc} setcheckbox={settextAreasInteracProc} onChangeinput={onSelectItem} />
+                        <ForminputSelectItem  listaObj={listTrabajResponsabless} setlistaObj = {setlistTrabajResponsabless} keyname={"selestProcesoDep"} checkbox={textTrabajResponsabless} setcheckbox={settextTrabajResponsabless} onChangeinput={onSelectItem} />
                     </div>
                 :<></>}
                 <div style={{height: '20px'}}></div></>
-                <ForminputBottonSubmit label = {'Registrar Area que Interviene'} />
+                <ForminputBottonSubmit label = {'Registrar el Responsable'} />
                 <ForminputBotton label = {'Cancelar'} isInvertColor = {true} />
                 {/* <ForminputBotton label = {"Cancelar"} isInvertColor = {true} /> */}
             </form>

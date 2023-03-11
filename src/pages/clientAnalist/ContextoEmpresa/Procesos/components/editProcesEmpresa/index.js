@@ -72,11 +72,11 @@ export function EditarProcesEmpresa(props){
             icontab : EditOutlined
         },{
             id: 1,
-            label : "Areas Intervienen",
+            label : "Areas",
             icontab : PartitionOutlined
         },{
             id: 2,
-            label : "Responsables del Proceso",
+            label : "Responsables",
             icontab : TeamOutlined
         }
         //,
