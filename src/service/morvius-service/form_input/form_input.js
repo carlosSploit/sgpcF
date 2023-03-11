@@ -1110,6 +1110,7 @@ export function FormListchipts(props){
             keyimage="imgUrl",
             isimage=false,
             isActionChips = false,
+            isInterationsUltime = false,
             idstate = changeidstate,
             setidstate = setchangeidstate,
             actionChips=[
@@ -1150,6 +1151,11 @@ export function FormListchipts(props){
         }],isChipsAction=false} = props;
         const {statechip, setstatechip} = useState(false);
 
+        const isUltimo = () => {
+            let dataInfoUltimate = listdatos[listdatos.length - 1];
+            return dataInfoUltimate[keyitem] == iditem
+        }
+
         return (
             <div className={(iditem === itemSelect)?"form-item-chips-activate":"form-item-chips"} >
                 {(isphoto)?<div className="form-item-chips-photo" style={{backgroundImage:`url('${photo}')`}}/>:<div></div>}
@@ -1158,11 +1164,16 @@ export function FormListchipts(props){
                 }}>{name}</div>
                 {(isChipsAction)?<div style={{width:"10px"}}/>:<></>}
                 {/* imprime todas las acciones */}
-                {(isChipsAction)?actionChips.map(item=>{
+                {(isChipsAction)?((isInterationsUltime)?((isUltimo())?(actionChips.map(item=>{
                     return <div onClick={()=>{item.onAction(iditem);}} className="form-item-chips-action">
                         <item.icon className={(iditem === itemSelect)?"form-item-chips-action-icon-activate":"form-item-chips-action-icon"} ></item.icon>
                     </div>;
-                }):<></>}
+                })):<></>):(actionChips.map(item=>{
+                    return <div onClick={()=>{item.onAction(iditem);}} className="form-item-chips-action">
+                        <item.icon className={(iditem === itemSelect)?"form-item-chips-action-icon-activate":"form-item-chips-action-icon"} ></item.icon>
+                    </div>;
+                }))):<></>}
+                {/* // {(isChipsAction)?:<></>} */}
             </div>
         );
     }

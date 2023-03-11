@@ -8,20 +8,21 @@ import { ComponentModalFloting, ComponentModalFlotingBody, ComponentModalFloting
 // import { ConsuldataLogm, getKeysesion } from "../../../../../../service/repository/mithelworks";
 // import { addEmpresa, addSelectEmpresa, getEmpresas } from "../../../../../../service/repository/Empresas";
 // import { EditOutlined } from "@ant-design/icons";
-import { NoExisteEmpresa } from "./components/noExisteProcesEmpresa";
+// import { NoExisteEmpresa } from "./components/noExisteProcesEmpresa";
+import { NoExisteActivpEmpresa } from "./components/noExisteActivo";
 // import { ExisteEmpresa } from "./components/existeEmpresa";
 
-export function AddProcesEmpresas(props){
+export function AddActivoEmpresas(props){
     const [ismodalvisible, setismodalvisible] = useState(false);
     const [isinformacionGeneral, setisSinformacionGeneral] = useState(0);
         
     const { informacionGeneral = isinformacionGeneral, onInsert=()=>{}, propismodalvisible = ismodalvisible, propsetismodalvisible = setismodalvisible } = props;
     // const [index,setindex] = useState(0);
-    const [listview,setlistview] = useState([<NoExisteEmpresa informacionGeneral={informacionGeneral}  onInsert = {onInsert} />]);
+    const [listview,setlistview] = useState([<NoExisteActivpEmpresa informacionGeneral={informacionGeneral}  onInsert = {onInsert} />]);
 
     useEffect(()=>{
         console.log(informacionGeneral)
-        setlistview([<NoExisteEmpresa informacionGeneral={informacionGeneral}  onInsert = {onInsert} />])
+        setlistview([<NoExisteActivpEmpresa informacionGeneral={informacionGeneral}  onInsert = {onInsert} />])
     },[])
 
     // const listOpt = [

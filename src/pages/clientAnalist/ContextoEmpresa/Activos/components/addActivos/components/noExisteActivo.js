@@ -5,12 +5,13 @@ import { useNotification } from "../../../../../../../service/Notifications/Noti
 // import { ConsuldataLogm, getKeysesion } from "../../../../../../../service/repository/mithelworks";
 import { handleNewNotification } from "../../../../../../../service/Notifications/useNotificacion";
 import { Forminput, ForminputArea, ForminputBotton, ForminputBottonSubmit, ForminputComboBox, ForminputRadioSlice, ForminputSelectItem, Forminputmail } from "../../../../../../../service/morvius-service/form";
-import { addTrabajEmpresa } from "../../../../../../../service/repository/RTTrabajEmpresas";
+// import { addTrabajEmpresa } from "../../../../../../../service/repository/RTTrabajEmpresas";
 import { getTipoProces } from "../../../../../../../service/repository/RTTiposProces";
 import { getGerarcProces } from "../../../../../../../service/repository/RTGerarcProces";
 import { addPrcesEmpresa, getProcesEmpresa } from "../../../../../../../service/repository/RTProcesEmpresas";
+import { ForminputSelectItemDependenci } from "../../../../../../../service/morvius-service/form_input/complements/forminputSelectItemDependenci/ForminputSelectItem";
 
-export function NoExisteEmpresa(props){
+export function NoExisteActivpEmpresa(props){
     
     const { onInsert=()=>{}, informacionGeneral = 0} = props;
 
@@ -25,8 +26,8 @@ export function NoExisteEmpresa(props){
     const [textProcEmpre, settexProcEmpre] = useState(0);
     const [textProcEmpreMemoryInit, settextProcEmpreMemoryInit] = useState(0);
 
-    const [textCorreo, settextCorreo] = useState("");
-    const [textCodigo, settextCodigo] = useState("");
+    // const [textCorreo, settextCorreo] = useState("");
+    // const [textCodigo, settextCodigo] = useState("");
     // const [textvision, settextvision] = useState("");
 
     const [listTipoProc, setlistTipoProc] = useState([]);
@@ -72,8 +73,8 @@ export function NoExisteEmpresa(props){
         event.preventDefault();
 
         let data = {
-            "nombreProce" : event.target.nombrEmp.value,
-            "descripccion": event.target.descr.value,
+            "nombre_Activo" : event.target.nombrEmp.value,
+            "descripc": event.target.descr.value,
             "id_gerarProc": textGerarProc,
             "id_tipProce": textTipoProc,
             "isDepProcPadre": (isdependepader)?1:0,
@@ -123,8 +124,8 @@ export function NoExisteEmpresa(props){
                 <Forminput textinput ={textname} settextinput = {settextname} placeHolder="Nombre" keyname ={`nombrEmp`}/>
                 <div style={{height:'5px'}} />
                 <ForminputArea textinput ={textdescrip} settextinput = {settextdescrip} placeHolder="Descripccion" keyname ={`descr`}/>
-                <div style={{height:'5px'}} />
-                <ForminputComboBox valueInit={textTipoProc} keyname={'tiproc'} isInvert={true} width={100} height={28} keyvalue={'id_tipProce'} keylabel={'nombre'} datacombo={listTipoProc} isdefault={true} onChangeinput={(jsonval)=>{
+                {/* <div style={{height:'5px'}} /> */}
+                {/* <ForminputComboBox valueInit={textTipoProc} keyname={'tiproc'} isInvert={true} width={100} height={28} keyvalue={'id_tipProce'} keylabel={'nombre'} datacombo={listTipoProc} isdefault={true} onChangeinput={(jsonval)=>{
                     settextTipoProc(jsonval.value)
                 }} />
                 <div style={{height:'5px'}} />
@@ -135,14 +136,12 @@ export function NoExisteEmpresa(props){
                 <ForminputRadioSlice checkradio = {isdependepader} setcheckradio = {setisdependepader} label={'El proceso tiene un proceso padre'} onChangeinput={(stade)=>{
                     console.log(stade)
                     setisdependepader(stade)
-                }} ></ForminputRadioSlice>
+                }} ></ForminputRadioSlice> */}
                 {/* <Forminput textinput ={texttelefono} settextinput = {settexttelefono} placeHolder="Telefono" keyname ={`telf`}/> */}
                 <div style={{height:'5px'}} />
-                {(!isdependepader)?<></>: (listProcEmpre.length != 0)? 
-                    <div className="container_inserproces_selectet_data">
-                        <ForminputSelectItem  listaObj={listProcEmpre} setlistaObj = {setlistProcEmpre} keyname={"selestProcesoDep"} checkbox={textProcEmpre} setcheckbox={settexProcEmpre} onChangeinput={onSelectItem} />
-                    </div>
-                :<></>}
+                {<div className="container_inserproces_selectet_data">
+                        <ForminputSelectItemDependenci  />
+                    </div>}
                 <div style={{height: '20px'}}></div></>
                 <ForminputBottonSubmit label = {'Registrar a la Empresa'} />
                 <ForminputBotton label = {'Cancelar'} isInvertColor = {true} onChange={limpiartext}/>

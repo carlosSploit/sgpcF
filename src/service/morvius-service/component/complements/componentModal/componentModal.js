@@ -15,6 +15,7 @@ export function PopModal(props){
     const {children, 
            colorBackgroud = "#fff",
            colorTitle="#9686C3",
+           onClose = ()=>{},
            propismodalvisible = ismodalvisible, 
            propsetismodalvisible = setismodalvisible, 
            namemodal= "Default"} = props;
@@ -24,6 +25,7 @@ export function PopModal(props){
         //portalRoot.removeChild(divcontainer);
         let state = !propismodalvisible;
         propsetismodalvisible(state);
+        onClose();
         // console.log(`${idDivcontent} - cerro`);
         // console.log("holass");
     }

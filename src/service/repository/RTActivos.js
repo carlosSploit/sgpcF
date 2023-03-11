@@ -25,7 +25,7 @@ export async function getActivosEmpresa(idUsername = 0) {
 
 export async function addActivosEmpresa(jsondat = {}) {
   const data = jsondat;
-  const url = `${domain_api}/areempr/`;
+  const url = `${domain_api}/activos/`;
   const result = await axios.post(url, data, {
     headers: {
       Authorization: `Bearer ${await gettoken()}`,
