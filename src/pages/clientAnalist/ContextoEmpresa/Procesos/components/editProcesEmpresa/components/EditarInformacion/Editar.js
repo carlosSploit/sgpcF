@@ -4,29 +4,37 @@ import { useEffect, useState } from "react";
 
 // import { uploudImage } from "../../../../service/repository/uploudimage";
 // import { updateclientAnalist } from "../../../../service/repository/clientAnalist";
-import { ForminputAreatEdit, ForminputBottonSubmit, ForminputComboBoxEdit, ForminputEdit, ForminputmailEdit } from "../../../../../../../../service/morvius-service/form_input/form_input";
+import { ForminputAreatEdit, ForminputBottonSubmit, ForminputComboBoxEdit, ForminputEdit, ForminputRadioSlice, ForminputSelectIcon, ForminputmailEdit } from "../../../../../../../../service/morvius-service/form_input/form_input";
 import { handleNewNotification, useNotification } from "../../../../../../../../service/Notifications/useNotificacion";
-import { updateEmpresa } from "../../../../../../../../service/repository/RTEmpresas";
-import { updateTrabajEmpresa } from "../../../../../../../../service/repository/RTTrabajEmpresas";
+// import { updateEmpresa } from "../../../../../../../../service/repository/RTEmpresas";
+// import { updateTrabajEmpresa } from "../../../../../../../../service/repository/RTTrabajEmpresas";
 import { getGerarcProces } from "../../../../../../../../service/repository/RTGerarcProces";
+import { getTipoProces } from "../../../../../../../../service/repository/RTTiposProces";
+import { getProcesEmpresa, updateProcesEmpresa } from "../../../../../../../../service/repository/RTProcesEmpresas";
+import { ForminputSelectItemEdit } from "../../../../../../../../service/morvius-service/form_input/complements/forminputSelectItem/ForminputSelectItem";
 
 export function EditarProcesEmpresaInformation(props){
 
     const [propinformationDataGeneral, propsetinformationDataGeneral] = useState({
-        "id_proceso": 2,
+        "id_proceso": -1,
         "nombreProce": "Proceso de dictado de cursos.",
         "descripccion": "Proceso donde un procesor dicta el cursos en un sistema E-learning a un alumnos.",
-        "id_gerarProc": 3,
+        "id_gerarProc": -1,
         "nombre": "SubProceso",
-        "id_tipProce": 2,
+        "id_tipProce": -1,
         "nombreTip": "Procesos de apoyo",
         "isDepProcPadre": 1,
-        "id_DepentProc": 1
+        "id_DepentProc": -1
       });
-    const {onAction, informationDataGeneral = propinformationDataGeneral, setinformationDataGeneral = propsetinformationDataGeneral} = props;
+      const [propinfoEmpresa, propsetinfoEmpresa] = useState(0);
+    const {onAction,infoEmpresa = propinfoEmpresa, setinfoEmpresa = propsetinfoEmpresa, informationDataGeneral = propinformationDataGeneral, setinformationDataGeneral = propsetinformationDataGeneral} = props;
+    const [isdependepader, setisdependepader] = useState(false);
     const [textGerarProc, settexGerarProc] = useState(0);
-    // const [textGerarProcMemoryInit, settextGerarProcMemoryInit] = useState(0);
     const [listGerarProc, setlistGerarProc] = useState([]);
+    const [textTipoProc, settextTipoProc] = useState(0);
+    const [listTipoProc, setlistTipoProc] = useState([]);
+    const [textProcEmpre, settexProcEmpre] = useState(0);
+    const [listProcEmpre, setlistProcEmpre] = useState([]);
     // const [filephoto, setfilephoto] = useState(null);
     const dispatch = useNotification();
 
@@ -34,62 +42,45 @@ export function EditarProcesEmpresaInformation(props){
         // console.log(informationDataGeneral)
         (async()=>{
             // inicializar el tipo de proceso
-            // let result = await getTipoProces();
-            // setlistTipoProc(result);
-            // if(result.length != 0){
-            //     settextTipoProc(result[0].id_tipProce)
-            //     settextTipoProcMemoryInit(result[0].id_tipProce)
-            // }
+            console.log(informationDataGeneral);
+            console.log(infoEmpresa);
+            let result = await getTipoProces();
+            setlistTipoProc(result);
+            settextTipoProc(informationDataGeneral.id_tipProce)
             // inicializar la gerarquia de proceso
             let resultger = await getGerarcProces();
             setlistGerarProc(resultger);
-            if(resultger.length != 0){
-                settexGerarProc(resultger[0].id_gerarProc)
-            }
+            settexGerarProc(informationDataGeneral.id_gerarProc)
+            // inicializar la dependencia
+            setisdependepader((informationDataGeneral.isDepProcPadre == 1))
             // inicializar los procesoso
-            // let resultproc = await getProcesEmpresa(informacionGeneral);
-            
-            // console.log(resultproc)
-            // if(resultproc.length != 0){
-            //     let data = resultproc.map((item)=>{
-            //         return {
-            //             id: item.id_proceso,
-            //             name: item.nombreProce
-            //         }
-            //     })
-            //     setlistProcEmpre(data);
-            //     // settexProcEmpre(resultproc[0].id_proceso)
-            //     // settextProcEmpreMemoryInit(resultproc[0].id_proceso)
-            // }
+            let resultproc = await getProcesEmpresa(infoEmpresa);
+            if(resultproc.length != 0){
+                let data = resultproc.map((item)=>{
+                    return {
+                        id: item.id_proceso,
+                        name: item.nombreProce
+                    }
+                })
+                setlistProcEmpre(data);
+                settexProcEmpre(informationDataGeneral.id_DepentProc);
+            }
         })();
     },[])
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        // let urlimage = "https://thumbs.dreamstime.com/b/icono-gris-de-perfil-usuario-s%C3%ADmbolo-empleado-avatar-web-y-dise%C3%B1o-ilustraci%C3%B3n-signo-aislado-en-fondo-blanco-191067342.jpg";
-
-        // if(filephoto == null){
-        //     urlimage = (isurl(informationDataGeneral.photo))? informationDataGeneral.photo : urlimage;
-        // }
-
-        // if(filephoto != null){
-        //     urlimage = await uploudImage(filephoto);
-        //     urlimage = urlimage.data;
-        //     urlimage = urlimage[0].url;
-        // }
-
-        // console.log(urlimage)
 
         let data = {
-            "nombre": event.target[`nombrEmp${informationDataGeneral.Id_trabajador}`].value,
-            "cargo" :  event.target[`carg${informationDataGeneral.Id_trabajador}`].value,
-            "descripc": event.target[`descr${informationDataGeneral.Id_trabajador}`].value,
-            "telefono" : event.target[`telf${informationDataGeneral.Id_trabajador}`].value,
-            "correo" : event.target[`correo${informationDataGeneral.Id_trabajador}`].value,
-            "codTrabajo": event.target[`codig${informationDataGeneral.Id_trabajador}`].value
-            // "photo": urlimage
+            "nombreProce" : event.target[`nombrEmp${informationDataGeneral.id_proceso}`].value,
+            "descripccion": event.target[`descr${informationDataGeneral.id_proceso}`].value,
+            "id_gerarProc": textGerarProc,
+            "id_tipProce": textTipoProc,
+            "isDepProcPadre": (isdependepader)? 1 : 0,
+            "id_DepentProc": (isdependepader)? textProcEmpre : 0
         };
-        let resul = await updateTrabajEmpresa(informationDataGeneral.Id_trabajador, data);
+
+        let resul = await updateProcesEmpresa(informationDataGeneral.id_proceso, data);
         handleNewNotification(dispatch,resul.messege, resul.status);
         setTimeout(() => {
                 (async ()=>{
@@ -97,10 +88,6 @@ export function EditarProcesEmpresaInformation(props){
                 })();
         }, 500);
     }
-
-    // const oncallbackchange = (file) => {
-    //     setfilephoto(file);
-    // }
 
     return (<form
         style={{
@@ -122,6 +109,7 @@ export function EditarProcesEmpresaInformation(props){
         <div style={{height:'5px'}} />
         <ForminputAreatEdit valueInit={informationDataGeneral.descripccion} placeHolder="Descripccion" keyname ={`descr${informationDataGeneral.id_proceso}`}/>
         <div style={{height:'5px'}} />
+        {/* Gerarquia de procesos */}
         {(listGerarProc.length != 0)?<ForminputComboBoxEdit 
             setpropdatacombo = {setlistGerarProc}
             indexinput = {textGerarProc}
@@ -135,18 +123,44 @@ export function EditarProcesEmpresaInformation(props){
             keylabel={'nombre'} 
             datacombo={listGerarProc} 
             placeHolder = {'Gerarquia del proceso'}
-            onChangeinput = {(jsonval)=>{ settexGerarProc(jsonval.value)}} />:<></>}
-        
-        
-        {/* <div style={{height:'5px'}} />
-        <ForminputEdit valueInit={informationDataGeneral.cargo} placeHolder="Cargo" keyname ={`carg${informationDataGeneral.Id_trabajador}`}/>
-        
+            // onChangeinput = {(jsonval)=>{ settexGerarProc(jsonval.value)}} 
+            />:<></>}
         <div style={{height:'5px'}} />
-        <ForminputEdit valueInit={informationDataGeneral.telefono} placeHolder="Telefono" keyname ={`telf${informationDataGeneral.Id_trabajador}`}/>
+        {/* Tipos de procesos */}
+        {(listGerarProc.length != 0)?<ForminputComboBoxEdit 
+            setpropdatacombo = {setlistTipoProc}
+            indexinput = {textTipoProc}
+            setindexinput = {settextTipoProc}
+            valueInit={informationDataGeneral.id_tipProce}  
+            keyname={`tipros${informationDataGeneral.id_proceso}`} 
+            isInvert={true} 
+            width={100} 
+            height={28} 
+            keyvalue={'id_tipProce'} 
+            keylabel={'nombre'} 
+            datacombo={listTipoProc} 
+            placeHolder = {'Tipos de procesos'}
+            // onChangeinput = {(jsonval)=>{ settextTipoProc(jsonval.value)}} 
+            />:<></>}
+        {/* si depende de un proceso */}
+        <div style={{height:'8px'}} />
+        <div style={{marginLeft: '4%'}}>
+            <ForminputRadioSlice checkradio = {isdependepader} setcheckradio = {setisdependepader} label={'El proceso tiene un proceso padre'} onChangeinput={(stade)=>{
+                console.log(stade)
+                setisdependepader(stade)
+            }} ></ForminputRadioSlice>
+        </div>
         <div style={{height:'5px'}} />
-        <ForminputmailEdit valueInit={informationDataGeneral.correo} placeHolder="Correo" keyname ={`correo${informationDataGeneral.Id_trabajador}`}/>
-        <div style={{height:'5px'}} />
-        <ForminputEdit valueInit={informationDataGeneral.codTrabajo} placeHolder="Codigo Empresa" keyname ={`codig${informationDataGeneral.Id_trabajador}`}/> */}
+        {/*  */}
+        {(isdependepader)?((listProcEmpre.length != 0)?<ForminputSelectItemEdit 
+            datacombo={listProcEmpre}
+            setpropdatacombo = {setlistProcEmpre}
+            indexinput = {textProcEmpre}
+            setindexinput = {settexProcEmpre}
+            valueInit={informationDataGeneral.id_DepentProc}  
+            keyname={`props${informationDataGeneral.id_proceso}`} 
+            placeHolder = {'Tipos de procesos'}
+            onChangeinput = {(jsonval)=>{ settexProcEmpre(jsonval.value)}} />:<></>):<></>}
         <div style={{height: '20px'}}></div>
         <ForminputBottonSubmit label = {'Editar'} />
         {/* <ForminputBotton label = {"Cancelar"} isInvertColor = {true} /> */}

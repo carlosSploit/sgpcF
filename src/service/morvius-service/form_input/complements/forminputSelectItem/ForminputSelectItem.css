@@ -123,3 +123,91 @@
     color: white;
     text-align: center;
 }
+
+/* ----------------------------------------------- */
+
+.Container_FormSelectItem_principal_master {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.Container_FormSelectItem_principal {
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.Container_FormSelectItem_subContainer_information {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Container_FormSelectItem_subContainer_information_value {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    justify-content: flex-start;
+    margin-bottom: 2px;
+    color: var(--color-master);
+}
+
+.Container_FormSelectItem_subContainer_information_placeholder {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    justify-content: flex-start;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.Container_FormSelectItem_subContainer_bottonEdit {
+    height: 36px;
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.Container_FormSelectItem_subContainer_bottonEdit_botonEdit {
+    width: 24px;
+    height: 24px;
+    background-color: rgba(55, 93, 129, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+
+.Container_FormSelectItem_subContainer_bottonEdit_botonEdit_actic {
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    border-color: var(--color-secundary);
+    border-width: 1px;
+    border-style: solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.Container_FormSelectItem_subContainer_bottonEdit_botonEdit_icon {
+    font-size: 12px;
+    color: var(--color-secundary);
+}
+
+.Container_FormSelectItem_subContainer_bottonEdit_botonEdit_actic>.Container_FormSelectItem_subContainer_bottonEdit_botonEdit_icon {
+    font-size: 14px;
+    color: var(--color-secundary);
+}

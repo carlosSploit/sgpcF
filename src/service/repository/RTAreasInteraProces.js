@@ -2,8 +2,8 @@ import axios from "axios";
 import { gettoken } from "./mithelworks";
 import { domain_api } from "./variables";
 
-export async function getProcesEmpresa(idUsername = 0) {
-  const url = `${domain_api}/proceEmpresa/${idUsername}`;
+export async function getAreasInteraProces(idProces = 0) {
+  const url = `${domain_api}/areainterproce/${idProces}`;
   const result = await axios.get(url, {
     headers: {
       Authorization: `Bearer ${await gettoken()}`,
@@ -23,9 +23,9 @@ export async function getProcesEmpresa(idUsername = 0) {
 //   return result.data;
 // }
 
-export async function addPrcesEmpresa(jsondat = {}) {
+export async function addAreasInteraProces(jsondat = {}) {
   const data = jsondat;
-  const url = `${domain_api}/proceEmpresa/`;
+  const url = `${domain_api}/areainterproce/`;
   const result = await axios.post(url, data, {
     headers: {
       Authorization: `Bearer ${await gettoken()}`,
@@ -46,10 +46,10 @@ export async function addPrcesEmpresa(jsondat = {}) {
 //   return result.data;
 // }
 
-export async function updateProcesEmpresa(id, jsondat = {}) {
+export async function updateAreasInteraProces(id, jsondat = {}) {
   const id_negocio = id;
   const data = jsondat;
-  const url = `${domain_api}/proceEmpresa/${id_negocio}`;
+  const url = `${domain_api}/areainterproce/${id_negocio}`;
   const result = await axios.put(url, data, {
     headers: {
       Authorization: `Bearer ${await gettoken()}`,
@@ -59,8 +59,8 @@ export async function updateProcesEmpresa(id, jsondat = {}) {
   return result.data;
 }
 
-export async function deleteProcesEmpresa({id_ProcesEmpresa}) {
-  const url = `${domain_api}/proceEmpresa/${id_ProcesEmpresa}`;
+export async function deleteAreasInteraProces({id_areasEmpresa}) {
+  const url = `${domain_api}/areainterproce/${id_areasEmpresa}`;
   const result = await axios.delete(url, {
     headers: {
       Authorization: `Bearer ${await gettoken()}`,

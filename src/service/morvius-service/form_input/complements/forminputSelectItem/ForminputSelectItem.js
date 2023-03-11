@@ -1,4 +1,4 @@
-import { CloseCircleOutlined, SendOutlined } from "@ant-design/icons";
+import { CloseCircleOutlined, CloseOutlined, EditOutlined, SendOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import { FormModalSelectItem } from "./complements/formModelSelectItem/formModalSelectItem";
 import "./ForminputSelectItem.css";
@@ -26,6 +26,7 @@ export function ForminputSelectItem(props){
         listaObj = proplistaObj,
         setlistaObj = propsetlistaObj,
         valueInit = 0,
+        isVisibleErrorLabel = false,
         onChangeinput=(json)=>{}
     } = props;
     const messValidator = "No se a seleccionado a un icono";
@@ -110,11 +111,96 @@ export function ForminputSelectItem(props){
                     value={checkbox}
                 />
                 <FormModalSelectItem isVisibleFoto={isVisibleFoto} nameTitle={nameTitle} listaObj={listaObj} setlistaObj = {setlistaObj} propismodalvisible={ismodalvisible} propsetismodalvisible={setismodalvisible} onChangeSelect={onChangeSelect} />
-                <div style={{height: "10px"}}/>
-                {(valuestade)?<div className="form_input_validator">{messValidator}</div>:<div></div>}
+                
+                {(valuestade && isVisibleErrorLabel)?<div style={{height: "10px"}}/>:<div></div>}
+                {(valuestade && isVisibleErrorLabel)?<div className="form_input_validator">{messValidator}</div>:<div></div>}
                 {(valuestade)?<div style={{height: "5px"}}/>:<div></div>}
             </div>
         </>
     );
 
+}
+
+export function ForminputSelectItemEdit(props){
+    // encabezados
+    const [stateindexinput, changesetindexinput] = useState(-1);
+    const [indexinputmemory, changesetindexinputmemory] = useState("");
+    const [propdatacombo, changesetpropdatacombo] = useState([{id:1,label:"tecnologia"},{id:2,label:"computer"},{id:3,label:"cultura"}]);
+    const {
+        datacombo = propdatacombo,
+        setpropdatacombo = changesetpropdatacombo,
+        indexinput = stateindexinput,
+        setindexinput = changesetindexinput,
+        keyname="keyinputgeneric",
+        valueInit = 0,
+        placeHolder = "name"
+        // isVisibleErrorLabel = false,
+        // messValidator="Error. La casilla esta vacia.",
+    } = props;
+    // estados del componentes
+    const [textinput, settextinput] = useState('');
+    // const [valuestade,setvaluestade] = useState(false);
+    const [BottonData,setBottonData] = useState(false);
+    // const refInput = useRef();
+
+    useEffect(()=>{
+        console.log(valueInit)
+        // console.log(valueInit)
+        nameIndexCapture({valueInit:valueInit});
+        changesetindexinputmemory(valueInit);
+    },[]);
+
+    const nameIndexCapture = ({valueInit}) => {
+        setindexinput(valueInit);
+        console.log(datacombo)
+        console.log(valueInit);
+        let dataInf = datacombo.filter((item)=>{
+            return item.id == valueInit;
+        })
+        if(dataInf.length == 0){
+            settextinput('Desconocido');
+            setindexinput(0);
+            return;
+        }
+        const info = dataInf[0]
+        settextinput(info.name)
+    }
+
+    return (
+        <>
+            <div className="Container_FormSelectItem_principal_master">
+                <div className="Container_FormSelectItem_principal">
+                    {(!BottonData)?<div className="Container_FormSelectItem_subContainer_information">
+                        <div className="Container_FormSelectItem_subContainer_information_value">{textinput}</div>
+                        <div className="Container_FormSelectItem_subContainer_information_placeholder">{placeHolder}</div>
+                    </div>:<></>}
+                    <div className="Container_FormSelectItem_subContainer_information" style={{display: `${(!BottonData)?'none':'block'}`}}>
+                        <div style={{width: '95%'}}>
+                            {/* {(indexinput != -1)?<ForminputSelectItem valueInit={indexinput} keyname={keyname} isInvert={true} width={100} height={28} keyvalue={keyvalue} keylabel={keylabel} datacombo={datacombo} isdefault={true} onChangeinput={(jsonval)=>{
+                                nameIndexCapture({valueInit:jsonval.value})
+                            }}/>:<></>} */}
+                            {(indexinput != -1)?<ForminputSelectItem valueInit={indexinput} listaObj={datacombo} setlistaObj = {setpropdatacombo} keyname={keyname} checkbox={indexinput} setcheckbox={setindexinput} onChangeinput={(jsonval)=>{
+                                console.log(jsonval)
+                                nameIndexCapture({valueInit:jsonval.id})
+                            }} />:<></>}
+                        </div>
+                    </div>
+                    {(!BottonData)?<div className="Container_FormSelectItem_subContainer_bottonEdit"> 
+                        <div className={"Container_FormSelectItem_subContainer_bottonEdit_botonEdit"} onClick={()=>{setBottonData(!BottonData)}}>
+                            <EditOutlined className="Container_FormSelectItem_subContainer_bottonEdit_botonEdit_icon"/>
+                        </div>
+                    </div>:<div className="Container_FormSelectItem_subContainer_bottonEdit"> 
+                        <div className={(BottonData)?"Container_FormSelectItem_subContainer_bottonEdit_botonEdit_actic":"Container_FormSelectItem_subContainer_bottonEdit_botonEdit"} onClick={()=>{setBottonData(!BottonData)}}>
+                            <EditOutlined className="Container_FormSelectItem_subContainer_bottonEdit_botonEdit_icon"/>
+                        </div>
+                        <div style={{marginRight: '5px'}}></div>
+                        <div className={(!BottonData)?"Container_FormSelectItem_subContainer_bottonEdit_botonEdit_actic":"Container_FormSelectItem_subContainer_bottonEdit_botonEdit"} onClick={()=>{nameIndexCapture({valueInit:indexinputmemory});setBottonData(!BottonData);}}>
+                            <CloseOutlined className="Container_FormSelectItem_subContainer_bottonEdit_botonEdit_icon"/>
+                        </div>
+                    </div>}
+                </div>
+            </div>
+            {/*  */}
+        </>
+    );
 }

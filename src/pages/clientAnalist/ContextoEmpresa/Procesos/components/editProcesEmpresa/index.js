@@ -18,6 +18,7 @@ import { ComponentModalFloting, ComponentModalFlotingBody, ComponentModalFloting
 // import { getTrabajEmpresa } from "../../../../../../service/repository/RTTrabajEmpresas";
 import { EditOutlined, PartitionOutlined, TeamOutlined } from "@ant-design/icons";
 import { getProcesEmpresa } from "../../../../../../service/repository/RTProcesEmpresas";
+import { AreasInterviene } from "./components/AreasInterviene";
 
 export function EditarProcesEmpresa(props){
 
@@ -56,8 +57,9 @@ export function EditarProcesEmpresa(props){
         setlistview([<EditarProcesEmpresaInformation onAction={async () => {
                 await actualizeData();
                 await onAction();
-            }} onUpdate={onAction} informationDataGeneral={ListdataUser[0]}/>,
-            // <AreasEmpresas informationDataGeneral={ListdataUser[0]}/>,<ObjetivEmpresas informationDataGeneral={ListdataUser[0]}/>
+            }} onUpdate={onAction} infoEmpresa={informationDataGeneral} informationDataGeneral={ListdataUser[0]}/>,
+            <AreasInterviene informationDataGeneral={ListdataUser[0]}/>
+            // ,<ObjetivEmpresas informationDataGeneral={ListdataUser[0]}/>
         ])
     }
 

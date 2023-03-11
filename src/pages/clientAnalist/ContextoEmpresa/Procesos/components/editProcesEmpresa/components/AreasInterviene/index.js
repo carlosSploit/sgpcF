@@ -10,12 +10,13 @@ import { OpccionActions } from "./components/opccionActions";
 import { deleteAreasEmpresa, getAresEmpresa } from "../../../../../../../../service/repository/RTAreasEmpresas";
 import { AddAreaEmpresas } from "./components/addAreaEmpresas";
 import { EditarAreasEmpresa } from "./components/editAreasEmpresas";
+import { deleteAreasInteraProces, getAreasInteraProces } from "../../../../../../../../service/repository/RTAreasInteraProces";
 // import { Componentsearchanimation} from "../../../../service/morvius-service/component/components";
 // import { AddEmpresas } from "./components/addEmpresas";
 // import { getadmins } from '../../../../service/repository/Admin';
 // import { EditarEmpresa } from "./components/editEmpresas";
 
-export function AreasEmpresas(props){
+export function AreasInterviene(props){
 
     const {informationDataGeneral} = props;
     const [listdata,setlistdata] = useState([]);
@@ -23,21 +24,20 @@ export function AreasEmpresas(props){
     const [ismodeladd,setismodeladd] = useState(false);
     const [ismodelaEdit,setismodelaEdit] = useState(false);
     // const [textsearch,settextsearch] = useState("");
-    const [indexOpccionAreasEmpresa,setindexOpccionAreasEmpresa] = useState(0);
+    const [indexOpccionAreasInteraProces,setindexOpccionAreasInteraProcesa] = useState(0);
     const [indexOpccionAreasEmpresaD,setindexOpccionAreasEmpresaD] = useState([]);
     const dispatch = useNotification();
     
     useEffect(()=>{
         (async()=>{
-            await LoadDataAreasEmpresa();
+            await LoadDataAreasInteraProces();
             console.log(informationDataGeneral)
         })();
     },[]);
 
-    const LoadDataAreasEmpresa = async () => {
-        console.log(informationDataGeneral.id_empresa)
-        let result = await getAresEmpresa(informationDataGeneral.id_empresa);
-        console.log(result)
+    const LoadDataAreasInteraProces = async () => {
+        // console.log(informationDataGeneral.id_empresa)
+        let result = await getAreasInteraProces(informationDataGeneral.id_proceso);
         setlistdata([]);
         // setlistdataHistory([]);
         setTimeout(() => {
@@ -47,7 +47,7 @@ export function AreasEmpresas(props){
         }, 500);
     }
 
-    const AddItemDeleteAreaEmpresas = (id_empresa) => {
+    const AddItemDeleteAreasInteraProces = (id_empresa) => {
         let data = indexOpccionAreasEmpresaD.filter((item)=>{return item == id_empresa})
         if(data.length != 0){
             setindexOpccionAreasEmpresaD(indexOpccionAreasEmpresaD.filter((item)=>{return item != id_empresa}))
@@ -58,9 +58,9 @@ export function AreasEmpresas(props){
         setindexOpccionAreasEmpresaD(listdata);
     }
 
-    const DeleteAreaEmpresa = async (id_areasEmpresa) => {
+    const DeleteAreasInteraProces = async (id_areasEmpresa) => {
         console.log(id_areasEmpresa)
-        await deleteAreasEmpresa({id_areasEmpresa: id_areasEmpresa});
+        await deleteAreasInteraProces({id_areasEmpresa:id_areasEmpresa});
     }
 
     // const onUpdate = async () => {
@@ -107,10 +107,10 @@ export function AreasEmpresas(props){
                 console.log(indexOpccionAreasEmpresaD)
                 for (let index = 0; index < indexOpccionAreasEmpresaD.length; index++) {
                     const element = indexOpccionAreasEmpresaD[index];
-                    await DeleteAreaEmpresa(element);
+                    await DeleteAreasInteraProces(element);
                 }
                 handleNewNotification(dispatch,'Se realizo la eliminacion en exito', 200);
-                await LoadDataAreasEmpresa()
+                await LoadDataAreasInteraProces()
             }
         }
     ]
@@ -118,23 +118,22 @@ export function AreasEmpresas(props){
     return (
         <>
             <div className="Container_AreaEmpresas_principal_body">
-                    <OpccionActions opccionSistem={opccionSistem} />
-                    <div className="Container_AreaEmpresas_principal_body_subContainer">
-                        {listdata.map((item)=>{
-                            return (<ItemAreasEmpresa onSelecteItem={(index)=>{
-                                AddItemDeleteAreaEmpresas(index);
-                            }} onChange={(index)=>{
-                                setindexOpccionAreasEmpresa(index);
-                                setismodelaEdit(true);
-                            }} keyitem = {item.id_areempre} title = {item.nombrearea} descrip = {item.descriparea} />)
-                        })}
-                    </div>
+                <OpccionActions opccionSistem={opccionSistem} />
+                <div className="Container_AreaEmpresas_principal_body_subContainer">
+                    {listdata.map((item)=>{
+                        return (<ItemAreasEmpresa onSelecteItem={(index)=>{
+                            AddItemDeleteAreasInteraProces(index);
+                        }} onChange={(index)=>{
+                            setindexOpccionAreasInteraProcesa(index);
+                            setismodelaEdit(true);
+                        }} keyitem = {item.id_areempre} title = {item.nombrearea} descrip = {item.descriparea} />)
+                    })}
                 </div>
-                <AddAreaEmpresas informationDataGeneral = {informationDataGeneral} onInsert={async ()=>{
-                    await LoadDataAreasEmpresa();
-                }} propismodalvisible = {ismodeladd} propsetismodalvisible = {setismodeladd} />
-            
-            {(ismodelaEdit)?<EditarAreasEmpresa informationDataGeneralEmpre={informationDataGeneral} onAction = {LoadDataAreasEmpresa} iskeyDatos = {indexOpccionAreasEmpresa} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>}
+            </div>
+            <AddAreaEmpresas informationDataGeneral = {informationDataGeneral} onInsert={async ()=>{
+                await LoadDataAreasInteraProces();
+            }} propismodalvisible = {ismodeladd} propsetismodalvisible = {setismodeladd} />
+            {(ismodelaEdit)?<EditarAreasEmpresa informationDataGeneralEmpre={informationDataGeneral} onAction = {LoadDataAreasInteraProces} iskeyDatos = {indexOpccionAreasInteraProces} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>}
             {/* 
              */}
         </>

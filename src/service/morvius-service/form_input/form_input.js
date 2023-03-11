@@ -723,6 +723,18 @@ export function ForminputmailEdit(props){
     );
 }
 
+/**
+ * <input para form de tipo Radio Slice, con ocultar o desocultar texto>
+ * @param   {<string>} key <Id del input>
+ * @param   {<string>} valueInit <Palabra de inicio de cada input>
+ * @param   {<string>} placeHolder <Mensaje de gia de cada input>
+ * @param   {<string>} Limitchar <Limite de caracteres de un textinput>
+ * @param   {<string>} onValitador <Metodo que te permite validar el texto de entrada, si retorna true, sale un error>
+ * @param   {<string>} messValidator <Mensaje de error cuando se ejecute el onValitado>
+ * @param   {<string>} onChangeinput <Metodo que tiene como parametro el texto escrito en el input>
+ * @return  {<type>}        <description>
+ */
+
 export function ForminputRadioSlice(props){
     const [propstateradio,propsetstateradio] = useState(false);
     // encabezados
@@ -817,26 +829,29 @@ export function ForminputBottonSubmit(props){
 
 export function ForminputComboBox(props){
     // encabezados
-    const [statecheckbox, changesetcheckbox] = useState("");
+    const [statecheckbox, changesetcheckbox] = useState(0);
 
-    let {
-    keyname="KeyComboBox",
-    checkbox = statecheckbox,
-    setcheckbox = changesetcheckbox,
-    isdefault= false,
-    valueInit = 0,
-    isInvert = false,
-    height = 0,
-    keyvalue= "id",
-    keylabel= "label",
-    width = 0,
-    datacombo=[{id:1,label:"tecnologia"},{id:2,label:"computer"},{id:3,label:"cultura"}],
-    onChangeinput=(json)=>{}} = props;
+    const {
+        keyname="KeyComboBox",
+        checkbox = statecheckbox,
+        setcheckbox = changesetcheckbox,
+        isdefault= false,
+        valueInit = 0,
+        isInvert = false,
+        height = 0,
+        keyvalue= "id",
+        keylabel= "label",
+        width = 0,
+        datacombo=[{id:1,label:"tecnologia"},{id:2,label:"computer"},{id:3,label:"cultura"}],
+        onChangeinput=(json)=>{}
+    } = props;
 
     useEffect(()=>{
+        
         if(isdefault){
             setcheckbox(0);
         }else{
+            // console.log(valueInit)
             if(valueInit == 0){
                 setcheckbox((datacombo[0])[keyvalue]);
             }else{
@@ -852,22 +867,29 @@ export function ForminputComboBox(props){
             {/* <div style={{height: "5px"}}/> */}
             <div className="form_conteiner" style={(width == 0)?{}:{width: `${width}%`}}>
                 <div className={(!isInvert)?"form_input_ComboBox_conteiner":'form_input_ComboBox_conteiner_invert'} style={(height == 0)?{}:{height: `${height}px`, padding: "0px"}}>
-                    <select className={(!isInvert)?"form_input_ComboBox":'form_input_ComboBox_invert'} style={(height == 0)?{}:{height: `${height}px`, padding: "0px 10px 0px 10px"}} name={`${keyname}`} id={`${keyname}`} value={checkbox} onChange={(e)=>{
-                        setcheckbox(e.target.value);
-                        // si la opccion de default esta activada
-                        if(isdefault && e.target.value == "0"){
-                            let json = {value:"0",label:"Default", nomenclature:keyname};
-                            onChangeinput(json);
-                            return;
-                        }else{
-                            let nameitem = datacombo.filter((item)=>{
-                                return item[keyvalue] == e.target.value;
-                            });
-                            let json = {value:(nameitem[0])[keyvalue],label:(nameitem[0])[keylabel], nomenclature:keyname};
-                            onChangeinput(json);
-                        }
-                        //---------------------------------------
-                    }} >
+                    <select 
+                        className={(!isInvert)?"form_input_ComboBox":'form_input_ComboBox_invert'} 
+                        style={(height == 0)?{}:{height: `${height}px`, padding: "0px 10px 0px 10px"}} 
+                        name={`${keyname}`} 
+                        id={`${keyname}`} 
+                        value={checkbox} 
+                        onChange={(e)=>{
+                            setcheckbox(e.target.value);
+                            // si la opccion de default esta activada
+                            if(isdefault && e.target.value == "0"){
+                                let json = {value:"0",label:"Default", nomenclature:keyname};
+                                onChangeinput(json);
+                                return;
+                            }else{
+                                let nameitem = datacombo.filter((item)=>{
+                                    return item[keyvalue] == e.target.value;
+                                });
+                                let json = {value:(nameitem[0])[keyvalue],label:(nameitem[0])[keylabel], nomenclature:keyname};
+                                onChangeinput(json);
+                            }
+                            //---------------------------------------
+                        }} 
+                        >
                         {(isdefault)?<option value={"0"}>Default</option>:<></>}
                         {datacombo.map((item)=>{
                             return <option value={`${item[keyvalue]}`}>{item[keylabel]}</option>;
@@ -881,26 +903,25 @@ export function ForminputComboBox(props){
 
 export function ForminputComboBoxEdit(props){
     // encabezados
-    const [stateindexinput, changesetindexinput] = useState(0);
+    const [stateindexinput, changesetindexinput] = useState(-1);
     const [indexinputmemory, changesetindexinputmemory] = useState("");
     const [propdatacombo, changesetpropdatacombo] = useState([{id:1,label:"tecnologia"},{id:2,label:"computer"},{id:3,label:"cultura"}]);
     const {
-    refMant,
-    datacombo = propdatacombo,
-    setpropdatacombo = changesetpropdatacombo,
-    indexinput = stateindexinput,
-    setindexinput = changesetindexinput,
-    keyname="keyinputgeneric",
-    keyvalue = 'id',
-    keylabel = 'label',
-    onError=()=>{},
-    valueInit= "",
-    placeHolder = "name",
-    // isVisibleErrorLabel = false,
-    // messValidator="Error. La casilla esta vacia.",
-    onChangeinput=(text)=>{
-        //console.log(text);
-    }} = props;
+        // refMant,
+        datacombo = propdatacombo,
+        setpropdatacombo = changesetpropdatacombo,
+        indexinput = stateindexinput,
+        setindexinput = changesetindexinput,
+        keyname="keyinputgeneric",
+        keyvalue = 'id',
+        keylabel = 'label',
+        // onError=()=>{},
+        valueInit= "",
+        placeHolder = "name",
+        // isVisibleErrorLabel = false,
+        // messValidator="Error. La casilla esta vacia.",
+        // onChangeinput=(text)=>{}
+    } = props;
     // estados del componentes
     const [textinput, settextinput] = useState('');
     // const [valuestade,setvaluestade] = useState(false);
@@ -908,18 +929,21 @@ export function ForminputComboBoxEdit(props){
     // const refInput = useRef();
 
     useEffect(()=>{
+        setindexinput(-1);
         // console.log(valueInit)
         nameIndexCapture({valueInit:valueInit});
         changesetindexinputmemory(valueInit);
     },[]);
 
     const nameIndexCapture = ({valueInit}) => {
+        // console.log(valueInit)
         setindexinput(valueInit);
         let dataInf = datacombo.filter((item)=>{
-            console.log(`${item[keyvalue]} == ${valueInit}`)
+            // console.log(`${item[keyvalue]} == ${valueInit}`)
             return item[keyvalue] == valueInit;
         })
         const info = dataInf[0]
+        // console.log(info)
         settextinput(info[keylabel])
     }
 
@@ -933,9 +957,9 @@ export function ForminputComboBoxEdit(props){
                     </div>:<></>}
                     <div className="Container_ForminputEdit_subContainer_information" style={{display: `${(!BottonData)?'none':'block'}`}}>
                         <div style={{width: '95%'}}>
-                            <ForminputComboBox valueInit={indexinput} keyname={keyname} isInvert={true} width={100} height={28} keyvalue={keyvalue} keylabel={keylabel} datacombo={datacombo} isdefault={true} onChangeinput={(jsonval)=>{
+                            {(indexinput != -1)?<ForminputComboBox valueInit = { indexinput } keyname={keyname} isInvert={true} width={100} height={28} keyvalue={keyvalue} keylabel={keylabel} datacombo={datacombo} onChangeinput={(jsonval)=>{
                                 nameIndexCapture({valueInit:jsonval.value})
-                            }}/>
+                            }}/>:<></>}
                         </div>
                     </div>
                     {(!BottonData)?<div className="Container_ForminputEdit_subContainer_bottonEdit"> 
@@ -957,7 +981,6 @@ export function ForminputComboBoxEdit(props){
         </>
     );
 }
-
 
 export function ForminputImageCircle(props){
     const {keyname="keyimagecircle",oncallbackchange=(file)=>{
