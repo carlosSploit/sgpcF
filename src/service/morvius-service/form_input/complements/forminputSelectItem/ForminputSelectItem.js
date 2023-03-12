@@ -9,18 +9,21 @@ export function ForminputSelectItem(props){
         {
             id: 1,
             name: "basic1",
-            photo: "https://idisl.info/wp-content/uploads/2015/07/generic-avatar.png"
+            photo: "https://idisl.info/wp-content/uploads/2015/07/generic-avatar.png",
+            descr: 'Descripccion Basica'
         },
         {
             id: 2,
             name: "basic2",
-            photo: "https://idisl.info/wp-content/uploads/2015/07/generic-avatar.png"
+            photo: "https://idisl.info/wp-content/uploads/2015/07/generic-avatar.png",
+            descr: 'Descripccion Basica'
         }
     ]);
     let {
         nameTitle = "Selecciona el item",
         keyname = "KeySelectIcon",
         isVisibleFoto = false,
+        isVisibleDescri = false,
         checkbox = stateSelectItem,
         setcheckbox = changestateSelectItem,
         listaObj = proplistaObj,
@@ -110,7 +113,7 @@ export function ForminputSelectItem(props){
                     name={`${keyname}`} 
                     value={checkbox}
                 />
-                <FormModalSelectItem isVisibleFoto={isVisibleFoto} nameTitle={nameTitle} listaObj={listaObj} setlistaObj = {setlistaObj} propismodalvisible={ismodalvisible} propsetismodalvisible={setismodalvisible} onChangeSelect={onChangeSelect} />
+                <FormModalSelectItem isVisibleDescri={isVisibleDescri} isVisibleFoto={isVisibleFoto} nameTitle={nameTitle} listaObj={listaObj} setlistaObj = {setlistaObj} propismodalvisible={ismodalvisible} propsetismodalvisible={setismodalvisible} onChangeSelect={onChangeSelect} />
                 
                 {(valuestade && isVisibleErrorLabel)?<div style={{height: "10px"}}/>:<div></div>}
                 {(valuestade && isVisibleErrorLabel)?<div className="form_input_validator">{messValidator}</div>:<div></div>}

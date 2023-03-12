@@ -24,7 +24,7 @@ export function ItemAreasEmpresa(props){
                 <div className="Container_ItemAreaEmpresa_conten_secondary_seleccion_Infor">
                     <div className="Container_ItemAreaEmpresa_conten_InfoData_primary" >{(title.length > 20)? title.substring(0,20) + '...':title}</div>
                     {/* <div style={{height: '1px'}} />
-                    <div className="Container_ItemAreaEmpresa_conten_InfoData_secundary" >{subtitle}</div> */}
+                    */}
                 </div>
                 {/* <div className="Container_ItemAreaEmpresa_conten_secondary_seleccion_suInfor">
                     <div className="Container_ItemAreaEmpresa_conten_InfoData_Descrip" >{descrip}</div>

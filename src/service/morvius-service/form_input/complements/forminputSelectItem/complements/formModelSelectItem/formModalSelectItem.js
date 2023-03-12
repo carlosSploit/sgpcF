@@ -14,16 +14,19 @@ export function FormModalSelectItem(props){
         {
             id: 1,
             name: "basic1",
-            photo: "https://idisl.info/wp-content/uploads/2015/07/generic-avatar.png"
+            photo: "https://idisl.info/wp-content/uploads/2015/07/generic-avatar.png",
+            descr: ''
         },
         {
             id: 2,
             name: "basic2",
-            photo: "https://idisl.info/wp-content/uploads/2015/07/generic-avatar.png"
+            photo: "https://idisl.info/wp-content/uploads/2015/07/generic-avatar.png",
+            descr: ''
         }
     ]);
     const {
         nameTitle = "",
+        isVisibleDescri = false,
         isVisibleFoto = false,
         onChangeSelect = (key) => {},
         propismodalvisible = ismodalvisibleIN,
@@ -81,7 +84,7 @@ export function FormModalSelectItem(props){
                     <div className="container_view_selectItem_body_content">
                         <div className="container_view_selectItem_body">
                             {histlistIcons.map((item)=>{
-                                return <CartsItemsIcons isVisibleFoto={isVisibleFoto} keyid={item.id} name={item.name} value={item.id} photo={item.photo} onchange={onchange} keySelet={isSelectIcon}/>
+                                return <CartsItemsIcons isVisibleDescri = {isVisibleDescri} isVisibleFoto={isVisibleFoto} descr={item.descr} keyid={item.id} name={item.name} value={item.id} photo={item.photo} onchange={onchange} keySelet={isSelectIcon}/>
                             })}
                         </div>
                     </div>

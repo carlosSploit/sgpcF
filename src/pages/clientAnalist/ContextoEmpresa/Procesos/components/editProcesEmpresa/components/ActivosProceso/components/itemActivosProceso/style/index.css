@@ -1,15 +1,16 @@
 @import url('../../../../../../../../.././../../service/morvius-service/masterVarial.css');
 
 
-.Container_ItemAreaEmpresa_conten_Pri {
+.Container_ItemActivosProces_conten_Pri {
     width: 100%;
     min-height: 46px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 5px;
 }
 
-.Container_ItemAreaEmpresa_conten_secondary {
+.Container_ItemActivosProces_conten_secondary {
     width: 98%;
     height: auto;
     min-height: 40px;
@@ -21,7 +22,7 @@
     overflow: hidden;
 }
 
-.Container_ItemAreaEmpresa_conten_secondary_seleccion {
+.Container_ItemActivosProces_conten_secondary_seleccion {
     width: 50px;
     height: 100%;
     display: flex;
@@ -29,7 +30,7 @@
     justify-content: center;
 }
 
-.Container_ItemAreaEmpresa_conten_secondary_seleccion_radio {
+.Container_ItemActivosProces_conten_secondary_seleccion_radio {
     width: 24px;
     height: 24px;
     background-color: white;
@@ -39,14 +40,14 @@
     justify-content: center;
 }
 
-.Container_ItemAreaEmpresa_conten_secondary_seleccion_radio.active>div {
+.Container_ItemActivosProces_conten_secondary_seleccion_radio.active>div {
     width: 14px;
     height: 14px;
     border-radius: 50%;
     background-color: var(--color-secundary);
 }
 
-.Container_ItemAreaEmpresa_conten_secondary_seleccion_conten_information {
+.Container_ItemActivosProces_conten_secondary_seleccion_conten_information {
     width: calc(100% - 50px);
     height: 100%;
     display: flex;
@@ -57,7 +58,7 @@
     margin-bottom: 10px;
 }
 
-.Container_ItemAreaEmpresa_conten_secondary_seleccion_Infor {
+.Container_ItemActivosProces_conten_secondary_seleccion_Infor {
     width: 100%;
     height: 100%;
     display: flex;
@@ -67,18 +68,24 @@
     margin-left: 10px;
 }
 
-.Container_ItemAreaEmpresa_conten_InfoData_primary {
+.Container_ItemActivosProces_conten_InfoData_primary {
     color: var(--color-secundary);
     font-size: 16px;
     font-weight: 600;
     text-overflow: initial;
 }
 
-/* .Container_ItemAreaEmpresa_conten_InfoData_secundary {
+.Container_ItemActivosProces_conten_InfoData_secundary {
+    color: var(--color-text-secundary);
+    font-size: 14px;
+    text-overflow: initial;
+}
+
+/* .Container_ItemActivosProces_conten_InfoData_secundary {
     color: var(--color-text-secundary);
 } */
 
-/* .Container_ItemAreaEmpresa_conten_secondary_seleccion_suInfor {
+/* .Container_ItemActivosProces_conten_secondary_seleccion_suInfor {
     width: 50%;
     height: 100%;
     display: flex;
@@ -87,16 +94,16 @@
     justify-content: center;
 } */
 
-/* .Container_ItemAreaEmpresa_conten_InfoData_Descrip {
+/* .Container_ItemActivosProces_conten_InfoData_Descrip {
     color: var(--color-text-secundary);
 } */
 
 @media (max-width: 600px) {
-    .Container_ItemAreaEmpresa_conten_secondary_seleccion_suInfor {
+    .Container_ItemActivosProces_conten_secondary_seleccion_suInfor {
         display: none;
     }
 
-    .Container_ItemAreaEmpresa_conten_secondary_seleccion_conten_information {
+    .Container_ItemActivosProces_conten_secondary_seleccion_conten_information {
         justify-content: flex-start;
     }
 }

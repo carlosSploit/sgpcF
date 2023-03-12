@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import "./styles/index.css"
 import { useNotification } from "../../../../../../../../service/Notifications/NotificationProvider";
-import { deleteTrabajRespon, getTrabajRespon } from "../../../../../../../../service/repository/RTTrabajRespon";
+// import { deleteTrabajRespon, getTrabajRespon } from "../../../../../../../../service/repository/RTTrabajRespon";
 // import { deleteAreasInteraProces } from "../../../../../../../../service/repository/RTAreasInteraProces";
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { handleNewNotification } from "../../../../../../../../service/Notifications/useNotificacion";
 import { OpccionActions } from "../AreasInterviene/components/opccionActions";
-import { ItemAreasEmpresa } from "../AreasInterviene/components/itemAreasEmpresa";
+// import { ItemAreasEmpresa } from "../AreasInterviene/components/itemAreasEmpresa";
 // import { AddAreasInteraProces } from "../AreasInterviene/components/addAreasInterviene";
 // import { deleteTrabajEmpresa } from "../../../../../../../../service/repository/RTTrabajEmpresas";
 // import { AddTrabajResponsabless } from "./components/addTrabajResponsables";
 import { deleteActivosProceso, getActivosProceso } from "../../../../../../../../service/repository/RTActivosProceso";
 import { AddActivosProceso } from "./components/addActivosProceso";
+import { ItemActivosProces } from "./components/itemActivosProceso/index";
+import { EditarDependenActivosProceso } from "./components/editActivosProceso";
 // import { useNotification } from "../../../../../../../../service/Notifications/NotificationProvider";
 // // import { ConsuldataLogm, getKeysesion } from "../../../../../../../../service/repository/mithelworks";
 // // import { deleteEmpresa, getEmpresas } from "../../../../../../../../service/repository/RTEmpresas";
@@ -37,21 +39,21 @@ export function ActivosProceso(props){
     const [ismodeladd,setismodeladd] = useState(false);
     const [ismodelaEdit,setismodelaEdit] = useState(false);
     // const [textsearch,settextsearch] = useState("");
-    // const [indexOpccionAreasInteraProces,setindexOpccionAreasInteraProcesa] = useState(0);
+    const [indexSelectObjActivosProces,setSelectObjActivosProces] = useState(0);
     const [indexOpccionActivosProcesoD,setindexOpccionActivosProcesoD] = useState([]);
     const dispatch = useNotification();
     
     useEffect(()=>{
         (async()=>{
             await LoadDataActivosProceso();
-            console.log(informaDataEmpresa)
+            // console.log(informaDataEmpresa)
         })();
     },[]);
 
     const LoadDataActivosProceso = async () => {
         // console.log(informationDataGeneral.id_empresa)
         let result = await getActivosProceso(informationDataGeneral.id_proceso);
-        console.log(result)
+        // console.log(result)
         setlistdata([]);
         // setlistdataHistory([]);
         setTimeout(() => {
@@ -134,10 +136,16 @@ export function ActivosProceso(props){
                 <OpccionActions opccionSistem={opccionSistem} />
                 <div className="Container_TrabajResponsables_principal_body_subContainer">
                     {listdata.map((item)=>{
-                        return (<ItemAreasEmpresa onSelecteItem={(index)=>{
+                        // console.log(item)
+                        return (<ItemActivosProces subtitle = {item.dependAbreb} onSelecteItem={(index)=>{
                             AddItemDeleteActivProceso(index);
                         }} onChange={(index)=>{
-                            // setindexOpccionAreasInteraProcesa(index);
+                            const ListObjActivProces = listdata.filter((item)=>{
+                                return item.id_activproc == index
+                            })
+                            console.log(ListObjActivProces)
+                            const ObjActivProces = ListObjActivProces[0];
+                            setSelectObjActivosProces(ObjActivProces);
                             setismodelaEdit(true);
                         }} keyitem = {item.id_activproc} title = {item.nombre_Activo} descrip = {item.descripc} />)
                     })}
@@ -146,7 +154,7 @@ export function ActivosProceso(props){
             <AddActivosProceso informaDataEmpresa = {informaDataEmpresa} informationDataGeneral = {informationDataGeneral} onInsert={async ()=>{
                 await LoadDataActivosProceso();
             }} propismodalvisible = {ismodeladd} propsetismodalvisible = {setismodeladd} />
-            {/* {(ismodelaEdit)?<EditarAreasEmpresa informationDataGeneralEmpre={informationDataGeneral} onAction = {LoadDataAreasInteraProces} iskeyDatos = {indexOpccionAreasInteraProces} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>} */}
+            {(ismodelaEdit)?<EditarDependenActivosProceso informationProceses={informationDataGeneral} iskeyDatos = {indexSelectObjActivosProces} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>}
             {/* 
              */}
         </>

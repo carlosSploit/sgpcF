@@ -6,10 +6,11 @@ import { deleteTrabajRespon, getTrabajRespon } from "../../../../../../../../ser
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { handleNewNotification } from "../../../../../../../../service/Notifications/useNotificacion";
 import { OpccionActions } from "../AreasInterviene/components/opccionActions";
-import { ItemAreasEmpresa } from "../AreasInterviene/components/itemAreasEmpresa";
+// import { ItemAreasEmpresa } from "../AreasInterviene/components/itemAreasEmpresa";
 // import { AddAreasInteraProces } from "../AreasInterviene/components/addAreasInterviene";
 // import { deleteTrabajEmpresa } from "../../../../../../../../service/repository/RTTrabajEmpresas";
 import { AddTrabajResponsabless } from "./components/addTrabajResponsables";
+import { ItemTrabajResponsab } from "./components/itemTrabajResponsables";
 // import { useNotification } from "../../../../../../../../service/Notifications/NotificationProvider";
 // // import { ConsuldataLogm, getKeysesion } from "../../../../../../../../service/repository/mithelworks";
 // // import { deleteEmpresa, getEmpresas } from "../../../../../../../../service/repository/RTEmpresas";
@@ -132,7 +133,7 @@ export function TrabajResponsables(props){
                 <OpccionActions opccionSistem={opccionSistem} />
                 <div className="Container_TrabajResponsables_principal_body_subContainer">
                     {listdata.map((item)=>{
-                        return (<ItemAreasEmpresa onSelecteItem={(index)=>{
+                        return (<ItemTrabajResponsab onSelecteItem={(index)=>{
                             AddItemDeleteTrabajRespon(index);
                         }} onChange={(index)=>{
                             // setindexOpccionAreasInteraProcesa(index);

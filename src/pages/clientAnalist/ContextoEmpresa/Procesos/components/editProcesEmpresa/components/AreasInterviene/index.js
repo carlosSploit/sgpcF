@@ -3,13 +3,13 @@ import "./styles/index.css"
 import { useNotification } from "../../../../../../../../service/Notifications/NotificationProvider";
 // import { ConsuldataLogm, getKeysesion } from "../../../../../../../../service/repository/mithelworks";
 // import { deleteEmpresa, getEmpresas } from "../../../../../../../../service/repository/RTEmpresas";
-import { ControlOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
+import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { handleNewNotification } from "../../../../../../../../service/Notifications/useNotificacion";
-import { ItemAreasEmpresa, ItemEmpresa } from "./components/itemAreasEmpresa";
+import { ItemAreasEmpresa } from "./components/itemAreasEmpresa";
 import { OpccionActions } from "./components/opccionActions";
 // import { deleteAreasEmpresa, getAresEmpresa } from "../../../../../../../../service/repository/RTAreasEmpresas";
 import { AddAreasInteraProces } from "./components/addAreasInterviene";
-import { EditarAreasEmpresa } from "./components/editAreasInterviene";
+// import { EditarAreasEmpresa } from "./components/editAreasInterviene";
 import { deleteAreasInteraProces, getAreasInteraProces } from "../../../../../../../../service/repository/RTAreasInteraProces";
 // import { Componentsearchanimation} from "../../../../service/morvius-service/component/components";
 // import { AddEmpresas } from "./components/addEmpresas";
@@ -121,7 +121,7 @@ export function AreasInterviene(props){
                 <OpccionActions opccionSistem={opccionSistem} />
                 <div className="Container_AreaEmpresas_principal_body_subContainer">
                     {listdata.map((item)=>{
-                        return (<ItemAreasEmpresa onSelecteItem={(index)=>{
+                        return (<ItemAreasEmpresa subtitle={item.dependAbreb} onSelecteItem={(index)=>{
                             AddItemDeleteAreasInteraProces(index);
                         }} onChange={(index)=>{
                             setindexOpccionAreasInteraProcesa(index);

@@ -4,7 +4,7 @@ import React from "react";
 import "./style/itemCardSelect.css";
 
 export default function itemCardSelect(props){
-    const { keyid = 0, name = "puntos", value = 0, photo = "", onchange=(Keyicono)=>{}, keySelet = 0, isVisibleFoto = false} = props;
+    const { isVisibleDescri = false , keyid = 0, name = "puntos", value = 0, descr="", photo = "", onchange=(Keyicono)=>{}, keySelet = 0, isVisibleFoto = false} = props;
 
     const colorItemBackgroundSeleter = () => {
         return  (keyid != keySelet)? "transparent": "#375D81";
@@ -22,6 +22,10 @@ export default function itemCardSelect(props){
         return  (keyid != keySelet)? "#546e7a": "#ffff";
     }
 
+    const colorItemTextDescr = () => {
+        return  (keyid != keySelet)? "#81878d": "#d9dff8";
+    }
+
     const onChangePress = () => {
         onchange(keyid);
     }
@@ -36,7 +40,13 @@ export default function itemCardSelect(props){
                     :<></>}
                     
                     <div style={{width:"10px"}}/> 
-                    <div className="container_item_selectItem_subcontaion_text" style={{color: `${colorItemText()}`}}> {name}</div>
+                    <div className="container_item_selectItem_subcontaion_information">
+                        <div className="container_item_selectItem_subcontaion_text" style={{color: `${colorItemText()}`}}> {name}</div>
+                        {(isVisibleDescri)?
+                        <div className="container_item_selectItem_subcontaion_subtext" style={{color: `${colorItemTextDescr()}`}}> {descr}</div>:
+                        <></>}
+                        
+                    </div>
                 </div>
                 <div className="container_item_selectItem_conte_puntos">
                     <div className="container_item_selectItem_conte_puntos_text" style={{backgroundColor: `${colorItemBackgroundSeleter()}`}}>

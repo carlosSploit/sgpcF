@@ -20,12 +20,8 @@ export function NoExisteActivpEmpresa(props){
     // input de contenidos
     const [textname, settextname] = useState("");
     const [textdescrip, settextdescrip] = useState("");
+    
     const [textTipoActiv, settextTipoActiv] = useState(0);
-
-    // const [textCorreo, settextCorreo] = useState("");
-    // const [textCodigo, settextCodigo] = useState("");
-    // const [textvision, settextvision] = useState("");
-
     const [listActivProc, setlistActivProc] = useState([]);
     // const [listGerarProc, setlistGerarProc] = useState([]);
     // const [listProcEmpre, setlistProcEmpre] = useState([]);

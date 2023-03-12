@@ -1,8 +1,10 @@
 /* puntos class */
 
+
 .container_item_selectItem_conte_bueno {
     width: 100%;
-    height: 40px;
+    min-height: 40px;
+    height: auto;
     background-color: white;
     /* margin-right: 10px;
      */
@@ -58,9 +60,15 @@
 }
 
 .container_item_selectItem_subcontaion_text {
+    font-size: 16px;
+    color: forestgreen;
+    /* background-color: blueviolet; */
+}
+
+.container_item_selectItem_subcontaion_subtext {
     font-size: 14px;
     color: forestgreen;
-    text-align: center;
+    /* background-color: blueviolet; */
 }
 
 .container_item_selectItem_subcontaion_text_cont_icon {
@@ -75,4 +83,15 @@
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 50%;
+}
+
+.container_item_selectItem_subcontaion_information {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: start;
+    justify-content: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
