@@ -3,34 +3,29 @@ import { useNotification } from "../../../../../../../../../../../service/Notifi
 // import { ConsuldataLogm, getKeysesion } from "../../../../../../../../../../../service/repository/mithelworks";
 // import { addEmpresa } from "../../../../../../../../../../../service/repository/RTEmpresas";
 import { handleNewNotification } from "../../../../../../../../../../../service/Notifications/useNotificacion";
-import { Forminput, ForminputArea, ForminputBotton, ForminputBottonSubmit } from "../../../../../../../../../../../service/morvius-service/form";
-import { addAreasEmpresa } from "../../../../../../../../../../../service/repository/RTAreasEmpresas";
-import { addObjetivEmpresa } from "../../../../../../../../../../../service/repository/RTObjetivEmpresas";
+import { Forminput, ForminputBotton, ForminputBottonSubmit } from "../../../../../../../../../../../service/morvius-service/form";
+// import { addAreasEmpresa } from "../../../../../../../../../../../service/repository/RTAreasEmpresas";
+// import { addObjetivEmpresa } from "../../../../../../../../../../../service/repository/RTObjetivEmpresas";
+import { addObjetivVersionAnalitic } from "../../../../../../../../../../../service/repository/RTObjetivVersionAnalitic";
 
-export function ExisteObjetivoEmpresa(props){
+export function ExisteObjetivVersionAnalitic(props){
 
     const [propinformationDataGeneral, propsetinformationDataGeneral] = useState({});
     const { onInsert=()=>{} ,informationDataGeneral = propinformationDataGeneral } = props;
 
     // input de contenidos
     const [textname, settextname] = useState("");
-    const [textdescrip, settextdescrip] = useState("");
+    // const [textdescrip, settextdescrip] = useState("");
     const dispatch = useNotification();
-
-    useEffect(()=>{
-        (async()=>{
-            console.log(informationDataGeneral.id_empresa)
-        })();
-    },[]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         let data = {
-            "id_empresa" : informationDataGeneral.id_empresa,
+            "id_versionAnali" : informationDataGeneral,
             "nombreObje": event.target.nombrEmp.value
         };
-        let resul = await addObjetivEmpresa(data);
+        let resul = await addObjetivVersionAnalitic(data);
         handleNewNotification(dispatch,resul.messege, resul.status);
         setTimeout(() => {
             (async ()=>{await onInsert();})();
@@ -41,7 +36,6 @@ export function ExisteObjetivoEmpresa(props){
 
     const limpiartext = () =>{
         settextname("");
-        settextdescrip("");
     }
 
     return (
@@ -63,7 +57,7 @@ export function ExisteObjetivoEmpresa(props){
                 <div style={{height:'5px'}} />
                 <Forminput textinput ={textname} settextinput = {settextname} placeHolder="Nombre" keyname ={`nombrEmp`}/>
                 <div style={{height: '20px'}}></div></>
-                <ForminputBottonSubmit label = {'Registrar Area de la Empresa'} />
+                <ForminputBottonSubmit label = {'Registrar Objetivo'} />
                 <ForminputBotton label = {'Cancelar'} isInvertColor = {true} onChange={limpiartext} />
                 {/* <ForminputBotton label = {"Cancelar"} isInvertColor = {true} /> */}
             </form>

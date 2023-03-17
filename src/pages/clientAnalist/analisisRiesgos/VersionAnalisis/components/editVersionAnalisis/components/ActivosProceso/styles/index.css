@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('../../../../../../../../../service/morvius-service/masterVarial.css');
 
-.Container_AreaEmpresas_principal {
+.Container_TrabajResponsables_principal {
     width: 100%;
     height: 100%;
     background-color: transparent;
@@ -11,7 +11,7 @@
     align-items: flex-start;
 }
 
-.Container_AreaEmpresas_principal_subConteiner {
+.Container_TrabajResponsables_principal_subConteiner {
     width: 95%;
     margin-top: 2.5%;
     min-height: 150px;
@@ -24,7 +24,7 @@
 }
 
 /* ----------------------------------------------------------- Header */
-.Container_AreaEmpresas_principal_header {
+.Container_TrabajResponsables_principal_header {
     width: 100%;
     margin-top: 20px;
     height: auto;
@@ -36,7 +36,7 @@
     align-items: center;
 }
 
-.Container_AreaEmpresas_principal_header_subcontent_title {
+.Container_TrabajResponsables_principal_header_subcontent_title {
     width: 50%;
     /* background-color: aqua; */
     display: flex;
@@ -44,7 +44,7 @@
     justify-content: flex-start;
 }
 
-.Container_AreaEmpresas_principal_header_subcontent_search {
+.Container_TrabajResponsables_principal_header_subcontent_search {
     width: 50%;
 
     /* background-color: aquamarine; */
@@ -53,7 +53,7 @@
     justify-content: flex-end;
 }
 
-.Container_AreaEmpresas_principal_header_subcontent_search_cont {
+.Container_TrabajResponsables_principal_header_subcontent_search_cont {
     width: 80%;
     margin-right: 3px;
     /* background-color: red; */
@@ -64,7 +64,7 @@
     /* background-color: green; */
 }
 
-.Container_AreaEmpresas_principal_header_subcontent_search_opt {
+.Container_TrabajResponsables_principal_header_subcontent_search_opt {
     width: 15%;
     /* background-color: blueviolet; */
     height: 40px;
@@ -74,7 +74,7 @@
     justify-content: center;
 }
 
-.Container_AreaEmpresas_principal_header_container_optinon {
+.Container_TrabajResponsables_principal_header_container_optinon {
     height: 40px;
     width: 40px;
     background-color: #856FC5;
@@ -84,7 +84,7 @@
     justify-content: center;
 }
 
-.Container_AreaEmpresas_principal_header_content_title {
+.Container_TrabajResponsables_principal_header_content_title {
     font-size: 24px;
     color: var(--color-secundary);
     font-family: 'Poppins', sans-serif;
@@ -94,7 +94,7 @@
 }
 
 /* ----------------------------------------------------------- body */
-.Container_AreaEmpresas_principal_body {
+.Container_TrabajResponsables_principal_body {
     margin-top: 30px;
     max-height: 60vh;
     margin-bottom: 20px;
@@ -105,7 +105,7 @@
     position: relative;
 }
 
-.Container_AreaEmpresas_principal_body_subContainer {
+.Container_TrabajResponsables_principal_body_subContainer {
     /* background-color: #856FC5 !important; */
     width: calc(100% - 40px);
     background-color: transparent;
@@ -117,12 +117,12 @@
     overflow-x: hidden;
 }
 
-.Container_AreaEmpresas_principal_body_subContainer::-webkit-scrollbar {
+.Container_TrabajResponsables_principal_body_subContainer::-webkit-scrollbar {
     width: 5px;
     background-color: transparent;
 }
 
-.Container_AreaEmpresas_principal_body_subContainer::-webkit-scrollbar-thumb {
+.Container_TrabajResponsables_principal_body_subContainer::-webkit-scrollbar-thumb {
     width: 5px;
     background: linear-gradient(185deg, rgba(150, 134, 195, 1) 0%, rgba(150, 134, 195, 1) 36%, rgba(239, 203, 75, 1) 100%, rgba(105, 78, 78, 1) 120%);
     border-radius: 20px;
@@ -155,7 +155,7 @@
 
 /* ----------------------------------------------------------- body/ content table - fin */
 
-/* .Container_AreaEmpresas_principal_subbody{
+/* .Container_TrabajResponsables_principal_subbody{
     width: 100%;
     height: 10%;
     background-color: transparent;
@@ -165,43 +165,43 @@
     justify-content: space-between;
 }
 
-.Container_AreaEmpresas_principal_subbody_title{
+.Container_TrabajResponsables_principal_subbody_title{
     width: auto;
     font-size: 18px;
     margin-left: 50px;
     color: rgba(0, 0, 0, 0.5);
 }
 
-.Container_AreaEmpresas_principal_subbody_botton{
+.Container_TrabajResponsables_principal_subbody_botton{
     width: auto;
     margin-right: 50px;
 }
 
-.Container_AreaEmpresas_principal_scroller{
+.Container_TrabajResponsables_principal_scroller{
     width: 90%;
     height: 90%;
     overflow-x: hidden;
     overflow-y: scroll;
 }
 
-.Container_AreaEmpresas_principal_scroller::-webkit-scrollbar{
+.Container_TrabajResponsables_principal_scroller::-webkit-scrollbar{
     width: 5px;
     background-color: transparent;
 }
 
-.Container_AreaEmpresas_principal_scroller::-webkit-scrollbar-thumb{
+.Container_TrabajResponsables_principal_scroller::-webkit-scrollbar-thumb{
     width: 5px;
     background: linear-gradient(185deg, rgba(150,134,195,1) 0%, rgba(150,134,195,1) 36%, rgba(239,203,75,1) 100%, rgba(105,78,78,1) 120%);
     border-radius: 20px;
 }
 
-.Container_AreaEmpresas_principa_contain{
+.Container_TrabajResponsables_principa_contain{
     width: 100%;
     height: auto;
 } */
 
 @media (max-width: 500px) {
-    .Container_AreaEmpresas_principal_header_subcontent_title {
+    .Container_TrabajResponsables_principal_header_subcontent_title {
         width: 100%;
         padding-left: 10px;
         padding-right: 10px;
@@ -214,12 +214,12 @@
         display: none;
     } */
 
-    .Container_AreaEmpresas_principal_header_content_title {
+    .Container_TrabajResponsables_principal_header_content_title {
         text-align: center;
         margin-left: 0px;
     }
 
-    .Container_AreaEmpresas_principal_header_subcontent_search {
+    .Container_TrabajResponsables_principal_header_subcontent_search {
         margin-top: 15px;
         width: 100%;
         display: flex;

@@ -1,30 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./styles/index.css"
 import { useNotification } from "../../../../../../../../service/Notifications/NotificationProvider";
-import { deleteObjetivEmpresa, getObjetivEmpresa } from "../../../../../../../../service/repository/RTObjetivEmpresas";
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { handleNewNotification } from "../../../../../../../../service/Notifications/useNotificacion";
-import { OpccionActions } from "../AreasEmpresa/components/opccionActions";
-import { ItemObjetivEmpresa } from "./components/itemObjetivEmpresa";
-import { AddObjetivoEmpresas } from "./components/addObjetivosEmpresas";
-// import { EditarObjetivEmpresaInformation } from "./components/editObjetivEmpresas/components/EditarInformacion/Editar";
-import { EditarObjetivEmpresa } from "./components/editObjetivEmpresas/index";
-// import { ConsuldataLogm, getKeysesion } from "../../../../../../../../service/repository/mithelworks";
-// import { deleteEmpresa, getEmpresas } from "../../../../../../../../service/repository/RTEmpresas";
-// import { ControlOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
-// import { handleNewNotification } from "../../../../../../../../service/Notifications/useNotificacion";
-// import { ItemObjetivEmpresa, ItemEmpresa } from "./components/itemObjetivEmpresa/index";
-// import { OpccionActions } from "./components/opccionActions";
-// import { deleteObjetivEmpresa, getAresEmpresa } from "../../../../../../../../service/repository/RTObjetivEmpresas";
-// import { AddAreaEmpresas } from "./components/addAreaEmpresas";
-// import { EditarObjetivEmpresa } from "./components/editObjetivEmpresas";
-// import { getObjetivEmpresa } from "../../../../../../../../service/repository/RTObjetivEmpresas";
-// import { Componentsearchanimation} from "../../../../service/morvius-service/component/components";
-// import { AddEmpresas } from "./components/addEmpresas";
-// import { getadmins } from '../../../../service/repository/Admin';
-// import { EditarEmpresa } from "./components/editEmpresas";
+import { OpccionActions } from "../../../opccionActions";
+import { deleteObjetivVersionAnalitic, getObjetivVersionAnalitic } from "../../../../../../../../service/repository/RTObjetivVersionAnalitic";
+import { ItemObjetivVersionAnalitic } from "./components/itemObjetivEmpresa";
+import { AddObjetivVersionAnalitic } from "./components/addObjetivosEmpresas";
+import { EditarObjetivVersionAnalitic } from "./components/editObjetivEmpresas";
 
-export function ObjetivEmpresas(props){
+export function ObjetivVersionAnalitic(props){
 
     const {informationDataGeneral} = props;
     const [listdata,setlistdata] = useState([]);
@@ -32,70 +17,42 @@ export function ObjetivEmpresas(props){
     const [ismodeladd,setismodeladd] = useState(false);
     const [ismodelaEdit,setismodelaEdit] = useState(false);
     // const [textsearch,settextsearch] = useState("");
-    const [indexOpccionObjetivEmpresa,setindexOpccionObjetivEmpresa] = useState(0);
-    const [indexOpccionObjetivEmpresaD,setindexOpccionObjetivEmpresaD] = useState([]);
+    const [indexOpccionObjetivVersionAnalitic,setindexOpccionObjetivVersionAnalitic] = useState(0);
+    const [indexOpccionObjetivVersionAnaliticD,setindexOpccionObjetivVersionAnaliticD] = useState([]);
     const dispatch = useNotification();
     
     useEffect(()=>{
         (async()=>{
-            await LoadDataObjetivEmpresa();
-            console.log(informationDataGeneral)
+            await LoadDataObjetivVersionAnalitic();
         })();
     },[]);
 
-    const LoadDataObjetivEmpresa = async () => {
-        console.log(informationDataGeneral.id_empresa)
-        let result = await getObjetivEmpresa(informationDataGeneral.id_empresa);
-        console.log(result)
+    const LoadDataObjetivVersionAnalitic = async () => {
+        let result = await getObjetivVersionAnalitic(informationDataGeneral);
         setlistdata([]);
         // setlistdataHistory([]);
         setTimeout(() => {
             setlistdata(result);
-            setindexOpccionObjetivEmpresaD([]);
+            setindexOpccionObjetivVersionAnaliticD([]);
             // setlistdataHistory(result);
         }, 500);
     }
 
-    const AddItemDeleteObjetivEmpresa = (id_objempresa) => {
-        let data = indexOpccionObjetivEmpresaD.filter((item)=>{return item == id_objempresa})
+    const AddItemDeleteObjetivVersionAnalitic = (id_objempresa) => {
+        let data = indexOpccionObjetivVersionAnaliticD.filter((item)=>{return item == id_objempresa})
         if(data.length != 0){
-            setindexOpccionObjetivEmpresaD(indexOpccionObjetivEmpresaD.filter((item)=>{return item != id_objempresa}))
+            setindexOpccionObjetivVersionAnaliticD(indexOpccionObjetivVersionAnaliticD.filter((item)=>{return item != id_objempresa}))
             return
         }
-        let listdata = indexOpccionObjetivEmpresaD;
+        let listdata = indexOpccionObjetivVersionAnaliticD;
         listdata.push(id_objempresa);
-        setindexOpccionObjetivEmpresaD(listdata);
+        setindexOpccionObjetivVersionAnaliticD(listdata);
     }
 
-    const DeleteObjetivEmpresa = async (id_ObjetivEmpresa) => {
-        console.log(id_ObjetivEmpresa)
-        await deleteObjetivEmpresa({id_ObjetivEmpresa: id_ObjetivEmpresa});
+    const DeleteObjetivVersionAnalitic = async (id_ObjetivVersionAnalitic) => {
+        console.log(id_ObjetivVersionAnalitic)
+        await deleteObjetivVersionAnalitic({id_ObjetivVersionAnalitic: id_ObjetivVersionAnalitic});
     }
-
-    // const onUpdate = async () => {
-    //     let result = await getadmins(textsearch);
-    //     setlistdata(result);
-    // }
-
-    // const onInsert = async () =>{
-    //     let result = await getadmins(textsearch);
-    //     setlistdata(result);
-    // }
-
-    // ------------------------------------------------------------ Actions del Buscador
-    // const onChangeseach = async (search) => {
-    //     settextsearch(search);
-    //     let result = await getadmins(search);
-    //     setlistdata(result);
-    // }
-
-    // const onChangekey = async (seach) =>{
-    //     if(seach == ""){
-    //         settextsearch("");
-    //         let result = await getadmins();
-    //         setlistdata(result);
-    //     }
-    // }
 
     const opccionSistem = [
         {
@@ -109,40 +66,41 @@ export function ObjetivEmpresas(props){
             label: "Eliminar",
             icon: DeleteOutlined,
             onChange: async () => {
-                if(indexOpccionObjetivEmpresaD.length == 0){
+                if(indexOpccionObjetivVersionAnaliticD.length == 0){
                     handleNewNotification(dispatch,'Selecciona una o varias empresas para poder eliminar', 404);
                     return
                 }
-                console.log(indexOpccionObjetivEmpresaD)
-                for (let index = 0; index < indexOpccionObjetivEmpresaD.length; index++) {
-                    const element = indexOpccionObjetivEmpresaD[index];
-                    await DeleteObjetivEmpresa(element);
+                console.log(indexOpccionObjetivVersionAnaliticD)
+                for (let index = 0; index < indexOpccionObjetivVersionAnaliticD.length; index++) {
+                    const element = indexOpccionObjetivVersionAnaliticD[index];
+                    await DeleteObjetivVersionAnalitic(element);
                 }
                 handleNewNotification(dispatch,'Se realizo la eliminacion en exito', 200);
-                await LoadDataObjetivEmpresa()
+                await LoadDataObjetivVersionAnalitic()
             }
         }
     ]
 
     return (
         <>
-            <div className="Container_ObjEmpresas_principal_body">
+            <div className="Container_ObjetivVersionAnalitic_principal_body">
                 <OpccionActions opccionSistem={opccionSistem} />
-                <div className="Container_ObjEmpresas_principal_body_subContainer">
+                <div className="Container_ObjetivVersionAnalitic_principal_body_subContainer">
                     {listdata.map((item)=>{
-                        return (<ItemObjetivEmpresa onSelecteItem={(index)=>{
-                            AddItemDeleteObjetivEmpresa(index);
+                        return (<ItemObjetivVersionAnalitic onSelecteItem={(index)=>{
+                            AddItemDeleteObjetivVersionAnalitic(index);
                         }} onChange={(index)=>{
-                            setindexOpccionObjetivEmpresa(index);
+                            setindexOpccionObjetivVersionAnalitic(index);
                             setismodelaEdit(true);
-                        }} keyitem = {item.id_objempresa} title = {item.nombreobj} />)
+                        }} keyitem = {item.id_objVersAnali} title = {item.nombreObj} />)
                     })}
                 </div>
             </div>
-            <AddObjetivoEmpresas informationDataGeneral = {informationDataGeneral} onInsert={async ()=>{
-                await LoadDataObjetivEmpresa();
+            <AddObjetivVersionAnalitic informationDataGeneral = {informationDataGeneral} onInsert={async ()=>{
+                await LoadDataObjetivVersionAnalitic();
             }} propismodalvisible = {ismodeladd} propsetismodalvisible = {setismodeladd} />
-            {(ismodelaEdit)?<EditarObjetivEmpresa informationDataGeneralEmpre={informationDataGeneral} onAction = {LoadDataObjetivEmpresa} iskeyDatos = {indexOpccionObjetivEmpresa} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>}
+            {(ismodelaEdit)?<EditarObjetivVersionAnalitic informationDataGeneralEmpre={informationDataGeneral} onAction = {LoadDataObjetivVersionAnalitic} iskeyDatos = {indexOpccionObjetivVersionAnalitic} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>}
+            {/* {(ismodelaEdit)?<EditarObjetivVersionAnalitic informationDataGeneralEmpre={informationDataGeneral} onAction = {LoadDataObjetivVersionAnalitic} iskeyDatos = {indexOpccionObjetivVersionAnalitic} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>} */}
                 {/* 
              */}
             {/*  */}

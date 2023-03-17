@@ -2,15 +2,15 @@ import axios from "axios";
 import { gettoken } from "./mithelworks";
 import { domain_api } from "./variables";
 
-// export async function getadlumno(name = "") {
-//   const url = `${domain_api}/alumn/${(name == "")?"%20":name}`;
-//   const result = await axios.get(url, {
-//     headers: {
-//       Authorization: `Bearer ${await gettoken()}`,
-//     },
-//   });
-//   return result.data;
-// }
+export async function getclientAnalis() {
+  const url = `${domain_api}/clientAnalit/`;
+  const result = await axios.get(url, {
+    headers: {
+      Authorization: `Bearer ${await gettoken()}`,
+    },
+  });
+  return result.data;
+}
 
 export async function readclientAnalist(id) {
   const id_clientAnalist = id;

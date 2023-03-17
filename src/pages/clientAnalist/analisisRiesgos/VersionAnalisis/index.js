@@ -22,6 +22,7 @@ import { getEmpresas } from "../../../../service/repository/RTEmpresas";
 import { deleteVersionAnalitiv, getVersionAnalitiv } from "../../../../service/repository/RTVersionAnalitiv";
 import { ItemVersionAnalitit } from "./components/itemVersionAnalisis";
 import { AddVersionAnalitic } from "./components/addVersionAnalisis";
+import { EditarVesionAnalitic } from "./components/editVersionAnalisis";
 
 export function VersionAnalisis(props){
     const [listdata,setlistdata] = useState([]);
@@ -29,11 +30,11 @@ export function VersionAnalisis(props){
     const [ismodeladd,setismodeladd] = useState(false);
     const [ismodelaEdit,setismodelaEdit] = useState(false);
     // const [textsearch,settextsearch] = useState("");
-    const [indexOptionEmpresa,setindexOptionEmpresa] = useState(0);
-    const [indexOptionEmpresaD,setindexOptionEmpresaD] = useState([]);
-    const [isModelFilter,setisModelFilter] = useState(false);
+    const [indexOptionVersionAnali,setindexOptionVersionAnali] = useState(0);
+    const [indexOptionVersionAnaliD,setindexOptionVersionAnaliD] = useState([]);
+    // const [isModelFilter,setisModelFilter] = useState(false);
     const [listOpccionFilter,setlistOpccionFilter] = useState([]);
-    const [listSelFilter,setlistSelFilter] = useState([]);
+    // const [listSelFilter,setlistSelFilter] = useState([]);
     const [indexProceso,setindexProceso] = useState(0);
     // opccion filtrajes
     const [propsListOpccion, prososetListOpccion] = useState([]);
@@ -96,26 +97,26 @@ export function VersionAnalisis(props){
         setTimeout(() => {
             setlistdata(result);
             setlistdataHistory(result);
-            setindexOptionEmpresaD([]);
+            setindexOptionVersionAnaliD([]);
         }, 500);
     }
 
-    const LoadDataProcesEmpresaHist = async (listSelFilteryaux = []) => {
-        // console.log(listSelFilteryaux)
-        let result = [...listdataHistory];
-        // filtraje por copciones de filtro
-        ((listSelFilteryaux.length == 0)?listSelFilter:listSelFilteryaux).forEach(element => {
-            let auxRes = [...result]
-            result = auxRes.filter((item)=>{
-                return element.value == item[element.key]
-            })
-        });
-        console.log(result)
-        setlistdata([]);
-        setTimeout(() => {
-            setlistdata(result);
-        }, 500);
-    }
+    // const LoadDataProcesEmpresaHist = async (listSelFilteryaux = []) => {
+    //     // console.log(listSelFilteryaux)
+    //     let result = [...listdataHistory];
+    //     // filtraje por copciones de filtro
+    //     ((listSelFilteryaux.length == 0)?listSelFilter:listSelFilteryaux).forEach(element => {
+    //         let auxRes = [...result]
+    //         result = auxRes.filter((item)=>{
+    //             return element.value == item[element.key]
+    //         })
+    //     });
+    //     console.log(result)
+    //     setlistdata([]);
+    //     setTimeout(() => {
+    //         setlistdata(result);
+    //     }, 500);
+    // }
 
     const GenerateEmpresa = async (keyInitSelectet = -1, isInitialData = false, lisDataGeneral = []) => {
         let secionkey = await getKeysesion();
@@ -153,14 +154,14 @@ export function VersionAnalisis(props){
     }
 
     const AddItemDeleteVersionAnali = (id_versionAnali) => {
-        let data = indexOptionEmpresaD.filter((item)=>{return item == id_versionAnali})
+        let data = indexOptionVersionAnaliD.filter((item)=>{return item == id_versionAnali})
         if(data.length != 0){
-            setindexOptionEmpresaD(indexOptionEmpresaD.filter((item)=>{return item != id_versionAnali}))
+            setindexOptionVersionAnaliD(indexOptionVersionAnaliD.filter((item)=>{return item != id_versionAnali}))
             return
         }
-        let listdata = indexOptionEmpresaD;
+        let listdata = indexOptionVersionAnaliD;
         listdata.push(id_versionAnali);
-        setindexOptionEmpresaD(listdata);
+        setindexOptionVersionAnaliD(listdata);
     }
 
     const DeleteVersionAnalisis = async (id_versionAnali) => {
@@ -194,13 +195,13 @@ export function VersionAnalisis(props){
             label: "Eliminar",
             icon: DeleteOutlined,
             onChange: async () => {
-                if(indexOptionEmpresaD.length == 0){
+                if(indexOptionVersionAnaliD.length == 0){
                     handleNewNotification(dispatch,'Selecciona una o varias empresas para poder eliminar', 404);
                     return
                 }
-                console.log(indexOptionEmpresaD)
-                for (let index = 0; index < indexOptionEmpresaD.length; index++) {
-                    const element = indexOptionEmpresaD[index];
+                console.log(indexOptionVersionAnaliD)
+                for (let index = 0; index < indexOptionVersionAnaliD.length; index++) {
+                    const element = indexOptionVersionAnaliD[index];
                     await DeleteVersionAnalisis(element);
                 }
                 handleNewNotification(dispatch,'Se realizo la eliminacion en exito', 200);
@@ -282,7 +283,7 @@ export function VersionAnalisis(props){
                                      onSelecteItem={(index)=>{
                                         AddItemDeleteVersionAnali(index);
                                     }} onChange={(index)=>{
-                                        setindexOptionEmpresa(index);
+                                        setindexOptionVersionAnali(index);
                                         setismodelaEdit(true);
                                     }} keyitem = {item.id_versionAnali} title = {item.abreb} subtitle = {item.fechaVersionAnali} descrip = {item.descripccion} />)
                                 }):<></>}
@@ -294,6 +295,7 @@ export function VersionAnalisis(props){
             {(ismodeladd)?<AddVersionAnalitic informacionProceso={indexProceso} onInsert={async ()=>{
                 await LoadDataVersionAnalitic();
             }} propismodalvisible = {ismodeladd} propsetismodalvisible = {setismodeladd} />:<></>}
+            {(ismodelaEdit)?<EditarVesionAnalitic informationDataGeneral = {indexProceso} onAction = {LoadDataVersionAnalitic} iskeyDatos = {indexOptionVersionAnali} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>}
             {/* 
             {(ismodelaEdit)?<EditarProcesEmpresa informationDataGeneral = {indexEmpresa} onAction = {LoadDataProcesEmpresa} iskeyDatos = {indexOptionEmpresa} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>} */}
         </div>
