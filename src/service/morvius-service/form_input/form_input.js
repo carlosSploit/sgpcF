@@ -847,9 +847,13 @@ export function ForminputComboBox(props){
     } = props;
 
     useEffect(()=>{
-        
+        console.log(valueInit)
         if(isdefault){
-            setcheckbox(0);
+            if(valueInit == 0){
+                setcheckbox(0);
+            }else{
+                setcheckbox(valueInit);
+            }
         }else{
             // console.log(valueInit)
             if(valueInit == 0){

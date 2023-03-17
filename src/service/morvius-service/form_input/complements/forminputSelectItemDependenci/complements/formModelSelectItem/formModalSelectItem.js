@@ -375,9 +375,11 @@ export function FormModalSelectItem(props){
       ]);
     const {
         nameTitle = "",
+        isVisibleDescri = false,
         keyid = "id_tipoActivo",
         keylabe = 'nombreTipoActivo',
         keydepende = 'id_dependeTipoPad',
+        keydescr = 'dependAbreb',
         isVisibleFoto = false,
         onChangeSelect = (key) => {},
         propismodalvisible = ismodalvisibleIN,
@@ -490,7 +492,7 @@ export function FormModalSelectItem(props){
                     <div className="container_view_selectItem_body_content">
                         <div className="container_view_selectItem_body">
                             {listIcons.map((item)=>{
-                                return <CartsItemsIcons isVisibleFoto={isVisibleFoto} keyid={item[keyid]} name={item[keylabe]} value={item[keyid]} photo={item.photo} onchange={onchange} keySelet={isSelectIcon}/>
+                                return <CartsItemsIcons isVisibleDescri = {isVisibleDescri} isVisibleFoto={isVisibleFoto} keyid={item[keyid]} name={item[keylabe]} value={item[keyid]} descr={item[keydescr]} photo={item.photo} onchange={onchange} keySelet={isSelectIcon}/>
                             })}
                         </div>
                     </div>

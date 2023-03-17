@@ -203,7 +203,7 @@ export function Componentsearchanimation(props){
 
     return (
         <>
-            <div style={{height:"5px"}} />
+            {/* <div style={{height:"5px"}} /> */}
             <div ref={refcontainer} className="component_content_search">
                 <div className="component_search_containert" style={{height:height}}>
                     {(isVisible) ? <input
@@ -361,20 +361,33 @@ export function Componentfilter(props){
     
     const {
         ListOpccion = propsListOpccion,
-        // keyvalue = "id",
-        // keylabel = "label",
-        // datacombo = [{id:1,label:"tecnologia"},{id:2,label:"computer"},{id:3,label:"cultura"}],
         onSeleccionOpccion = (jsonfilter) =>{
-            // console.log(search,`/`);
             console.log(jsonfilter);
         },
         onChangeseach = (jsonfilter) =>{
-            // console.log(search,`/`);
             console.log(jsonfilter);
         }
     } = props;
     // const [changseach,setchangseach] = useState("");
     const [checkfilter,setcheckfilter] = useState({});
+
+    useEffect(()=>{
+        (async () => {
+            // inicializar los combobox
+            ListOpccion.forEach(element => {
+                if (compruebeValueInit(element)){
+                    let data = checkfilter;
+                    data[element.nomenclature] = element.initValue
+                    setcheckfilter(data);
+                }
+            });
+        })();
+    },[])
+
+    const compruebeValueInit = (element = {}) => {
+        const Keys = Object.keys(element);
+        return (Keys.indexOf('initValue') != -1)
+    }
 
     return (
         <>
@@ -384,8 +397,9 @@ export function Componentfilter(props){
                     {/* --------------------- Iten de Generacion de datatos */}
                     <div className="component_filter_containert_filtOptions">
                         {(ListOpccion.map((item)=>{
+                            console.log(item)
                             return (<div className="component_search_input_combofilter">
-                            {(item.opccions != null && item.opccions.length != 0)?<ForminputComboBox keyname={item.nomenclature} isInvert={true} width={100} height={35} keyvalue={item.keyvalue} keylabel={item.masterLabel} datacombo={item.opccions} isdefault={true} onChangeinput={(jsonval)=>{
+                            {(item.opccions != null && item.opccions.length != 0)?<ForminputComboBox valueInit={(compruebeValueInit(item)?item.initValue:0)} keyname={item.nomenclature} isInvert={true} width={100} height={35} keyvalue={item.keyvalue} keylabel={item.masterLabel} datacombo={item.opccions} isdefault={true} onChangeinput={(jsonval)=>{
                                 let data = checkfilter;
                                 data[jsonval.nomenclature] = jsonval.value
                                 onSeleccionOpccion(data);

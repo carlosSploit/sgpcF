@@ -150,6 +150,7 @@ export function TrabajoEmpresas(props){
                     <div className="Container_TrabjEmpresas_principal_header_subcontent_search">
                         <div className="Container_TrabjEmpresas_principal_header_subcontent_search_cont">
                             <Componentsearchanimation onChangekey={onChangekey} onChangeseach={onChangeseach}/>
+                            <div style={{width: '20px'}}></div>
                         </div>
                     </div>
                 </div>

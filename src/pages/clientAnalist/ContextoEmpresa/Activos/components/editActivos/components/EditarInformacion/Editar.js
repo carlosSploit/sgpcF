@@ -85,6 +85,8 @@ export function EditarActivoEmpresa(props){
             keyid = {"id_tipoActivo"} 
             keylabe = {'nombreTipoActivo'} 
             keydepende = {'id_dependeTipoPad'} 
+            keydescr = {'dependAbreb'}
+            isVisibleDescri = {true}
             datacombo={listActivProc}
             setpropdatacombo = {setlistActivProc}
             indexinput = {textTipoActiv}

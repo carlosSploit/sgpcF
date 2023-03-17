@@ -374,7 +374,9 @@ export function ForminputSelectItemDependenci(props){
         keyid = "id_tipoActivo",
         keylabe = 'nombreTipoActivo',
         keydepende = 'id_dependeTipoPad',
+        keydescr = 'dependAbreb',
         isVisibleFoto = false,
+        isVisibleDescri = false,
         checkbox = stateSelectItem,
         setcheckbox = changestateSelectItem,
         listaObj = proplistaObj,
@@ -467,7 +469,7 @@ export function ForminputSelectItemDependenci(props){
                     name={`${keyname}`} 
                     value={checkbox}
                 />
-                <FormModalSelectItem valueInit = {valueInit} keyid = {keyid} keylabe = {keylabe} keydepende = {keydepende} isVisibleFoto={isVisibleFoto} nameTitle={nameTitle} listaObj={listaObj} setlistaObj = {setlistaObj} propismodalvisible={ismodalvisible} propsetismodalvisible={setismodalvisible} onChangeSelect={onChangeSelect} />
+                <FormModalSelectItem isVisibleDescri={isVisibleDescri} valueInit = {valueInit} keyid = {keyid} keylabe = {keylabe} keydepende = {keydepende} keydescr={keydescr} isVisibleFoto={isVisibleFoto} nameTitle={nameTitle} listaObj={listaObj} setlistaObj = {setlistaObj} propismodalvisible={ismodalvisible} propsetismodalvisible={setismodalvisible} onChangeSelect={onChangeSelect} />
                 
                 {(valuestade && isVisibleErrorLabel)?<div style={{height: "10px"}}/>:<div></div>}
                 {(valuestade && isVisibleErrorLabel)?<div className="form_input_validator">{messValidator}</div>:<div></div>}
@@ -488,7 +490,9 @@ export function ForminputSelectItemDependenciEdit(props){
         keyid = "id_tipoActivo",
         keylabe = 'nombreTipoActivo',
         keydepende = 'id_dependeTipoPad',
+        keydescr = 'dependAbreb',
         datacombo = propdatacombo,
+        isVisibleDescri = false,
         setpropdatacombo = changesetpropdatacombo,
         indexinput = stateindexinput,
         setindexinput = changesetindexinput,
@@ -541,7 +545,7 @@ export function ForminputSelectItemDependenciEdit(props){
                                 nameIndexCapture({valueInit:jsonval.value})
                             }}/>:<></>} */}
                             {/* checkbox={indexinput} setcheckbox={setindexinput} */}
-                            {(indexinput != -1)?<ForminputSelectItemDependenci keydepende={keydepende} keylabe={keylabe} keyid={keyid} keyphoto={keyphoto} valueInit={indexinput} listaObj={datacombo} setlistaObj = {setpropdatacombo} keyname={keyname} onChangeinput={(jsonval)=>{
+                            {(indexinput != -1)?<ForminputSelectItemDependenci isVisibleDescri = {isVisibleDescri} keydescr = {keydescr} keydepende={keydepende} keylabe={keylabe} keyid={keyid} keyphoto={keyphoto} valueInit={indexinput} listaObj={datacombo} setlistaObj = {setpropdatacombo} keyname={keyname} onChangeinput={(jsonval)=>{
                                 console.log(jsonval)
                                 nameIndexCapture({valueInit:jsonval[keyid]})
                             }} />:<></>}

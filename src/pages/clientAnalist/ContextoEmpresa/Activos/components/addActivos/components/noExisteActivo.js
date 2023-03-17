@@ -113,7 +113,7 @@ export function NoExisteActivpEmpresa(props){
                 <ForminputArea textinput ={textdescrip} settextinput = {settextdescrip} placeHolder="Descripccion" keyname ={`descr`}/>
                 <div style={{height:'5px'}} />
                 {(listActivProc.length != 0)?<div className="container_inserproces_selectet_data">
-                    <ForminputSelectItemDependenci keyname = {"keyseletcTipActiv"} keyid = {"id_tipoActivo"} keylabe = {'nombreTipoActivo'} keydepende = {'id_dependeTipoPad'} listaObj={listActivProc} setlistaObj = {setlistActivProc} onChangeinput={onSelectItem} />
+                    <ForminputSelectItemDependenci isVisibleDescri = {true} keydescr = {'dependAbreb'} keyname = {"keyseletcTipActiv"} keyid = {"id_tipoActivo"} keylabe = {'nombreTipoActivo'} keydepende = {'id_dependeTipoPad'} listaObj={listActivProc} setlistaObj = {setlistActivProc} onChangeinput={onSelectItem} />
                 </div>:<></>}
                 <div style={{height: '20px'}}></div></>
                 <ForminputBottonSubmit label = {'Registrar un Activo'} />

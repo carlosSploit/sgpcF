@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { BasicSqueleton } from "../squeleton/squeleton";
 import { Empresas } from "./ContextoEmpresa/Empresa/index";
 // import { Alumnos } from "./Mantenimeinto/Alumnos/Alumnos";
-import { Profesor } from "./ContextoEmpresa/Profesor/Profesor";
-import { MCurso } from "./Academico/MCurso/MCurso";
+// import { Profesor } from "./ContextoEmpresa/Profesor/Profesor";
+// import { MCurso } from "./Academico/MCurso/MCurso";
 // import { keypage } from "../../service/repository/variables";
 import { FormOutlined, CloseCircleOutlined } from "@ant-design/icons";
-import { PICurso } from "./Academico/PICurso/PICurso";
+// import { PICurso } from "./Academico/PICurso/PICurso";
 // import { useParams } from "react-router-dom";
 // import { RedirectLink, redirectRutaOptions, valueRouteActual } from "../../service/router/routerscontroler";
 import { getKeysesion, getkeypage, setkeypage } from "../../service/repository/mithelworks";
@@ -20,6 +20,7 @@ import { PerfildeUsuario } from "./perfildeusuario";
 import { TrabajoEmpresas } from "./ContextoEmpresa/TrabajEmpresa";
 import { ProcesEmpresas } from "./ContextoEmpresa/Procesos";
 import { ActivosEmpresa } from "./ContextoEmpresa/Activos";
+import { VersionAnalisis } from "./analisisRiesgos/VersionAnalisis";
 
 export function ClientAnalist(props){
 
@@ -72,23 +73,23 @@ export function ClientAnalist(props){
             ]
         },
         {
-            label: "Academico",
+            label: "Analisis de Riesgos",
             Icon: FormOutlined,
             key: -1,
             options:[
                 {
-                    label: "M. Curso",
-                    key: 3
+                    label: "Versiones de Analisis",
+                    key: 4
                 },
                 {
                     label: "L. PreInscripciones",
-                    key: 4
+                    key: 5
                 }
             ]
         }
     ]
 
-    const listInterface = [<Empresas/>,<TrabajoEmpresas/>,<ProcesEmpresas/>,<ActivosEmpresa/>];
+    const listInterface = [<Empresas/>,<TrabajoEmpresas/>,<ProcesEmpresas/>,<ActivosEmpresa/>,<VersionAnalisis />];
 
     const onchageoption = (id) => {
         // let patch_redirect = redirectRutaOptions(id);

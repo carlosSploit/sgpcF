@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from "react";
 import "./styles/index.css"
 import { Componentfilter, Componentsearchanimation} from "../../../../service/morvius-service/component/components";
-import { AddEmpresas, AddProcesEmpresas, AddTrabEmpresas } from "./components/addProcesEmpresa";
+import { AddProcesEmpresas } from "./components/addProcesEmpresa";
 import { ItemTrabjEmpresa } from './components/itemProcesEmpresa/index';
 import { getadmins } from '../../../../service/repository/Admin';
-import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
+import { DeleteOutlined, FileExclamationOutlined, PlusOutlined, SlidersOutlined } from "@ant-design/icons";
 import { OpccionActions } from "./components/opccionActions";
 import { getEmpresas } from "../../../../service/repository/RTEmpresas";
 import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mithelworks";
 // import { EditarTrabEmpresa } from "./components/editProcesEmpresa";
 import { useNotification } from "../../../../service/Notifications/NotificationProvider";
 import { handleNewNotification } from "../../../../service/Notifications/useNotificacion";
-import { deleteTrabajEmpresa, getTrabajEmpresa } from "../../../../service/repository/RTTrabajEmpresas";
+// import { deleteTrabajEmpresa, getTrabajEmpresa } from "../../../../service/repository/RTTrabajEmpresas";
 import { deleteProcesEmpresa, getProcesEmpresa } from "../../../../service/repository/RTProcesEmpresas";
 import { EditarProcesEmpresa } from "./components/editProcesEmpresa";
+import { ComponentFilterBar } from "../../../../service/morvius-service/component/complements/componentFilterBar";
+import { getTipoProces } from "../../../../service/repository/RTTiposProces";
+import { getGerarcProces } from "../../../../service/repository/RTGerarcProces";
 
 export function ProcesEmpresas(props){
     const [propsListOpccion, prososetListOpccion] = useState([]);
@@ -25,14 +28,57 @@ export function ProcesEmpresas(props){
     const [indexEmpresa,setindexEmpresa] = useState(0);
     const [indexOptionEmpresa,setindexOptionEmpresa] = useState(0);
     const [indexOptionEmpresaD,setindexOptionEmpresaD] = useState([]);
+    const [isModelFilter,setisModelFilter] = useState(false);
+    const [listOpccionFilter,setlistOpccionFilter] = useState([]);
+    const [listSelFilter,setlistSelFilter] = useState([]);
     const dispatch = useNotification();
     
     useEffect(()=>{
         (async()=>{
+            setlistOpccionFilter([]);
             // await LoadDataEmpresa();
             await GenerateEmpresa();
+            await LoadOpccionFilter();
         })();
     },[]);
+
+    const LoadOpccionFilter = async () => {
+        let LisOp = [...listOpccionFilter]
+        // inicializar el tipo de proceso
+        let result = await getGerarcProces();
+        let Opccion =  result.map((item)=>{
+            return {
+                label: item.nombre,
+                key: item.id_gerarProc
+            }
+        })
+        let ItemOpccion = {
+            label: "Gerarquia de Procesos",
+            keyFilter: 'id_gerarProc',
+            Icon: FileExclamationOutlined,
+            key: -1,
+            options: Opccion
+        }
+        LisOp.push(ItemOpccion)
+        
+        // inicializar la gerarquia de proceso
+        let resultTipPro = await getTipoProces();
+        let Opccion2 =  resultTipPro.map((item)=>{
+            return {
+                label: item.nombre,
+                key: item.id_tipProce
+            }
+        })
+        let ItemOpccion2 = {
+            label: "Tipos de Procesos",
+            keyFilter: 'id_tipProce',
+            Icon: FileExclamationOutlined,
+            key: -1,
+            options: Opccion2
+        }
+        LisOp.push(ItemOpccion2)
+        setlistOpccionFilter(LisOp)
+    }
 
     const LoadDataProcesEmpresa = async (id = 0) => {
         let result = await getProcesEmpresa((id == 0)?indexEmpresa:id);
@@ -43,6 +89,23 @@ export function ProcesEmpresas(props){
             setlistdata(result);
             setlistdataHistory(result);
             setindexOptionEmpresaD([]);
+        }, 500);
+    }
+
+    const LoadDataProcesEmpresaHist = async (listSelFilteryaux = []) => {
+        // console.log(listSelFilteryaux)
+        let result = [...listdataHistory];
+        // filtraje por copciones de filtro
+        ((listSelFilteryaux.length == 0)?listSelFilter:listSelFilteryaux).forEach(element => {
+            let auxRes = [...result]
+            result = auxRes.filter((item)=>{
+                return element.value == item[element.key]
+            })
+        });
+        console.log(result)
+        setlistdata([]);
+        setTimeout(() => {
+            setlistdata(result);
         }, 500);
     }
 
@@ -142,28 +205,51 @@ export function ProcesEmpresas(props){
                         <div className="Container_ProcesEmpresas_principal_header_subcontent_search_cont">
                             <Componentsearchanimation onChangekey={onChangekey} onChangeseach={onChangeseach}/>
                         </div>
+                        <div className="Container_ProcesEmpresas_principal_header_subcontent_search_cont2">
+                            <div className="Container_ProcesEmpresas_principal_header_subcontent_search_Filer" onClick={()=>{
+                                if(isModelFilter) {
+                                    setlistdata([]);
+                                    setTimeout(() => {
+                                        setlistdata(listdataHistory);
+                                    }, 500);
+                                }
+                                setisModelFilter(!isModelFilter)
+                            }}>
+                                <SlidersOutlined className="Container_ProcesEmpresas_principal_header_subcontent_search_Filer_icons" />
+                            </div>
+                        </div>
                     </div>
                 </div>
-                {(propsListOpccion.length != 0)?<div className="Container_ProcesEmpresas_principal_header">
-                    <Componentfilter ListOpccion={propsListOpccion} onChangeseach={async (json)=>{
-                        let id = json['Empresa'];
-                        await LoadDataProcesEmpresa(id);
-                        setindexEmpresa(id)
-                    }} ></Componentfilter>
-                </div>:<></>}
-                
-                {/* Curpo */}
-                <div className="Container_ProcesEmpresas_principal_body">
-                    <OpccionActions opccionSistem={opccionSistem} />
-                    <div className="Container_ProcesEmpresas_principal_body_subContainer">
-                        {listdata.map((item)=>{
-                            return (<ItemTrabjEmpresa onSelecteItem={(index)=>{
-                                AddItemDeleteProcesEmpresas(index);
-                            }} onChange={(index)=>{
-                                setindexOptionEmpresa(index);
-                                setismodelaEdit(true);
-                            }} keyitem = {item.id_proceso} title = {item.nombreProce} subtitle = {item.nombreTip} descrip = {item.descripccion} />)
-                        })}
+                <div className="Container_ProcesEmpresas_principal_body_naster">
+                    {(isModelFilter && listOpccionFilter.length != 0)?<div className="Container_ProcesEmpresas_principal_body_naster_filter">
+                        <ComponentFilterBar databasic = {listOpccionFilter} onchangeoption={async (lisFilterItem)=>{
+                            setlistSelFilter(lisFilterItem)
+                            await LoadDataProcesEmpresaHist(lisFilterItem)
+                        }} />
+                    </div>:<></>}
+                    <div className="Container_ProcesEmpresas_principal_body_naster_information">
+                        {/* Generador */}
+                        {(propsListOpccion.length != 0)?<div className="Container_ProcesEmpresas_principal_header">
+                            <Componentfilter ListOpccion={propsListOpccion} onChangeseach={async (json)=>{
+                                let id = json['Empresa'];
+                                await LoadDataProcesEmpresa(id);
+                                setindexEmpresa(id)
+                            }} ></Componentfilter>
+                        </div>:<></>}
+                        {/* Curpo */}
+                        <div className="Container_ProcesEmpresas_principal_body">
+                            <OpccionActions opccionSistem={opccionSistem} />
+                            <div className="Container_ProcesEmpresas_principal_body_subContainer">
+                                {(listdata.length != 0)?listdata.map((item)=>{
+                                    return (<ItemTrabjEmpresa onSelecteItem={(index)=>{
+                                        AddItemDeleteProcesEmpresas(index);
+                                    }} onChange={(index)=>{
+                                        setindexOptionEmpresa(index);
+                                        setismodelaEdit(true);
+                                    }} keyitem = {item.id_proceso} title = {item.nombreProce} subtitle = {item.nombreTip} descrip = {item.descripccion} />)
+                                }):<></>}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

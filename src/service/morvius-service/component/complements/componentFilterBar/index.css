@@ -1,0 +1,418 @@
+@import url('../../../../../res/typogramic/typogramic.css');
+@import url('../../../masterVarial.css');
+
+/*---------------------------------------------------------------------------------- Contenedor de FilterBar */
+.container_FilterBar_collapset {
+    background-color: white;
+    height: 70vh;
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    /* overflow: hidden; */
+}
+
+.container_FilterBar {
+    background-color: var(--color-backgroud3);
+    height: 72vh;
+    width: 100%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.container_FilterBar_heard {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_FilterBar_collapset_liner {
+    width: 100%;
+    height: 1px;
+    background-color: #e7ebfb;
+}
+
+.container_FilterBar_heard_title_colapse {
+    width: 25px;
+    height: 40px;
+    background-color: transparent;
+    /* background-image: url("../../../../../../res/logoshort2.png"); */
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.container_FilterBar_heard_title {
+    width: calc(100% - 10PX);
+    margin: 10px 0 5px 0;
+    height: 40px;
+    background-color: transparent;
+    text-align: start;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--color-secundary);
+    margin-left: 15px;
+}
+
+.container_FilterBar_heard_tabFilter {
+    width: calc(100% - 10PX);
+    height: auto;
+    /* margin: 5px 0 5px 0; */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: start;
+}
+
+.container_FilterBar_heard_bottonFilter {
+    width: calc(100% - 30PX);
+    margin: 5px 15px 5px 15px;
+    height: 24px;
+    color: #fff;
+    background-color: var(--color-secundary);
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 17px;
+    display: block;
+    /* padding: 5px 5px 5px 5px; */
+}
+
+.container_FilterBar_body {
+    height: 100%;
+    background-color: transparent;
+    overflow-y: scroll;
+}
+
+.container_FilterBar_body::-webkit-scrollbar {
+    width: 5px;
+    background-color: transparent;
+}
+
+.container_FilterBar_body::-webkit-scrollbar-thumb {
+    width: 5px;
+    background: linear-gradient(185deg, rgba(55, 93, 129, 1) 0%, rgba(55, 93, 129, 1) 36%, rgba(171, 200, 226, 1) 100%, rgba(134, 150, 165, 1) 120%);
+    border-radius: 20px;
+}
+
+.container_FilterBar_footer {
+    height: 50px;
+    background-color: var(--color-secundary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_FilterBar_footer_icon {
+    color: white;
+}
+
+/*---------------------------------------------------------------------------------- Contenedor de item */
+
+.container_FilterBar_body_item {
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* margin-left: 10px; */
+    /* overflow: hidden; */
+    margin-bottom: 10px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.container_FilterBar_body_item_header_content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_FilterBar_body_item_header_subcontent {
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 25px;
+}
+
+.container_FilterBar_body_item_header_content_bar {
+    width: 4px;
+    height: 35px;
+    background-color: rgba(174, 168, 186, 0.3);
+    border-radius: 0.5px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    margin-left: 10px;
+}
+
+.container_FilterBar_body_item_header_content_bar_activate {
+    width: 4px;
+    height: 35px;
+    background-color: var(--color-secundary);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    margin-left: 10px;
+}
+
+/* .container_FilterBar_body_item_header_activate{
+    width: 100%;
+    background-color: #BAA9DF;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+} */
+
+.container_FilterBar_body_item_header_activate2 {
+    width: 100%;
+    background-color: var(--color-secundary);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_FilterBar_body_item_header_icon {
+    width: 67px;
+    height: 50px;
+    /* component collaps item header */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_FilterBar_body_item_header_color {
+    color: var(--color-secundary);
+    font-family: Poppins-regular;
+    /* font-weight: 600; */
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.container_FilterBar_body_item_header_activate2>.container_FilterBar_body_item_header_color {
+    color: white;
+    font-family: Poppins-regular;
+    /* font-weight: 600; */
+    font-size: 16px;
+}
+
+.container_FilterBar_body_item_header_title {
+    width: 100%;
+    height: 50px;
+    padding-left: 15px;
+}
+
+.container_FilterBar_body_item_body {
+    width: 100%;
+    background-color: transparent;
+}
+
+.container_FilterBar_body_item_body_floting {
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    right: -260px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    /* -webkit-box-shadow: 0px 1px 35px 13px rgba(163,163,163,0.75);
+    -moz-box-shadow: 0px 1px 35px 13px rgba(163,163,163,0.75); */
+}
+
+.container_FilterBar_body_item_title_floting {
+    width: 100%;
+    height: 40px;
+    color: white;
+    /* font-weight: bold; */
+    font-family: Poppins-regular;
+    /* font-weight: 600; */
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-secundary);
+}
+
+.container_FilterBar_body_item_body_item_content {
+    width: 100%;
+    height: 40px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_FilterBar_body_item_body_item {
+    width: 90%;
+    height: 25px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_FilterBar_body_item_body_itemFloating {
+    width: 100%;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_FilterBar_body_item_body_item:hover {
+    border-radius: 17.5px;
+    height: 30px;
+    background-color: rgba(174, 168, 186, 0.3);
+}
+
+.container_FilterBar_body_item_body_item>.container_FilterBar_body_item_body_item_icon {
+    width: 50px;
+    height: 50px;
+    /* component collaps item header */
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-secundary);
+}
+
+.container_FilterBar_body_item_body_item>.container_FilterBar_body_item_body_item_label {
+    width: calc(100% - 50px);
+    height: 20px;
+    color: var(--color-secundary);
+    font-family: Poppins-regular;
+    /* font-weight: 600; */
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.container_FilterBar_body_item_body_item_activate {
+    width: 90%;
+    height: 30px;
+    background-color: var(--color-backgroud2);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 17.5px;
+}
+
+.container_FilterBar_body_item_body_itemFloating_activate {
+    width: 100%;
+    height: 35px;
+    background-color: var(--color-secundary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_FilterBar_body_item_body_item_activate>.container_FilterBar_body_item_body_item_icon {
+    width: 50px;
+    height: 50px;
+    /* component collaps item header */
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.container_FilterBar_body_item_body_item_activate>.container_FilterBar_body_item_body_item_label {
+    width: calc(100% - 50px);
+    height: 20px;
+    color: var(--color-secundary);
+    font-family: Poppins-regular;
+    /* font-weight: 600; */
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.container_FilterBar_body_item_body_item_label_selecter {
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.container_FilterBar_body_item_body_item_label_selecter.active {
+    background-color: white;
+}
+
+.container_FilterBar_body_item_body_item_label_selecter>div {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+}
+
+.container_FilterBar_body_item_body_item_label_selecter.active>div {
+    background-color: var(--color-secundary);
+}
+
+.form-itemFilter-chips {
+    height: 20px;
+    border-radius: 20px;
+    background: transparent;
+    color: var(--color-secundary);
+    border-color: var(--color-secundary);
+    border-width: 1px;
+    border-style: solid;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.form-itemFilter-chips-label {
+    color: var(--color-secundary);
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 100%;
+    margin-left: 10px;
+}
+
+
+.form-itemFilter-chips-action {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+}
+
+.form-itemFilter-chips-action-icon {
+    color: var(--color-secundary);
+    font-size: 14px;
+}
