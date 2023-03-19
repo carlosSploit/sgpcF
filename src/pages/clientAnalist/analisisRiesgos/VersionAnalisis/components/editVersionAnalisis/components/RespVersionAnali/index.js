@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "./styles/index.css"
 import { useNotification } from "../../../../../../../../service/Notifications/NotificationProvider";
-import { deleteActivosProceso } from "../../../../../../../../service/repository/RTActivosProceso";
+// import { deleteActivosProceso } from "../../../../../../../../service/repository/RTActivosProceso";
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { handleNewNotification } from "../../../../../../../../service/Notifications/useNotificacion";
 import { OpccionActions } from "../../../opccionActions";
 // import { ItemActivosProces } from "../../../../../../ContextoEmpresa/Procesos/components/editProcesEmpresa/components/ActivosProceso/components/itemActivosProceso";
 // import { AddActivosProceso } from "../../../../../../ContextoEmpresa/Procesos/components/editProcesEmpresa/components/ActivosProceso/components/addActivosProceso";
-import { EditarDependenActivosProceso } from "../../../../../../ContextoEmpresa/Procesos/components/editProcesEmpresa/components/ActivosProceso/components/editActivosProceso";
+// import { EditarDependenActivosProceso } from "../../../../../../ContextoEmpresa/Procesos/components/editProcesEmpresa/components/ActivosProceso/components/editActivosProceso";
 import { deleteResponVersionAnalitiv, getResponVersionAnalitiv } from "../../../../../../../../service/repository/RTResponVersionAnalitiv";
-import { ItemResponVersionAnali } from "./components/itemActivosProceso";
-import { AddResponVersionAnalitic } from "./components/addActivosProceso";
+import { ItemResponVersionAnali } from "./components/itemRespVersionAnali";
+import { AddResponVersionAnalitic } from "./components/addRespVersionAnali";
 
 
 export function ResponsablesEmpresa(props){
@@ -19,9 +19,9 @@ export function ResponsablesEmpresa(props){
     const [listdata,setlistdata] = useState([]);
     // const [listdataHistory,setlistdataHistory] = useState([]);
     const [ismodeladd,setismodeladd] = useState(false);
-    const [ismodelaEdit,setismodelaEdit] = useState(false);
+    const [,setismodelaEdit] = useState(false);
     // const [textsearch,settextsearch] = useState("");
-    const [indexSelectObjActivosProces,setSelectObjActivosProces] = useState(0);
+    const [,setSelectObjActivosProces] = useState(0);
     const [indexOpccionActivosProcesoD,setindexOpccionActivosProcesoD] = useState([]);
     const dispatch = useNotification();
     
@@ -47,7 +47,7 @@ export function ResponsablesEmpresa(props){
 
     const AddItemDeleteRespVersiAnali = (id_empresa) => {
         let data = indexOpccionActivosProcesoD.filter((item)=>{return item == id_empresa})
-        if(data.length != 0){
+        if(parseInt(data.length) !== 0){
             setindexOpccionActivosProcesoD(indexOpccionActivosProcesoD.filter((item)=>{return item != id_empresa}))
             return
         }
@@ -72,7 +72,7 @@ export function ResponsablesEmpresa(props){
             label: "Eliminar",
             icon: DeleteOutlined,
             onChange: async () => {
-                if(indexOpccionActivosProcesoD.length == 0){
+                if(parseInt(indexOpccionActivosProcesoD.length) === 0){
                     handleNewNotification(dispatch,'Selecciona una o varias empresas para poder eliminar', 404);
                     return
                 }
@@ -98,9 +98,9 @@ export function ResponsablesEmpresa(props){
                             AddItemDeleteRespVersiAnali(index);
                         }} onChange={(index)=>{
                             const ListObjActivProces = listdata.filter((item)=>{
-                                return item.id_activproc == index
+                                return parseInt(item.id_activproc) === parseInt(index)
                             })
-                            console.log(ListObjActivProces)
+                            // console.log(ListObjActivProces)
                             const ObjActivProces = ListObjActivProces[0];
                             setSelectObjActivosProces(ObjActivProces);
                             setismodelaEdit(true);
@@ -111,9 +111,6 @@ export function ResponsablesEmpresa(props){
             <AddResponVersionAnalitic informationDataGeneral = {informationDataGeneral} onInsert={async ()=>{
                 await LoadResponVersion();
             }} propismodalvisible = {ismodeladd} propsetismodalvisible = {setismodeladd} />
-            {/* {(ismodelaEdit)?<EditarDependenActivosProceso informationProceses={informationDataGeneral} iskeyDatos = {indexSelectObjActivosProces} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>} */}
-            {/* 
-             */}
         </>
     );
 }

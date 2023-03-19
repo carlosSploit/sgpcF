@@ -402,7 +402,11 @@ export function Componentfilter(props){
                             {(item.opccions != null && item.opccions.length != 0)?<ForminputComboBox valueInit={(compruebeValueInit(item)?item.initValue:0)} keyname={item.nomenclature} isInvert={true} width={100} height={35} keyvalue={item.keyvalue} keylabel={item.masterLabel} datacombo={item.opccions} isdefault={true} onChangeinput={(jsonval)=>{
                                 let data = checkfilter;
                                 data[jsonval.nomenclature] = jsonval.value
-                                onSeleccionOpccion(data);
+                                // detectar el ultimo ingresado
+                                const objData = {...data}
+                                delete objData[jsonval.nomenclature];
+                                objData[jsonval.nomenclature] = jsonval.value
+                                onSeleccionOpccion(objData);
                                 setcheckfilter(data);
                             }} />:<></>}
                         </div>);

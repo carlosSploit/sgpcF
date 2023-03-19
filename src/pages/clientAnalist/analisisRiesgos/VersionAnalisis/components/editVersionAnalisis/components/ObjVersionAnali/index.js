@@ -5,9 +5,9 @@ import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { handleNewNotification } from "../../../../../../../../service/Notifications/useNotificacion";
 import { OpccionActions } from "../../../opccionActions";
 import { deleteObjetivVersionAnalitic, getObjetivVersionAnalitic } from "../../../../../../../../service/repository/RTObjetivVersionAnalitic";
-import { ItemObjetivVersionAnalitic } from "./components/itemObjetivEmpresa";
-import { AddObjetivVersionAnalitic } from "./components/addObjetivosEmpresas";
-import { EditarObjetivVersionAnalitic } from "./components/editObjetivEmpresas";
+import { ItemObjetivVersionAnalitic } from "./components/itemObjVersionAnali";
+import { AddObjetivVersionAnalitic } from "./components/addObjVersionAnali";
+import { EditarObjetivVersionAnalitic } from "./components/editObjVersionAnali";
 
 export function ObjetivVersionAnalitic(props){
 
@@ -100,12 +100,6 @@ export function ObjetivVersionAnalitic(props){
                 await LoadDataObjetivVersionAnalitic();
             }} propismodalvisible = {ismodeladd} propsetismodalvisible = {setismodeladd} />
             {(ismodelaEdit)?<EditarObjetivVersionAnalitic informationDataGeneralEmpre={informationDataGeneral} onAction = {LoadDataObjetivVersionAnalitic} iskeyDatos = {indexOpccionObjetivVersionAnalitic} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>}
-            {/* {(ismodelaEdit)?<EditarObjetivVersionAnalitic informationDataGeneralEmpre={informationDataGeneral} onAction = {LoadDataObjetivVersionAnalitic} iskeyDatos = {indexOpccionObjetivVersionAnalitic} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>} */}
-                {/* 
-             */}
-            {/*  */}
-            {/* 
-             */}
         </>
     );
 }

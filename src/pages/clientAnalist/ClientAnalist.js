@@ -21,6 +21,8 @@ import { TrabajoEmpresas } from "./ContextoEmpresa/TrabajEmpresa";
 import { ProcesEmpresas } from "./ContextoEmpresa/Procesos";
 import { ActivosEmpresa } from "./ContextoEmpresa/Activos";
 import { VersionAnalisis } from "./analisisRiesgos/VersionAnalisis";
+import { ValoriActiv } from "./analisisRiesgos/ValorizActiv";
+import { IndentifiAmenazas } from "./analisisRiesgos/IdentAmenazas";
 
 export function ClientAnalist(props){
 
@@ -82,14 +84,18 @@ export function ClientAnalist(props){
                     key: 4
                 },
                 {
-                    label: "L. PreInscripciones",
+                    label: "Valorizacion del Activo",
                     key: 5
+                },
+                {
+                    label: "Identificar Amenazas",
+                    key: 6
                 }
             ]
         }
     ]
 
-    const listInterface = [<Empresas/>,<TrabajoEmpresas/>,<ProcesEmpresas/>,<ActivosEmpresa/>,<VersionAnalisis />];
+    const listInterface = [<Empresas/>, <TrabajoEmpresas/>, <ProcesEmpresas/>, <ActivosEmpresa/>, <VersionAnalisis />, <ValoriActiv />, <IndentifiAmenazas />];
 
     const onchageoption = (id) => {
         // let patch_redirect = redirectRutaOptions(id);

@@ -42,8 +42,8 @@ export function EditarProcesEmpresaInformation(props){
         // console.log(informationDataGeneral)
         (async()=>{
             // inicializar el tipo de proceso
-            console.log(informationDataGeneral);
-            console.log(infoEmpresa);
+            // console.log(informationDataGeneral);
+            // console.log(infoEmpresa);
             let result = await getTipoProces();
             setlistTipoProc(result);
             settextTipoProc(informationDataGeneral.id_tipProce)
@@ -127,7 +127,7 @@ export function EditarProcesEmpresaInformation(props){
             />:<></>}
         <div style={{height:'5px'}} />
         {/* Tipos de procesos */}
-        {(listGerarProc.length != 0)?<ForminputComboBoxEdit 
+        {(listTipoProc.length != 0)?<ForminputComboBoxEdit 
             setpropdatacombo = {setlistTipoProc}
             indexinput = {textTipoProc}
             setindexinput = {settextTipoProc}

@@ -12,17 +12,6 @@ export async function getObjetivEmpresa(idUsername = 0) {
   return result.data;
 }
 
-// export async function readprofesor(id) {
-//   const id_admin = id;
-//   const url = `${domain_api}/profe/read/${id_admin}`;
-//   const result = await axios.get(url, {
-//     headers: {
-//       Authorization: `Bearer ${await gettoken()}`,
-//     },
-//   });
-//   return result.data;
-// }
-
 export async function addObjetivEmpresa(jsondat = {}) {
   const data = jsondat;
   const url = `${domain_api}/objEmpresa/`;
@@ -34,17 +23,6 @@ export async function addObjetivEmpresa(jsondat = {}) {
   });
   return result.data;
 }
-
-// export async function loggin(jsondat = {}) {
-//   const data = jsondat;
-//   const url = `${domain_api}/user/log`;
-//   const result = await axios.post(url, data, {
-//     headers: {
-//       "Content-Type": "application/json;charset=UTF-8",
-//     },
-//   });
-//   return result.data;
-// }
 
 export async function updateObjetivEmpresa(id, jsondat = {}) {
   const id_negocio = id;

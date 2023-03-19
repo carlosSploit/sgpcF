@@ -1,0 +1,107 @@
+/* puntos class */
+
+
+.container_item_selectItem_conte_bueno {
+    width: 100%;
+    min-height: 40px;
+    height: auto;
+    background-color: white;
+    /* margin-right: 10px;
+     */
+    margin-top: 10px;
+    border-radius: 20px;
+    /* 
+    border-style: solid;
+    border-width: 2px;
+    border-color: forestgreen; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.container_item_selectItem_conte_bueno::after {
+    background-color: forestgreen;
+}
+
+.container_item_selectItem_subcontaion {
+    /* background-color: rebeccapurple; */
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container_item_selectItem_conte_puntos {
+    /* background-color: forestgreen; */
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_item_selectItem_conte_puntos_text {
+    background-color: transparent;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+}
+
+.container_item_selectItem_subcontaion_text_cont {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    width: calc(100% - 30px);
+}
+
+.container_item_selectItem_subcontaion_text {
+    font-size: 16px;
+    color: forestgreen;
+    width: 100%;
+    text-align: start;
+    /* background-color: blueviolet; */
+}
+
+.container_item_selectItem_subcontaion_subtext {
+    font-size: 14px;
+    color: forestgreen;
+    background-color: gray;
+    border-radius: 15px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 24px;
+    /* background-color: blueviolet; */
+}
+
+.container_item_selectItem_subcontaion_text_cont_icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* font-size: 30px; */
+    width: 30px;
+    height: 30px;
+    background-color: gray;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+}
+
+.container_item_selectItem_subcontaion_information {
+    height: 100%;
+    width: calc(100% - 50px);
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
