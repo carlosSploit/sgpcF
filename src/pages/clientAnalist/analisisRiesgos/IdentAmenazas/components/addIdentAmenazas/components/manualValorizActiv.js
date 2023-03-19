@@ -12,7 +12,7 @@ import { ForminputSelectItemFilter } from "../../../../../../../service/morvius-
 import { getTiposAmenasas } from "../../../../../../../service/repository/RTTiposAmenass";
 import { getAmenasas } from "../../../../../../../service/repository/RTAmenass";
 
-export function ExisteIdentifiAmenaz(props){
+export function ManualIdentifiAmenaz(props){
 
     const { onInsert=()=>{}, informacionActivAfec} = props;
     // input de contenidos

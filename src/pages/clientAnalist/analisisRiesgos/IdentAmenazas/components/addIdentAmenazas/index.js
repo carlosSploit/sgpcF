@@ -3,6 +3,7 @@ import "./style/index.css";
 import { ComponentModalFloting, ComponentModalFlotingBody, ComponentModalFlotingHeader } from "../../../../../../service/morvius-service/components";
 import { ExisteIdentifiAmenaz } from "./components/existeValorizActiv";
 import { getAfectaAtiv } from "../../../../../../service/repository/RTAfectaActiv";
+import { ManualIdentifiAmenaz } from "./components/manualValorizActiv";
 
 export function AddIdentifyAmenazas(props){
     const [ismodalvisible, setismodalvisible] = useState(false);
@@ -16,7 +17,10 @@ export function AddIdentifyAmenazas(props){
             if(result.length == 0){
                 setlistview([<ExisteIdentifiAmenaz informacionActivAfec={informacionActivAfec} 
                     onInsert = {onInsert} />])
+                return
             }
+            setlistview([<ManualIdentifiAmenaz informacionActivAfec={informacionActivAfec} 
+                onInsert = {onInsert} />])
         })();
     },[])
 
