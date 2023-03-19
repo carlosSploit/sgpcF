@@ -110,7 +110,7 @@ export function ForminputSelectItemFilter(props){
                                         {(isVisibleFoto)?<div className="container_item_selectecItemFilter_subcontaion_photo" style={{backgroundImage: `url('${itemIcon.photo}')`}} ></div>:<></>}
                                         
                                         <div style={{width:"10px"}}/> 
-                                        <div className="container_item_selectecItemFilter_subcontaion_nametext"> {(itemIcon.name.length >= 30)?itemIcon.name.substring(0,30):<></>}</div>
+                                        <div className="container_item_selectecItemFilter_subcontaion_nametext"> {(itemIcon.name.length >= 30)?itemIcon.name.substring(0,30):itemIcon.name}</div>
                                         <div style={{width:"10px"}}/>
                                         <div className="container_item_selectecItemFilter_subcontaion_button" onClick={()=>{setcheckbox(0); }}>
                                             <CloseCircleOutlined className="container_item_selectecItemFilter_subcontaion_button_icon" />

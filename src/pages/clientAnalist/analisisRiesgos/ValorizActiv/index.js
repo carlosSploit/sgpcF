@@ -214,23 +214,23 @@ export function ValoriActiv(props){
                 setismodeladd(true);
             }
         },
-        {
-            label: "Eliminar",
-            icon: DeleteOutlined,
-            onChange: async () => {
-                if(indexOptionVersionAnaliD.length == 0){
-                    handleNewNotification(dispatch,'Selecciona una o varias empresas para poder eliminar', 404);
-                    return
-                }
-                console.log(indexOptionVersionAnaliD)
-                for (let index = 0; index < indexOptionVersionAnaliD.length; index++) {
-                    const element = indexOptionVersionAnaliD[index];
-                    await DeleteActivProsAnali(element);
-                }
-                handleNewNotification(dispatch,'Se realizo la eliminacion en exito', 200);
-                await LoadDataVersionAnalitic()
-            }
-        }
+        // {
+        //     label: "Eliminar",
+        //     icon: DeleteOutlined,
+        //     onChange: async () => {
+        //         if(indexOptionVersionAnaliD.length == 0){
+        //             handleNewNotification(dispatch,'Selecciona una o varias empresas para poder eliminar', 404);
+        //             return
+        //         }
+        //         console.log(indexOptionVersionAnaliD)
+        //         for (let index = 0; index < indexOptionVersionAnaliD.length; index++) {
+        //             const element = indexOptionVersionAnaliD[index];
+        //             await DeleteActivProsAnali(element);
+        //         }
+        //         handleNewNotification(dispatch,'Se realizo la eliminacion en exito', 200);
+        //         await LoadDataVersionAnalitic()
+        //     }
+        // }
     ]
 
     return (

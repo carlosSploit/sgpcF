@@ -16,7 +16,7 @@ import { ItemValorizeActiv } from "./components/itemIdentAmenazas";
 import { AddIdentifyAmenazas, AddValorizeActiv } from "./components/addIdentAmenazas";
 import { deleteActivProsAnali, getActivProsAnali } from "../../../../service/repository/RTActivProsAnali";
 import { EditaValotCuantitativo } from "./components/editIdentAmenazas";
-import { getAfectaAtiv } from "../../../../service/repository/RTAfectaActiv";
+import { deleteAfectaAtiv, getAfectaAtiv } from "../../../../service/repository/RTAfectaActiv";
 // import { OpccionActions } from "./components/opccionActions";
 // import { deleteEmpresa, getEmpresas } from "../../../../service/repository/RTEmpresas";
 // import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mithelworks";
@@ -210,19 +210,19 @@ export function IndentifiAmenazas(props){
         prososetListOpccion(data);
     }
 
-    const AddItemDeleteProsVerAnali = (id_activProsVerAnali) => {
-        let data = indexOptionVersionAnaliD.filter((item)=>{return item == id_activProsVerAnali})
+    const AddItemDeleteAcivAmenaza = (id_DeleteAcivAmenaza) => {
+        let data = indexOptionVersionAnaliD.filter((item)=>{return item == id_DeleteAcivAmenaza})
         if(data.length != 0){
-            setindexOptionVersionAnaliD(indexOptionVersionAnaliD.filter((item)=>{return item != id_activProsVerAnali}))
+            setindexOptionVersionAnaliD(indexOptionVersionAnaliD.filter((item)=>{return item != id_DeleteAcivAmenaza}))
             return
         }
         let listdata = indexOptionVersionAnaliD;
-        listdata.push(id_activProsVerAnali);
+        listdata.push(id_DeleteAcivAmenaza);
         setindexOptionVersionAnaliD(listdata);
     }
 
-    const DeleteActivProsAnali = async (id_activProsVerAnali) => {
-        await deleteActivProsAnali({id_activProsVerAnali:id_activProsVerAnali});
+    const DeleteActivAfected = async (id_activAfec) => {
+        await deleteAfectaAtiv({id_activAfec:id_activAfec});
     }
 
     const opccionSistem = [
@@ -244,7 +244,7 @@ export function IndentifiAmenazas(props){
                 console.log(indexOptionVersionAnaliD)
                 for (let index = 0; index < indexOptionVersionAnaliD.length; index++) {
                     const element = indexOptionVersionAnaliD[index];
-                    await DeleteActivProsAnali(element);
+                    await DeleteActivAfected(element);
                 }
                 handleNewNotification(dispatch,'Se realizo la eliminacion en exito', 200);
                 await LoadDataVersionAnalitic()
@@ -341,7 +341,7 @@ export function IndentifiAmenazas(props){
                                 {(listdata.length != 0)?listdata.map((item)=>{
                                     return (<ItemValorizeActiv
                                      onSelecteItem={(index)=>{
-                                        AddItemDeleteProsVerAnali(index);
+                                        AddItemDeleteAcivAmenaza(index);
                                     }} onChange={(index)=>{
                                         setindexActivValori(index);
                                         setismodelaEdit(true);
@@ -355,7 +355,7 @@ export function IndentifiAmenazas(props){
             {(ismodeladd)?<AddIdentifyAmenazas informacionActivAfec={indexActivVersion} onInsert={async ()=>{
                 await LoadDataVersionAnalitic();
             }} propismodalvisible = {ismodeladd} propsetismodalvisible = {setismodeladd} />:<></>}
-            {(ismodelaEdit)?<EditaValotCuantitativo informacionProceso = {indexProceso} informacionVersion = {indexActivValori} onAction = {LoadDataVersionAnalitic} iskeyDatos = {indexActivValori} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>}
+            {(ismodelaEdit)?<EditaValotCuantitativo informationActivAnali={indexActivVersion} onAction = {LoadDataVersionAnalitic} iskeyDatos = {indexActivValori} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>}
         </div>
     );
 }

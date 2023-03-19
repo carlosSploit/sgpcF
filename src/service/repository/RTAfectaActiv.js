@@ -35,6 +35,18 @@ export async function addAfectaAtivGeneri(jsondat = {}) {
   return result.data;
 }
 
+export async function addAfectaAtiv(jsondat = {}) {
+  const data = jsondat;
+  const url = `${domain_api}/afectaactiv/`;
+  const result = await axios.post(url, data, {
+    headers: {
+      Authorization: `Bearer ${await gettoken()}`,
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+  });
+  return result.data;
+}
+
 // export async function loggin(jsondat = {}) {
 //   const data = jsondat;
 //   const url = `${domain_api}/user/log`;
@@ -46,21 +58,21 @@ export async function addAfectaAtivGeneri(jsondat = {}) {
 //   return result.data;
 // }
 
-// export async function updateActivosProceso(id, jsondat = {}) {
-//   const id_negocio = id;
-//   const data = jsondat;
-//   const url = `${domain_api}/activproc/${id_negocio}`;
-//   const result = await axios.put(url, data, {
-//     headers: {
-//       Authorization: `Bearer ${await gettoken()}`,
-//       "Content-Type": "application/json;charset=UTF-8",
-//     },
-//   });
-//   return result.data;
-// }
+export async function updateAfectaAtiv(id, jsondat = {}) {
+  const id_negocio = id;
+  const data = jsondat;
+  const url = `${domain_api}/afectaactiv/${id_negocio}`;
+  const result = await axios.put(url, data, {
+    headers: {
+      Authorization: `Bearer ${await gettoken()}`,
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+  });
+  return result.data;
+}
 
-export async function deleteActivProsAnali({id_activProsVerAnali}) {
-  const url = `${domain_api}/activprosveranali/${id_activProsVerAnali}`;
+export async function deleteAfectaAtiv({id_activAfec}) {
+  const url = `${domain_api}/afectaactiv/${id_activAfec}`;
   const result = await axios.delete(url, {
     headers: {
       Authorization: `Bearer ${await gettoken()}`,

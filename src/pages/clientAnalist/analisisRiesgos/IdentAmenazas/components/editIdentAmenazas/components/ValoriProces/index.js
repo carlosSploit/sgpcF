@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNotification } from "../../../../../../../../service/Notifications/NotificationProvider";
-import { getEscalaRTO } from "../../../../../../../../service/repository/RTEscalaRTO";
-import { getEscalaRPO } from "../../../../../../../../service/repository/RTEscalaRPO";
-import { updateValorProceso } from "../../../../../../../../service/repository/RTValorizarProces";
+// import { getEscalaRTO } from "../../../../../../../../service/repository/RTEscalaRTO";
+// import { getEscalaRPO } from "../../../../../../../../service/repository/RTEscalaRPO";
+// import { updateValorProceso } from "../../../../../../../../service/repository/RTValorizarProces";
 import { handleNewNotification } from "../../../../../../../../service/Notifications/useNotificacion";
-import { ForminputBottonSubmit, ForminputComboBoxEdit, ForminputEdit } from "../../../../../../../../service/morvius-service/form_input/form_input";
+import { ForminputAreatEdit, ForminputBottonSubmit } from "../../../../../../../../service/morvius-service/form_input/form_input";
 import { updateValoriActiv } from "../../../../../../../../service/repository/RTValorizarActivo";
+import { updateAfectaAtiv } from "../../../../../../../../service/repository/RTAfectaActiv";
 // import { updateValorProceso } from "../../../../../../../../../service/repository/RTValorizarProces";
 // import { useNotification } from "../../../../../../../../../service/Notifications/NotificationProvider";
 // import { handleNewNotification } from "../../../../../../../../../service/Notifications/useNotificacion";
@@ -13,36 +14,23 @@ import { updateValoriActiv } from "../../../../../../../../service/repository/RT
 // import { getEscalaRTO } from "../../../../../../../../../service/repository/RTEscalaRTO";
 // import { getEscalaRPO } from "../../../../../../../../../service/repository/RTEscalaRPO";
 
-export function EditarValorActivCuantiImformation(props){
+export function EditarEcenarioAmenaza(props){
 
     const [propinformationDataGeneral, ] = useState({
-        "id_valorActiv": 1,
-        "id_activProsVerAnali": 1,
-        "valorActivCuanti": 1000,
-        "promValorCuanti": 5,
-        "nunValorDimen": 3,
-        "fechaValorizacion": "2023-03-14T04:04:09.000Z",
-        "estade": 1
+        "id_afectaActiv": 9,
+        "id_activProsVerAnali": 22,
+        "id_amenaza": 9,
+        "esenario": "",
+        "abreb": "I",
+        "nombreAmena": "Avería de origen físico o lógico",
+        "id_tipoActiv": 2,
+        "nombreTipoActiv": "De origen industrial"
       });
     const {onAction, informationDataGeneral = propinformationDataGeneral} = props;
-    // // escala de RTO
-    // const [textescalaRTO, settextescalaRTO] = useState(0);
-    // const [listescalaRTO, setlistescalaRTO] = useState([]);
-    // // escala de RPO
-    // const [textescalaRPO, settexescalaRPO] = useState(0);
-    // const [listescalaRPO, setlistescalaRPO] = useState([]);
     const dispatch = useNotification();
 
     useEffect(()=>{
         (async () => {
-            // // inicializar escala de RTO
-            // let result = await getEscalaRTO();
-            // setlistescalaRTO(result);
-            // settextescalaRTO(informationDataGeneral.id_escalaRTO)
-            // // inicializar escala de RPO
-            // let resultger = await getEscalaRPO();
-            // setlistescalaRPO(resultger);
-            // settexescalaRPO(informationDataGeneral.id_escalaRPO)
         })();
     },[]);
 
@@ -50,9 +38,9 @@ export function EditarValorActivCuantiImformation(props){
         event.preventDefault();
 
         let data = {
-            "valorActivCuanti": event.target[`valorActivCuanti${informationDataGeneral.id_valorActiv}`].value
+            "esenario": event.target[`escena${informationDataGeneral.id_afectaActiv}`].value
         };
-        let resul = await updateValoriActiv(informationDataGeneral.id_valorActiv, data);
+        let resul = await updateAfectaAtiv(informationDataGeneral.id_afectaActiv, data);
         handleNewNotification(dispatch,resul.messege, resul.status);
         setTimeout(() => {
                 (async ()=>{
@@ -73,8 +61,8 @@ export function EditarValorActivCuantiImformation(props){
         autoComplete="off"
     >
         <div style={{height: '5px'}}></div>
-        <ForminputEdit valueInit={informationDataGeneral.valorActivCuanti} placeHolder="Valorizacion Cuantitiva" keyname ={`valorActivCuanti${informationDataGeneral.id_valorActiv}`}/>
-        <div style={{height: '10px'}}></div>
+        <ForminputAreatEdit valueInit={(informationDataGeneral.esenario == '')? 'Desconocido': informationDataGeneral.esenario} placeHolder="Ecenario donde ocurre la amenaza" keyname ={`escena${informationDataGeneral.id_afectaActiv}`}/>
+        <div style={{height: '15px'}}></div>
         <ForminputBottonSubmit label = {'Editar'} />
     </form>);
 }
