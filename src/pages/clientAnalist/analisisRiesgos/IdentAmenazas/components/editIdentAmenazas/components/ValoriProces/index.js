@@ -5,7 +5,7 @@ import { useNotification } from "../../../../../../../../service/Notifications/N
 // import { updateValorProceso } from "../../../../../../../../service/repository/RTValorizarProces";
 import { handleNewNotification } from "../../../../../../../../service/Notifications/useNotificacion";
 import { ForminputAreatEdit, ForminputBottonSubmit } from "../../../../../../../../service/morvius-service/form_input/form_input";
-import { updateValoriActiv } from "../../../../../../../../service/repository/RTValorizarActivo";
+// import { updateValoriActiv } from "../../../../../../../../service/repository/RTValorizarActivo";
 import { updateAfectaAtiv } from "../../../../../../../../service/repository/RTAfectaActiv";
 // import { updateValorProceso } from "../../../../../../../../../service/repository/RTValorizarProces";
 // import { useNotification } from "../../../../../../../../../service/Notifications/NotificationProvider";
