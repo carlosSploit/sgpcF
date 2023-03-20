@@ -1,92 +1,37 @@
 import React, { useEffect, useState } from "react";
 import "./styles/index.css"
-import { ComponentTable, ComponentTableHead, Componentfilter } from "../../../../service/morvius-service/component/components";
-// import { AddEmpresas } from "./components/addEmpresas";
-// import { ItemEmpresa } from './components/itemEmpresa/index';
-// import { getadmins } from '../../../../service/repository/Admin';
+import { Componentfilter } from "../../../../service/morvius-service/component/components";
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { useNotification } from "../../../../service/Notifications/NotificationProvider";
 import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mithelworks";
 import { getEmpresas } from "../../../../service/repository/RTEmpresas";
 import { getProcesEmpresa } from "../../../../service/repository/RTProcesEmpresas";
 import { handleNewNotification } from "../../../../service/Notifications/useNotificacion";
-import { OpccionActions } from "../../ContextoEmpresa/Empresa/components/opccionActions";
+// import { OpccionActions } from "../../ContextoEmpresa/Empresa/components/opccionActions";
 import { getVersionAnalitiv } from "../../../../service/repository/RTVersionAnalitiv";
-import { ItemValorizeActiv } from "./components/itemValorizActiv";
-import { AddValorizeActiv } from "./components/addValorizActiv";
-import { deleteActivProsAnali, getActivProsAnali } from "../../../../service/repository/RTActivProsAnali";
-import { EditaValotCuantitativo } from "./components/editValorizActiv";
-import { ForminputRadioSliceOpccion } from "../../../../service/morvius-service/form_input/form_input";
-import { ItemValorizActivTab } from "./components/itemValorizActivTab";
-// import { OpccionActions } from "./components/opccionActions";
-// import { deleteEmpresa, getEmpresas } from "../../../../service/repository/RTEmpresas";
-// import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mithelworks";
-// import { EditarEmpresa } from "./components/editEmpresas";
-// import { useNotification } from "../../../../service/Notifications/NotificationProvider";
-// import { handleNewNotification } from "../../../../service/Notifications/useNotificacion";
-// import { EditarProcesEmpresa } from "../../ContextoEmpresa/Procesos/components/editProcesEmpresa";
-// import { AddProcesEmpresas } from "../../ContextoEmpresa/Procesos/components/addProcesEmpresa";
-// import { ItemTrabjEmpresa } from "../../ContextoEmpresa/TrabajEmpresa/components/itemTrabjEmpresa";
-// import { ComponentFilterBar } from "../../../../service/morvius-service/component/complements/componentFilterBar";
-// import { getProcesEmpresa } from "../../../../service/repository/RTProcesEmpresas";
-// import { getTipoProces } from "../../../../service/repository/RTTiposProces";
-// import { getGerarcProces } from "../../../../service/repository/RTGerarcProces";
-// import { getEmpresas } from "../../../../service/repository/RTEmpresas";
-// import { deleteVersionAnalitiv, getVersionAnalitiv } from "../../../../service/repository/RTVersionAnalitiv";
-// import { ItemVersionAnalitit } from "./components/itemVersionAnalisis";
-// import { AddVersionAnalitic } from "./components/addVersionAnalisis";
-// import { EditarVesionAnalitic } from "./components/editVersionAnalisis";
+import { ItemValorizeActiv } from "./components/itemValorizAmenaz";
+import { AddIdentifyAmenazas } from "./components/addtValorizAmenaz";
+import { getActivProsAnali } from "../../../../service/repository/RTActivProsAnali";
+// import { EditaValotCuantitativo } from "./components/editValorizAmenaz";
+import { deleteAfectaAtiv, getAfectaAtiv } from "../../../../service/repository/RTAfectaActiv";
+import { EditaValorAmenaza } from "./components/editValorizAmena";
 
-export function ValoriActiv(props){
+export function ValoriAmenaz(props){
     const [listdata,setlistdata] = useState([]);
-    const [listdataHistory,setlistdataHistory] = useState([]);
+    const [,setlistdataHistory] = useState([]);
     const [ismodeladd,setismodeladd] = useState(false);
     const [ismodelaEdit,setismodelaEdit] = useState(false);
-    const [propstateradio,propsetstateradio] = useState(false);
-    // const [textsearch,settextsearch] = useState("");
-    const [indexActivValori,setindexActivValori] = useState(0);
+    const [indexAmenaza,setindexAmenaza] = useState(0);
     const [indexOptionVersionAnaliD,setindexOptionVersionAnaliD] = useState([]);
-    const [listHeaderTableAnalitic, ] = useState([
-        {
-            label: "#",
-            asling: "lef",
-            isOcult: false,
-            width: "2%"
-        },
-        {
-            label: "Abrebiatura",
-            asling: "lef",
-            isOcult: false,
-            width: ""
-        },
-        {
-            label: "Nombre Activo",
-            asling: "lef",
-            isOcult: false,
-            width: ""
-        },
-        {
-            label: "Valor Cuantitativo",
-            asling: "lef",
-            isOcult: true,
-            width: ""
-        },
-        {
-            label: "Valor Cualitativo",
-            asling: "lef",
-            isOcult: true,
-            width: ""
-        }
-    ]);
-    // const [isModelFilter,setisModelFilter] = useState(false);
-    const [listOpccionFilter,setlistOpccionFilter] = useState([]);
+    const [,setlistOpccionFilter] = useState([]);
     // const [listSelFilter,setlistSelFilter] = useState([]);
-    const [indexProceso,setindexProceso] = useState(0);
+    // const [indexProceso,setindexProceso] = useState(0);
     // opccion filtrajes
     const [propsListOpccion, prososetListOpccion] = useState([]);
     const [indexEmpresa,setindexEmpresa] = useState(0);
     const [keyOpccionProces,setkeyOpccionProces] = useState(0);
     const [indexVersion,setIndexVersion] = useState(0);
+    const [indexActivVersion,setActivVersion] = useState(0);
     
     const dispatch = useNotification();
     
@@ -137,7 +82,7 @@ export function ValoriActiv(props){
     // }
 
     const LoadDataVersionAnalitic = async (id = 0) => {
-        let result = await getActivProsAnali((id == 0)?indexVersion:id);
+        let result = await getAfectaAtiv((id == 0)?indexActivVersion:id);
         console.log(result)
         setlistdata([]);
         setlistdataHistory([]);
@@ -147,23 +92,6 @@ export function ValoriActiv(props){
             setindexOptionVersionAnaliD([]);
         }, 500);
     }
-
-    // const LoadDataProcesEmpresaHist = async (listSelFilteryaux = []) => {
-    //     // console.log(listSelFilteryaux)
-    //     let result = [...listdataHistory];
-    //     // filtraje por copciones de filtro
-    //     ((listSelFilteryaux.length == 0)?listSelFilter:listSelFilteryaux).forEach(element => {
-    //         let auxRes = [...result]
-    //         result = auxRes.filter((item)=>{
-    //             return element.value == item[element.key]
-    //         })
-    //     });
-    //     console.log(result)
-    //     setlistdata([]);
-    //     setTimeout(() => {
-    //         setlistdata(result);
-    //     }, 500);
-    // }
 
     const CompruebaExistencia = (listData = [], comrpeueb='default') => {
         const ListKeyData = listData.map((item) => {
@@ -201,7 +129,7 @@ export function ValoriActiv(props){
         let jsonData = {
             nomenclature: 'Procesos',
             keyvalue: 'id_proceso',
-            initValue: (keyInitSelectet == -1)?indexEmpresa:keyInitSelectet,
+            initValue: (keyInitSelectet == -1)?keyOpccionProces:keyInitSelectet,
             masterLabel: 'nombreProce',
             opccions: result
         };
@@ -210,7 +138,7 @@ export function ValoriActiv(props){
         prososetListOpccion(data);
     }
 
-    const GeneratVersionAnali = async (id_Proceso = 0, isInitialData = false, lisDataGeneral = []) => {
+    const GeneratVersionAnali = async (id_Proceso = 0, keyInitSelectet = -1, isInitialData = false, lisDataGeneral = []) => {
         let result = await getVersionAnalitiv((id_Proceso == 0)?keyOpccionProces:id_Proceso);
         if (result.length === 0) return ((isInitialData)?lisDataGeneral:propsListOpccion)
         let data = [...((isInitialData)?lisDataGeneral:propsListOpccion)];
@@ -218,6 +146,7 @@ export function ValoriActiv(props){
         let jsonData = {
             nomenclature: 'VersiAnali',
             keyvalue: 'id_versionAnali',
+            initValue: (keyInitSelectet == -1)?indexVersion:keyInitSelectet,
             masterLabel: 'abreb',
             opccions: result
         };
@@ -226,19 +155,35 @@ export function ValoriActiv(props){
         prososetListOpccion(data);
     }
 
-    const AddItemDeleteProsVerAnali = (id_activProsVerAnali) => {
-        let data = indexOptionVersionAnaliD.filter((item)=>{return item == id_activProsVerAnali})
+    const GeneratActivosVersion = async (id_version = 0, isInitialData = false, lisDataGeneral = []) => {
+        let result = await getActivProsAnali((id_version == 0)?indexVersion:id_version);
+        if (result.length === 0) return ((isInitialData)?lisDataGeneral:propsListOpccion)
+        let data = [...((isInitialData)?lisDataGeneral:propsListOpccion)];
+        if (CompruebaExistencia(data, 'ActivVers')) return data
+        let jsonData = {
+            nomenclature: 'ActivVers',
+            keyvalue: 'id_activProsVerAnali',
+            masterLabel: 'nombre_Activo',
+            opccions: result
+        };
+        data.push(jsonData);
+        if (isInitialData) return data ;
+        prososetListOpccion(data);
+    }
+
+    const AddItemDeleteAcivAmenaza = (id_DeleteAcivAmenaza) => {
+        let data = indexOptionVersionAnaliD.filter((item)=>{return item == id_DeleteAcivAmenaza})
         if(data.length != 0){
-            setindexOptionVersionAnaliD(indexOptionVersionAnaliD.filter((item)=>{return item != id_activProsVerAnali}))
+            setindexOptionVersionAnaliD(indexOptionVersionAnaliD.filter((item)=>{return item != id_DeleteAcivAmenaza}))
             return
         }
         let listdata = indexOptionVersionAnaliD;
-        listdata.push(id_activProsVerAnali);
+        listdata.push(id_DeleteAcivAmenaza);
         setindexOptionVersionAnaliD(listdata);
     }
 
-    const DeleteActivProsAnali = async (id_activProsVerAnali) => {
-        await deleteActivProsAnali({id_activProsVerAnali:id_activProsVerAnali});
+    const DeleteActivAfected = async (id_activAfec) => {
+        await deleteAfectaAtiv({id_activAfec:id_activAfec});
     }
 
     const opccionSistem = [
@@ -249,6 +194,23 @@ export function ValoriActiv(props){
                 setismodeladd(true);
             }
         },
+        {
+            label: "Eliminar",
+            icon: DeleteOutlined,
+            onChange: async () => {
+                if(indexOptionVersionAnaliD.length == 0){
+                    handleNewNotification(dispatch,'Selecciona una o varias empresas para poder eliminar', 404);
+                    return
+                }
+                console.log(indexOptionVersionAnaliD)
+                for (let index = 0; index < indexOptionVersionAnaliD.length; index++) {
+                    const element = indexOptionVersionAnaliD[index];
+                    await DeleteActivAfected(element);
+                }
+                handleNewNotification(dispatch,'Se realizo la eliminacion en exito', 200);
+                await LoadDataVersionAnalitic()
+            }
+        }
     ]
 
     return (
@@ -257,13 +219,10 @@ export function ValoriActiv(props){
                 {/* Encabezado */}
                 <div className="Container_ProcesEmpresas_principal_header">
                     <div className="Container_ProcesEmpresas_principal_header_subcontent_title">
-                        <div className="Container_ProcesEmpresas_principal_header_content_title">Valorizar un Activo</div>
+                        <div className="Container_ProcesEmpresas_principal_header_content_title">Valorizar Amenazas</div>
                     </div>
                     <div className="Container_ProcesEmpresas_principal_header_subcontent_search">
-                        <div className="Container_ProcesEmpresas_principal_header_subcontent_search_cont">
-                            <ForminputRadioSliceOpccion checkradio = {propstateradio} setcheckradio = {propsetstateradio} onChangeinput={(stade)=>{propsetstateradio(!stade)}}/>
-                        </div>
-                        <div style={{width:'25px'}}></div>
+                        <div className="Container_ProcesEmpresas_principal_header_subcontent_search_cont"></div>
                     </div>
                 </div>
                 <div className="Container_ProcesEmpresas_principal_body_naster">
@@ -274,7 +233,7 @@ export function ValoriActiv(props){
                                 const keysfilter = Object.keys(objJson)
                                 const  keyInteraccion = keysfilter[keysfilter.length - 1]
                                 // validar si las opcciones de interaccion o de recarga
-                                if(keyInteraccion != 'VersiAnali'){
+                                if(keyInteraccion != 'ActivVers'){
                                     prososetListOpccion([]) 
                                     let listGeneri = []
                                     switch (keyInteraccion) {
@@ -286,12 +245,21 @@ export function ValoriActiv(props){
                                             setindexEmpresa(keyEmpFil)
                                         break;
                                         case 'Procesos':
+                                            const keyProceses = objJson[keyInteraccion]
+                                            listGeneri = await GenerateEmpresa(-1, true, [])
+                                            listGeneri = await GenerateProces(0, keyProceses, true, listGeneri)
+                                            listGeneri = await GeneratVersionAnali(keyProceses, 0, true, listGeneri)
+                                            console.log(listGeneri)
+                                            setkeyOpccionProces(keyProceses)
+                                        break;
+                                        case 'VersiAnali':
                                             const keyVersiAnali = objJson[keyInteraccion]
                                             listGeneri = await GenerateEmpresa(-1, true, [])
-                                            listGeneri = await GenerateProces(0, keyVersiAnali, true, listGeneri)
-                                            listGeneri = await GeneratVersionAnali(keyVersiAnali, true, listGeneri)
-                                            console.log(listGeneri)
-                                            setkeyOpccionProces(keyVersiAnali)
+                                            listGeneri = await GenerateProces(0, -1, true, listGeneri)
+                                            listGeneri = await GeneratVersionAnali(0,keyVersiAnali, true, listGeneri)
+                                            //GeneratActivosVersion
+                                            listGeneri = await GeneratActivosVersion(keyVersiAnali, true, listGeneri)
+                                            setIndexVersion(keyVersiAnali)
                                         break;
                                         default:
                                         break;
@@ -300,48 +268,33 @@ export function ValoriActiv(props){
                                 }
                             }} ListOpccion={propsListOpccion} onChangeseach={async (json)=>{
                                 console.log(json)
-                                let id = json['VersiAnali'];
+                                let id = json['ActivVers'];
+                                console.log(id)
                                 await LoadDataVersionAnalitic(id);
-                                setIndexVersion(id)
+                                setActivVersion(id)
                             }} ></Componentfilter>
                         </div>:<></>}
                         {/* Curpo */}
-                        {(!propstateradio)?
                         <div className="Container_ProcesEmpresas_principal_body">
-                            <OpccionActions opccionSistem={opccionSistem} />
                             <div className="Container_ProcesEmpresas_principal_body_subContainer">
                                 {(listdata.length != 0)?listdata.map((item)=>{
                                     return (<ItemValorizeActiv
                                      onSelecteItem={(index)=>{
-                                        AddItemDeleteProsVerAnali(index);
+                                        AddItemDeleteAcivAmenaza(index);
                                     }} onChange={(index)=>{
-                                        setindexActivValori(index);
+                                        setindexAmenaza(index);
                                         setismodelaEdit(true);
-                                    }} keyitem = {item.id_activProsVerAnali} title = {item.nombre_Activo} subtitle = {item.dependAbreb} />)
+                                    }} keyitem = {item.id_afectaActiv} title = {item.nombreAmena} subtitle = {item.nombreTipoActiv} />)
                                 }):<></>}
                             </div>
-                        </div>:<div className="Container_ProcesEmpresas_principal_body">
-                            {/* <OpccionActions opccionSistem={opccionSistem} /> */}
-                            <div className="Container_ProcesEmpresas_principal_body_subContainer">
-                                <ComponentTable>
-                                    <ComponentTableHead headers = {listHeaderTableAnalitic} ></ComponentTableHead>
-                                    <tbody>
-                                        {(listdata.length != 0)?listdata.map((item)=>{
-                                            console.log(item)
-                                            return (<ItemValorizActivTab itemdate ={item}/>)
-                                        })
-                                        :<></>}
-                                    </tbody>
-                                </ComponentTable>
-                            </div>
-                        </div>}
+                        </div>
                     </div>
                 </div>
             </div>
-            {(ismodeladd)?<AddValorizeActiv informacionVersion={indexActivValori} informacionProceso={keyOpccionProces} onInsert={async ()=>{
+            {/* {(ismodeladd)?<AddIdentifyAmenazas informacionActivAfec={indexActivVersion} onInsert={async ()=>{
                 await LoadDataVersionAnalitic();
-            }} propismodalvisible = {ismodeladd} propsetismodalvisible = {setismodeladd} />:<></>}
-            {(ismodelaEdit)?<EditaValotCuantitativo informacionProceso = {indexProceso} informacionVersion = {indexActivValori} onAction = {LoadDataVersionAnalitic} iskeyDatos = {indexActivValori} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>}
+            }} propismodalvisible = {ismodeladd} propsetismodalvisible = {setismodeladd} />:<></>} */}
+            {(ismodelaEdit)?<EditaValorAmenaza onAction = {LoadDataVersionAnalitic} iskeyDatos = {indexAmenaza} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>}
         </div>
     );
 }

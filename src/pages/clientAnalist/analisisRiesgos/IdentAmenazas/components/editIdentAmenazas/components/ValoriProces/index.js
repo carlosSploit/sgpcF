@@ -1,18 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNotification } from "../../../../../../../../service/Notifications/NotificationProvider";
-// import { getEscalaRTO } from "../../../../../../../../service/repository/RTEscalaRTO";
-// import { getEscalaRPO } from "../../../../../../../../service/repository/RTEscalaRPO";
-// import { updateValorProceso } from "../../../../../../../../service/repository/RTValorizarProces";
 import { handleNewNotification } from "../../../../../../../../service/Notifications/useNotificacion";
 import { ForminputAreatEdit, ForminputBottonSubmit } from "../../../../../../../../service/morvius-service/form_input/form_input";
-// import { updateValoriActiv } from "../../../../../../../../service/repository/RTValorizarActivo";
 import { updateAfectaAtiv } from "../../../../../../../../service/repository/RTAfectaActiv";
-// import { updateValorProceso } from "../../../../../../../../../service/repository/RTValorizarProces";
-// import { useNotification } from "../../../../../../../../../service/Notifications/NotificationProvider";
-// import { handleNewNotification } from "../../../../../../../../../service/Notifications/useNotificacion";
-// import { ForminputBottonSubmit, ForminputComboBoxEdit, ForminputEdit } from "../../../../../../../../../service/morvius-service/form_input/form_input";
-// import { getEscalaRTO } from "../../../../../../../../../service/repository/RTEscalaRTO";
-// import { getEscalaRPO } from "../../../../../../../../../service/repository/RTEscalaRPO";
 
 export function EditarEcenarioAmenaza(props){
 

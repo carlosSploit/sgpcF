@@ -1,29 +1,31 @@
 @import url('../../../../../res/typogramic/typogramic.css');
+@import url('../../../masterVarial.css');
 /* cuerpo de la tabla*/
 
-.content-table{
+.content-table {
     border: hidden;
-    width:100%;
+    width: 100%;
 }
 
-.content-table-encabezado{
+.content-table-encabezado {
     font-family: Poppins-bold;
     font-display: auto;
     /* font-weight: bold; */
-    color: #856FC5;
-    font-size: 18px;
+    color: var(--color-master);
+    font-size: 16px;
+    font-weight: 600;
 }
 
-.content-table-encabezado + .cent{
+.content-table-encabezado+.cent {
     text-align: center;
 }
 
-.content-table-encabezado + .lef{
+.content-table-encabezado+.lef {
     text-align: start;
 }
 
-@media (max-width: 500px){
-    .content-table-encabezado + .ocp{
+@media (max-width: 500px) {
+    .content-table-encabezado+.ocp {
         display: none;
     }
 }

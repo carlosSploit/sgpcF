@@ -91,11 +91,6 @@ export function ComponentMenuSling(props){
                                 iscollapset={collapesemenu}/>);
                 })}
             </div>
-            {/* <div onClick={()=>{
-                setcollapsemenu(!collapesemenu);
-            }} className="container_Menu_footer">
-                {(collapesemenu)?<RightOutlined className="container_Menu_footer_icon" />:<LeftOutlined className="container_Menu_footer_icon" />}
-            </div> */}
         </div>
     );
 }

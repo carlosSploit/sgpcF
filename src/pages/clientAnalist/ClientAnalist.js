@@ -23,24 +23,25 @@ import { ActivosEmpresa } from "./ContextoEmpresa/Activos";
 import { VersionAnalisis } from "./analisisRiesgos/VersionAnalisis";
 import { ValoriActiv } from "./analisisRiesgos/ValorizActiv";
 import { IndentifiAmenazas } from "./analisisRiesgos/IdentAmenazas";
+import { ValoriAmenaz } from "./analisisRiesgos/ValorizAmenaz";
 
 export function ClientAnalist(props){
 
     const { 
         idPageLoad = -1, 
         onCerrarSecion = ()=>{}} = props;
-    const [indexinterfacememori, setindexinterfacememori] = useState(-1);
+    const [, setindexinterfacememori] = useState(-1);
     const [indexinterface, setindexinterface] = useState(-1);
     const [iisperfilinfo, setisperfilinfo] = useState(false);
     const [interfaces, setinterfaces] = useState(<Empresas/>);
-    const urlRedirect = useNavigate();
+    // const urlRedirect = useNavigate();
     const [informationData, setinformationData] = useState({
         nameUser: 'Carlos Arturo Guerrero Castillo',
         user: '@arturo14212000',
         photo: 'https://nyrevconnect.com/wp-content/uploads/2017/06/Placeholder_staff_photo-e1505825573317.png'
     });
 
-    const [opccionSistem, setopccionSistem] = useState([
+    const [opccionSistem,] = useState([
         {
             label: "Cerrar secion",
             icon: CloseCircleOutlined,
@@ -90,12 +91,16 @@ export function ClientAnalist(props){
                 {
                     label: "Identificar Amenazas",
                     key: 6
+                },
+                {
+                    label: "Valorizacion de Amenazas",
+                    key: 7
                 }
             ]
         }
     ]
 
-    const listInterface = [<Empresas/>, <TrabajoEmpresas/>, <ProcesEmpresas/>, <ActivosEmpresa/>, <VersionAnalisis />, <ValoriActiv />, <IndentifiAmenazas />];
+    const listInterface = [<Empresas/>, <TrabajoEmpresas/>, <ProcesEmpresas/>, <ActivosEmpresa/>, <VersionAnalisis />, <ValoriActiv />, <IndentifiAmenazas /> , <ValoriAmenaz />];
 
     const onchageoption = (id) => {
         // let patch_redirect = redirectRutaOptions(id);

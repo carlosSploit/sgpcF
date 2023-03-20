@@ -13,9 +13,9 @@ export function ComponentTableHead(props){
     const {headers=[
         {
             label: "#",
-            asling: "cent",
+            asling: "lef",
             isOcult: false,
-            width: "10%"
+            width: "5%"
         },
         {
             label: "Nombre",
@@ -28,12 +28,6 @@ export function ComponentTableHead(props){
             asling: "lef",
             isOcult: true,
             width: ""
-        },
-        {
-            label: "Accciones",
-            asling: "cent",
-            isOcult: true,
-            width: "100px"
         }
     ]} = props;
     return (

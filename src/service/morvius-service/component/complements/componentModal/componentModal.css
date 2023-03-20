@@ -1,3 +1,5 @@
+@import url('../../../masterVarial.css');
+
 .component_modalFloting {
     /* display: none; */
     width: 100vw;
@@ -108,7 +110,7 @@
     width: 100%;
     /* background-color: red; */
     font-size: 15px;
-    color: #9686C3;
+    color: var(--color-text-secundary);
     text-align: center;
 }
 

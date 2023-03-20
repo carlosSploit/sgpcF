@@ -208,7 +208,8 @@
 
 .container_Menu_body_item_body_item_content {
     width: 100%;
-    height: 40px;
+    height: auto;
+    min-height: 20px;
     background-color: transparent;
     display: flex;
     align-items: center;
@@ -217,8 +218,22 @@
 
 .container_Menu_body_item_body_item {
     width: 90%;
-    height: 25px;
+    height: auto;
+    min-height: 20px;
+    margin-bottom: 5px;
     background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.container_Menu_body_item_body_item:hover {
+    border-radius: 17.5px;
+    height: auto;
+    min-height: 20px;
+    margin-bottom: 5px;
+    background-color: rgba(174, 168, 186, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -230,12 +245,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.container_Menu_body_item_body_item:hover {
-    border-radius: 17.5px;
-    height: 30px;
-    background-color: rgba(174, 168, 186, 0.3);
 }
 
 .container_Menu_body_item_body_item>.container_Menu_body_item_body_item_icon {
@@ -263,7 +272,8 @@
 
 .container_Menu_body_item_body_item_activate {
     width: 90%;
-    height: 30px;
+    height: auto;
+    min-height: 20px;
     background-color: var(--color-secundary);
     color: white;
     display: flex;

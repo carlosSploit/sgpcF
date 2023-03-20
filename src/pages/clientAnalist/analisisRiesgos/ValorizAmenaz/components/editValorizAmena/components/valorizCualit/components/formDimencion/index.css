@@ -1,0 +1,97 @@
+@import url('../../../../../../../../../../service/morvius-service/masterVarial.css');
+
+.form_dimenicon_conteiner {
+    width: 100%;
+    height: auto;
+    background-color: white;
+}
+
+.form_dimenicon_conteiner {
+    width: 100%;
+    height: auto;
+    min-height: 40px;
+    background-color: var(--color-backgraud);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.form_dimenicon_subconteiner_header {
+    width: calc(100% - 30px);
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.form_dimenicon_subconteiner_header_value {
+    width: auto;
+    max-width: 25px;
+    height: 25px;
+    border-radius: 12.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-secundary);
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 14px;
+    text-align: center;
+    color: white;
+}
+
+.form_dimenicon_subconteiner_lainer {
+    height: 1px;
+    width: calc(100% - 20px);
+    margin-left: 10px;
+    background-color: var(--color-backgroud4);
+}
+
+.form_dimenicon_subconteiner_body {
+    width: calc(100% - 30px);
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-top: 5px;
+}
+
+.form_dimenicon_subconteiner_body_opccion {
+    width: calc(90%);
+    margin-left: 5%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form_dimenicon_subconteiner_header_Information {
+    background-color: var(--color-text-secundary_trasparent);
+    width: 24px;
+    height: 24px;
+    margin-left: 5px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form_dimenicon_subconteiner_header_Information_icon {
+    font-size: 14px;
+    color: white;
+}
+
+.form_dimenicon_subconteiner_body_title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-master);
+}
+
+.form_dimenicon_subconteiner_body_subtitle {
+    font-size: 14px;
+    color: var(--color-text-secundary);
+}

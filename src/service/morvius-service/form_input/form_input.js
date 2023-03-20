@@ -1,4 +1,4 @@
-import { PictureOutlined,EyeOutlined,EyeInvisibleOutlined, LeftOutlined, RightOutlined, CloseOutlined, SendOutlined, CloseCircleOutlined, EditOutlined } from "@ant-design/icons";
+import { PictureOutlined,EyeOutlined,EyeInvisibleOutlined, LeftOutlined, RightOutlined, CloseOutlined, SendOutlined, CloseCircleOutlined, EditOutlined, UnorderedListOutlined, AreaChartOutlined } from "@ant-design/icons";
 import React,{useState,useRef,useEffect} from "react";
 // import ImageGalery from "../res/ImageGalery";
 import { LisObjIcons } from "../res/resSvgtoJS/objListIcon.react";
@@ -780,6 +780,43 @@ export function ForminputRadioSlice(props){
         </>
     );
 }
+
+export function ForminputRadioSliceOpccion(props){
+    const [propstateradio,propsetstateradio] = useState(false);
+    // encabezados
+    let {
+    checkradio = propstateradio,
+    setcheckradio = propsetstateradio,
+    valueInit= false,
+    onChangeinput=(stade)=>{
+        //console.log(stade);
+    }} = props;
+    // estados del componentes
+    // const [valuestade,setvaluestade] = useState(false);
+
+    useEffect(()=>{
+        setcheckradio(valueInit);
+    },[]);
+
+    return (
+        <>
+            {/* <div style={{height: "5px"}}/> */}
+            <div className="form_conteiner">
+                <div className="form_input_radiosliceOpccio_conteiner" >
+                    <div onClick={()=>{
+                            // console.log(!checkradio);
+                            onChangeinput(!checkradio);
+                            setcheckradio(!checkradio);
+                        }} className={"form_input_radiosliceOpccio"}>
+                            <div className={(!checkradio)?"form_input_radiosliceOpccio_circle_activate":"form_input_radiosliceOpccio_circle"}><UnorderedListOutlined className="radiosliceOpcci_icon" /></div>
+                            <div className={(checkradio)?"form_input_radiosliceOpccio_circle_activate":"form_input_radiosliceOpccio_circle"}><AreaChartOutlined className="radiosliceOpcci_icon" /></div>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+}
+
 
 export function ForminputBotton(props){
     const {label="Submit", onChange=()=>{}, isInvertColor = false} = props;
