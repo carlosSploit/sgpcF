@@ -1,0 +1,35 @@
+@import url('../../../../../../../service/morvius-service/masterVarial.css');
+
+.Informat_Container_Tile {
+    font-size: 24px;
+    color: var(--color-master);
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.Informat_Container_lainer {
+    height: 1px;
+    width: calc(100% - 20px);
+    background-color: var(--color-text-secundary_trasparent);
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.Informat_Container_Descrip {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: var(--color-text-secundary);
+    text-align: justify;
+}
+
+.Informat_Container_Image {
+    height: 300px;
+    width: calc(100% - 20px);
+    margin: 10px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}

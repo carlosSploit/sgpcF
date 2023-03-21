@@ -1,6 +1,6 @@
 @import url('../../../../../../../service/morvius-service/masterVarial.css');
 
-.Container_ItemVersionAnalitit_conten_Pri {
+.Container_ItemValorizeAmenaz_conten_Pri {
     width: 100%;
     height: 70px;
     display: flex;
@@ -8,7 +8,7 @@
     justify-content: center;
 }
 
-.Container_ItemVersionAnalitit_conten_secondary {
+.Container_ItemValorizeAmenaz_conten_secondary {
     width: 98%;
     height: 65px;
     background-color: var(--color-backgraud);
@@ -19,7 +19,7 @@
     overflow: hidden;
 }
 
-.Container_ItemVersionAnalitit_conten_secondary_seleccion {
+.Container_ItemValorizeAmenaz_conten_secondary_seleccion {
     width: 50px;
     height: 100%;
     display: flex;
@@ -27,7 +27,7 @@
     justify-content: center;
 }
 
-.Container_ItemVersionAnalitit_conten_secondary_seleccion_radio {
+.Container_ItemValorizeAmenaz_conten_secondary_seleccion_radio {
     width: 24px;
     height: 24px;
     background-color: white;
@@ -37,14 +37,14 @@
     justify-content: center;
 }
 
-.Container_ItemVersionAnalitit_conten_secondary_seleccion_radio.active>div {
+.Container_ItemValorizeAmenaz_conten_secondary_seleccion_radio.active>div {
     width: 14px;
     height: 14px;
     border-radius: 50%;
     background-color: var(--color-secundary);
 }
 
-.Container_ItemVersionAnalitit_conten_secondary_seleccion_conten_information {
+.Container_ItemValorizeAmenaz_conten_secondary_seleccion_conten_information {
     width: calc(100% - 50px);
     height: 100%;
     display: flex;
@@ -53,7 +53,7 @@
     margin-left: 15px;
 }
 
-.Container_ItemVersionAnalitit_conten_secondary_seleccion_Infor {
+.Container_ItemValorizeAmenaz_conten_secondary_seleccion_Infor {
     width: 50%;
     height: 100%;
     display: flex;
@@ -63,18 +63,18 @@
     margin-left: 10px;
 }
 
-.Container_ItemVersionAnalitit_conten_InfoData_primary {
+.Container_ItemValorizeAmenaz_conten_InfoData_primary {
     color: var(--color-secundary);
     font-size: 16px;
     font-weight: 600;
     text-overflow: initial;
 }
 
-.Container_ItemVersionAnalitit_conten_InfoData_secundary {
+.Container_ItemValorizeAmenaz_conten_InfoData_secundary {
     color: var(--color-text-secundary);
 }
 
-.Container_ItemVersionAnalitit_conten_secondary_seleccion_suInfor {
+.Container_ItemValorizeAmenaz_conten_secondary_seleccion_suInfor {
     width: 50%;
     height: 100%;
     display: flex;
@@ -83,16 +83,16 @@
     justify-content: center;
 }
 
-.Container_ItemVersionAnalitit_conten_InfoData_Descrip {
+.Container_ItemValorizeAmenaz_conten_InfoData_Descrip {
     color: var(--color-text-secundary);
 }
 
 @media (max-width: 600px) {
-    .Container_ItemVersionAnalitit_conten_secondary_seleccion_suInfor {
+    .Container_ItemValorizeAmenaz_conten_secondary_seleccion_suInfor {
         display: none;
     }
 
-    .Container_ItemVersionAnalitit_conten_secondary_seleccion_conten_information {
+    .Container_ItemValorizeAmenaz_conten_secondary_seleccion_conten_information {
         justify-content: flex-start;
     }
 }

@@ -50,7 +50,7 @@ export function EditaValotCuantitativo(props){
         setstadeValoriActiv(stade)
         if(stade) return
         const objValoritCualiti = listvaloritCualiti[0];
-        setlistview([<EditarValorActivCuantiImformation informationDataGeneral={objValoritCualiti}/>,<EditarValorActivCualitativImformation informationDataGeneral={objValoritCualiti}/>])
+        setlistview([<EditarValorActivCuantiImformation onAction={actualizeData} informationDataGeneral={objValoritCualiti}/>,<EditarValorActivCualitativImformation onAction={actualizeData} informationDataGeneral={objValoritCualiti}/>])
     }
 
     const listOpt = [

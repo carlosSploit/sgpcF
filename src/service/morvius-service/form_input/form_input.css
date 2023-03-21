@@ -154,6 +154,16 @@
 /* input check botton */
 
 .form_input_radioslice_conteiner {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: start !important;
+    align-items: center !important;
+    /* margin-right: 20px !important; */
+    /* margin-left: 20px !important; */
+}
+
+.form_input_radioslice_conteiner_sub {
     /* padding-left: 10px; */
     /* padding-right: 10px; */
     padding-top: 5px;
@@ -224,37 +234,49 @@
 /* input check botton Opccion */
 
 .form_input_radiosliceOpccio_conteiner {
+    width: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    /* margin-right: 20px !important; */
+    /* margin-left: 20px !important; */
+}
+
+.form_input_radiosliceOpccio_conteiner_sub {
     /* padding-left: 10px; */
     /* padding-right: 10px; */
-    width: 100%;
-    height: 24px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 104%;
     /* aling */
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: start;
     align-items: center;
     background-color: transparent;
 }
 
 .form_input_radiosliceOpccio {
     width: auto;
-    height: 24px;
+    height: 35px;
     /* border */
     background-color: white;
-    border-radius: 15px;
-    border-width: 1px;
+    border-radius: 16.5px;
+    border-width: 2px;
     border-style: solid;
     border-color: var(--color-secundary);
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 
 .form_input_radiosliceOpccio_circle {
-    border-radius: 15px;
+    border-radius: 16.5px;
     background-color: white;
-    height: 24px;
-    width: 36px;
+    height: 35px;
+    width: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -266,13 +288,17 @@
 }
 
 .form_input_radiosliceOpccio_circle_activate {
-    border-radius: 15px;
+    border-radius: 16.5px;
     background-color: var(--color-secundary);
-    height: 24px;
-    width: 36px;
+    height: 35px;
+    width: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 16.5px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: var(--color-secundary);
 }
 
 .form_input_radiosliceOpccio_circle_activate>.radiosliceOpcci_icon {

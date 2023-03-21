@@ -15,6 +15,7 @@ export function PopModal(props){
     const {children, 
            colorBackgroud = "#fff",
            colorTitle="#9686C3",
+           width = '400px',
            onClose = ()=>{},
            propismodalvisible = ismodalvisible, 
            propsetismodalvisible = setismodalvisible, 
@@ -31,7 +32,7 @@ export function PopModal(props){
     }
 
     return ReactDOM.createPortal(<div id={idDivcontent} >
-        <ComponentModal colorBackgroud={colorBackgroud} colorTitle={colorTitle} idparens = {idDivcontent} propismodalvisible = {propismodalvisible} propsetismodalvisible = {propsetismodalvisible} onClosechange={onDeleteElement} namemodal = {namemodal}>
+        <ComponentModal width={width} colorBackgroud={colorBackgroud} colorTitle={colorTitle} idparens = {idDivcontent} propismodalvisible = {propismodalvisible} propsetismodalvisible = {propsetismodalvisible} onClosechange={onDeleteElement} namemodal = {namemodal}>
             {children}
         </ComponentModal>
     </div>, portalRoot);
@@ -45,6 +46,7 @@ export function ComponentModal(props){
            propismodalvisible = ismodalvisible, 
            propsetismodalvisible = setismodalvisible,
            children,
+           width = '400px',
            colorBackgroud = "#fff", 
            colorTitle="#9686C3", 
            onClosechange=()=>{console.log("cerrado")},
@@ -68,7 +70,7 @@ export function ComponentModal(props){
 
     return(
         <>
-            <ComponentModalFloting width = {'400px'} zindex={zvisible} statemode={propismodalvisible} onClosechange={()=>{propsetismodalvisible(false);}}>
+            <ComponentModalFloting width = {width} zindex={zvisible} statemode={propismodalvisible} onClosechange={()=>{propsetismodalvisible(false);}}>
                <ComponentModalFlotingHeader colorBackgroud={colorBackgroud} colorTitle={colorTitle} title={namemodal} onClosechange={()=>{onClosechange();propsetismodalvisible(false);}} />
                {children}
            </ComponentModalFloting>

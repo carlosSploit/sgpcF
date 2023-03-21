@@ -4,7 +4,7 @@ import { ComponentTable, ComponentTableHead, Componentfilter } from "../../../..
 // import { AddEmpresas } from "./components/addEmpresas";
 // import { ItemEmpresa } from './components/itemEmpresa/index';
 // import { getadmins } from '../../../../service/repository/Admin';
-import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
+import { DeleteOutlined, InfoOutlined, PlusOutlined } from "@ant-design/icons";
 import { useNotification } from "../../../../service/Notifications/NotificationProvider";
 import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mithelworks";
 import { getEmpresas } from "../../../../service/repository/RTEmpresas";
@@ -18,6 +18,7 @@ import { deleteActivProsAnali, getActivProsAnali } from "../../../../service/rep
 import { EditaValotCuantitativo } from "./components/editValorizActiv";
 import { ForminputRadioSliceOpccion } from "../../../../service/morvius-service/form_input/form_input";
 import { ItemValorizActivTab } from "./components/itemValorizActivTab";
+import { InformationValori } from "./components/informationValori";
 // import { OpccionActions } from "./components/opccionActions";
 // import { deleteEmpresa, getEmpresas } from "../../../../service/repository/RTEmpresas";
 // import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mithelworks";
@@ -42,6 +43,7 @@ export function ValoriActiv(props){
     const [listdataHistory,setlistdataHistory] = useState([]);
     const [ismodeladd,setismodeladd] = useState(false);
     const [ismodelaEdit,setismodelaEdit] = useState(false);
+    const [ismodelaInfo,setismodelaInfo] = useState(false);
     const [propstateradio,propsetstateradio] = useState(false);
     // const [textsearch,settextsearch] = useState("");
     const [indexActivValori,setindexActivValori] = useState(0);
@@ -262,6 +264,12 @@ export function ValoriActiv(props){
                     <div className="Container_ProcesEmpresas_principal_header_subcontent_search">
                         <div className="Container_ProcesEmpresas_principal_header_subcontent_search_cont">
                             <ForminputRadioSliceOpccion checkradio = {propstateradio} setcheckradio = {propsetstateradio} onChangeinput={(stade)=>{propsetstateradio(!stade)}}/>
+                            <div style={{width:'5px'}}></div>
+                            <div className="Container_valoriAmenaz_principal_header_subcontent_information" onClick={()=>{
+                                setismodelaInfo(!ismodelaInfo)
+                            }}>
+                                <InfoOutlined className={'Container_valoriAmenaz_principal_header_subcontent_information_icon'} />
+                            </div>
                         </div>
                         <div style={{width:'25px'}}></div>
                     </div>
@@ -342,6 +350,7 @@ export function ValoriActiv(props){
                 await LoadDataVersionAnalitic();
             }} propismodalvisible = {ismodeladd} propsetismodalvisible = {setismodeladd} />:<></>}
             {(ismodelaEdit)?<EditaValotCuantitativo informacionProceso = {indexProceso} informacionVersion = {indexActivValori} onAction = {LoadDataVersionAnalitic} iskeyDatos = {indexActivValori} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>}
+            {(ismodelaInfo)?<InformationValori ismodalvisible = {ismodelaInfo} setismodalvisible = {setismodelaInfo} />:<></>}
         </div>
     );
 }

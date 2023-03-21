@@ -784,7 +784,9 @@ export function ForminputRadioSlice(props){
 export function ForminputRadioSliceOpccion(props){
     const [propstateradio,propsetstateradio] = useState(false);
     // encabezados
-    let {
+    const {
+    Iconuno = UnorderedListOutlined,
+    Icontwo = AreaChartOutlined,
     checkradio = propstateradio,
     setcheckradio = propsetstateradio,
     valueInit= false,
@@ -801,15 +803,15 @@ export function ForminputRadioSliceOpccion(props){
     return (
         <>
             {/* <div style={{height: "5px"}}/> */}
-            <div className="form_conteiner">
-                <div className="form_input_radiosliceOpccio_conteiner" >
+            <div className="form_input_radiosliceOpccio_conteiner">
+                <div className="form_input_radiosliceOpccio_conteiner_sub" >
                     <div onClick={()=>{
                             // console.log(!checkradio);
                             onChangeinput(!checkradio);
                             setcheckradio(!checkradio);
                         }} className={"form_input_radiosliceOpccio"}>
-                            <div className={(!checkradio)?"form_input_radiosliceOpccio_circle_activate":"form_input_radiosliceOpccio_circle"}><UnorderedListOutlined className="radiosliceOpcci_icon" /></div>
-                            <div className={(checkradio)?"form_input_radiosliceOpccio_circle_activate":"form_input_radiosliceOpccio_circle"}><AreaChartOutlined className="radiosliceOpcci_icon" /></div>
+                            <div className={(!checkradio)?"form_input_radiosliceOpccio_circle_activate":"form_input_radiosliceOpccio_circle"}><Iconuno className="radiosliceOpcci_icon" /></div>
+                            <div className={(checkradio)?"form_input_radiosliceOpccio_circle_activate":"form_input_radiosliceOpccio_circle"}><Icontwo className="radiosliceOpcci_icon" /></div>
                     </div>
                 </div>
             </div>

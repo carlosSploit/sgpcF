@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./styles/index.css"
-import { Componentfilter } from "../../../../service/morvius-service/component/components";
-import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
+import { ComponentTable, ComponentTableHead, Componentfilter } from "../../../../service/morvius-service/component/components";
+import { AreaChartOutlined, DeleteOutlined, DotChartOutlined, InfoOutlined, PlusOutlined } from "@ant-design/icons";
 import { useNotification } from "../../../../service/Notifications/NotificationProvider";
 import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mithelworks";
 import { getEmpresas } from "../../../../service/repository/RTEmpresas";
@@ -9,21 +9,27 @@ import { getProcesEmpresa } from "../../../../service/repository/RTProcesEmpresa
 import { handleNewNotification } from "../../../../service/Notifications/useNotificacion";
 // import { OpccionActions } from "../../ContextoEmpresa/Empresa/components/opccionActions";
 import { getVersionAnalitiv } from "../../../../service/repository/RTVersionAnalitiv";
-import { ItemValorizeActiv } from "./components/itemValorizAmenaz";
+import { ItemValorizeActiv, ItemValorizeAmenaz } from "./components/itemValorizAmenaz";
 import { AddIdentifyAmenazas } from "./components/addtValorizAmenaz";
 import { getActivProsAnali } from "../../../../service/repository/RTActivProsAnali";
 // import { EditaValotCuantitativo } from "./components/editValorizAmenaz";
 import { deleteAfectaAtiv, getAfectaAtiv } from "../../../../service/repository/RTAfectaActiv";
 import { EditaValorAmenaza } from "./components/editValorizAmena";
+import { ForminputRadioSliceOpccion } from "../../../../service/morvius-service/form_input/form_input";
+import { ItemValorizAmenazTabCual } from "./components/itemValorizAmenazTabCual";
+import { ItemValorizAmenazTabCuat } from "./components/itemValorizAmenazTabCuat";
+import { InformationValori } from "./components/informationValori";
 
 export function ValoriAmenaz(props){
     const [listdata,setlistdata] = useState([]);
     const [,setlistdataHistory] = useState([]);
-    const [ismodeladd,setismodeladd] = useState(false);
     const [ismodelaEdit,setismodelaEdit] = useState(false);
+    const [ismodelaInfo,setismodelaInfo] = useState(false);
     const [indexAmenaza,setindexAmenaza] = useState(0);
-    const [indexOptionVersionAnaliD,setindexOptionVersionAnaliD] = useState([]);
+    const [,setindexOptionVersionAnaliD] = useState([]);
     const [,setlistOpccionFilter] = useState([]);
+    const [propstateradio,propsetstateradio] = useState(false);
+    const [propstateradio2,propsetstateradio2] = useState(false);
     // const [listSelFilter,setlistSelFilter] = useState([]);
     // const [indexProceso,setindexProceso] = useState(0);
     // opccion filtrajes
@@ -32,8 +38,71 @@ export function ValoriAmenaz(props){
     const [keyOpccionProces,setkeyOpccionProces] = useState(0);
     const [indexVersion,setIndexVersion] = useState(0);
     const [indexActivVersion,setActivVersion] = useState(0);
-    
-    const dispatch = useNotification();
+    const [listHeaderTableAnalitic, ] = useState([
+        {
+            label: "#",
+            asling: "lef",
+            isOcult: false,
+            width: "2%"
+        },
+        {
+            label: "Abrebiatura",
+            asling: "lef",
+            isOcult: false,
+            width: ""
+        },
+        {
+            label: "Degrad Cuanti",
+            asling: "lef",
+            isOcult: false,
+            width: ""
+        },
+        {
+            label: "Impact Cuanti",
+            asling: "lef",
+            isOcult: false,
+            width: ""
+        },
+        {
+            label: "Riesg Cuanti",
+            asling: "lef",
+            isOcult: false,
+            width: ""
+        }
+    ]);
+    const [listHeaderTableAnalitic2, ] = useState([
+        {
+            label: "#",
+            asling: "lef",
+            isOcult: false,
+            width: "2%"
+        },
+        {
+            label: "Abrebiatura",
+            asling: "lef",
+            isOcult: false,
+            width: ""
+        },
+        {
+            label: "Degrad Cuali",
+            asling: "lef",
+            isOcult: true,
+            width: ""
+        },
+        {
+            label: "Impact Cuali",
+            asling: "lef",
+            isOcult: true,
+            width: ""
+        },
+        {
+            label: "Riesg Cuali",
+            asling: "lef",
+            isOcult: true,
+            width: ""
+        }
+    ]);
+    // const dispatch = useNotification();
     
     useEffect(()=>{
         (async()=>{
@@ -43,43 +112,6 @@ export function ValoriAmenaz(props){
             // await LoadOpccionFilter();
         })();
     },[]);
-
-    // const LoadOpccionFilter = async () => {
-    //     let LisOp = [...listOpccionFilter]
-    //     // inicializar el tipo de proceso
-    //     let result = await getGerarcProces();
-    //     let Opccion =  result.map((item)=>{
-    //         return {
-    //             label: item.nombre,
-    //             key: item.id_gerarProc
-    //         }
-    //     })
-    //     let ItemOpccion = {
-    //         label: "Gerarquia de Procesos",
-    //         keyFilter: 'id_gerarProc',
-    //         Icon: FileExclamationOutlined,
-    //         key: -1,
-    //         options: Opccion
-    //     }
-    //     LisOp.push(ItemOpccion)
-    //     // inicializar la gerarquia de proceso
-    //     let resultTipPro = await getTipoProces();
-    //     let Opccion2 =  resultTipPro.map((item)=>{
-    //         return {
-    //             label: item.nombre,
-    //             key: item.id_tipProce
-    //         }
-    //     })
-    //     let ItemOpccion2 = {
-    //         label: "Tipos de Procesos",
-    //         keyFilter: 'id_tipProce',
-    //         Icon: FileExclamationOutlined,
-    //         key: -1,
-    //         options: Opccion2
-    //     }
-    //     LisOp.push(ItemOpccion2)
-    //     setlistOpccionFilter(LisOp)
-    // }
 
     const LoadDataVersionAnalitic = async (id = 0) => {
         let result = await getAfectaAtiv((id == 0)?indexActivVersion:id);
@@ -171,130 +203,147 @@ export function ValoriAmenaz(props){
         prososetListOpccion(data);
     }
 
-    const AddItemDeleteAcivAmenaza = (id_DeleteAcivAmenaza) => {
-        let data = indexOptionVersionAnaliD.filter((item)=>{return item == id_DeleteAcivAmenaza})
-        if(data.length != 0){
-            setindexOptionVersionAnaliD(indexOptionVersionAnaliD.filter((item)=>{return item != id_DeleteAcivAmenaza}))
-            return
-        }
-        let listdata = indexOptionVersionAnaliD;
-        listdata.push(id_DeleteAcivAmenaza);
-        setindexOptionVersionAnaliD(listdata);
-    }
-
-    const DeleteActivAfected = async (id_activAfec) => {
-        await deleteAfectaAtiv({id_activAfec:id_activAfec});
-    }
-
-    const opccionSistem = [
-        {
-            label: "Agregar",
-            icon: PlusOutlined,
-            onChange: () => {
-                setismodeladd(true);
-            }
-        },
-        {
-            label: "Eliminar",
-            icon: DeleteOutlined,
-            onChange: async () => {
-                if(indexOptionVersionAnaliD.length == 0){
-                    handleNewNotification(dispatch,'Selecciona una o varias empresas para poder eliminar', 404);
-                    return
-                }
-                console.log(indexOptionVersionAnaliD)
-                for (let index = 0; index < indexOptionVersionAnaliD.length; index++) {
-                    const element = indexOptionVersionAnaliD[index];
-                    await DeleteActivAfected(element);
-                }
-                handleNewNotification(dispatch,'Se realizo la eliminacion en exito', 200);
-                await LoadDataVersionAnalitic()
-            }
-        }
-    ]
-
     return (
-        <div className="Container_ProcesEmpresas_principal">
-            <div className="Container_ProcesEmpresas_principal_subConteiner">
+        <div className="Container_valoriAmenaz_principal">
+            <div className="Container_valoriAmenaz_principal_subConteiner">
                 {/* Encabezado */}
-                <div className="Container_ProcesEmpresas_principal_header">
-                    <div className="Container_ProcesEmpresas_principal_header_subcontent_title">
-                        <div className="Container_ProcesEmpresas_principal_header_content_title">Valorizar Amenazas</div>
+                <div className="Container_valoriAmenaz_principal_header">
+                    <div className="Container_valoriAmenaz_principal_header_subcontent_title">
+                        <div className="Container_valoriAmenaz_principal_header_content_title">Valorizar Amenazas</div>
                     </div>
-                    <div className="Container_ProcesEmpresas_principal_header_subcontent_search">
-                        <div className="Container_ProcesEmpresas_principal_header_subcontent_search_cont"></div>
+                    <div className="Container_valoriAmenaz_principal_header_subcontent_search">
+                        <div className="Container_valoriAmenaz_principal_header_subcontent_search_cont">
+                            <ForminputRadioSliceOpccion 
+                                checkradio = {propstateradio} 
+                                setcheckradio = {propsetstateradio} 
+                                onChangeinput={(stade)=>{propsetstateradio(!stade)}}/>
+                            {(propstateradio)?<>
+                            <div style={{width:'5px'}}></div>
+                            `<ForminputRadioSliceOpccion 
+                                Iconuno = {AreaChartOutlined} 
+                                Icontwo = {DotChartOutlined} 
+                                checkradio = {propstateradio2} 
+                                setcheckradio = {propsetstateradio2} 
+                                onChangeinput={(stade)=>{propsetstateradio2(!stade)}}
+                            />
+                            </>:<></>}
+                            <div style={{width:'5px'}}></div>
+                            <div className="Container_valoriAmenaz_principal_header_subcontent_information" onClick={()=>{
+                                setismodelaInfo(!ismodelaInfo)
+                            }}>
+                                <InfoOutlined className={'Container_valoriAmenaz_principal_header_subcontent_information_icon'} />
+                            </div>
+                        </div>
+                        <div style={{width:'25px'}}></div>
                     </div>
                 </div>
-                <div className="Container_ProcesEmpresas_principal_body_naster">
-                    <div className="Container_ProcesEmpresas_principal_body_naster_information">
+                <div className="Container_valoriAmenaz_principal_body_naster">
+                    <div className="Container_valoriAmenaz_principal_body_naster_information">
                         {/* Generador */}
-                        {(propsListOpccion.length != 0)?<div className="Container_ProcesEmpresas_principal_header">
-                            <Componentfilter onSeleccionOpccion={async (objJson)=>{
-                                const keysfilter = Object.keys(objJson)
-                                const  keyInteraccion = keysfilter[keysfilter.length - 1]
-                                // validar si las opcciones de interaccion o de recarga
-                                if(keyInteraccion != 'ActivVers'){
-                                    prososetListOpccion([]) 
-                                    let listGeneri = []
-                                    switch (keyInteraccion) {
-                                        case 'Empresa':
-                                            const keyEmpFil = objJson[keyInteraccion]
-                                            listGeneri = await GenerateEmpresa(keyEmpFil, true, [])
-                                            listGeneri = await GenerateProces(keyEmpFil, 0, true, listGeneri)
-                                            console.log(listGeneri)
-                                            setindexEmpresa(keyEmpFil)
-                                        break;
-                                        case 'Procesos':
-                                            const keyProceses = objJson[keyInteraccion]
-                                            listGeneri = await GenerateEmpresa(-1, true, [])
-                                            listGeneri = await GenerateProces(0, keyProceses, true, listGeneri)
-                                            listGeneri = await GeneratVersionAnali(keyProceses, 0, true, listGeneri)
-                                            console.log(listGeneri)
-                                            setkeyOpccionProces(keyProceses)
-                                        break;
-                                        case 'VersiAnali':
-                                            const keyVersiAnali = objJson[keyInteraccion]
-                                            listGeneri = await GenerateEmpresa(-1, true, [])
-                                            listGeneri = await GenerateProces(0, -1, true, listGeneri)
-                                            listGeneri = await GeneratVersionAnali(0,keyVersiAnali, true, listGeneri)
-                                            //GeneratActivosVersion
-                                            listGeneri = await GeneratActivosVersion(keyVersiAnali, true, listGeneri)
-                                            setIndexVersion(keyVersiAnali)
-                                        break;
-                                        default:
-                                        break;
+                        {(propsListOpccion.length != 0)?
+                        <div className="Container_valoriAmenaz_principal_header">
+                            <div className="Container_valoriAmenaz_principal_header_filter" style={{width:'100%'}}>
+                                <Componentfilter onSeleccionOpccion={async (objJson)=>{
+                                    const keysfilter = Object.keys(objJson)
+                                    const  keyInteraccion = keysfilter[keysfilter.length - 1]
+                                    // validar si las opcciones de interaccion o de recarga
+                                    if(keyInteraccion != 'ActivVers'){
+                                        prososetListOpccion([]) 
+                                        let listGeneri = []
+                                        switch (keyInteraccion) {
+                                            case 'Empresa':
+                                                const keyEmpFil = objJson[keyInteraccion]
+                                                listGeneri = await GenerateEmpresa(keyEmpFil, true, [])
+                                                listGeneri = await GenerateProces(keyEmpFil, 0, true, listGeneri)
+                                                console.log(listGeneri)
+                                                setindexEmpresa(keyEmpFil)
+                                            break;
+                                            case 'Procesos':
+                                                const keyProceses = objJson[keyInteraccion]
+                                                listGeneri = await GenerateEmpresa(-1, true, [])
+                                                listGeneri = await GenerateProces(0, keyProceses, true, listGeneri)
+                                                listGeneri = await GeneratVersionAnali(keyProceses, 0, true, listGeneri)
+                                                console.log(listGeneri)
+                                                setkeyOpccionProces(keyProceses)
+                                            break;
+                                            case 'VersiAnali':
+                                                const keyVersiAnali = objJson[keyInteraccion]
+                                                listGeneri = await GenerateEmpresa(-1, true, [])
+                                                listGeneri = await GenerateProces(0, -1, true, listGeneri)
+                                                listGeneri = await GeneratVersionAnali(0,keyVersiAnali, true, listGeneri)
+                                                //GeneratActivosVersion
+                                                listGeneri = await GeneratActivosVersion(keyVersiAnali, true, listGeneri)
+                                                setIndexVersion(keyVersiAnali)
+                                            break;
+                                            default:
+                                            break;
+                                        }
+                                        prososetListOpccion(listGeneri) 
                                     }
-                                    prososetListOpccion(listGeneri) 
-                                }
-                            }} ListOpccion={propsListOpccion} onChangeseach={async (json)=>{
-                                console.log(json)
-                                let id = json['ActivVers'];
-                                console.log(id)
-                                await LoadDataVersionAnalitic(id);
-                                setActivVersion(id)
-                            }} ></Componentfilter>
+                                }} ListOpccion={propsListOpccion} onChangeseach={async (json)=>{
+                                    console.log(json)
+                                    let id = json['ActivVers'];
+                                    console.log(id)
+                                    await LoadDataVersionAnalitic(id);
+                                    setActivVersion(id)
+                                }} ></Componentfilter>
+                            </div>
                         </div>:<></>}
                         {/* Curpo */}
-                        <div className="Container_ProcesEmpresas_principal_body">
-                            <div className="Container_ProcesEmpresas_principal_body_subContainer">
+                        {(!propstateradio)?
+                        <div className="Container_valoriAmenaz_principal_body">
+                            <div className="Container_valoriAmenaz_principal_body_subContainer">
                                 {(listdata.length != 0)?listdata.map((item)=>{
-                                    return (<ItemValorizeActiv
+                                    return (<ItemValorizeAmenaz
                                      onSelecteItem={(index)=>{
-                                        AddItemDeleteAcivAmenaza(index);
+                                        // AddItemDeleteAcivAmenaza(index);
                                     }} onChange={(index)=>{
                                         setindexAmenaza(index);
                                         setismodelaEdit(true);
                                     }} keyitem = {item.id_afectaActiv} title = {item.nombreAmena} subtitle = {item.nombreTipoActiv} />)
                                 }):<></>}
                             </div>
-                        </div>
+                        </div>:
+                        ((!propstateradio2)?
+                        <div className="Container_valoriAmenaz_principal_body">
+                        {/* <OpccionActions opccionSistem={opccionSistem} /> */}
+                            <div className="Container_valoriAmenaz_principal_body_subContainer">
+                                <ComponentTable>
+                                    <ComponentTableHead headers = {listHeaderTableAnalitic} />
+                                    <tbody>
+                                        {(listdata.length != 0)?listdata.filter((item)=>{
+                                            return (item.id_Frecuencia != null) && (item.id_DegradCualit != null)
+                                        }).map((item)=>{
+                                            console.log(item)
+                                            return (<ItemValorizAmenazTabCuat itemdate ={item}/>)
+                                        })
+                                        :<></>}
+                                    </tbody>
+                                </ComponentTable>
+                            </div>
+                        </div> :
+                        <div className="Container_valoriAmenaz_principal_body">
+                            <div className="Container_valoriAmenaz_principal_body_subContainer">
+                                <ComponentTable>
+                                    <ComponentTableHead headers = {listHeaderTableAnalitic2} />
+                                    <tbody>
+                                        {(listdata.length != 0)?listdata.filter((item)=>{
+                                            return (item.id_Frecuencia != null) && (item.id_DegradCualit != null)
+                                        }).map((item)=>{
+                                            console.log(item)
+                                            return (<ItemValorizAmenazTabCual itemdate ={item}/>)
+                                        })
+                                        :<></>}
+                                    </tbody>
+                                </ComponentTable>
+                            </div>
+                        </div>)
+                        }
                     </div>
                 </div>
             </div>
-            {/* {(ismodeladd)?<AddIdentifyAmenazas informacionActivAfec={indexActivVersion} onInsert={async ()=>{
-                await LoadDataVersionAnalitic();
-            }} propismodalvisible = {ismodeladd} propsetismodalvisible = {setismodeladd} />:<></>} */}
             {(ismodelaEdit)?<EditaValorAmenaza onAction = {LoadDataVersionAnalitic} iskeyDatos = {indexAmenaza} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>}
+            {(ismodelaInfo)?<InformationValori ismodalvisible = {ismodelaInfo} setismodalvisible = {setismodelaInfo} />:<></>}
         </div>
     );
 }
