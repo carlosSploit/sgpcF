@@ -46,6 +46,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 25px;
+    overflow: hidden;
 }
 
 .component_filter_containert_filtOptions {
@@ -69,12 +70,14 @@
 
 .component_filter_containert_filtOptions::-webkit-scrollbar {
     width: 5px;
+    height: 3px;
     background-color: transparent;
 }
 
 .component_filter_containert_filtOptions::-webkit-scrollbar-thumb {
     width: 5px;
-    background: linear-gradient(185deg, rgba(150, 134, 195, 1) 0%, rgba(150, 134, 195, 1) 36%, rgba(239, 203, 75, 1) 100%, rgba(105, 78, 78, 1) 120%);
+    /* background: linear-gradient(185deg, rgba(150, 134, 195, 1) 0%, rgba(150, 134, 195, 1) 36%, rgba(239, 203, 75, 1) 100%, rgba(105, 78, 78, 1) 120%); */
+    background-color: transparent;
     border-radius: 20px;
 }
 

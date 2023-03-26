@@ -1,17 +1,6 @@
 import { useEffect, useState } from "react";
-// import { useNotification } from "../../../../service/Notifications/NotificationProvider";
-// import { handleNewNotification } from "../../../../service/Notifications/useNotificacion";
-
-// import { uploudImage } from "../../../../service/repository/uploudimage";
-// import { updateclientAnalist } from "../../../../service/repository/clientAnalist";
-import { ForminputAreatEdit, ForminputBottonSubmit, ForminputComboBoxEdit, ForminputEdit, ForminputRadioSlice, ForminputSelectIcon, ForminputmailEdit } from "../../../../../../../../service/morvius-service/form_input/form_input";
+import { ForminputAreatEdit, ForminputBottonSubmit, ForminputEdit } from "../../../../../../../../service/morvius-service/form_input/form_input";
 import { handleNewNotification, useNotification } from "../../../../../../../../service/Notifications/useNotificacion";
-// import { updateEmpresa } from "../../../../../../../../service/repository/RTEmpresas";
-// import { updateTrabajEmpresa } from "../../../../../../../../service/repository/RTTrabajEmpresas";
-import { getGerarcProces } from "../../../../../../../../service/repository/RTGerarcProces";
-import { getTipoProces } from "../../../../../../../../service/repository/RTTiposProces";
-import { getProcesEmpresa, updateProcesEmpresa } from "../../../../../../../../service/repository/RTProcesEmpresas";
-import { ForminputSelectItemEdit } from "../../../../../../../../service/morvius-service/form_input/complements/forminputSelectItem/ForminputSelectItem";
 import { getTipoActivos } from "../../../../../../../../service/repository/RTTiposActivos";
 import { ForminputSelectItemDependenciEdit } from "../../../../../../../../service/morvius-service/form_input/complements/forminputSelectItemDependenci/ForminputSelectItem";
 import { updateActivosEmpresa } from "../../../../../../../../service/repository/RTActivos";

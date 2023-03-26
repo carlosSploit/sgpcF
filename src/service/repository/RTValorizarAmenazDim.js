@@ -35,15 +35,15 @@ export async function addValorizarAmenazDim(jsondat = {}) {
   return result.data;
 }
 
-export async function updateValorizarAmenaz(id, jsondat = {}) {
-  const id_negocio = id;
-  const data = jsondat;
-  const url = `${domain_api}/valorafectamen/${id_negocio}`;
-  const result = await axios.put(url, data, {
-    headers: {
-      Authorization: `Bearer ${await gettoken()}`,
-      "Content-Type": "application/json;charset=UTF-8",
-    },
-  });
-  return result.data;
-}
+// export async function updateValorizarAmenaz(id, jsondat = {}) {
+//   const id_negocio = id;
+//   const data = jsondat;
+//   const url = `${domain_api}/valorafectamen/${id_negocio}`;
+//   const result = await axios.put(url, data, {
+//     headers: {
+//       Authorization: `Bearer ${await gettoken()}`,
+//       "Content-Type": "application/json;charset=UTF-8",
+//     },
+//   });
+//   return result.data;
+// }

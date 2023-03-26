@@ -12,16 +12,6 @@ export async function getValoriActivDim(id_valorActi = 0) {
   return result.data;
 }
 
-export async function getValoriActivDimAfect(id_valorActi = 0) {
-  const url = `${domain_api}/valorActivDim/listDimension/${id_valorActi}`;
-  const result = await axios.get(url, {
-    headers: {
-      Authorization: `Bearer ${await gettoken()}`,
-    },
-  });
-  return result.data;
-}
-
 export async function insertValoriActivDim( jsondat = {}) {
   const data = jsondat;
   const url = `${domain_api}/valorActivDim/`;

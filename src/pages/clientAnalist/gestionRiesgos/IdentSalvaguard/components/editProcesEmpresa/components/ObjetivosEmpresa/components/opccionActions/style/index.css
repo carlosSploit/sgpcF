@@ -1,0 +1,46 @@
+@import url('../../../../../../../../../../../service/morvius-service/masterVarial.css');
+
+.Content_AreaEmpresas_principal_opccion {
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    align-items: center;
+    justify-content: center;
+}
+
+.Content_AreaEmpresas_principal_opccion_Botton_Config {
+    width: 28px;
+    height: 28px;
+    background-color: var(--color-secundary);
+    border-radius: 50%;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Content_AreaEmpresas_principal_opccion_Botton_Config_icon {
+    color: white;
+}
+
+.Content_AreaEmpresas_principal_opccion_Botton_Actions {
+    width: 26px;
+    height: 26px;
+    background-color: white;
+    border-color: var(--color-secundary);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 50%;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Content_AreaEmpresas_principal_opccion_Botton_Config_icon {
+    color: var(--color-secundary);
+}

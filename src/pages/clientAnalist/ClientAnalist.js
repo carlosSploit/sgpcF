@@ -10,9 +10,9 @@ import { FormOutlined, CloseCircleOutlined } from "@ant-design/icons";
 // import { useParams } from "react-router-dom";
 // import { RedirectLink, redirectRutaOptions, valueRouteActual } from "../../service/router/routerscontroler";
 import { getKeysesion, getkeypage, setkeypage } from "../../service/repository/mithelworks";
-import { redirectRutaOptions } from "../../service/router/routerscontroler";
+// import { redirectRutaOptions } from "../../service/router/routerscontroler";
 // import { routerLinks } from "../../service/router/routers";
-import { useNavigate } from "react-router";
+// import { useNavigate } from "react-router";
 import { readclientAnalist } from "../../service/repository/RTclientAnalist";
 import { ConsuldataLog } from "../../service/repository/RTUsuarios";
 import NotificationProvider from "../../service/Notifications/NotificationProvider";
@@ -24,6 +24,8 @@ import { VersionAnalisis } from "./analisisRiesgos/VersionAnalisis";
 import { ValoriActiv } from "./analisisRiesgos/ValorizActiv";
 import { IndentifiAmenazas } from "./analisisRiesgos/IdentAmenazas";
 import { ValoriAmenaz } from "./analisisRiesgos/ValorizAmenaz";
+import { IndentifiSalvaguard } from "./gestionRiesgos/IdentSalvaguard";
+import { ValoriSalvaguard } from "./gestionRiesgos/ValorizSalvaguard";
 
 export function ClientAnalist(props){
 
@@ -97,15 +99,27 @@ export function ClientAnalist(props){
                     key: 7
                 }
             ]
+        },
+        {
+            label: "Gestion de Riesgos",
+            Icon: FormOutlined,
+            key: -1,
+            options:[
+                {
+                    label: "Identificar Salvaguardas",
+                    key: 8
+                },
+                {
+                    label: "Valorizacion de Salvaguardas",
+                    key: 9
+                }
+            ]
         }
     ]
 
-    const listInterface = [<Empresas/>, <TrabajoEmpresas/>, <ProcesEmpresas/>, <ActivosEmpresa/>, <VersionAnalisis />, <ValoriActiv />, <IndentifiAmenazas /> , <ValoriAmenaz />];
+    const listInterface = [<Empresas/>, <TrabajoEmpresas/>, <ProcesEmpresas/>, <ActivosEmpresa/>, <VersionAnalisis />, <ValoriActiv />, <IndentifiAmenazas /> , <ValoriAmenaz />, <IndentifiSalvaguard /> , <ValoriSalvaguard />];
 
     const onchageoption = (id) => {
-        // let patch_redirect = redirectRutaOptions(id);
-        // urlRedirect(patch_redirect);
-        // console.log(patch_redirect)
         if (id <= (listInterface.length -1)){
             console.log(id)
             setkeypage(id); // guarda la posicio de la ruta en memoria
@@ -115,10 +129,7 @@ export function ClientAnalist(props){
         }
     }
 
-    // useRedirect({urlPatch: urlredirect});
-
     useEffect(()=>{
-
         (async () => {
             let seskey = await getKeysesion();
             let dataRed = await ConsuldataLog({seccionkey: seskey})

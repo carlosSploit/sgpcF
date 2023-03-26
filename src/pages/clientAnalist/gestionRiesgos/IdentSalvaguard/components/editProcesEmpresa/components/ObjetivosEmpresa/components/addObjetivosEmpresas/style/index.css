@@ -1,0 +1,17 @@
+.container_addadmin {
+    width: 100px;
+}
+
+.container_addadmin_descripccion {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 100%;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.container_addEmpresa_selectet_data {
+    width: calc(100% + 20px);
+    margin-left: -10px;
+}

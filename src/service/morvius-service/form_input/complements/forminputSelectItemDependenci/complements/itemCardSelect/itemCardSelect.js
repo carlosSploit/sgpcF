@@ -23,7 +23,7 @@ export default function itemCardSelect(props){
     }
 
     const colorItemTextDescr = () => {
-        return  (keyid != keySelet)? "#81878d": "#d9dff8";
+        return  (keyid != keySelet)? "#d9dff8": "#d9dff8";
     }
 
     const onChangePress = () => {
@@ -42,8 +42,9 @@ export default function itemCardSelect(props){
                     <div style={{width:"10px"}}/> 
                     <div className="container_item_selectItem_subcontaion_information">
                         <div className="container_item_selectItem_subcontaion_text" style={{color: `${colorItemText()}`}}> {name}</div>
+                        <div style={{height: '10px'}} />
                         {(isVisibleDescri)?
-                        <div className="container_item_selectItem_subcontaion_subtext" style={{color: `${colorItemTextDescr()}`}}> {descr}</div>:
+                            <div className="container_item_selectItem_subcontaion_subtext" style={{color: `${colorItemTextDescr()}`}}> {descr}</div>:
                         <></>}
                         
                     </div>
