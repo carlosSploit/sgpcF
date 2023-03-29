@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
 import "./styles/index.css"
+import { AiOutlineFieldBinary, AiOutlineFontColors } from "react-icons/ai";
 import { ComponentTable, ComponentTableHead, Componentfilter } from "../../../../service/morvius-service/component/components";
-import { AreaChartOutlined, DeleteOutlined, DotChartOutlined, InfoOutlined, PlusOutlined } from "@ant-design/icons";
-import { useNotification } from "../../../../service/Notifications/NotificationProvider";
+import { AreaChartOutlined, DotChartOutlined, InfoOutlined, UnorderedListOutlined } from "@ant-design/icons";
+// import { useNotification } from "../../../../service/Notifications/NotificationProvider";
 import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mithelworks";
 import { getEmpresas } from "../../../../service/repository/RTEmpresas";
 import { getProcesEmpresa } from "../../../../service/repository/RTProcesEmpresas";
-import { handleNewNotification } from "../../../../service/Notifications/useNotificacion";
+// import { handleNewNotification } from "../../../../service/Notifications/useNotificacion";
 // import { OpccionActions } from "../../ContextoEmpresa/Empresa/components/opccionActions";
 import { getVersionAnalitiv } from "../../../../service/repository/RTVersionAnalitiv";
-import { ItemValorizeActiv, ItemValorizeAmenaz } from "./components/itemValorizAmenaz";
-import { AddIdentifyAmenazas } from "./components/addtValorizAmenaz";
+import { ItemValorizeAmenaz } from "./components/itemValorizAmenaz";
+// import { AddIdentifyAmenazas } from "./components/addtValorizAmenaz";
 import { getActivProsAnali } from "../../../../service/repository/RTActivProsAnali";
 // import { EditaValotCuantitativo } from "./components/editValorizAmenaz";
-import { deleteAfectaAtiv, getAfectaAtiv } from "../../../../service/repository/RTAfectaActiv";
+import { getAfectaAtiv } from "../../../../service/repository/RTAfectaActiv";
 import { EditaValorAmenaza } from "./components/editValorizAmena";
 import { ForminputRadioSliceOpccion } from "../../../../service/morvius-service/form_input/form_input";
 import { ItemValorizAmenazTabCual } from "./components/itemValorizAmenazTabCual";
@@ -30,6 +31,7 @@ export function ValoriAmenaz(props){
     const [,setlistOpccionFilter] = useState([]);
     const [propstateradio,propsetstateradio] = useState(false);
     const [propstateradio2,propsetstateradio2] = useState(false);
+    const [propstateradio3,propsetstateradio3] = useState(false);
     // const [listSelFilter,setlistSelFilter] = useState([]);
     // const [indexProceso,setindexProceso] = useState(0);
     // opccion filtrajes
@@ -64,6 +66,12 @@ export function ValoriAmenaz(props){
             width: ""
         },
         {
+            label: "Frecuen Cuali",
+            asling: "lef",
+            isOcult: true,
+            width: ""
+        },
+        {
             label: "Riesg Cuanti",
             asling: "lef",
             isOcult: false,
@@ -91,6 +99,12 @@ export function ValoriAmenaz(props){
         },
         {
             label: "Impact Cuali",
+            asling: "lef",
+            isOcult: true,
+            width: ""
+        },
+        {
+            label: "Frecuen Cuali",
             asling: "lef",
             isOcult: true,
             width: ""
@@ -217,14 +231,25 @@ export function ValoriAmenaz(props){
                                 checkradio = {propstateradio} 
                                 setcheckradio = {propsetstateradio} 
                                 onChangeinput={(stade)=>{propsetstateradio(!stade)}}/>
-                            {(propstateradio)?<>
-                            <div style={{width:'5px'}}></div>
-                            `<ForminputRadioSliceOpccion 
+                            {(propstateradio)?<> 
+                            <div style={{width:'5px'}}></div> 
+                            <ForminputRadioSliceOpccion 
                                 Iconuno = {AreaChartOutlined} 
                                 Icontwo = {DotChartOutlined} 
                                 checkradio = {propstateradio2} 
                                 setcheckradio = {propsetstateradio2} 
-                                onChangeinput={(stade)=>{propsetstateradio2(!stade)}}
+                                onChangeinput={(stade)=>{propsetstateradio2(!stade)}} 
+                            /> 
+                            </>:<></>}
+                            {(propstateradio2 && propstateradio)?<>
+                            <div style={{width:'5px'}}></div>
+                            <ForminputRadioSliceOpccion 
+                                sizeIcon = {'18px'} 
+                                Iconuno = {AiOutlineFieldBinary} 
+                                Icontwo = {AiOutlineFontColors} 
+                                checkradio = {propstateradio3} 
+                                setcheckradio = {propsetstateradio3} 
+                                onChangeinput={(stade)=>{propsetstateradio3(!stade)}} 
                             />
                             </>:<></>}
                             <div style={{width:'5px'}}></div>
@@ -331,7 +356,7 @@ export function ValoriAmenaz(props){
                                             return (item.id_Frecuencia != null) && (item.id_DegradCualit != null)
                                         }).map((item)=>{
                                             console.log(item)
-                                            return (<ItemValorizAmenazTabCual itemdate ={item}/>)
+                                            return (<ItemValorizAmenazTabCual isLabel = {propstateradio3} itemdate = {item}/>)
                                         })
                                         :<></>}
                                     </tbody>

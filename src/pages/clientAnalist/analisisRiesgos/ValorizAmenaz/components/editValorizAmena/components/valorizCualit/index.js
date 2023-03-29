@@ -35,7 +35,9 @@ export function EditarValorActivCualitativImformation(props){
 
     useEffect(()=>{
         (async () => {
+            console.log(informationDataGeneral)
             const listDimesIngres = await getValorizarAmenazDim(informationDataGeneral.id_valorAfectAmen)
+            console.log(listDimesIngres)
             const listDimesIngresKey = listDimesIngres.map((item)=>{
                 return item.id_dimension
             })

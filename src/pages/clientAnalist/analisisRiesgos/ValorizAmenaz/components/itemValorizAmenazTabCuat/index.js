@@ -7,26 +7,28 @@ import "./style/index.css"
 
 export function ItemValorizAmenazTabCuat(props){
     const {itemdate = {
-        "id_afectaActiv": 17,
+        "id_afectaActiv": 20,
         "id_activProsVerAnali": 37,
-        "id_valorAfectAmen": 4,
+        "valoriActivCuanti": 2000,
+        "valoriActivCualiti": 6,
+        "id_valorAfectAmen": 3,
         "id_Frecuencia": 2,
+        "valorFrecuenCuali": 4,
+        "valorFrecuenCuanti": 10,
         "nameFrecuencia": "Frecuente",
-        "valDegradCualit": 60,
-        "id_DegradCualit": 3,
-        "valImpacCualit": 2,
-        "valImpacCuanti": 0,
-        "id_ImpacCuanti": 2,
-        "valRiesgoCualit": 9,
-        "valRiesgoCuanti": 0,
-        "id_RiesgoCuanti": 2,
-        "id_amenaza": 21,
-        "esenario": "",
-        "abreb": "E",
+        "valDegradCualit": 90,
+        "id_DegradCualit": 2,
+        "valImpacCualit": 5,
+        "valImpacCuanti": 1800,
+        "valRiesgoCualit": 20,
+        "valRiesgoCuanti": 18000,
+        "id_amenaza": 39,
+        "esenario": "Cuando a el navegador web le injectan un virus por descargar archivos maliciososos.",
+        "abreb": "A",
         "nombreAmena": "Difusión de software dañino",
-        "id_tipoActiv": 3,
-        "nombreTipoActiv": "Errores y fallos no intencionados"
-      }} = props;
+        "id_tipoActiv": 4,
+        "nombreTipoActiv": "Ataques intencionados"
+    }} = props;
     // const [interfaces,setinterface] = useState(null);
 
     // const colorStadeCualiti = (ValCualiti) => {
@@ -64,11 +66,12 @@ export function ItemValorizAmenazTabCuat(props){
     return (
         <>
             <tr style={{height: "30px"}}>
-                <th className="content-table-item-encabezado keyid cent" style={{width:"5%"}}>{itemdate.id_activProsVerAnali}</th>
+                <th className="content-table-item-encabezado keyid cent" style={{width:"5%"}}>{itemdate.id_afectaActiv}</th>
                 <th className="content-table-item-encabezado lef">{itemdate.nombreAmena}</th>
                 {/* <th className="content-table-item-encabezado lef ocp">{itemdate.nameFrecuencia}</th> */}
                 <th className="content-table-item-encabezado lef ocp">{itemdate.valDegradCualit}</th>
                 <th className="content-table-item-encabezado lef ocp">{`S/.${itemdate.valImpacCuanti}`}</th>
+                <th className="content-table-item-encabezado lef ocp">{`${itemdate.valorFrecuenCuanti}`}</th>
                 <th className="content-table-item-encabezado lef ocp">{`S/.${itemdate.valRiesgoCuanti}`}</th>
             </tr>
         </>

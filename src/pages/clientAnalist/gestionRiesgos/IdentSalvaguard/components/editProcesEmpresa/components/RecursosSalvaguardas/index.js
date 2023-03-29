@@ -5,14 +5,14 @@ import { useNotification } from "../../../../../../../../service/Notifications/N
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { handleNewNotification } from "../../../../../../../../service/Notifications/useNotificacion";
 // import { OpccionActions } from "../AreasEmpresa/components/opccionActions";
-import { ItemObjetivEmpresa } from "./components/itemObjetivEmpresa";
-import { AddRecursSalvaguard } from "./components/addObjetivosEmpresas";
+import { ItemObjetivEmpresa } from "./components/itemRecursosSalvaguard";
+import { AddRecursSalvaguard } from "./components/addRecursosSalvaguard";
 // import { EditarObjetivEmpresaInformation } from "./components/editObjetivEmpresas/components/EditarInformacion/Editar";
 // import { EditarObjetivEmpresa } from "./components/editObjetivEmpresas/index";
 import { deleteRecursSalvAfectAct, getRecursSalvAfectAct } from "../../../../../../../../service/repository/RTRecursSalvAfectAct";
 import { OpccionActionsRecurSalvagur } from "./components/opccionActions";
-import { EditarRecursoSalvaguarImform } from "./components/editObjetivEmpresas/components/EditarInformacion/Editar";
-import { EditarRecursoSalvag } from "./components/editObjetivEmpresas";
+// import { EditarRecursoSalvaguarImform } from "./components/editObjetivEmpresas/components/EditarInformacion/Editar";
+import { EditarRecursoSalvag } from "./components/editRecursosSalvaguard";
 // import { ConsuldataLogm, getKeysesion } from "../../../../../../../../service/repository/mithelworks";
 // import { deleteEmpresa, getEmpresas } from "../../../../../../../../service/repository/RTEmpresas";
 // import { ControlOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";

@@ -14,28 +14,34 @@ import { ItemValorizeAmenaz } from "./components/itemValorizAmenaz";
 import { getActivProsAnali } from "../../../../service/repository/RTActivProsAnali";
 // import { EditaValotCuantitativo } from "./components/editValorizAmenaz";
 import { getAfectaAtiv } from "../../../../service/repository/RTAfectaActiv";
-import { EditaValorAmenaza } from "./components/editValorizAmena";
+import { EditaValorSalvaguard } from "./components/editValorizAmena";
 import { ForminputRadioSliceOpccion } from "../../../../service/morvius-service/form_input/form_input";
 import { ItemValorizAmenazTabCual } from "./components/itemValorizAmenazTabCual";
 import { ItemValorizAmenazTabCuat } from "./components/itemValorizAmenazTabCuat";
 import { InformationValori } from "./components/informationValori";
+import { getSalvaguAmenaz } from "../../../../service/repository/RTSalvagAmenaz";
+import { AiOutlineFieldBinary, AiOutlineFontColors } from "react-icons/ai";
 
 export function ValoriSalvaguard(props){
     const [listdata,setlistdata] = useState([]);
     const [,setlistdataHistory] = useState([]);
     const [ismodelaEdit,setismodelaEdit] = useState(false);
     const [ismodelaInfo,setismodelaInfo] = useState(false);
-    const [indexAmenaza,setindexAmenaza] = useState(0);
+    // const [indexAmenaza,setindexAmenaza] = useState(0);
     const [,setindexOptionVersionAnaliD] = useState([]);
+    const [indexSalvaguarda,setindexSalvaguarda] = useState(0);
+
     const [,setlistOpccionFilter] = useState([]);
     const [propstateradio,propsetstateradio] = useState(false);
     const [propstateradio2,propsetstateradio2] = useState(false);
+    const [propstateradio3,propsetstateradio3] = useState(false);
     // opccion filtrajes
     const [propsListOpccion, prososetListOpccion] = useState([]);
     const [indexEmpresa,setindexEmpresa] = useState(0);
     const [keyOpccionProces,setkeyOpccionProces] = useState(0);
     const [indexVersion,setIndexVersion] = useState(0);
     const [indexActivVersion,setActivVersion] = useState(0);
+    const [indexAmenazVersion,setAmenazVersion] = useState(0);
     const [listHeaderTableAnalitic, ] = useState([
         {
             label: "#",
@@ -50,19 +56,25 @@ export function ValoriSalvaguard(props){
             width: ""
         },
         {
-            label: "Degrad Cuanti",
+            label: "Eficacia Impact",
             asling: "lef",
             isOcult: false,
             width: ""
         },
         {
-            label: "Impact Cuanti",
+            label: "Frecuen Resid",
             asling: "lef",
             isOcult: false,
             width: ""
         },
         {
-            label: "Riesg Cuanti",
+            label: "Impact Resid",
+            asling: "lef",
+            isOcult: false,
+            width: ""
+        },
+        {
+            label: "Riesg Resid",
             asling: "lef",
             isOcult: false,
             width: ""
@@ -82,21 +94,27 @@ export function ValoriSalvaguard(props){
             width: ""
         },
         {
-            label: "Degrad Cuali",
+            label: "Degrad Resid",
             asling: "lef",
-            isOcult: true,
+            isOcult: false,
             width: ""
         },
         {
-            label: "Impact Cuali",
+            label: "Frecuen Resid",
             asling: "lef",
-            isOcult: true,
+            isOcult: false,
             width: ""
         },
         {
-            label: "Riesg Cuali",
+            label: "Impact Resid",
             asling: "lef",
-            isOcult: true,
+            isOcult: false,
+            width: ""
+        },
+        {
+            label: "Riesg Resid",
+            asling: "lef",
+            isOcult: false,
             width: ""
         }
     ]);
@@ -111,8 +129,8 @@ export function ValoriSalvaguard(props){
         })();
     },[]);
 
-    const LoadDataVersionAnalitic = async (id = 0) => {
-        let result = await getAfectaAtiv((id == 0)?indexActivVersion:id);
+    const LoadDataSalvagAmenaz = async (id = 0) => {
+        let result = await getSalvaguAmenaz((parseInt(id) === 0)?indexAmenazVersion:id);
         console.log(result)
         setlistdata([]);
         setlistdataHistory([]);
@@ -185,15 +203,32 @@ export function ValoriSalvaguard(props){
         prososetListOpccion(data);
     }
 
-    const GeneratActivosVersion = async (id_version = 0, isInitialData = false, lisDataGeneral = []) => {
+    const GeneratActivosVersion = async (id_version = 0, keyInitSelectet = -1, isInitialData = false, lisDataGeneral = []) => {
         let result = await getActivProsAnali((id_version == 0)?indexVersion:id_version);
         if (result.length === 0) return ((isInitialData)?lisDataGeneral:propsListOpccion)
         let data = [...((isInitialData)?lisDataGeneral:propsListOpccion)];
-        if (CompruebaExistencia(data, 'ActivVers')) return data
+        if (CompruebaExistencia(data, 'ActivVersion')) return data
         let jsonData = {
-            nomenclature: 'ActivVers',
+            nomenclature: 'ActivVersion',
             keyvalue: 'id_activProsVerAnali',
+            initValue: (keyInitSelectet == -1)?indexActivVersion:keyInitSelectet,
             masterLabel: 'nombre_Activo',
+            opccions: result
+        };
+        data.push(jsonData);
+        if (isInitialData) return data ;
+        prososetListOpccion(data);
+    }
+
+    const GeneratAfectActiv = async (id_Actvi = 0, isInitialData = false, lisDataGeneral = []) => {
+        let result = await getAfectaAtiv((parseInt(id_Actvi) === 0)?indexActivVersion:id_Actvi);
+        if (result.length === 0) return ((isInitialData)?lisDataGeneral:propsListOpccion)
+        let data = [...((isInitialData)?lisDataGeneral:propsListOpccion)];
+        if (CompruebaExistencia(data, 'AmenazVers')) return data
+        let jsonData = {
+            nomenclature: 'AmenazVers',
+            keyvalue: 'id_afectaActiv',
+            masterLabel: 'nombreAmena',
             opccions: result
         };
         data.push(jsonData);
@@ -217,12 +252,23 @@ export function ValoriSalvaguard(props){
                                 onChangeinput={(stade)=>{propsetstateradio(!stade)}}/>
                             {(propstateradio)?<>
                             <div style={{width:'5px'}}></div>
-                            `<ForminputRadioSliceOpccion 
+                            <ForminputRadioSliceOpccion 
                                 Iconuno = {AreaChartOutlined} 
                                 Icontwo = {DotChartOutlined} 
                                 checkradio = {propstateradio2} 
                                 setcheckradio = {propsetstateradio2} 
                                 onChangeinput={(stade)=>{propsetstateradio2(!stade)}}
+                            />
+                            </>:<></>}
+                            {(propstateradio2 && propstateradio)?<>
+                            <div style={{width:'5px'}}></div>
+                            <ForminputRadioSliceOpccion 
+                                sizeIcon = {'18px'} 
+                                Iconuno = {AiOutlineFieldBinary} 
+                                Icontwo = {AiOutlineFontColors} 
+                                checkradio = {propstateradio3} 
+                                setcheckradio = {propsetstateradio3} 
+                                onChangeinput={(stade)=>{propsetstateradio3(!stade)}}
                             />
                             </>:<></>}
                             <div style={{width:'5px'}}></div>
@@ -245,7 +291,7 @@ export function ValoriSalvaguard(props){
                                     const keysfilter = Object.keys(objJson)
                                     const  keyInteraccion = keysfilter[keysfilter.length - 1]
                                     // validar si las opcciones de interaccion o de recarga
-                                    if(keyInteraccion != 'ActivVers'){
+                                    if(keyInteraccion != 'AmenazVers'){
                                         prososetListOpccion([]) 
                                         let listGeneri = []
                                         switch (keyInteraccion) {
@@ -270,20 +316,31 @@ export function ValoriSalvaguard(props){
                                                 listGeneri = await GenerateProces(0, -1, true, listGeneri)
                                                 listGeneri = await GeneratVersionAnali(0,keyVersiAnali, true, listGeneri)
                                                 //GeneratActivosVersion
-                                                listGeneri = await GeneratActivosVersion(keyVersiAnali, true, listGeneri)
+                                                listGeneri = await GeneratActivosVersion(keyVersiAnali, 0,true, listGeneri)
                                                 setIndexVersion(keyVersiAnali)
+                                            break;
+                                            case 'ActivVersion':
+                                                const keyActivVersion = objJson[keyInteraccion]
+                                                listGeneri = await GenerateEmpresa(-1, true, [])
+                                                listGeneri = await GenerateProces(0, -1, true, listGeneri)
+                                                listGeneri = await GeneratVersionAnali(0, -1, true, listGeneri)
+                                                //GeneratActivosVersion
+                                                listGeneri = await GeneratActivosVersion(0, keyActivVersion, true, listGeneri)
+                                                listGeneri = await GeneratAfectActiv(keyActivVersion, true, listGeneri)
+                                                setActivVersion(keyActivVersion)
                                             break;
                                             default:
                                             break;
                                         }
                                         prososetListOpccion(listGeneri) 
                                     }
-                                }} ListOpccion={propsListOpccion} onChangeseach={async (json)=>{
+                                }} 
+                                ListOpccion={propsListOpccion} onChangeseach={async (json)=>{
                                     console.log(json)
-                                    let id = json['ActivVers'];
+                                    let id = json['AmenazVers'];
                                     console.log(id)
-                                    await LoadDataVersionAnalitic(id);
-                                    setActivVersion(id)
+                                    await LoadDataSalvagAmenaz(id);
+                                    setAmenazVersion(id)
                                 }} ></Componentfilter>
                             </div>
                         </div>:<></>}
@@ -291,14 +348,14 @@ export function ValoriSalvaguard(props){
                         {(!propstateradio)?
                         <div className="Container_valoriAmenaz_principal_body">
                             <div className="Container_valoriAmenaz_principal_body_subContainer">
-                                {(listdata.length != 0)?listdata.map((item)=>{
+                                {(parseInt(listdata.length) !== 0)?listdata.map((item)=>{
                                     return (<ItemValorizeAmenaz
                                      onSelecteItem={(index)=>{
                                         // AddItemDeleteAcivAmenaza(index);
                                     }} onChange={(index)=>{
-                                        setindexAmenaza(index);
+                                        setindexSalvaguarda(index);
                                         setismodelaEdit(true);
-                                    }} keyitem = {item.id_afectaActiv} title = {item.nombreAmena} subtitle = {item.nombreTipoActiv} />)
+                                    }} keyitem = {item.id_salvAfectAct} title = {item.descripc} subtitle = {item.abrebsalv} />)
                                 }):<></>}
                             </div>
                         </div>:
@@ -309,8 +366,8 @@ export function ValoriSalvaguard(props){
                                 <ComponentTable>
                                     <ComponentTableHead headers = {listHeaderTableAnalitic} />
                                     <tbody>
-                                        {(listdata.length != 0)?listdata.filter((item)=>{
-                                            return (item.id_Frecuencia != null) && (item.id_DegradCualit != null)
+                                        {(parseInt(listdata.length) !== 0)?listdata.filter((item)=>{
+                                            return !(((item.id_escalEficDegr == 0) || (item.id_escalEficDegr == null)) && ((item.id_escalEficFrec == 0) || (item.id_escalEficFrec == null)))
                                         }).map((item)=>{
                                             console.log(item)
                                             return (<ItemValorizAmenazTabCuat itemdate ={item}/>)
@@ -325,11 +382,11 @@ export function ValoriSalvaguard(props){
                                 <ComponentTable>
                                     <ComponentTableHead headers = {listHeaderTableAnalitic2} />
                                     <tbody>
-                                        {(listdata.length != 0)?listdata.filter((item)=>{
-                                            return (item.id_Frecuencia != null) && (item.id_DegradCualit != null)
+                                        {(parseInt(listdata.length) !== 0)?listdata.filter((item)=>{
+                                            return !(((item.id_escalEficDegr == 0) || (item.id_escalEficDegr == null)) && ((item.id_escalEficFrec == 0) || (item.id_escalEficFrec == null)))
                                         }).map((item)=>{
                                             console.log(item)
-                                            return (<ItemValorizAmenazTabCual itemdate ={item}/>)
+                                            return (<ItemValorizAmenazTabCual isLabel = {propstateradio3} itemdate ={item}/>)
                                         })
                                         :<></>}
                                     </tbody>
@@ -340,7 +397,7 @@ export function ValoriSalvaguard(props){
                     </div>
                 </div>
             </div>
-            {(ismodelaEdit)?<EditaValorAmenaza onAction = {LoadDataVersionAnalitic} iskeyDatos = {indexAmenaza} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>}
+            {(ismodelaEdit)?<EditaValorSalvaguard onAction = {LoadDataSalvagAmenaz} iskeyDatos = {indexSalvaguarda} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>}
             {(ismodelaInfo)?<InformationValori ismodalvisible = {ismodelaInfo} setismodalvisible = {setismodelaInfo} />:<></>}
         </div>
     );

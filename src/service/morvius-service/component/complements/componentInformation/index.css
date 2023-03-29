@@ -27,12 +27,39 @@
 }
 
 .Informat_Container_Image {
-    height: 150px !important;
     width: calc(100% - 20px);
-    margin-bottom: 5px;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+}
+
+.Informat_Container_Image_shadow {
+    width: calc(100% - 20px);
+    background-color: transparent;
+    position: absolute;
+    left: 10px;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Informat_Container_Image_shadow:hover {
+    width: calc(100% - 20px);
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    left: 10px;
+    top: 0px;
+}
+
+.Informat_Container_Image_master {
+    width: 100%;
+    height: auto;
+    /* background-color: blueviolet; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
 .Informat_Container_Image_modal {

@@ -20,24 +20,6 @@ import { getActivProsAnali } from "../../../../service/repository/RTActivProsAna
 import { deleteSalvaguAmenaz, getSalvaguAmenaz } from "../../../../service/repository/RTSalvagAmenaz";
 import { EditarSalvagAmenaz } from "./components/editProcesEmpresa";
 import { getAfectaAtiv } from "../../../../service/repository/RTAfectaActiv";
-// import { OpccionActions } from "./components/opccionActions";
-// import { deleteEmpresa, getEmpresas } from "../../../../service/repository/RTEmpresas";
-// import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mithelworks";
-// import { EditarEmpresa } from "./components/editEmpresas";
-// import { useNotification } from "../../../../service/Notifications/NotificationProvider";
-// import { handleNewNotification } from "../../../../service/Notifications/useNotificacion";
-// import { EditarProcesEmpresa } from "../../ContextoEmpresa/Procesos/components/editProcesEmpresa";
-// import { AddProcesEmpresas } from "../../ContextoEmpresa/Procesos/components/addProcesEmpresa";
-// import { ItemTrabjEmpresa } from "../../ContextoEmpresa/TrabajEmpresa/components/itemTrabjEmpresa";
-// import { ComponentFilterBar } from "../../../../service/morvius-service/component/complements/componentFilterBar";
-// import { getProcesEmpresa } from "../../../../service/repository/RTProcesEmpresas";
-// import { getTipoProces } from "../../../../service/repository/RTTiposProces";
-// import { getGerarcProces } from "../../../../service/repository/RTGerarcProces";
-// import { getEmpresas } from "../../../../service/repository/RTEmpresas";
-// import { deleteVersionAnalitiv, getVersionAnalitiv } from "../../../../service/repository/RTVersionAnalitiv";
-// import { ItemVersionAnalitit } from "./components/itemVersionAnalisis";
-// import { AddVersionAnalitic } from "./components/addVersionAnalisis";
-// import { EditarVesionAnalitic } from "./components/editVersionAnalisis";
 
 export function IndentifiSalvaguard(props){
     const [listdata,setlistdata] = useState([]);

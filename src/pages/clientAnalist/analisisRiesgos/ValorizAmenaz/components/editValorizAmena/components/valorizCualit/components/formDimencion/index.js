@@ -34,9 +34,9 @@ export function FormDimension (props){
         {id_nivelCrit:6, labelCrit:'Medio - 50'},
         {id_nivelCrit:7, labelCrit:'Alto - 60'},
         {id_nivelCrit:8, labelCrit:'Alto - 70'},
-        {id_nivelCrit:8, labelCrit:'Alto - 80'},
-        {id_nivelCrit:9, labelCrit:'Muy Alto - 90'},
-        {id_nivelCrit:10, labelCrit:'Muy Alto - 100'},
+        {id_nivelCrit:9, labelCrit:'Alto - 80'},
+        {id_nivelCrit:10, labelCrit:'Muy Alto - 90'},
+        {id_nivelCrit:11, labelCrit:'Muy Alto - 100'},
     ]);
     const [textinformationData,settextinformationData] = useState('');
     const [valuestadeInformation,setvaluestadeInformation] = useState(false);

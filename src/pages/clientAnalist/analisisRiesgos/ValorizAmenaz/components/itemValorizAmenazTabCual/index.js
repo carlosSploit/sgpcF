@@ -6,28 +6,30 @@ import "./style/index.css"
 // import { useNotification, handleNewNotification } from "../../../../../../service/Notifications/useNotificacion";
 
 export function ItemValorizAmenazTabCual(props){
-    const {itemdate = {
-        "id_afectaActiv": 17,
+    const {isLabel= false, itemdate = {
+        "id_afectaActiv": 20,
         "id_activProsVerAnali": 37,
-        "id_valorAfectAmen": 4,
+        "valoriActivCuanti": 2000,
+        "valoriActivCualiti": 6,
+        "id_valorAfectAmen": 3,
         "id_Frecuencia": 2,
+        "valorFrecuenCuali": 4,
+        "valorFrecuenCuanti": 10,
         "nameFrecuencia": "Frecuente",
-        "valDegradCualit": 60,
-        "id_DegradCualit": 3,
-        "valImpacCualit": 2,
-        "valImpacCuanti": 0,
-        "id_ImpacCuanti": 2,
-        "valRiesgoCualit": 9,
-        "valRiesgoCuanti": 0,
-        "id_RiesgoCuanti": 2,
-        "id_amenaza": 21,
-        "esenario": "",
-        "abreb": "E",
+        "valDegradCualit": 90,
+        "id_DegradCualit": 2,
+        "valImpacCualit": 5,
+        "valImpacCuanti": 1800,
+        "valRiesgoCualit": 20,
+        "valRiesgoCuanti": 18000,
+        "id_amenaza": 39,
+        "esenario": "Cuando a el navegador web le injectan un virus por descargar archivos maliciososos.",
+        "abreb": "A",
         "nombreAmena": "Difusión de software dañino",
-        "id_tipoActiv": 3,
-        "nombreTipoActiv": "Errores y fallos no intencionados"
-      }} = props;
-    const [DataRiesgo,setDataRiesgo] = useState([
+        "id_tipoActiv": 4,
+        "nombreTipoActiv": "Ataques intencionados"
+    }} = props;
+    const [DataRiesgo,] = useState([
         {
             key : 1,
             code: 'C',
@@ -65,6 +67,44 @@ export function ItemValorizAmenazTabCual(props){
         }
     ]);
 
+    const [DataFrecuend ,] = useState([
+        {
+            key : 1,
+            code: 'MB',
+            label: 'Muy poco frecuente',
+            valor : 1,
+            color: '#9E9E9E'
+        },
+        {
+            key : 2,
+            code: 'PP',
+            label: 'Poco frecuente',
+            valor : 2,
+            color: '#8BC34A'
+        },
+        {
+            key : 3,
+            code: 'P',
+            label: 'Posible',
+            valor : 3,
+            color: '#FFA000'
+        },
+        {
+            key : 4,
+            code: 'F',
+            label: 'Frecuente',
+            valor : 4,
+            color: '#FF5722'
+        },
+        {
+            key : 5,
+            code: 'MF',
+            label: 'Muy frecuente',
+            valor : 5,
+            color: '#FF5252'
+        }
+    ]);
+
     const colorStadeDegradCualiti = (ValCualiti) => {
         return {
             "0":'#9E9E9E',
@@ -78,22 +118,6 @@ export function ItemValorizAmenazTabCual(props){
             "80":'#FF5722',
             "90":'#FF5252',
             "100":'#FF5252'
-        }[ValCualiti.toString()]
-    }
-
-    const labelStadeDegradCualiti = (ValCualiti) => {
-        return {
-            "0":'D',
-            "10":'D',
-            "20":'B',
-            "30":'B',
-            "40":'M',
-            "50":'M',
-            "60":'M',
-            "70":'A',
-            "80":'A',
-            "90":'MA',
-            "100":'MA'
         }[ValCualiti.toString()]
     }
 
@@ -114,7 +138,7 @@ export function ItemValorizAmenazTabCual(props){
     }
 
     const labelStadeImpactCualiti = (ValCualiti) => {
-        return {
+        const labels = {
             "0":'D',
             "1":'B',
             "2":'B',
@@ -126,13 +150,22 @@ export function ItemValorizAmenazTabCual(props){
             "8":'A',
             "9":'MA',
             "10":'MA'
-        }[ValCualiti.toString()]
+        }
+        return (!isLabel)? ValCualiti : labels[ValCualiti.toString()]
     }
 
     const colorStadeRiesgCualiti = (ValCualiti) => {
         const listData = DataRiesgo.filter((item)=>{
             const itemsRange = item.range.split(' - ');
-            return (parseInt(itemsRange[0]) <= ValCualiti) && (ValCualiti <= parseInt(itemsRange[0]))
+            return (parseInt(itemsRange[0]) <= ValCualiti) && (ValCualiti <= parseInt(itemsRange[1]))
+        })
+        if (listData.length === 0) return '#9E9E9E'
+        return listData[0].color
+    }
+
+    const colorStadeFrecuentCualiti = (idFrecuen = 0) => {
+        const listData = DataFrecuend.filter((item)=>{
+            return parseInt(item.valor) === parseInt(idFrecuen)
         })
         if (listData.length === 0) return '#9E9E9E'
         return listData[0].color
@@ -141,10 +174,18 @@ export function ItemValorizAmenazTabCual(props){
     const labelStadeRiesgCualiti = (ValCualiti) => {
         const listData = DataRiesgo.filter((item)=>{
             const itemsRange = item.range.split(' - ');
-            return (parseInt(itemsRange[0]) <= ValCualiti) && (ValCualiti <= parseInt(itemsRange[0]))
+            return (parseInt(itemsRange[0]) <= ValCualiti) && (ValCualiti <= parseInt(itemsRange[1]))
         })
         if (listData.length === 0) return 'C'
-        return listData[0].code
+        return (!isLabel)? ValCualiti : listData[0].code
+    }
+
+    const labelStadeFrecuenCualiti = (idFrecuen) => {
+        const listData = DataFrecuend.filter((item)=>{
+            return parseInt(item.valor) === parseInt(idFrecuen)
+        })
+        if (listData.length === 0) return 'MB'
+        return (!isLabel)? listData[0].valor : listData[0].code
     }
 
     useEffect(()=>{
@@ -158,7 +199,7 @@ export function ItemValorizAmenazTabCual(props){
                 <th className="content-table-item-encabezado lef">{itemdate.nombreAmena}</th>
                 <th className="content-table-item-encabezado lef ocp">
                     <div className="content-table-item-encabezado_chip ">
-                        <div style={{backgroundColor:`${colorStadeDegradCualiti(itemdate.valDegradCualit)}`}}>{labelStadeDegradCualiti(itemdate.valDegradCualit)}</div>
+                        <div style={{backgroundColor:`${colorStadeDegradCualiti(itemdate.valDegradCualit)}`}}>{itemdate.valDegradCualit}</div>
                     </div>
                 </th>
                 <th className="content-table-item-encabezado lef ocp">
@@ -168,7 +209,12 @@ export function ItemValorizAmenazTabCual(props){
                 </th>
                 <th className="content-table-item-encabezado lef ocp">
                     <div className="content-table-item-encabezado_chip ">
-                        <div style={{backgroundColor:`${colorStadeRiesgCualiti(itemdate.id_RiesgoCuanti)}`}}>{labelStadeRiesgCualiti(itemdate.valRiesgoCualit)}</div>
+                        <div style={{backgroundColor:`${colorStadeFrecuentCualiti(itemdate.valorFrecuenCuali)}`}}>{labelStadeFrecuenCualiti(itemdate.valorFrecuenCuali)}</div>
+                    </div>
+                </th>
+                <th className="content-table-item-encabezado lef ocp">
+                    <div className="content-table-item-encabezado_chip ">
+                        <div style={{backgroundColor:`${colorStadeRiesgCualiti(itemdate.valRiesgoCualit)}`}}>{labelStadeRiesgCualiti(itemdate.valRiesgoCualit)}</div>
                     </div>
                 </th>
             </tr>

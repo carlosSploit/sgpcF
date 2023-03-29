@@ -4,9 +4,9 @@ import { handleNewNotification, useNotification } from "../../../../../../servic
 import { EditarInformacionSalvaguard } from "./components/EditarInformacion/Editar";
 import { ComponentModalFloting, ComponentModalFlotingBody, ComponentModalFlotingHeader, ComponentModalPrincipalListtabs } from "../../../../../../service/morvius-service/components";
 import { EditOutlined, TeamOutlined, UsbOutlined } from "@ant-design/icons";
-import { TrabajResponsables } from "./components/TrabajResponsables";
-import { getSalvaguAmenaz } from "../../../../../../service/repository/RTSalvagAmenaz";import { RecurSalvaguard } from "./components/ObjetivosEmpresa";
-;
+import { TrabajResponsables } from "./components/ResponsSalvaguardas";
+import { getSalvaguAmenaz } from "../../../../../../service/repository/RTSalvagAmenaz";
+import { RecurSalvaguard } from "./components/RecursosSalvaguardas";
 
 export function EditarSalvagAmenaz(props){
 

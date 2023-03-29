@@ -4,7 +4,7 @@ import { ComponentTable, ComponentTableHead, Componentfilter } from "../../../..
 // import { AddEmpresas } from "./components/addEmpresas";
 // import { ItemEmpresa } from './components/itemEmpresa/index';
 // import { getadmins } from '../../../../service/repository/Admin';
-import { DeleteOutlined, InfoOutlined, PlusOutlined } from "@ant-design/icons";
+import { AreaChartOutlined, DeleteOutlined, DotChartOutlined, InfoOutlined, PlusOutlined } from "@ant-design/icons";
 import { useNotification } from "../../../../service/Notifications/NotificationProvider";
 import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mithelworks";
 import { getEmpresas } from "../../../../service/repository/RTEmpresas";
@@ -19,6 +19,8 @@ import { EditaValotCuantitativo } from "./components/editValorizActiv";
 import { ForminputRadioSliceOpccion } from "../../../../service/morvius-service/form_input/form_input";
 import { ItemValorizActivTab } from "./components/itemValorizActivTab";
 import { InformationValori } from "./components/informationValori";
+import { ItemValorizActivTabCual } from "./components/itemValorizAmenazTabCual";
+import { ItemValorizActivTabCuat } from "./components/itemValorizAmenazTabCuat";
 // import { OpccionActions } from "./components/opccionActions";
 // import { deleteEmpresa, getEmpresas } from "../../../../service/repository/RTEmpresas";
 // import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mithelworks";
@@ -45,6 +47,7 @@ export function ValoriActiv(props){
     const [ismodelaEdit,setismodelaEdit] = useState(false);
     const [ismodelaInfo,setismodelaInfo] = useState(false);
     const [propstateradio,propsetstateradio] = useState(false);
+    const [propstateradio2,propsetstateradio2] = useState(false);
     // const [textsearch,settextsearch] = useState("");
     const [indexActivValori,setindexActivValori] = useState(0);
     const [indexOptionVersionAnaliD,setindexOptionVersionAnaliD] = useState([]);
@@ -62,19 +65,27 @@ export function ValoriActiv(props){
             width: ""
         },
         {
-            label: "Nombre Activo",
+            label: "Presio Activo",
+            asling: "lef",
+            isOcult: false,
+            width: ""
+        }
+    ]);
+    const [listHeaderTableAnalitic2, ] = useState([
+        {
+            label: "#",
+            asling: "lef",
+            isOcult: false,
+            width: "2%"
+        },
+        {
+            label: "Abrebiatura",
             asling: "lef",
             isOcult: false,
             width: ""
         },
         {
-            label: "Valor Cuantitativo",
-            asling: "lef",
-            isOcult: true,
-            width: ""
-        },
-        {
-            label: "Valor Cualitativo",
+            label: "Valor Cuali",
             asling: "lef",
             isOcult: true,
             width: ""
@@ -101,43 +112,6 @@ export function ValoriActiv(props){
         })();
     },[]);
 
-    // const LoadOpccionFilter = async () => {
-    //     let LisOp = [...listOpccionFilter]
-    //     // inicializar el tipo de proceso
-    //     let result = await getGerarcProces();
-    //     let Opccion =  result.map((item)=>{
-    //         return {
-    //             label: item.nombre,
-    //             key: item.id_gerarProc
-    //         }
-    //     })
-    //     let ItemOpccion = {
-    //         label: "Gerarquia de Procesos",
-    //         keyFilter: 'id_gerarProc',
-    //         Icon: FileExclamationOutlined,
-    //         key: -1,
-    //         options: Opccion
-    //     }
-    //     LisOp.push(ItemOpccion)
-    //     // inicializar la gerarquia de proceso
-    //     let resultTipPro = await getTipoProces();
-    //     let Opccion2 =  resultTipPro.map((item)=>{
-    //         return {
-    //             label: item.nombre,
-    //             key: item.id_tipProce
-    //         }
-    //     })
-    //     let ItemOpccion2 = {
-    //         label: "Tipos de Procesos",
-    //         keyFilter: 'id_tipProce',
-    //         Icon: FileExclamationOutlined,
-    //         key: -1,
-    //         options: Opccion2
-    //     }
-    //     LisOp.push(ItemOpccion2)
-    //     setlistOpccionFilter(LisOp)
-    // }
-
     const LoadDataVersionAnalitic = async (id = 0) => {
         let result = await getActivProsAnali((id == 0)?indexVersion:id);
         console.log(result)
@@ -149,23 +123,6 @@ export function ValoriActiv(props){
             setindexOptionVersionAnaliD([]);
         }, 500);
     }
-
-    // const LoadDataProcesEmpresaHist = async (listSelFilteryaux = []) => {
-    //     // console.log(listSelFilteryaux)
-    //     let result = [...listdataHistory];
-    //     // filtraje por copciones de filtro
-    //     ((listSelFilteryaux.length == 0)?listSelFilter:listSelFilteryaux).forEach(element => {
-    //         let auxRes = [...result]
-    //         result = auxRes.filter((item)=>{
-    //             return element.value == item[element.key]
-    //         })
-    //     });
-    //     console.log(result)
-    //     setlistdata([]);
-    //     setTimeout(() => {
-    //         setlistdata(result);
-    //     }, 500);
-    // }
 
     const CompruebaExistencia = (listData = [], comrpeueb='default') => {
         const ListKeyData = listData.map((item) => {
@@ -262,8 +219,21 @@ export function ValoriActiv(props){
                         <div className="Container_ProcesEmpresas_principal_header_content_title">Valorizar un Activo</div>
                     </div>
                     <div className="Container_ProcesEmpresas_principal_header_subcontent_search">
-                        <div className="Container_ProcesEmpresas_principal_header_subcontent_search_cont">
-                            <ForminputRadioSliceOpccion checkradio = {propstateradio} setcheckradio = {propsetstateradio} onChangeinput={(stade)=>{propsetstateradio(!stade)}}/>
+                    <div className="Container_valoriAmenaz_principal_header_subcontent_search_cont">
+                            <ForminputRadioSliceOpccion 
+                                checkradio = {propstateradio} 
+                                setcheckradio = {propsetstateradio} 
+                                onChangeinput={(stade)=>{propsetstateradio(!stade)}}/>
+                            {(propstateradio)?<>
+                            <div style={{width:'5px'}}></div>
+                            `<ForminputRadioSliceOpccion 
+                                Iconuno = {AreaChartOutlined} 
+                                Icontwo = {DotChartOutlined} 
+                                checkradio = {propstateradio2} 
+                                setcheckradio = {propsetstateradio2} 
+                                onChangeinput={(stade)=>{propsetstateradio2(!stade)}}
+                            />
+                            </>:<></>}
                             <div style={{width:'5px'}}></div>
                             <div className="Container_valoriAmenaz_principal_header_subcontent_information" onClick={()=>{
                                 setismodelaInfo(!ismodelaInfo)
@@ -328,21 +298,42 @@ export function ValoriActiv(props){
                                     }} keyitem = {item.id_activProsVerAnali} title = {item.nombre_Activo} subtitle = {item.dependAbreb} />)
                                 }):<></>}
                             </div>
-                        </div>:<div className="Container_ProcesEmpresas_principal_body">
-                            {/* <OpccionActions opccionSistem={opccionSistem} /> */}
-                            <div className="Container_ProcesEmpresas_principal_body_subContainer">
+                        </div>:
+                        ((propstateradio2)?
+                        <div className="Container_valoriAmenaz_principal_body">
+                        {/* <OpccionActions opccionSistem={opccionSistem} /> */}
+                            <div className="Container_valoriAmenaz_principal_body_subContainer">
                                 <ComponentTable>
-                                    <ComponentTableHead headers = {listHeaderTableAnalitic} ></ComponentTableHead>
+                                    <ComponentTableHead headers = {listHeaderTableAnalitic2} />
                                     <tbody>
-                                        {(listdata.length != 0)?listdata.map((item)=>{
+                                        {(listdata.length != 0)?listdata.filter((item)=>{
+                                            return ((item.valorActivCuali != null) || (item.valorActivCuali != 0))
+                                        }).map((item)=>{
                                             console.log(item)
-                                            return (<ItemValorizActivTab itemdate ={item}/>)
+                                            return (<ItemValorizActivTabCual itemdate ={item}/>)
                                         })
                                         :<></>}
                                     </tbody>
                                 </ComponentTable>
                             </div>
-                        </div>}
+                        </div> :
+                        <div className="Container_valoriAmenaz_principal_body">
+                            <div className="Container_valoriAmenaz_principal_body_subContainer">
+                                <ComponentTable>
+                                    <ComponentTableHead headers = {listHeaderTableAnalitic} />
+                                    <tbody>
+                                        {(listdata.length != 0)?listdata.filter((item)=>{
+                                            return ((item.valorActivCuanti != null) || (item.valorActivCuanti != 0))
+                                        }).map((item)=>{
+                                            console.log(item)
+                                            return (<ItemValorizActivTabCuat itemdate ={item}/>)
+                                        })
+                                        :<></>}
+                                    </tbody>
+                                </ComponentTable>
+                            </div>
+                        </div>)
+                        }
                     </div>
                 </div>
             </div>

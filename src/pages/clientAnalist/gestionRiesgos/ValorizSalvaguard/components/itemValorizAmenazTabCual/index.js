@@ -6,144 +6,267 @@ import "./style/index.css"
 // import { useNotification, handleNewNotification } from "../../../../../../service/Notifications/useNotificacion";
 
 export function ItemValorizAmenazTabCual(props){
-    const {itemdate = {
-        "id_afectaActiv": 17,
+    const {isLabel = true , itemdate = {
+        "id_salvAfectAct": 17,
+        "id_afectaActiv": 20,
+        "id_salvaguarda": 11,
         "id_activProsVerAnali": 37,
-        "id_valorAfectAmen": 4,
-        "id_Frecuencia": 2,
-        "nameFrecuencia": "Frecuente",
-        "valDegradCualit": 60,
-        "id_DegradCualit": 3,
-        "valImpacCualit": 2,
-        "valImpacCuanti": 0,
-        "id_ImpacCuanti": 2,
-        "valRiesgoCualit": 9,
-        "valRiesgoCuanti": 0,
-        "id_RiesgoCuanti": 2,
-        "id_amenaza": 21,
-        "esenario": "",
-        "abreb": "E",
-        "nombreAmena": "Difusión de software dañino",
-        "id_tipoActiv": 3,
-        "nombreTipoActiv": "Errores y fallos no intencionados"
-      }} = props;
-    const [DataRiesgo,setDataRiesgo] = useState([
+        "id_escalEficDegr": 1,
+        "valEficDegr": 90,
+        "id_escalEficFrec": 3,
+        "valEficFrec": 40,
+        "id_escalEficImpac": 1,
+        "valEficImpac": 40,
+        "valDegraResidCuali": 0.07,
+        "id_escalDegradResidCuali": 5,
+        "valEscalFrecuenResidCuanti": 6,
+        "valEscalFrecuenResidCuali": 2.4,
+        "id_escalFrecuenResid": 3,
+        "valImpactResidCuanti": 1080,
+        "valRiesgResidCuanti": 6480,
+        "id_empresa": 1,
+        "abrebsalv": "H.tools.TM",
+        "descripc": "Herramienta de monitorización de tráfico",
+        "id_control": 12,
+        "codeDepende": "6.2",
+        "DescripccionControl": "Dispositivos para movilidad y teletrabajo",
+        "extrategia": "ghhsga dhsgjdas dhasgdasd ashdgas hgdhg   hgjhg hjsgd hgash dgasdas h dsahdas hdgashd sghdg ashdgash",
+        "valImpactResidCuali": 0.4,
+        "valRiesgResidCuali": 2
+    }} = props;
+    // const [labelDegradResid, setlabelDegradResid] = useState('');
+    // const [labelFrecuResid, setlabelFrecuResid] = useState('');
+    // const [labelImpactResid, setlabelImpactResid] = useState('');
+    // const [labelRiesgResid, setlabelRiesgResid] = useState('');
+    // useEffect(()=>{
+    //     setlabelDegradResid()
+    // },[])
+
+    // REALIZAR UN HOVER CON LA INFORMACION
+    
+    const [DataDegradResid ,] = useState([
+        {
+            key : 1,
+            code: 'D',
+            label: 'Despresiable',
+            range: '0 - 0.14',
+            color: '#9E9E9E'
+        },
+        {
+            key : 2,
+            code: 'B',
+            label: 'Bajo',
+            range: '0.15 - 0.32',
+            color: '#8BC34A'
+        },
+        {
+            key : 3,
+            code: 'M',
+            label: 'Medio',
+            range: '0.35 - 0.64',
+            color: '#FFA000'
+        },
+        {
+            key : 4,
+            code: 'A',
+            label: 'Alto',
+            range: '0.7 - 0.81',
+            color: '#FF5722'
+        },
+        {
+            key : 5,
+            code: 'MA',
+            label: 'Muy Alto',
+            range: '0.9 - 1',
+            color: '#FF5252'
+        }
+    ]);
+
+    const [DataFrecuenResid ,] = useState([
+        {
+            key : 1,
+            code: 'D',
+            label: 'Despresiable',
+            range: '0 - 0.4',
+            color: '#9E9E9E'
+        },
+        {
+            key : 2,
+            code: 'B',
+            label: 'Bajo',
+            range: '0.5 - 1.4',
+            color: '#8BC34A'
+        },
+        {
+            key : 3,
+            code: 'M',
+            label: 'Medio',
+            range: '1.5 - 2.4',
+            color: '#FFA000'
+        },
+        {
+            key : 4,
+            code: 'A',
+            label: 'Alto',
+            range: '2.5 - 3.4',
+            color: '#FF5722'
+        },
+        {
+            key : 5,
+            code: 'MA',
+            label: 'Muy Alto',
+            range: '3.5 - 5',
+            color: '#FF5252'
+        }
+    ]);
+
+    const [DataImpactResid ,] = useState([
+        {
+            key : 1,
+            code: 'D',
+            label: 'Despresiable',
+            range: '0 - 0.4',
+            value: 1,
+            color: '#9E9E9E'
+        },
+        {
+            key : 2,
+            code: 'B',
+            label: 'Bajo',
+            range: '0.5 - 1.4',
+            value: 2,
+            color: '#8BC34A'
+        },
+        {
+            key : 3,
+            code: 'M',
+            label: 'Medio',
+            range: '1.5 - 2.4',
+            value: 3,
+            color: '#FFA000'
+        },
+        {
+            key : 4,
+            code: 'A',
+            label: 'Alto',
+            range: '2.5 - 3.4',
+            value: 4,
+            color: '#FF5722'
+        },
+        {
+            key : 5,
+            code: 'MA',
+            label: 'Muy Alto',
+            range: '3.5 - 5',
+            value: 5,
+            color: '#FF5252'
+        }
+    ])
+    
+    const [DataRiesgoResid ,] = useState([
         {
             key : 1,
             code: 'C',
             label: 'Controlable',
-            range: '0 - 0',
+            range: '1 - 5',
             color: '#9E9E9E'
         },
         {
             key : 2,
             code: 'A',
             label: 'Aceptable',
-            range: '1 - 5',
+            range: '6 - 10',
             color: '#8BC34A'
         },
         {
             key : 3,
             code: 'T',
             label: 'Tolerable',
-            range: '6 - 16',
+            range: '11 - 15',
             color: '#FFA000'
         },
         {
             key : 4,
             code: 'I',
             label: 'Intolerable',
-            range: '17 - 30',
+            range: '16 - 20',
             color: '#FF5722'
         },
         {
             key : 5,
             code: 'E',
             label: 'Extremo',
-            range: '31 - 50',
+            range: '21 - 25',
             color: '#FF5252'
         }
     ]);
 
     const colorStadeDegradCualiti = (ValCualiti) => {
-        return {
-            "0":'#9E9E9E',
-            "10":'#9E9E9E',
-            "20":'#8BC34A',
-            "30":'#8BC34A',
-            "40":'#FFA000',
-            "50":'#FFA000',
-            "60":'#FFA000',
-            "70":'#FF5722',
-            "80":'#FF5722',
-            "90":'#FF5252',
-            "100":'#FF5252'
-        }[ValCualiti.toString()]
+        const listData = DataDegradResid.filter((item)=>{
+            const itemsRange = item.range.split(' - ');
+            return (parseFloat(parseFloat(itemsRange[0]).toFixed(1)) <= ValCualiti) && (ValCualiti <= parseFloat(parseFloat(itemsRange[1]).toFixed(1)))
+        })
+        if (listData.length === 0) return '#9E9E9E'
+        return listData[0].color
     }
 
     const labelStadeDegradCualiti = (ValCualiti) => {
-        return {
-            "0":'D',
-            "10":'D',
-            "20":'B',
-            "30":'B',
-            "40":'M',
-            "50":'M',
-            "60":'M',
-            "70":'A',
-            "80":'A',
-            "90":'MA',
-            "100":'MA'
-        }[ValCualiti.toString()]
+        return (Math.round(ValCualiti * 10) * 10)
+    }
+
+    const colorStadeFrecunCualiti = (ValCualiti) => {
+        const listData = DataFrecuenResid.filter((item)=>{
+            const itemsRange = item.range.split(' - ');
+            return (parseFloat(parseFloat(itemsRange[0]).toFixed(1)) <= ValCualiti) && (ValCualiti <= parseFloat(parseFloat(itemsRange[1]).toFixed(1)))
+        })
+        if (listData.length === 0) return '#9E9E9E'
+        return listData[0].color
+    }
+
+    const labelStadeFrecunCualiti = (ValCualiti) => {
+        if (!isLabel) return Math.round(ValCualiti)
+        const listData = DataFrecuenResid.filter((item)=>{
+            const itemsRange = item.range.split(' - ');
+            return (parseFloat(parseFloat(itemsRange[0]).toFixed(1)) <= ValCualiti) && (ValCualiti <= parseFloat(parseFloat(itemsRange[1]).toFixed(1)))
+        })
+        if (listData.length === 0) return 'D'
+        return listData[0].code
     }
 
     const colorStadeImpactCualiti = (ValCualiti) => {
-        return {
-            "0":'#9E9E9E',
-            "1":'#8BC34A',
-            "2":'#8BC34A',
-            "3":'#FFA000',
-            "4":'#FFA000',
-            "5":'#FFA000',
-            "6":'#FF5722',
-            "7":'#FF5722',
-            "8":'#FF5722',
-            "9":'#FF5252',
-            "10":'#FF5252'
-        }[ValCualiti.toString()]
+        const listData = DataImpactResid.filter((item)=>{
+            const itemsRange = item.range.split(' - ');
+            return (parseFloat(parseFloat(itemsRange[0]).toFixed(1)) <= ValCualiti) && (ValCualiti <= parseFloat(parseFloat(itemsRange[1]).toFixed(1)))
+        })
+        if (listData.length === 0) return '#9E9E9E'
+        return listData[0].color
     }
 
     const labelStadeImpactCualiti = (ValCualiti) => {
-        return {
-            "0":'D',
-            "1":'B',
-            "2":'B',
-            "3":'M',
-            "4":'M',
-            "5":'M',
-            "6":'A',
-            "7":'A',
-            "8":'A',
-            "9":'MA',
-            "10":'MA'
-        }[ValCualiti.toString()]
+        const listData = DataImpactResid.filter((item)=>{
+            const itemsRange = item.range.split(' - ');
+            return (parseFloat(parseFloat(itemsRange[0]).toFixed(1)) <= ValCualiti) && (ValCualiti <= parseFloat(parseFloat(itemsRange[1]).toFixed(1)))
+        })
+        if (listData.length === 0) return 'D'
+        return (!isLabel)? listData[0].value : listData[0].code
     }
 
     const colorStadeRiesgCualiti = (ValCualiti) => {
-        const listData = DataRiesgo.filter((item)=>{
+        const listData = DataRiesgoResid.filter((item)=>{
             const itemsRange = item.range.split(' - ');
-            return (parseInt(itemsRange[0]) <= ValCualiti) && (ValCualiti <= parseInt(itemsRange[0]))
+            return (parseFloat(parseFloat(itemsRange[0]).toFixed(1)) <= ValCualiti) && (ValCualiti <= parseFloat(parseFloat(itemsRange[1]).toFixed(1)))
         })
         if (listData.length === 0) return '#9E9E9E'
         return listData[0].color
     }
 
     const labelStadeRiesgCualiti = (ValCualiti) => {
-        const listData = DataRiesgo.filter((item)=>{
+        if (!isLabel) return ValCualiti
+        const listData = DataRiesgoResid.filter((item)=>{
             const itemsRange = item.range.split(' - ');
-            return (parseInt(itemsRange[0]) <= ValCualiti) && (ValCualiti <= parseInt(itemsRange[0]))
+            return (parseFloat(parseFloat(itemsRange[0]).toFixed(1)) <= ValCualiti) && (ValCualiti <= parseFloat(parseFloat(itemsRange[1]).toFixed(1)))
         })
-        if (listData.length === 0) return 'C'
+        if (listData.length === 0) return 'D'
         return listData[0].code
     }
 
@@ -154,21 +277,26 @@ export function ItemValorizAmenazTabCual(props){
     return (
         <>
             <tr style={{height: "30px"}}>
-                <th className="content-table-item-encabezado keyid cent" style={{width:"5%"}}>{itemdate.id_afectaActiv}</th>
-                <th className="content-table-item-encabezado lef">{itemdate.nombreAmena}</th>
+                <th className="content-table-item-encabezado keyid cent" style={{width:"5%"}}>{itemdate.id_salvAfectAct}</th>
+                <th className="content-table-item-encabezado lef">{itemdate.descripc}</th>
                 <th className="content-table-item-encabezado lef ocp">
                     <div className="content-table-item-encabezado_chip ">
-                        <div style={{backgroundColor:`${colorStadeDegradCualiti(itemdate.valDegradCualit)}`}}>{labelStadeDegradCualiti(itemdate.valDegradCualit)}</div>
+                        <div style={{backgroundColor:`${colorStadeDegradCualiti(itemdate.valDegraResidCuali)}`}}>{labelStadeDegradCualiti(itemdate.valDegraResidCuali)}</div>
                     </div>
                 </th>
                 <th className="content-table-item-encabezado lef ocp">
                     <div className="content-table-item-encabezado_chip ">
-                        <div style={{backgroundColor:`${colorStadeImpactCualiti(itemdate.valImpacCualit)}`}}>{labelStadeImpactCualiti(itemdate.valImpacCualit)}</div>
+                        <div style={{backgroundColor:`${colorStadeFrecunCualiti(itemdate.valEscalFrecuenResidCuali)}`}}>{labelStadeFrecunCualiti(itemdate.valEscalFrecuenResidCuali)}</div>
                     </div>
                 </th>
                 <th className="content-table-item-encabezado lef ocp">
                     <div className="content-table-item-encabezado_chip ">
-                        <div style={{backgroundColor:`${colorStadeRiesgCualiti(itemdate.id_RiesgoCuanti)}`}}>{labelStadeRiesgCualiti(itemdate.valRiesgoCualit)}</div>
+                        <div style={{backgroundColor:`${colorStadeImpactCualiti(itemdate.valImpactResidCuali)}`}}>{labelStadeImpactCualiti(itemdate.valImpactResidCuali)}</div>
+                    </div>
+                </th>
+                <th className="content-table-item-encabezado lef ocp">
+                    <div className="content-table-item-encabezado_chip ">
+                        <div style={{backgroundColor:`${colorStadeRiesgCualiti(itemdate.valRiesgResidCuali)}`}}>{labelStadeRiesgCualiti(itemdate.valRiesgResidCuali)}</div>
                     </div>
                 </th>
             </tr>

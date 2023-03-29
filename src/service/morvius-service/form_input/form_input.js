@@ -844,6 +844,7 @@ export function ForminputRadioSliceOpccion(props){
     const [propstateradio,propsetstateradio] = useState(false);
     // encabezados
     const {
+    sizeIcon = `14px`,
     Iconuno = UnorderedListOutlined,
     Icontwo = AreaChartOutlined,
     checkradio = propstateradio,
@@ -865,12 +866,11 @@ export function ForminputRadioSliceOpccion(props){
             <div className="form_input_radiosliceOpccio_conteiner">
                 <div className="form_input_radiosliceOpccio_conteiner_sub" >
                     <div onClick={()=>{
-                            // console.log(!checkradio);
                             onChangeinput(!checkradio);
                             setcheckradio(!checkradio);
                         }} className={"form_input_radiosliceOpccio"}>
-                            <div className={(!checkradio)?"form_input_radiosliceOpccio_circle_activate":"form_input_radiosliceOpccio_circle"}><Iconuno className="radiosliceOpcci_icon" /></div>
-                            <div className={(checkradio)?"form_input_radiosliceOpccio_circle_activate":"form_input_radiosliceOpccio_circle"}><Icontwo className="radiosliceOpcci_icon" /></div>
+                            <div className={(!checkradio)?"form_input_radiosliceOpccio_circle_activate":"form_input_radiosliceOpccio_circle"}><Iconuno className="radiosliceOpcci_icon" style={{fontSize: `${sizeIcon}`}} /></div>
+                            <div className={(checkradio)?"form_input_radiosliceOpccio_circle_activate":"form_input_radiosliceOpccio_circle"}><Icontwo className="radiosliceOpcci_icon" style={{fontSize: `${sizeIcon}`}} /></div>
                     </div>
                 </div>
             </div>
@@ -924,6 +924,19 @@ export function ForminputBottonSubmit(props){
     </>
     );
 }
+
+/**
+ * <input para seleccion de items, con ocultar o desocultar texto>
+ * @param   {<string>} keylistchip <Id del input>
+ * @param   {<string>} listdatos <Lista de datos que va a tener una id, un nombre y una imagen>
+ * @param   {<string>} keytitle <La key del Json de la lista de objetos, que sera de nombre>
+ * @param   {<string>} key <La key del Json de la lista de objetos, que sera la id de cada chips>
+ * @param   {<string>} keyimage <La key del Json de la lista de objetos, que sera la url del la imagen>
+ * @param   {<string>} isimage <Validador si se desea colocar una imagen, por predeterminado es falso>
+ * @param   {<string>} onChangeItems <Es el metodo que reaciona al precionar un chip, y tiene como parametro su id>
+ * @param   {<string>} initvalue <Es el indice de inicio>
+ * @return  {<type>}        <description>
+ */
 
 export function ForminputComboBox(props){
     // encabezados

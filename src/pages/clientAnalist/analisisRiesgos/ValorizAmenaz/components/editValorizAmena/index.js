@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 // import { ComponentModalFloting, ComponentModalFlotingBody, ComponentModalFlotingHeader, ComponentModalPrincipalListtabs } from "../../../service/morvius-service/components";
-import { AimOutlined, BulbOutlined, TeamOutlined } from "@ant-design/icons";
+import { BulbOutlined, TeamOutlined } from "@ant-design/icons";
 import './style/index.css';
 // import { EditarUsuario } from "./components/Editar";
 // import { getKeysesion } from "../../../service/repository/mithelworks";
@@ -17,7 +17,7 @@ import { ComponentModalFloting, ComponentModalFlotingBody, ComponentModalFloting
 // import { ObjetivVersionAnalitic } from "./components/ObjVersionAnali/index";
 // import { ResponsablesEmpresa } from "./components/RespVersionAnali";
 import { EditarValorActivCuantiImformation } from "./components/ValoriProces";
-import { getValoriActiv } from "../../../../../../service/repository/RTValorizarActivo";
+// import { getValoriActiv } from "../../../../../../service/repository/RTValorizarActivo";
 import { EditarValorActivCualitativImformation } from "./components/valorizCualit";
 import { addValorizarAmenaz, getValorizarAmenaz } from "../../../../../../service/repository/RTValorizarAmenaz";
 import { ForminputBotton } from "../../../../../../service/morvius-service/form";
@@ -31,6 +31,7 @@ export function EditaValorAmenaza(props){
     const {
         // informacionProceso,
         // informacionAmenaza, // datos de la amenaza
+        onAction = () => {},
         iskeyDatos = propiskeyDatos, // id de la amenaza que se decea enlazar
         ismodalvisible = propismodalvisible,
         setismodalvisible = propsetismodalvisible
@@ -56,7 +57,15 @@ export function EditaValorAmenaza(props){
         if(stade) return
         const objValoritCualiti = listvaloritCualiti[0];
         setTimeout(() => {
-            setlistview([<EditarValorActivCuantiImformation onAction={actualizeData} informationDataGeneral={objValoritCualiti}/>,<EditarValorActivCualitativImformation informationDataGeneral={objValoritCualiti}/>])
+            setlistview([
+            <EditarValorActivCuantiImformation onAction={async () => {
+                await onAction();
+                await actualizeData();
+            }} informationDataGeneral={objValoritCualiti}/>,
+            <EditarValorActivCualitativImformation onAction={async () => {
+                await onAction();
+                await actualizeData();
+            }} informationDataGeneral={objValoritCualiti}/>])
         }, 500);
     }
 

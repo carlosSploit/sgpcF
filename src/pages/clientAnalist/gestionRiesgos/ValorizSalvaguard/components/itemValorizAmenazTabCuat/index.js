@@ -7,25 +7,32 @@ import "./style/index.css"
 
 export function ItemValorizAmenazTabCuat(props){
     const {itemdate = {
-        "id_afectaActiv": 17,
+        "id_salvAfectAct": 17,
+        "id_afectaActiv": 20,
+        "id_salvaguarda": 11,
         "id_activProsVerAnali": 37,
-        "id_valorAfectAmen": 4,
-        "id_Frecuencia": 2,
-        "nameFrecuencia": "Frecuente",
-        "valDegradCualit": 60,
-        "id_DegradCualit": 3,
-        "valImpacCualit": 2,
-        "valImpacCuanti": 0,
-        "id_ImpacCuanti": 2,
-        "valRiesgoCualit": 9,
-        "valRiesgoCuanti": 0,
-        "id_RiesgoCuanti": 2,
-        "id_amenaza": 21,
-        "esenario": "",
-        "abreb": "E",
-        "nombreAmena": "Difusión de software dañino",
-        "id_tipoActiv": 3,
-        "nombreTipoActiv": "Errores y fallos no intencionados"
+        "id_escalEficDegr": 1,
+        "valEficDegr": 90,
+        "id_escalEficFrec": 3,
+        "valEficFrec": 40,
+        "id_escalEficImpac": 1,
+        "valEficImpac": 40,
+        "valDegraResidCuali": 0.07,
+        "id_escalDegradResidCuali": 5,
+        "valEscalFrecuenResidCuanti": 6,
+        "valEscalFrecuenResidCuali": 2.4,
+        "id_escalFrecuenResid": 3,
+        "valImpactResidCuanti": 1080,
+        "valRiesgResidCuanti": 6480,
+        "id_empresa": 1,
+        "abrebsalv": "H.tools.TM",
+        "descripc": "Herramienta de monitorización de tráfico",
+        "id_control": 12,
+        "codeDepende": "6.2",
+        "DescripccionControl": "Dispositivos para movilidad y teletrabajo",
+        "extrategia": "ghhsga dhsgjdas dhasgdasd ashdgas hgdhg   hgjhg hjsgd hgash dgasdas h dsahdas hdgashd sghdg ashdgash",
+        "valImpactResidCuali": 0.4,
+        "valRiesgResidCuali": 2
       }} = props;
     // const [interfaces,setinterface] = useState(null);
 
@@ -64,12 +71,13 @@ export function ItemValorizAmenazTabCuat(props){
     return (
         <>
             <tr style={{height: "30px"}}>
-                <th className="content-table-item-encabezado keyid cent" style={{width:"5%"}}>{itemdate.id_activProsVerAnali}</th>
-                <th className="content-table-item-encabezado lef">{itemdate.nombreAmena}</th>
+                <th className="content-table-item-encabezado keyid cent" style={{width:"5%"}}>{itemdate.id_salvAfectAct}</th>
+                <th className="content-table-item-encabezado lef">{itemdate.descripc}</th>
                 {/* <th className="content-table-item-encabezado lef ocp">{itemdate.nameFrecuencia}</th> */}
-                <th className="content-table-item-encabezado lef ocp">{itemdate.valDegradCualit}</th>
-                <th className="content-table-item-encabezado lef ocp">{`S/.${itemdate.valImpacCuanti}`}</th>
-                <th className="content-table-item-encabezado lef ocp">{`S/.${itemdate.valRiesgoCuanti}`}</th>
+                <th className="content-table-item-encabezado lef ocp">{itemdate.valEficImpac}</th>
+                <th className="content-table-item-encabezado lef ocp">{itemdate.valEscalFrecuenResidCuanti}</th>
+                <th className="content-table-item-encabezado lef ocp">{`S/.${itemdate.valImpactResidCuanti}`}</th>
+                <th className="content-table-item-encabezado lef ocp">{`S/.${itemdate.valRiesgResidCuanti}`}</th>
             </tr>
         </>
     );

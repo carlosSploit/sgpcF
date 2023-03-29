@@ -18,61 +18,34 @@ export function InformationValori(props){
             <ComponentModalFlotingBody descripccion={''}>
                 <div style={{height: '10px'}}></div>
                 <ContainerInformation Informa = {[
+                    // informacion de la degradacion residual
                     {
                         type: 'title',
-                        contenido: 'Degradación'
+                        contenido: 'Degradación Residual'
                     },
                     {
                         type: 'descrip',
-                        contenido: `Pérdida de valor de un activo como consecuencia de la materialización de una amenaza.`
+                        contenido: `Hace referencia al residuo que deja la eficacia al afectar a la degradacion de la amenaza. 
+                        Esta eficacia es representada en formato de porcentaje, lo cual se tendra que normalizar o sacar su residuo 
+                        por medio de la resta del 1 (que hace referencia al 100%) y el porcenje de la eficacia en formato decimal. 
+                        Por otro lado para poder extraer la degradacion residual, se tendra que multiplicar la degradacion anterior 
+                        por la eficacia. Esta formula se veria de la siguiente manera:`
                     },
                     {
                         type: 'image',
-                        label: 'Escala de degradacion',
-                        contenido: 'https://res.cloudinary.com/canvarith/image/upload/v1679378601/Captura2_n5fxmn.jpg'
-                    },
-                    {
-                        type: 'title',
-                        contenido: 'Frecuencia'
+                        label: 'Formula de degradacion residual',
+                        contenido: 'https://res.cloudinary.com/canvarith/image/upload/v1680051067/Captura8_jjousa.jpg',
+                        width: '200px'
                     },
                     {
                         type: 'descrip',
-                        contenido: `Hace referencia a cuán probable o improbable es que se materialice la amenaza. 
-                                    Haciendo referencia a que tan probable es que la amenaza pueda suceder a un activo 
-                                    en un tema de tiempo.`
+                        contenido: `Teniendo en cuenta el calculo de la degradacion residual, se debe considerar que dicho resultado se debe 
+                        identificar o interpretar por medio de un mapa de calor, lo cual dicha escala se veria de la siguiente manera:`
                     },
                     {
                         type: 'image',
-                        label: 'Escala de frecuencia',
-                        contenido: 'https://res.cloudinary.com/canvarith/image/upload/v1679379118/Captura3_ud8uwr.jpg'
-                    },
-                    {
-                        type: 'title',
-                        contenido: 'Impacto'
-                    },
-                    {
-                        type: 'descrip',
-                        contenido: `Es la medida del daño sobre el activo derivado de la materialización de una 
-                        amenaza. Conociendo el valor de los activos (en varias dimensiones) y la degradación que causan 
-                        las amenazas, es directo derivar el impacto que estas tendrían sobre el sistema. Esto se veria de 
-                        la siguiente manera.`
-                    },
-                    {
-                        type: 'image',
-                        label: 'Formula del impacto',
-                        contenido: 'https://res.cloudinary.com/canvarith/image/upload/v1679379544/Captura4_lqagqn.jpg'
-                    },
-                    {
-                        type: 'descrip',
-                        contenido: `Por otro lado este tipo de valorizacion funciona bien cuando es cuantitativo, pero cuando
-                        se refiere a un enfoque cualitativo se tendra que usar una especie de mapa de calor. Por otro lado la
-                        metodologia que se usa es Magerit, lo cual este no brinda un modelo de impacto compatible con nuestra 
-                        valorizacion por lo cual se tuvo que proponer uno, este modelo se veria de la siguiente manera: `
-                    },
-                    {
-                        type: 'image',
-                        label: 'Mapa de calor del impacto',
-                        contenido: 'https://res.cloudinary.com/canvarith/image/upload/v1679379832/Captura5_xspb7p.jpg'
+                        label: 'Mapa de calor de degradacion residual',
+                        contenido: 'https://res.cloudinary.com/canvarith/image/upload/v1680051784/Captura9_iegufs.jpg'
                     },
                     {
                         type: 'descrip',
@@ -80,35 +53,108 @@ export function InformationValori(props){
                     },
                     {
                         type: 'image',
-                        label: 'Escala del impacto',
-                        contenido: 'https://res.cloudinary.com/canvarith/image/upload/v1679380732/Captura51_ayw29d.jpg'
+                        label: 'Escala de degradacion residual',
+                        contenido: 'https://res.cloudinary.com/canvarith/image/upload/v1680056578/Captura91_fvglxl.jpg'
                     },
+                    // informacion de la frecuencia residual
                     {
                         type: 'title',
-                        contenido: 'Riesgo'
+                        contenido: 'Frecuencia Residual'
                     },
                     {
                         type: 'descrip',
-                        contenido: `Se denomina riesgo a la medida del daño probable sobre un sistema. Conociendo el impacto de 
-                        las amenazas sobre los activos, es directo derivar el riesgo sin más que tener en cuenta la probabilidad 
-                        de ocurrencia.`
+                        contenido: `Hace referencia al residuo que deja la eficacia al afectar a la frecuencia de la amenaza. 
+                        Se debe considerar que el residulo con respecto a la eficacia se calcula de la misma manera que la degradacion. 
+                        Por otro lado para poder extraer la frecuencia residual, se tendra que multiplicar la frecuencia anterior 
+                        por la eficacia. Esta formula se veria de la siguiente manera:`
                     },
                     {
                         type: 'image',
-                        label: 'Formula del riesgo',
-                        contenido: 'https://res.cloudinary.com/canvarith/image/upload/v1679380231/Captura6_deayo3.jpg'
+                        label: 'Formula de frecuencia residual',
+                        contenido: 'https://res.cloudinary.com/canvarith/image/upload/v1680052380/Captura10_ox09lr.jpg',
+                        width: '200px'
                     },
                     {
                         type: 'descrip',
-                        contenido: `Al igual que el calculo de impacto, el tipo de valorizacion funciona bien cuando es cuantitativo, pero cuando
-                        se refiere a un enfoque cualitativo se tendra que usar una especie de mapa de calor. Por otro lado la
-                        metodologia que se usa es Magerit, lo cual este no brinda un modelo de riesgo compatible con nuestra 
-                        valorizacion por lo cual se tuvo que proponer uno, este modelo se veria de la siguiente manera: `
+                        contenido: `Teniendo en cuenta el calculo de la frecuencia residual, se debe considerar que dicho resultado se debe 
+                        identificar o interpretar por medio de un mapa de calor, lo cual dicha escala se veria de la siguiente manera:`
+                    },
+                    {
+                        type: 'image',
+                        label: 'Mapa de calor de frecuencia residual',
+                        contenido: 'https://res.cloudinary.com/canvarith/image/upload/v1680052506/Captura11_bmvgpn.jpg'
+                    },
+                    {
+                        type: 'descrip',
+                        contenido: `Por otro lado con respecto al mapa de calor, esto tendra que ser interpretado por medio de un mapa de likert que se veria de la siguiente manera: `
+                    },
+                    {
+                        type: 'image',
+                        label: 'Escala de frecuencia residual',
+                        contenido: 'https://res.cloudinary.com/canvarith/image/upload/v1680057400/Captura111_x1lnew.jpg'
+                    },
+                    // informacion de la impacto residual
+                    {
+                        type: 'title',
+                        contenido: 'Impacto Residual'
+                    },
+                    {
+                        type: 'descrip',
+                        contenido: `El impacto residual es calculado por medio de una formula, que es la multiplicacion de la degradacion 
+                        residual y el nivel de riesgo de la amenaza, teniendo en cuenta que antes de realizar esa multiplicacion, tiene que dace
+                        una normalizacion de la degradacion residual para poder colocarlo en formato de porcentajes, esta dicha normalizacion consiste
+                        en la multiplicacion de este por 10, luego se le da un redondeo y finalmente se multiplica con 10, teniendo en cuenta esto la 
+                        formula se veria de la siguiente manera:`
+                    },
+                    {
+                        type: 'image',
+                        label: 'Formula del impacto residual',
+                        contenido: 'https://res.cloudinary.com/canvarith/image/upload/v1680054368/Captura12_h9gg2r.jpg'
+                    },
+                    {
+                        type: 'descrip',
+                        contenido: `Teniendo en cuenta el calculo de la impacto residual, se debe considerar que dicho resultado se debe 
+                        identificar o interpretar por medio de un mapa de calor, lo cual dicha escala se veria de la siguiente manera: `
+                    },
+                    {
+                        type: 'image',
+                        label: 'Mapa de calor del impacto residual',
+                        contenido: 'https://res.cloudinary.com/canvarith/image/upload/v1680062257/Captura14_vmlksr.jpg'
+                    },
+                    {
+                        type: 'descrip',
+                        contenido: `Por otro lado con respecto al mapa de calor, esto tendra que ser interpretado por medio de un mapa de likert que se veria de la siguiente manera: `
+                    },
+                    {
+                        type: 'image',
+                        label: 'Escala de impacto residual',
+                        contenido: 'https://res.cloudinary.com/canvarith/image/upload/v1680061973/Captura13_qizxco.jpg'
+                    },
+                    // informacion de la riesgo residual
+                    {
+                        type: 'title',
+                        contenido: 'Riesgo Residual'
+                    },
+                    {
+                        type: 'descrip',
+                        contenido: `El riesgo residual es calculado por medio de una formula, que es la multiplicacion del impacto 
+                        residual y la frecuencia residual, por esto la formula se veria de la siguiente manera:`
+                    },
+                    {
+                        type: 'image',
+                        label: 'Formula del riesgo residual',
+                        contenido: 'https://res.cloudinary.com/canvarith/image/upload/v1680077736/Captura15_odsj94.jpg',
+                        width: '200px'
+                    },
+                    {
+                        type: 'descrip',
+                        contenido: `Teniendo en cuenta el calculo de la riesgo residual, se debe considerar que dicho resultado se debe 
+                        identificar o interpretar por medio de un mapa de calor, lo cual dicha escala se veria de la siguiente manera: `
                     },
                     {
                         type: 'image',
                         label: 'Map de calor del riesgo',
-                        contenido: 'https://res.cloudinary.com/canvarith/image/upload/v1679380406/Captura7_abqfk9.jpg'
+                        contenido: 'https://res.cloudinary.com/canvarith/image/upload/v1680078048/Captura16_almulo.jpg'
                     },
                     {
                         type: 'descrip',
@@ -117,13 +163,14 @@ export function InformationValori(props){
                     {
                         type: 'image',
                         label: 'Escala del riesgo',
-                        contenido: 'https://res.cloudinary.com/canvarith/image/upload/v1679380941/Captura61_ujvig8.jpg'
+                        contenido: 'https://res.cloudinary.com/canvarith/image/upload/v1680078131/Captura17_oqw5c1.jpg'
                     },
                     {
                         type: 'redirec',
                         contenido: 'https://www.ccn-cert.cni.es/documentos-publicos/1789-magerit-libro-i-metodo/file.html'
                     }
                 ]} />
+                <div style={{height: '10px'}}></div>
             </ComponentModalFlotingBody>
         </ComponentModalFloting>
     );

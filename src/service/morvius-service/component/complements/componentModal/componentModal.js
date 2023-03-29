@@ -86,14 +86,6 @@ export function ComponentModalFloting(props){
         x: 0,
         y: 0
     });
-
-    const handler = (e) => {
-        setposition({
-            x: e.pageX,
-            y: e.pageY
-        });
-    }
-
     // onMouseDown={()=>{
     //     document.addEventListener('mousemove', handler);
     //     setstadePosition(true);
@@ -111,9 +103,12 @@ export function ComponentModalFloting(props){
         <>
             {/* onClick={onClosechange} */}
             <div className={"component_modalFloting"} style={{zIndex: `${zindex*9999}`,display:`${(!statemode)?"none":"block"}`}}>
-                <div ref={refMobility}  className={"component_modalFloting_container"} style={{background:`${color}`, width: `${width}`}} >
-                    {children}
+                <div className="component_modalFloting_subcontent">
+                    <div ref={refMobility}  className={`component_modalFloting_container ${(statemode)?'active':'desactive'}`} style={{background:`${color}`, width: `${width}`}} >
+                        {children}
+                    </div>
                 </div>
+                
             </div>
         </>
     );
