@@ -1,9 +1,9 @@
 import React,{useEffect, useRef, useState} from "react";
-import { ForminputComboBox } from "../form"
+import { ForminputBotton, ForminputComboBox } from "../form"
 import { SearchOutlined,DownOutlined,UpOutlined,FileOutlined, MoreOutlined } from "@ant-design/icons";
 import "./components.css";
 // import NotificationProvider from "../../Notifications/NotificationProvider";
-import { ComponentModalFloting, ComponentModalFlotingHeader, ComponentModalFlotingBody } from "./complements/componentModal/componentModal";
+import { ComponentModalFloting, ComponentModalFlotingHeader, ComponentModalFlotingBody, PopModal } from "./complements/componentModal/componentModal";
 import { ComponentRanking } from "./complements/componentRanking/componentRanking";
 // import ComponentItenRank from "./complements/componentItenRank/componentItenRank";
 import { ComponentInfoitem } from "./complements/componetMostInfoItem/componetMostInfoItem";
@@ -15,6 +15,7 @@ import { ComponentModalPrincipal,
         ComponentModalPrincipalListtabs,
         ComponentModalPrincipalBody,
         ComponentModalPrincipalFooter} from "./complements/componentModalPrincipal/componentModalPrincipal";
+import useScreenSize from "../../hooks/resolution.hooks";
 
 // component Item secion
 export function ComponentItemSecionActions(props){
@@ -229,13 +230,13 @@ export function Componentsearchanimation(props){
                             setchangseach(e.target.value);
                         }} 
                     />:<></>}
-                    <div className="component_search_boton_seach" onClick={()=>{
+                    <div className="component_search_boton_seach" style={{height:height, width: height}} onClick={()=>{
                         // onChangeseach(changseach);
                         let stade = !isVisible;
                         setisVisible(stade);
                         onSpandedAnimate(stade);
                     }}>
-                        <SearchOutlined className="component_search_boton_seach_icon" />
+                        <SearchOutlined className="component_search_boton_seach_icon" style={{fontSize: `calc(${height} / 2)`}} />
                     </div>
                 </div>
             </div>
@@ -370,6 +371,9 @@ export function Componentfilter(props){
     } = props;
     // const [changseach,setchangseach] = useState("");
     const [checkfilter,setcheckfilter] = useState({});
+    const [isresolutiocomp, setisresolutiocomp] = useState(false);
+    const [propismodalvisible, propsetismodalvisible] = useState(false);
+    const resoluWindows = useScreenSize();
 
     useEffect(()=>{
         (async () => {
@@ -394,38 +398,98 @@ export function Componentfilter(props){
             <div style={{height:"5px"}} />
             <div className="component_content" style={{width: "100%"}}>
                 <div className="component_filter_containert">
-                    {/* --------------------- Iten de Generacion de datatos */}
-                    <div className="component_filter_containert_filtOptions">
-                        {(ListOpccion.map((item)=>{
-                            console.log(item)
-                            return (<div className="component_search_input_combofilter">
-                            {(item.opccions != null && item.opccions.length != 0)?<ForminputComboBox valueInit={(compruebeValueInit(item)?item.initValue:0)} keyname={item.nomenclature} isInvert={true} width={100} height={35} keyvalue={item.keyvalue} keylabel={item.masterLabel} datacombo={item.opccions} isdefault={true} onChangeinput={(jsonval)=>{
-                                let data = checkfilter;
-                                data[jsonval.nomenclature] = jsonval.value
-                                // detectar el ultimo ingresado
-                                const objData = {...data}
-                                delete objData[jsonval.nomenclature];
-                                objData[jsonval.nomenclature] = jsonval.value
-                                onSeleccionOpccion(objData);
-                                setcheckfilter(data);
-                            }} />:<></>}
-                        </div>);
-                        }))}
-                    </div>
-                    {/* --------------------------------------------------- */}
-                    <div className="component_filter_containert_filtButtons">
-                        <div className="component_filter_containert_filtButtons_button" onClick={()=>{
-                            // console.log(checkfilter);
-                            onChangeseach(checkfilter);
-                        }}>
-                            Generar
+                    {(resoluWindows.width >= 500)?
+                    <>
+                        {/* --------------------- Iten de Generacion de datatos */}
+                        <div className="component_filter_containert_filtOptions">
+                            {(ListOpccion.map((item)=>{
+                                console.log(item)
+                                return (<div className="component_search_input_combofilter">
+                                {(item.opccions != null && item.opccions.length != 0)?<ForminputComboBox valueInit={(compruebeValueInit(item)?item.initValue:0)} keyname={item.nomenclature} isInvert={true} width={100} height={35} keyvalue={item.keyvalue} keylabel={item.masterLabel} datacombo={item.opccions} isdefault={true} onChangeinput={(jsonval)=>{
+                                    let data = checkfilter;
+                                    data[jsonval.nomenclature] = jsonval.value
+                                    // detectar el ultimo ingresado
+                                    const objData = {...data}
+                                    delete objData[jsonval.nomenclature];
+                                    objData[jsonval.nomenclature] = jsonval.value
+                                    onSeleccionOpccion(objData);
+                                    setcheckfilter(data);
+                                }} />:<></>}
+                            </div>);
+                            }))}
                         </div>
-                    </div>
+                        {/* --------------------------------------------------- */}
+                        <div className="component_filter_containert_filtButtons">
+                            <div className="component_filter_containert_filtButtons_button" onClick={()=>{
+                                // console.log(checkfilter);
+                                onChangeseach(checkfilter);
+                            }}>
+                                Generar
+                            </div>
+                        </div>
+                    </>:
+                    <>
+                        <div className="component_filter_containert_filtButtons_max">
+                            <ForminputBotton label={'Generar datos'} onChange={() => {
+                                propsetismodalvisible(!propismodalvisible);
+                            }} />
+                        </div>
+                    </>}
                 </div>
+                <PopModal colorTitle={'#183152'} width={'800px'} propismodalvisible = {propismodalvisible} propsetismodalvisible = {propsetismodalvisible} namemodal={'Generar datos'}>
+                    <ComponentModalFlotingBody>
+                        <>
+                            {/* --------------------- Iten de Generacion de datatos */}
+                            <div className="component_filter_containert_filtOptions">
+                                {(ListOpccion.map((item)=>{
+                                    console.log(item)
+                                    return (<div className="component_search_input_combofilter">
+                                    {(item.opccions != null && item.opccions.length != 0)?<ForminputComboBox valueInit={(compruebeValueInit(item)?item.initValue:0)} keyname={item.nomenclature} isInvert={true} width={100} height={35} keyvalue={item.keyvalue} keylabel={item.masterLabel} datacombo={item.opccions} isdefault={true} onChangeinput={(jsonval)=>{
+                                        let data = checkfilter;
+                                        data[jsonval.nomenclature] = jsonval.value
+                                        // detectar el ultimo ingresado
+                                        const objData = {...data}
+                                        delete objData[jsonval.nomenclature];
+                                        objData[jsonval.nomenclature] = jsonval.value
+                                        onSeleccionOpccion(objData);
+                                        setcheckfilter(data);
+                                    }} />:<></>}
+                                </div>);
+                                }))}
+                            </div>
+                            {/* --------------------------------------------------- */}
+                            <div className="component_filter_containert_filtButtons">
+                                <div className="component_filter_containert_filtButtons_button" onClick={()=>{
+                                    onChangeseach(checkfilter);
+                                    propsetismodalvisible(!propismodalvisible);
+                                }}>
+                                    Generar
+                                </div>
+                            </div>
+                        </> 
+                    </ComponentModalFlotingBody>
+                </PopModal>
             </div>
         </>
     );
 }
+
+// function ContainerInformationRedirecModel(props){
+//     const [ismodalvisible, setismodalvisible] = useState(false);
+//     const {propismodalvisible = ismodalvisible, propsetismodalvisible = setismodalvisible, url = `https://res.cloudinary.com/canvarith/image/upload/v1679375704/Captura_pbcxlc.jpg`, label='Image' } = props;
+//     const refImage = useRef();
+//     const refContainImage = useRef();
+
+//     useEffect(()=>{
+//         var containImage = refContainImage.current.offsetWidth;
+//         var altoOriginal = refImage.current.naturalHeight;
+//         var anchoOriginal = refImage.current.naturalWidth;
+//         var promed = ((altoOriginal * 100)/ anchoOriginal) / 100;
+//         refContainImage.current.style.height = `${(containImage * promed)}px` 
+//     },[])
+
+//     return ();
+// }
 
 // component modal Principal
 // export function ComponentModalPrincipal(props){

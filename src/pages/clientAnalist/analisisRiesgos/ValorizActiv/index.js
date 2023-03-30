@@ -10,7 +10,7 @@ import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mit
 import { getEmpresas } from "../../../../service/repository/RTEmpresas";
 import { getProcesEmpresa } from "../../../../service/repository/RTProcesEmpresas";
 import { handleNewNotification } from "../../../../service/Notifications/useNotificacion";
-import { OpccionActions } from "../../ContextoEmpresa/Empresa/components/opccionActions";
+// import { OpccionActions } from "../../ContextoEmpresa/Empresa/components/opccionActions";
 import { getVersionAnalitiv } from "../../../../service/repository/RTVersionAnalitiv";
 import { ItemValorizeActiv } from "./components/itemValorizActiv";
 import { AddValorizeActiv } from "./components/addValorizActiv";
@@ -21,6 +21,7 @@ import { ItemValorizActivTab } from "./components/itemValorizActivTab";
 import { InformationValori } from "./components/informationValori";
 import { ItemValorizActivTabCual } from "./components/itemValorizAmenazTabCual";
 import { ItemValorizActivTabCuat } from "./components/itemValorizAmenazTabCuat";
+import { OpccionActions } from "../../../../service/morvius-service/component/complements/componetOpccionActions";
 // import { OpccionActions } from "./components/opccionActions";
 // import { deleteEmpresa, getEmpresas } from "../../../../service/repository/RTEmpresas";
 // import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mithelworks";
@@ -56,7 +57,7 @@ export function ValoriActiv(props){
             label: "#",
             asling: "lef",
             isOcult: false,
-            width: "2%"
+            width: "10px"
         },
         {
             label: "Abrebiatura",
@@ -87,7 +88,7 @@ export function ValoriActiv(props){
         {
             label: "Valor Cuali",
             asling: "lef",
-            isOcult: true,
+            isOcult: false,
             width: ""
         }
     ]);
@@ -211,22 +212,22 @@ export function ValoriActiv(props){
     ]
 
     return (
-        <div className="Container_ProcesEmpresas_principal">
-            <div className="Container_ProcesEmpresas_principal_subConteiner">
+        <div className="Container_ValoriActiv_principal">
+            <div className="Container_ValoriActiv_principal_subConteiner">
                 {/* Encabezado */}
-                <div className="Container_ProcesEmpresas_principal_header">
-                    <div className="Container_ProcesEmpresas_principal_header_subcontent_title">
-                        <div className="Container_ProcesEmpresas_principal_header_content_title">Valorizar un Activo</div>
+                <div className="Container_ValoriActiv_principal_header">
+                    <div className="Container_ValoriActiv_principal_header_subcontent_title">
+                        <div className="Container_ValoriActiv_principal_header_content_title">Valorizar un Activo</div>
                     </div>
-                    <div className="Container_ProcesEmpresas_principal_header_subcontent_search">
-                    <div className="Container_valoriAmenaz_principal_header_subcontent_search_cont">
+                    <div className="Container_ValoriActiv_principal_header_subcontent_search">
+                    <div className="Container_ValoriActiv_principal_header_subcontent_search_cont">
                             <ForminputRadioSliceOpccion 
                                 checkradio = {propstateradio} 
                                 setcheckradio = {propsetstateradio} 
                                 onChangeinput={(stade)=>{propsetstateradio(!stade)}}/>
                             {(propstateradio)?<>
                             <div style={{width:'5px'}}></div>
-                            `<ForminputRadioSliceOpccion 
+                            <ForminputRadioSliceOpccion 
                                 Iconuno = {AreaChartOutlined} 
                                 Icontwo = {DotChartOutlined} 
                                 checkradio = {propstateradio2} 
@@ -235,19 +236,19 @@ export function ValoriActiv(props){
                             />
                             </>:<></>}
                             <div style={{width:'5px'}}></div>
-                            <div className="Container_valoriAmenaz_principal_header_subcontent_information" onClick={()=>{
+                            <div className="Container_ValoriActiv_principal_header_subcontent_information" onClick={()=>{
                                 setismodelaInfo(!ismodelaInfo)
                             }}>
-                                <InfoOutlined className={'Container_valoriAmenaz_principal_header_subcontent_information_icon'} />
+                                <InfoOutlined className={'Container_ValoriActiv_principal_header_subcontent_information_icon'} />
                             </div>
                         </div>
                         <div style={{width:'25px'}}></div>
                     </div>
                 </div>
-                <div className="Container_ProcesEmpresas_principal_body_naster">
-                    <div className="Container_ProcesEmpresas_principal_body_naster_information">
+                <div className="Container_ValoriActiv_principal_body_naster">
+                    <div className="Container_ValoriActiv_principal_body_naster_information">
                         {/* Generador */}
-                        {(propsListOpccion.length != 0)?<div className="Container_ProcesEmpresas_principal_header">
+                        {(propsListOpccion.length != 0)?<div className="Container_ValoriActiv_principal_header">
                             <Componentfilter onSeleccionOpccion={async (objJson)=>{
                                 const keysfilter = Object.keys(objJson)
                                 const  keyInteraccion = keysfilter[keysfilter.length - 1]
@@ -285,9 +286,9 @@ export function ValoriActiv(props){
                         </div>:<></>}
                         {/* Curpo */}
                         {(!propstateradio)?
-                        <div className="Container_ProcesEmpresas_principal_body">
+                        <div className="Container_ValoriActiv_principal_body">
                             <OpccionActions opccionSistem={opccionSistem} />
-                            <div className="Container_ProcesEmpresas_principal_body_subContainer">
+                            <div className="Container_ValoriActiv_principal_body_subContainer">
                                 {(listdata.length != 0)?listdata.map((item)=>{
                                     return (<ItemValorizeActiv
                                      onSelecteItem={(index)=>{
@@ -300,9 +301,9 @@ export function ValoriActiv(props){
                             </div>
                         </div>:
                         ((propstateradio2)?
-                        <div className="Container_valoriAmenaz_principal_body">
+                        <div className="Container_ValoriActiv_principal_body">
                         {/* <OpccionActions opccionSistem={opccionSistem} /> */}
-                            <div className="Container_valoriAmenaz_principal_body_subContainer">
+                            <div className="Container_ValoriActiv_principal_body_subContainer">
                                 <ComponentTable>
                                     <ComponentTableHead headers = {listHeaderTableAnalitic2} />
                                     <tbody>
@@ -317,8 +318,8 @@ export function ValoriActiv(props){
                                 </ComponentTable>
                             </div>
                         </div> :
-                        <div className="Container_valoriAmenaz_principal_body">
-                            <div className="Container_valoriAmenaz_principal_body_subContainer">
+                        <div className="Container_ValoriActiv_principal_body">
+                            <div className="Container_ValoriActiv_principal_body_subContainer">
                                 <ComponentTable>
                                     <ComponentTableHead headers = {listHeaderTableAnalitic} />
                                     <tbody>

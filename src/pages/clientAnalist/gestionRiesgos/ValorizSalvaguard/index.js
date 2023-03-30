@@ -50,7 +50,7 @@ export function ValoriSalvaguard(props){
             width: "2%"
         },
         {
-            label: "Abrebiatura",
+            label: "Salvaguarda",
             asling: "lef",
             isOcult: false,
             width: ""
@@ -58,19 +58,19 @@ export function ValoriSalvaguard(props){
         {
             label: "Eficacia Impact",
             asling: "lef",
-            isOcult: false,
+            isOcult: true,
             width: ""
         },
         {
             label: "Frecuen Resid",
             asling: "lef",
-            isOcult: false,
+            isOcult: true,
             width: ""
         },
         {
             label: "Impact Resid",
             asling: "lef",
-            isOcult: false,
+            isOcult: true,
             width: ""
         },
         {
@@ -88,7 +88,7 @@ export function ValoriSalvaguard(props){
             width: "2%"
         },
         {
-            label: "Abrebiatura",
+            label: "Salvaguarda",
             asling: "lef",
             isOcult: false,
             width: ""
@@ -96,19 +96,19 @@ export function ValoriSalvaguard(props){
         {
             label: "Degrad Resid",
             asling: "lef",
-            isOcult: false,
+            isOcult: true,
             width: ""
         },
         {
             label: "Frecuen Resid",
             asling: "lef",
-            isOcult: false,
+            isOcult: true,
             width: ""
         },
         {
             label: "Impact Resid",
             asling: "lef",
-            isOcult: false,
+            isOcult: true,
             width: ""
         },
         {
@@ -237,15 +237,15 @@ export function ValoriSalvaguard(props){
     }
 
     return (
-        <div className="Container_valoriAmenaz_principal">
-            <div className="Container_valoriAmenaz_principal_subConteiner">
+        <div className="Container_valoriSalvaguar_principal">
+            <div className="Container_valoriSalvaguar_principal_subConteiner">
                 {/* Encabezado */}
-                <div className="Container_valoriAmenaz_principal_header">
-                    <div className="Container_valoriAmenaz_principal_header_subcontent_title">
-                        <div className="Container_valoriAmenaz_principal_header_content_title">Valorizar Salvaguardas</div>
+                <div className="Container_valoriSalvaguar_principal_header">
+                    <div className="Container_valoriSalvaguar_principal_header_subcontent_title">
+                        <div className="Container_valoriSalvaguar_principal_header_content_title">Valorizar Salvaguardas</div>
                     </div>
-                    <div className="Container_valoriAmenaz_principal_header_subcontent_search">
-                        <div className="Container_valoriAmenaz_principal_header_subcontent_search_cont">
+                    <div className="Container_valoriSalvaguar_principal_header_subcontent_search">
+                        <div className="Container_valoriSalvaguar_principal_header_subcontent_search_cont">
                             <ForminputRadioSliceOpccion 
                                 checkradio = {propstateradio} 
                                 setcheckradio = {propsetstateradio} 
@@ -272,21 +272,21 @@ export function ValoriSalvaguard(props){
                             />
                             </>:<></>}
                             <div style={{width:'5px'}}></div>
-                            <div className="Container_valoriAmenaz_principal_header_subcontent_information" onClick={()=>{
+                            <div className="Container_valoriSalvaguar_principal_header_subcontent_information" onClick={()=>{
                                 setismodelaInfo(!ismodelaInfo)
                             }}>
-                                <InfoOutlined className={'Container_valoriAmenaz_principal_header_subcontent_information_icon'} />
+                                <InfoOutlined className={'Container_valoriSalvaguar_principal_header_subcontent_information_icon'} />
                             </div>
                         </div>
                         <div style={{width:'25px'}}></div>
                     </div>
                 </div>
-                <div className="Container_valoriAmenaz_principal_body_naster">
-                    <div className="Container_valoriAmenaz_principal_body_naster_information">
+                <div className="Container_valoriSalvaguar_principal_body_naster">
+                    <div className="Container_valoriSalvaguar_principal_body_naster_information">
                         {/* Generador */}
                         {(propsListOpccion.length != 0)?
-                        <div className="Container_valoriAmenaz_principal_header">
-                            <div className="Container_valoriAmenaz_principal_header_filter" style={{width:'100%'}}>
+                        <div className="Container_valoriSalvaguar_principal_header">
+                            <div className="Container_valoriSalvaguar_principal_header_filter" style={{width:'100%'}}>
                                 <Componentfilter onSeleccionOpccion={async (objJson)=>{
                                     const keysfilter = Object.keys(objJson)
                                     const  keyInteraccion = keysfilter[keysfilter.length - 1]
@@ -346,8 +346,8 @@ export function ValoriSalvaguard(props){
                         </div>:<></>}
                         {/* Curpo */}
                         {(!propstateradio)?
-                        <div className="Container_valoriAmenaz_principal_body">
-                            <div className="Container_valoriAmenaz_principal_body_subContainer">
+                        <div className="Container_valoriSalvaguar_principal_body">
+                            <div className="Container_valoriSalvaguar_principal_body_subContainer">
                                 {(parseInt(listdata.length) !== 0)?listdata.map((item)=>{
                                     return (<ItemValorizeAmenaz
                                      onSelecteItem={(index)=>{
@@ -360,9 +360,9 @@ export function ValoriSalvaguard(props){
                             </div>
                         </div>:
                         ((!propstateradio2)?
-                        <div className="Container_valoriAmenaz_principal_body">
+                        <div className="Container_valoriSalvaguar_principal_body">
                         {/* <OpccionActions opccionSistem={opccionSistem} /> */}
-                            <div className="Container_valoriAmenaz_principal_body_subContainer">
+                            <div className="Container_valoriSalvaguar_principal_body_subContainer">
                                 <ComponentTable>
                                     <ComponentTableHead headers = {listHeaderTableAnalitic} />
                                     <tbody>
@@ -377,8 +377,8 @@ export function ValoriSalvaguard(props){
                                 </ComponentTable>
                             </div>
                         </div> :
-                        <div className="Container_valoriAmenaz_principal_body">
-                            <div className="Container_valoriAmenaz_principal_body_subContainer">
+                        <div className="Container_valoriSalvaguar_principal_body">
+                            <div className="Container_valoriSalvaguar_principal_body_subContainer">
                                 <ComponentTable>
                                     <ComponentTableHead headers = {listHeaderTableAnalitic2} />
                                     <tbody>

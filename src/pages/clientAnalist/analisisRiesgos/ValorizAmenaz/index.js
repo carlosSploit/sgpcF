@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./styles/index.css"
 import { AiOutlineFieldBinary, AiOutlineFontColors } from "react-icons/ai";
 import { ComponentTable, ComponentTableHead, Componentfilter } from "../../../../service/morvius-service/component/components";
-import { AreaChartOutlined, DotChartOutlined, InfoOutlined, UnorderedListOutlined } from "@ant-design/icons";
+import { AreaChartOutlined, DotChartOutlined, InfoOutlined } from "@ant-design/icons";
 // import { useNotification } from "../../../../service/Notifications/NotificationProvider";
 import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mithelworks";
 import { getEmpresas } from "../../../../service/repository/RTEmpresas";

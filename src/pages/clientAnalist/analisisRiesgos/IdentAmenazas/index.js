@@ -10,13 +10,14 @@ import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mit
 import { getEmpresas } from "../../../../service/repository/RTEmpresas";
 import { getProcesEmpresa } from "../../../../service/repository/RTProcesEmpresas";
 import { handleNewNotification } from "../../../../service/Notifications/useNotificacion";
-import { OpccionActions } from "../../ContextoEmpresa/Empresa/components/opccionActions";
+// import { OpccionActions } from "../../ContextoEmpresa/Empresa/components/opccionActions";
 import { getVersionAnalitiv } from "../../../../service/repository/RTVersionAnalitiv";
 import { ItemValorizeActiv } from "./components/itemIdentAmenazas";
-import { AddIdentifyAmenazas, AddValorizeActiv } from "./components/addIdentAmenazas";
-import { deleteActivProsAnali, getActivProsAnali } from "../../../../service/repository/RTActivProsAnali";
+import { AddIdentifyAmenazas } from "./components/addIdentAmenazas";
+import { getActivProsAnali } from "../../../../service/repository/RTActivProsAnali";
 import { EditaValotCuantitativo } from "./components/editIdentAmenazas";
 import { deleteAfectaAtiv, getAfectaAtiv } from "../../../../service/repository/RTAfectaActiv";
+import { OpccionActions } from "../../../../service/morvius-service/component/complements/componetOpccionActions";
 // import { OpccionActions } from "./components/opccionActions";
 // import { deleteEmpresa, getEmpresas } from "../../../../service/repository/RTEmpresas";
 // import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mithelworks";
@@ -47,7 +48,7 @@ export function IndentifiAmenazas(props){
     // const [isModelFilter,setisModelFilter] = useState(false);
     const [listOpccionFilter,setlistOpccionFilter] = useState([]);
     // const [listSelFilter,setlistSelFilter] = useState([]);
-    const [indexProceso,setindexProceso] = useState(0);
+    // const [indexProceso,setindexProceso] = useState(0);
     // opccion filtrajes
     const [propsListOpccion, prososetListOpccion] = useState([]);
     const [indexEmpresa,setindexEmpresa] = useState(0);
@@ -253,42 +254,18 @@ export function IndentifiAmenazas(props){
     ]
 
     return (
-        <div className="Container_ProcesEmpresas_principal">
-            <div className="Container_ProcesEmpresas_principal_subConteiner">
+        <div className="Container_IdentiAmenaz_principal">
+            <div className="Container_IdentiAmenaz_principal_subConteiner">
                 {/* Encabezado */}
-                <div className="Container_ProcesEmpresas_principal_header">
-                    <div className="Container_ProcesEmpresas_principal_header_subcontent_title">
-                        <div className="Container_ProcesEmpresas_principal_header_content_title">Identificar Amenazas</div>
-                    </div>
-                    <div className="Container_ProcesEmpresas_principal_header_subcontent_search">
-                        <div className="Container_ProcesEmpresas_principal_header_subcontent_search_cont">
-                            {/* <Componentsearchanimation onChangekey={onChangekey} onChangeseach={onChangeseach}/> */}
-                        </div>
-                        {/* <div className="Container_ProcesEmpresas_principal_header_subcontent_search_cont2">
-                            <div className="Container_ProcesEmpresas_principal_header_subcontent_search_Filer" onClick={()=>{
-                                if(isModelFilter) {
-                                    setlistdata([]);
-                                    setTimeout(() => {
-                                        setlistdata(listdataHistory);
-                                    }, 500);
-                                }
-                                setisModelFilter(!isModelFilter)
-                            }}>
-                                <SlidersOutlined className="Container_ProcesEmpresas_principal_header_subcontent_search_Filer_icons" />
-                            </div>
-                        </div> */}
+                <div className="Container_IdentiAmenaz_principal_header">
+                    <div className="Container_IdentiAmenaz_principal_header_subcontent_title">
+                        <div className="Container_IdentiAmenaz_principal_header_content_title">Identificar Amenazas</div>
                     </div>
                 </div>
-                <div className="Container_ProcesEmpresas_principal_body_naster">
-                    {/* {(isModelFilter && listOpccionFilter.length != 0)?<div className="Container_ProcesEmpresas_principal_body_naster_filter">
-                        <ComponentFilterBar databasic = {listOpccionFilter} onchangeoption={async (lisFilterItem)=>{
-                            setlistSelFilter(lisFilterItem)
-                            await LoadDataProcesEmpresaHist(lisFilterItem)
-                        }} />
-                    </div>:<></>} */}
-                    <div className="Container_ProcesEmpresas_principal_body_naster_information">
+                <div className="Container_IdentiAmenaz_principal_body_naster">
+                    <div className="Container_IdentiAmenaz_principal_body_naster_information">
                         {/* Generador */}
-                        {(propsListOpccion.length != 0)?<div className="Container_ProcesEmpresas_principal_header">
+                        {(propsListOpccion.length != 0)?<div className="Container_IdentiAmenaz_principal_header">
                             <Componentfilter onSeleccionOpccion={async (objJson)=>{
                                 const keysfilter = Object.keys(objJson)
                                 const  keyInteraccion = keysfilter[keysfilter.length - 1]
@@ -335,9 +312,9 @@ export function IndentifiAmenazas(props){
                             }} ></Componentfilter>
                         </div>:<></>}
                         {/* Curpo */}
-                        <div className="Container_ProcesEmpresas_principal_body">
+                        <div className="Container_IdentiAmenaz_principal_body">
                             <OpccionActions opccionSistem={opccionSistem} />
-                            <div className="Container_ProcesEmpresas_principal_body_subContainer">
+                            <div className="Container_IdentiAmenaz_principal_body_subContainer">
                                 {(listdata.length != 0)?listdata.map((item)=>{
                                     return (<ItemValorizeActiv
                                      onSelecteItem={(index)=>{

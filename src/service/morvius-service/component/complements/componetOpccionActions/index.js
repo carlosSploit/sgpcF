@@ -20,19 +20,19 @@ export function OpccionActions(props){
             icon: CloseCircleOutlined,
             onChange: () => {}
         }
-    ]} = props;
+    ], sise = 28 } = props;
 
     const [isPressOptions,setisPressOptions] = useState(false);
 
     return (
-        <div className="Content_Empresas_principal_opccion">
-            <div className='Content_Empresas_principal_opccion_Botton_Config' onClick={()=>{setisPressOptions(!isPressOptions);}}>
-                <SettingOutlined style={{color:'white'}} />
+        <div className="Content_Empresas_principal_opccion" style={{width: `${sise}px`, height: `${sise}px`}}>
+            <div className='Content_Empresas_principal_opccion_Botton_Config' style={{width: `${sise}px`, height: `${sise}px`}} onClick={()=>{setisPressOptions(!isPressOptions);}}>
+                <SettingOutlined style={{color:'white', fontSize: `${sise/2}px`}} />
             </div>
             {(isPressOptions) ? 
             <>
                 {opccionSistem.map((item)=>{
-                    return (<OpccionActionsItems Icons = {item.icon} change = {item.onChange} />);
+                    return (<OpccionActionsItems sise={sise} Icons = {item.icon} change = {item.onChange} />);
                 })}
             </>
             :<></>}
@@ -42,11 +42,11 @@ export function OpccionActions(props){
 
 export function OpccionActionsItems(props){
 
-    const {label, Icons = {CloseCircleOutlined}, change = ()=>{} } = props;
+    const {sise, Icons = {CloseCircleOutlined}, change = ()=>{} } = props;
 
     return (
-        <div className='Content_Empresas_principal_opccion_Botton_Actions' onClick={change}>
-            <Icons className='Content_Empresas_principal_opccion_Botton_Config_icon' />
+        <div className='Content_Empresas_principal_opccion_Botton_Actions' style={{width: `${sise}px`, height: `${sise}px`}} onClick={change}>
+            <Icons className='Content_Empresas_principal_opccion_Botton_Config_icon' style={{fontSize: `${sise/2}px`}} />
         </div>
     )
 }

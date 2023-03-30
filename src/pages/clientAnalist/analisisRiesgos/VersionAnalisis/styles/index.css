@@ -1,17 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('../../../../../service/morvius-service/masterVarial.css');
 
-.Container_Empresas_principal {
+.Container_VersionAnali_principal {
     width: 100%;
     height: 100%;
     background-color: transparent;
-    /* background-color: red; */
     display: flex;
     justify-content: center;
     align-items: flex-start;
 }
 
-.Container_Empresas_principal_subConteiner {
+.Container_VersionAnali_principal_subConteiner {
     width: 95%;
     margin-top: 2.5%;
     min-height: 150px;
@@ -24,7 +23,7 @@
 }
 
 /* ----------------------------------------------------------- Header */
-.Container_Empresas_principal_header {
+.Container_VersionAnali_principal_header {
     width: 100%;
     margin-top: 20px;
     height: auto;
@@ -32,59 +31,51 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
 }
 
-.Container_Empresas_principal_header_subcontent_title {
+.Container_VersionAnali_principal_header_subcontent_title {
     width: 50%;
-    /* background-color: aqua; */
     display: flex;
     align-items: center;
     justify-content: flex-start;
 }
 
-.Container_Empresas_principal_header_subcontent_search {
+.Container_VersionAnali_principal_header_subcontent_search {
     width: 50%;
-
-    /* background-color: aquamarine; */
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
 
-.Container_Empresas_principal_header_subcontent_search_cont {
+.Container_VersionAnali_principal_header_subcontent_search_cont {
     width: 80%;
     margin-right: 3px;
-    /* background-color: red; */
     height: 40px;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    /* background-color: green; */
+    justify-content: end;
 }
 
-.Container_Empresas_principal_header_subcontent_search_opt {
+.Container_VersionAnali_principal_header_subcontent_search_opt {
     width: 15%;
-    /* background-color: blueviolet; */
     height: 40px;
     display: flex;
     align-items: center;
-    /* background-color: red; */
     justify-content: center;
 }
 
-.Container_Empresas_principal_header_container_optinon {
+.Container_VersionAnali_principal_header_container_optinon {
     height: 40px;
     width: 40px;
-    background-color: #856FC5;
     border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.Container_Empresas_principal_header_content_title {
+.Container_VersionAnali_principal_header_content_title {
     font-size: 24px;
     color: var(--color-secundary);
     font-family: 'Poppins', sans-serif;
@@ -94,9 +85,10 @@
 }
 
 /* ----------------------------------------------------------- body */
-.Container_Empresas_principal_body {
+.Container_VersionAnali_principal_body {
     margin-top: 30px;
     max-height: 80vh;
+    height: auto;
     margin-bottom: 20px;
     width: 100%;
     display: flex;
@@ -105,24 +97,24 @@
     position: relative;
 }
 
-.Container_Empresas_principal_body_subContainer {
+.Container_VersionAnali_principal_body_subContainer {
     /* background-color: #856FC5 !important; */
     width: calc(100% - 40px);
     background-color: transparent;
     margin-left: 20px;
     margin-right: 20px;
     min-height: 40px;
-    height: 70vh;
+    height: 65vh;
     overflow-y: scroll;
     overflow-x: hidden;
 }
 
-.Container_Empresas_principal_body_subContainer::-webkit-scrollbar {
+.Container_VersionAnali_principal_body_subContainer::-webkit-scrollbar {
     width: 5px;
     background-color: transparent;
 }
 
-.Container_Empresas_principal_body_subContainer::-webkit-scrollbar-thumb {
+.Container_VersionAnali_principal_body_subContainer::-webkit-scrollbar-thumb {
     width: 5px;
     background: linear-gradient(185deg, rgba(150, 134, 195, 1) 0%, rgba(150, 134, 195, 1) 36%, rgba(239, 203, 75, 1) 100%, rgba(105, 78, 78, 1) 120%);
     border-radius: 20px;
@@ -155,7 +147,7 @@
 
 /* ----------------------------------------------------------- body/ content table - fin */
 
-/* .Container_Empresas_principal_subbody{
+/* .Container_VersionAnali_principal_subbody{
     width: 100%;
     height: 10%;
     background-color: transparent;
@@ -165,43 +157,50 @@
     justify-content: space-between;
 }
 
-.Container_Empresas_principal_subbody_title{
+.Container_VersionAnali_principal_subbody_title{
     width: auto;
     font-size: 18px;
     margin-left: 50px;
     color: rgba(0, 0, 0, 0.5);
 }
 
-.Container_Empresas_principal_subbody_botton{
+.Container_VersionAnali_principal_subbody_botton{
     width: auto;
     margin-right: 50px;
 }
 
-.Container_Empresas_principal_scroller{
+.Container_VersionAnali_principal_scroller{
     width: 90%;
     height: 90%;
     overflow-x: hidden;
     overflow-y: scroll;
 }
 
-.Container_Empresas_principal_scroller::-webkit-scrollbar{
+.Container_VersionAnali_principal_scroller::-webkit-scrollbar{
     width: 5px;
     background-color: transparent;
 }
 
-.Container_Empresas_principal_scroller::-webkit-scrollbar-thumb{
+.Container_VersionAnali_principal_scroller::-webkit-scrollbar-thumb{
     width: 5px;
     background: linear-gradient(185deg, rgba(150,134,195,1) 0%, rgba(150,134,195,1) 36%, rgba(239,203,75,1) 100%, rgba(105,78,78,1) 120%);
     border-radius: 20px;
 }
 
-.Container_Empresas_principa_contain{
+.Container_VersionAnali_principa_contain{
     width: 100%;
     height: auto;
 } */
 
 @media (max-width: 500px) {
-    .Container_Empresas_principal_header_subcontent_title {
+    .Container_VersionAnali_principal_header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .Container_VersionAnali_principal_header_subcontent_title {
+        height: 100px;
         width: 100%;
         padding-left: 10px;
         padding-right: 10px;
@@ -214,16 +213,24 @@
         display: none;
     } */
 
-    .Container_Empresas_principal_header_content_title {
+    .Container_VersionAnali_principal_header_content_title {
         text-align: center;
         margin-left: 0px;
     }
 
-    .Container_Empresas_principal_header_subcontent_search {
+    .Container_VersionAnali_principal_header_subcontent_search {
         margin-top: 15px;
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .Container_VersionAnali_principal_body {
+        height: calc(60vh - 50px);
+    }
+
+    .Container_VersionAnali_principal_body_subContainer {
+        height: 100%;
     }
 }

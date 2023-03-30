@@ -5,12 +5,13 @@ import { AddEmpresas } from "./components/addEmpresas";
 import { ItemEmpresa } from './components/itemEmpresa/index';
 import { getadmins } from '../../../../service/repository/Admin';
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
-import { OpccionActions } from "./components/opccionActions";
+// import { OpccionActions } from "./components/opccionActions";
 import { deleteEmpresa, getEmpresas } from "../../../../service/repository/RTEmpresas";
 import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mithelworks";
 import { EditarEmpresa } from "./components/editEmpresas";
 import { useNotification } from "../../../../service/Notifications/NotificationProvider";
 import { handleNewNotification } from "../../../../service/Notifications/useNotificacion";
+import { OpccionActions } from "../../../../service/morvius-service/component/complements/componetOpccionActions";
 
 export function Empresas(props){
     const [listdata,setlistdata] = useState([]);
@@ -119,14 +120,14 @@ export function Empresas(props){
                     </div>
                     <div className="Container_Empresas_principal_header_subcontent_search">
                         <div className="Container_Empresas_principal_header_subcontent_search_cont">
-                            <Componentsearchanimation onChangekey={onChangekey} onChangeseach={onChangeseach}/>
+                            <Componentsearchanimation height={'35px'} onChangekey={onChangekey} onChangeseach={onChangeseach}/>
                             <div style={{width: '20px'}}></div>
                         </div>
                     </div>
                 </div>
                 {/* Curpo */}
                 <div className="Container_Empresas_principal_body">
-                    <OpccionActions opccionSistem={opccionSistem} />
+                    <OpccionActions sise={35} opccionSistem={opccionSistem} />
                     <div className="Container_Empresas_principal_body_subContainer">
                         {listdata.map((item)=>{
                             return (<ItemEmpresa onSelecteItem={(index)=>{

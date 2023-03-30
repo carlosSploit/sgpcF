@@ -71,8 +71,8 @@ export function ItemValorizActivTabCual(props){
             <tr style={{height: "30px"}}>
                 <th className="content-table-item-encabezado keyid cent" style={{width:"5%"}}>{itemdate.id_activProsVerAnali}</th>
                 <th className="content-table-item-encabezado lef">{itemdate.nombre_Activo}</th>
-                <th className="content-table-item-encabezado lef ocp">
-                    <div className="content-table-item-encabezado_chip ">
+                <th className="content-table-item-encabezado lef">
+                    <div className="content-table-item-encabezado_chip centvalacti">
                         <div style={{backgroundColor:`${colorStadeActivCualiti(itemdate.valorActivCuali)}`}}>{itemdate.valorActivCuali}</div>
                     </div>
                 </th>

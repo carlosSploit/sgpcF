@@ -77,7 +77,7 @@
 .Container_TrabjEmpresas_principal_header_container_optinon {
     height: 40px;
     width: 40px;
-    background-color: #856FC5;
+    /* background-color: #856FC5; */
     border-radius: 15px;
     display: flex;
     align-items: center;
@@ -112,7 +112,7 @@
     margin-left: 20px;
     margin-right: 20px;
     min-height: 40px;
-    height: calc(70vh - 70px);
+    height: 65vh;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -225,5 +225,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .Container_TrabjEmpresas_principal_body {
+        height: calc(60vh - 50px);
+    }
+
+    .Container_TrabjEmpresas_principal_body_subContainer {
+        height: 100%;
     }
 }

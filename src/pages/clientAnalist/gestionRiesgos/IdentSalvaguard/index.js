@@ -10,7 +10,7 @@ import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mit
 import { getEmpresas } from "../../../../service/repository/RTEmpresas";
 import { getProcesEmpresa } from "../../../../service/repository/RTProcesEmpresas";
 import { handleNewNotification } from "../../../../service/Notifications/useNotificacion";
-import { OpccionActions } from "../../ContextoEmpresa/Empresa/components/opccionActions";
+// import { OpccionActions } from "../../ContextoEmpresa/Empresa/components/opccionActions";
 import { getVersionAnalitiv } from "../../../../service/repository/RTVersionAnalitiv";
 import { ItemValorizeActiv } from "./components/itemIdentAmenazas";
 import { AddSalvaguarAmenaz } from "./components/addIdentAmenazas";
@@ -20,6 +20,7 @@ import { getActivProsAnali } from "../../../../service/repository/RTActivProsAna
 import { deleteSalvaguAmenaz, getSalvaguAmenaz } from "../../../../service/repository/RTSalvagAmenaz";
 import { EditarSalvagAmenaz } from "./components/editProcesEmpresa";
 import { getAfectaAtiv } from "../../../../service/repository/RTAfectaActiv";
+import { OpccionActions } from "../../../../service/morvius-service/component/complements/componetOpccionActions";
 
 export function IndentifiSalvaguard(props){
     const [listdata,setlistdata] = useState([]);
@@ -209,19 +210,8 @@ export function IndentifiSalvaguard(props){
                     <div className="Container_SalvagurdAmenaz_principal_header_subcontent_title">
                         <div className="Container_SalvagurdAmenaz_principal_header_content_title">Identificar Salvaguardas</div>
                     </div>
-                    <div className="Container_SalvagurdAmenaz_principal_header_subcontent_search">
-                        <div className="Container_SalvagurdAmenaz_principal_header_subcontent_search_cont">
-                            {/* <Componentsearchanimation onChangekey={onChangekey} onChangeseach={onChangeseach}/> */}
-                        </div>
-                    </div>
                 </div>
                 <div className="Container_SalvagurdAmenaz_principal_body_naster">
-                    {/* {(isModelFilter && listOpccionFilter.length != 0)?<div className="Container_SalvagurdAmenaz_principal_body_naster_filter">
-                        <ComponentFilterBar databasic = {listOpccionFilter} onchangeoption={async (lisFilterItem)=>{
-                            setlistSelFilter(lisFilterItem)
-                            await LoadDataProcesEmpresaHist(lisFilterItem)
-                        }} />
-                    </div>:<></>} */}
                     <div className="Container_SalvagurdAmenaz_principal_body_naster_information">
                         {/* Generador */}
                         {(propsListOpccion.length != 0)?<div className="Container_SalvagurdAmenaz_principal_header">
@@ -283,7 +273,7 @@ export function IndentifiSalvaguard(props){
                         </div>:<></>}
                         {/* Curpo */}
                         <div className="Container_SalvagurdAmenaz_principal_body">
-                            <OpccionActions opccionSistem={opccionSistem} />
+                            <OpccionActions sise={35} opccionSistem={opccionSistem} />
                             <div className="Container_SalvagurdAmenaz_principal_body_subContainer">
                                 {(listdata.length != 0)?listdata.map((item)=>{
                                     return (<ItemValorizeActiv

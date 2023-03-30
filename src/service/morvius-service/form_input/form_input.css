@@ -259,10 +259,10 @@
 
 .form_input_radiosliceOpccio {
     width: auto;
-    height: 35px;
+    height: 36px;
     /* border */
     background-color: white;
-    border-radius: 16.5px;
+    border-radius: 18px;
     border-width: 2px;
     border-style: solid;
     border-color: var(--color-secundary);
@@ -273,9 +273,9 @@
 }
 
 .form_input_radiosliceOpccio_circle {
-    border-radius: 16.5px;
+    border-radius: 15px;
     background-color: white;
-    height: 35px;
+    height: 30px;
     width: 40px;
     display: flex;
     justify-content: center;
@@ -290,13 +290,15 @@
 .form_input_radiosliceOpccio_circle_activate {
     border-radius: 16.5px;
     background-color: var(--color-secundary);
-    height: 35px;
+    height: 30px;
     width: 40px;
     display: flex;
+    margin-right: 2px;
+    margin-left: 2px;
     justify-content: center;
     align-items: center;
-    border-radius: 16.5px;
-    border-width: 2px;
+    border-radius: 15px;
+    border-width: 1px;
     border-style: solid;
     border-color: var(--color-secundary);
 }

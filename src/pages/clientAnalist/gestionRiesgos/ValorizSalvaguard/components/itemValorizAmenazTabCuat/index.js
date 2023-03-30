@@ -77,7 +77,7 @@ export function ItemValorizAmenazTabCuat(props){
                 <th className="content-table-item-encabezado lef ocp">{itemdate.valEficImpac}</th>
                 <th className="content-table-item-encabezado lef ocp">{itemdate.valEscalFrecuenResidCuanti}</th>
                 <th className="content-table-item-encabezado lef ocp">{`S/.${itemdate.valImpactResidCuanti}`}</th>
-                <th className="content-table-item-encabezado lef ocp">{`S/.${itemdate.valRiesgResidCuanti}`}</th>
+                <th className="content-table-item-encabezado lef">{`S/.${itemdate.valRiesgResidCuanti}`}</th>
             </tr>
         </>
     );

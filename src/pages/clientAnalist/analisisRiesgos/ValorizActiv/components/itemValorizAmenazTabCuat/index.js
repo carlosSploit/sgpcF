@@ -22,7 +22,7 @@ export function ItemValorizActivTabCuat(props){
                 <th className="content-table-item-encabezado keyid cent" style={{width:"5%"}}>{itemdate.id_activProsVerAnali}</th>
                 <th className="content-table-item-encabezado lef">{itemdate.nombre_Activo}</th>
                 {/* <th className="content-table-item-encabezado lef ocp">{itemdate.nameFrecuencia}</th> */}
-                <th className="content-table-item-encabezado lef ocp">{`S/.${itemdate.valorActivCuanti}`}</th>
+                <th className="content-table-item-encabezado lef centvalacti">{`S/.${itemdate.valorActivCuanti}`}</th>
             </tr>
         </>
     );

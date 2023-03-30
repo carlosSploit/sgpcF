@@ -294,7 +294,7 @@ export function ItemValorizAmenazTabCual(props){
                         <div style={{backgroundColor:`${colorStadeImpactCualiti(itemdate.valImpactResidCuali)}`}}>{labelStadeImpactCualiti(itemdate.valImpactResidCuali)}</div>
                     </div>
                 </th>
-                <th className="content-table-item-encabezado lef ocp">
+                <th className="content-table-item-encabezado lef">
                     <div className="content-table-item-encabezado_chip ">
                         <div style={{backgroundColor:`${colorStadeRiesgCualiti(itemdate.valRiesgResidCuali)}`}}>{labelStadeRiesgCualiti(itemdate.valRiesgResidCuali)}</div>
                     </div>

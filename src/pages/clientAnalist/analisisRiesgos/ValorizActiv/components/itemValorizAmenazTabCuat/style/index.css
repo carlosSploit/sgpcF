@@ -49,4 +49,12 @@
     .content-table-item-encabezado+.ocp {
         display: none;
     }
+
+    .content-table-item-encabezado_chip.centvalacti {
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* background-color: #EB6F65; */
+    }
 }

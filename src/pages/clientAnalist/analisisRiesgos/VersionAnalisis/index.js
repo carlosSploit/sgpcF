@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./styles/index.css"
-import { Componentfilter, Componentsearchanimation} from "../../../../service/morvius-service/component/components";
+import { Componentfilter } from "../../../../service/morvius-service/component/components";
 // import { AddEmpresas } from "./components/addEmpresas";
 // import { ItemEmpresa } from './components/itemEmpresa/index';
-import { getadmins } from '../../../../service/repository/Admin';
-import { DeleteOutlined, FileExclamationOutlined, PlusOutlined, SlidersOutlined } from "@ant-design/icons";
+// import { getadmins } from '../../../../service/repository/Admin';
+import { DeleteOutlined, FileExclamationOutlined, PlusOutlined } from "@ant-design/icons";
 import { OpccionActions } from "./components/opccionActions";
 // import { deleteEmpresa, getEmpresas } from "../../../../service/repository/RTEmpresas";
 import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mithelworks";
@@ -14,8 +14,8 @@ import { handleNewNotification } from "../../../../service/Notifications/useNoti
 // import { EditarProcesEmpresa } from "../../ContextoEmpresa/Procesos/components/editProcesEmpresa";
 // import { AddProcesEmpresas } from "../../ContextoEmpresa/Procesos/components/addProcesEmpresa";
 // import { ItemTrabjEmpresa } from "../../ContextoEmpresa/TrabajEmpresa/components/itemTrabjEmpresa";
-import { ComponentFilterBar } from "../../../../service/morvius-service/component/complements/componentFilterBar";
-import { deleteProcesEmpresa, getProcesEmpresa } from "../../../../service/repository/RTProcesEmpresas";
+// import { ComponentFilterBar } from "../../../../service/morvius-service/component/complements/componentFilterBar";
+import { getProcesEmpresa } from "../../../../service/repository/RTProcesEmpresas";
 import { getTipoProces } from "../../../../service/repository/RTTiposProces";
 import { getGerarcProces } from "../../../../service/repository/RTGerarcProces";
 import { getEmpresas } from "../../../../service/repository/RTEmpresas";
@@ -26,7 +26,7 @@ import { EditarVesionAnalitic } from "./components/editVersionAnalisis";
 
 export function VersionAnalisis(props){
     const [listdata,setlistdata] = useState([]);
-    const [listdataHistory,setlistdataHistory] = useState([]);
+    const [,setlistdataHistory] = useState([]);
     const [ismodeladd,setismodeladd] = useState(false);
     const [ismodelaEdit,setismodelaEdit] = useState(false);
     // const [textsearch,settextsearch] = useState("");
@@ -211,42 +211,18 @@ export function VersionAnalisis(props){
     ]
 
     return (
-        <div className="Container_ProcesEmpresas_principal">
-            <div className="Container_ProcesEmpresas_principal_subConteiner">
+        <div className="Container_VersionAnali_principal">
+            <div className="Container_VersionAnali_principal_subConteiner">
                 {/* Encabezado */}
-                <div className="Container_ProcesEmpresas_principal_header">
-                    <div className="Container_ProcesEmpresas_principal_header_subcontent_title">
-                        <div className="Container_ProcesEmpresas_principal_header_content_title">Lista de Verciones de Analisis</div>
-                    </div>
-                    <div className="Container_ProcesEmpresas_principal_header_subcontent_search">
-                        <div className="Container_ProcesEmpresas_principal_header_subcontent_search_cont">
-                            {/* <Componentsearchanimation onChangekey={onChangekey} onChangeseach={onChangeseach}/> */}
-                        </div>
-                        {/* <div className="Container_ProcesEmpresas_principal_header_subcontent_search_cont2">
-                            <div className="Container_ProcesEmpresas_principal_header_subcontent_search_Filer" onClick={()=>{
-                                if(isModelFilter) {
-                                    setlistdata([]);
-                                    setTimeout(() => {
-                                        setlistdata(listdataHistory);
-                                    }, 500);
-                                }
-                                setisModelFilter(!isModelFilter)
-                            }}>
-                                <SlidersOutlined className="Container_ProcesEmpresas_principal_header_subcontent_search_Filer_icons" />
-                            </div>
-                        </div> */}
+                <div className="Container_VersionAnali_principal_header">
+                    <div className="Container_VersionAnali_principal_header_subcontent_title">
+                        <div className="Container_VersionAnali_principal_header_content_title">Lista de Verciones de Analisis</div>
                     </div>
                 </div>
-                <div className="Container_ProcesEmpresas_principal_body_naster">
-                    {/* {(isModelFilter && listOpccionFilter.length != 0)?<div className="Container_ProcesEmpresas_principal_body_naster_filter">
-                        <ComponentFilterBar databasic = {listOpccionFilter} onchangeoption={async (lisFilterItem)=>{
-                            setlistSelFilter(lisFilterItem)
-                            await LoadDataProcesEmpresaHist(lisFilterItem)
-                        }} />
-                    </div>:<></>} */}
-                    <div className="Container_ProcesEmpresas_principal_body_naster_information">
+                <div className="Container_VersionAnali_principal_body_naster">
+                    <div className="Container_VersionAnali_principal_body_naster_information">
                         {/* Generador */}
-                        {(propsListOpccion.length != 0)?<div className="Container_ProcesEmpresas_principal_header">
+                        {(propsListOpccion.length != 0)?<div className="Container_VersionAnali_principal_header">
                             <Componentfilter onSeleccionOpccion={async (objJson)=>{
                                 const keysfilter = Object.keys(objJson)
                                 const  keyInteraccion = keysfilter[keysfilter.length - 1]
@@ -275,9 +251,9 @@ export function VersionAnalisis(props){
                             }} ></Componentfilter>
                         </div>:<></>}
                         {/* Curpo */}
-                        <div className="Container_ProcesEmpresas_principal_body">
+                        <div className="Container_VersionAnali_principal_body">
                             <OpccionActions opccionSistem={opccionSistem} />
-                            <div className="Container_ProcesEmpresas_principal_body_subContainer">
+                            <div className="Container_VersionAnali_principal_body_subContainer">
                                 {(listdata.length != 0)?listdata.map((item)=>{
                                     return (<ItemVersionAnalitit
                                      onSelecteItem={(index)=>{
