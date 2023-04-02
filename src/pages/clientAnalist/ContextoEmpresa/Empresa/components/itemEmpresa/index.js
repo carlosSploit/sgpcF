@@ -22,8 +22,9 @@ export function ItemEmpresa(props){
                 onChange(keyitem);
             }}>
                  <div className="Container_ItemEmpresa_conten_secondary_seleccion_Infor">
-                    <div className="Container_ItemEmpresa_conten_InfoData_primary" >{(title.length > 20)? title.substring(0,20) + '...':title}</div>
-                    <div style={{height: '1px'}} />
+                    {/* <div className="Container_ItemEmpresa_conten_InfoData_primary" >{(title.length > 20)? title.substring(0,20) + '...':title}</div> */}
+                    <p className="Container_ItemEmpresa_conten_InfoData_primary" >{title}</p>
+                    {/* <div style={{height: '1px'}} /> */}
                     <div className="Container_ItemEmpresa_conten_InfoData_secundary" >{subtitle}</div>
                 </div>
                 <div className="Container_ItemEmpresa_conten_secondary_seleccion_suInfor">

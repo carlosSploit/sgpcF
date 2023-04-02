@@ -7,8 +7,8 @@ import { handleNewNotification } from "../../../../../../../../../../../service/
 import { ForminputBotton, ForminputBottonSubmit, ForminputSelectItem } from "../../../../../../../../../../../service/morvius-service/form";
 // import { addAreasEmpresa, getAresEmpresa } from "../../../../../../../../../../../service/repository/RTAreasEmpresas";
 // import { addAreasInteraProces } from "../../../../../../../../../../../service/repository/RTAreasInteraProces";
-import { getTrabajEmpresa } from "../../../../../../../../../../../service/repository/RTTrabajEmpresas";
-import { addTrabajRespon } from "../../../../../../../../../../../service/repository/RTTrabajRespon";
+// import { getTrabajEmpresa } from "../../../../../../../../../../../service/repository/RTTrabajEmpresas";
+// import { addTrabajRespon } from "../../../../../../../../../../../service/repository/RTTrabajRespon";
 import { getActivosEmpresa } from "../../../../../../../../../../../service/repository/RTActivos";
 import { addActivosProceso } from "../../../../../../../../../../../service/repository/RTActivosProceso";
 

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./styles/index.css"
-import { AiOutlineFieldBinary, AiOutlineFontColors } from "react-icons/ai";
-import { ComponentTable, ComponentTableHead, Componentfilter } from "../../../../service/morvius-service/component/components";
-import { AreaChartOutlined, DotChartOutlined, InfoOutlined } from "@ant-design/icons";
+// import { AiOutlineFieldBinary, AiOutlineFontColors } from "react-icons/ai";
+import { Componentfilter } from "../../../../service/morvius-service/component/components";
+// import { AreaChartOutlined, DotChartOutlined, InfoOutlined } from "@ant-design/icons";
 // import { useNotification } from "../../../../service/Notifications/NotificationProvider";
 import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mithelworks";
 import { getEmpresas } from "../../../../service/repository/RTEmpresas";
@@ -16,9 +16,9 @@ import { getActivProsAnali } from "../../../../service/repository/RTActivProsAna
 // import { EditaValotCuantitativo } from "./components/editValorizAmenaz";
 import { getAfectaAtiv } from "../../../../service/repository/RTAfectaActiv";
 import { EditaValorAmenaza } from "./components/editValorizAmena";
-import { ForminputRadioSliceOpccion } from "../../../../service/morvius-service/form_input/form_input";
-import { ItemValorizAmenazTabCual } from "./components/itemValorizAmenazTabCual";
-import { ItemValorizAmenazTabCuat } from "./components/itemValorizAmenazTabCuat";
+// import { ForminputRadioSliceOpccion } from "../../../../service/morvius-service/form_input/form_input";
+// import { ItemValorizAmenazTabCual } from "./components/itemValorizAmenazTabCual";
+// import { ItemValorizAmenazTabCuat } from "./components/itemValorizAmenazTabCuat";
 import { InformationValori } from "./components/informationValori";
 
 export function ValoriAmenaz(props){
@@ -29,9 +29,9 @@ export function ValoriAmenaz(props){
     const [indexAmenaza,setindexAmenaza] = useState(0);
     const [,setindexOptionVersionAnaliD] = useState([]);
     const [,setlistOpccionFilter] = useState([]);
-    const [propstateradio,propsetstateradio] = useState(false);
-    const [propstateradio2,propsetstateradio2] = useState(false);
-    const [propstateradio3,propsetstateradio3] = useState(false);
+    // const [propstateradio,propsetstateradio] = useState(false);
+    // const [propstateradio2,propsetstateradio2] = useState(false);
+    // const [propstateradio3,propsetstateradio3] = useState(false);
     // const [listSelFilter,setlistSelFilter] = useState([]);
     // const [indexProceso,setindexProceso] = useState(0);
     // opccion filtrajes
@@ -40,82 +40,82 @@ export function ValoriAmenaz(props){
     const [keyOpccionProces,setkeyOpccionProces] = useState(0);
     const [indexVersion,setIndexVersion] = useState(0);
     const [indexActivVersion,setActivVersion] = useState(0);
-    const [listHeaderTableAnalitic, ] = useState([
-        {
-            label: "#",
-            asling: "lef",
-            isOcult: false,
-            width: "2%"
-        },
-        {
-            label: "Abrebiatura",
-            asling: "lef",
-            isOcult: false,
-            width: ""
-        },
-        {
-            label: "Degrad Cuanti",
-            asling: "lef",
-            isOcult: false,
-            width: ""
-        },
-        {
-            label: "Impact Cuanti",
-            asling: "lef",
-            isOcult: false,
-            width: ""
-        },
-        {
-            label: "Frecuen Cuali",
-            asling: "lef",
-            isOcult: true,
-            width: ""
-        },
-        {
-            label: "Riesg Cuanti",
-            asling: "lef",
-            isOcult: false,
-            width: ""
-        }
-    ]);
-    const [listHeaderTableAnalitic2, ] = useState([
-        {
-            label: "#",
-            asling: "lef",
-            isOcult: false,
-            width: "2%"
-        },
-        {
-            label: "Abrebiatura",
-            asling: "lef",
-            isOcult: false,
-            width: ""
-        },
-        {
-            label: "Degrad Cuali",
-            asling: "lef",
-            isOcult: true,
-            width: ""
-        },
-        {
-            label: "Impact Cuali",
-            asling: "lef",
-            isOcult: true,
-            width: ""
-        },
-        {
-            label: "Frecuen Cuali",
-            asling: "lef",
-            isOcult: true,
-            width: ""
-        },
-        {
-            label: "Riesg Cuali",
-            asling: "lef",
-            isOcult: true,
-            width: ""
-        }
-    ]);
+    // const [listHeaderTableAnalitic, ] = useState([
+    //     {
+    //         label: "#",
+    //         asling: "lef",
+    //         isOcult: false,
+    //         width: "2%"
+    //     },
+    //     {
+    //         label: "Abrebiatura",
+    //         asling: "lef",
+    //         isOcult: false,
+    //         width: ""
+    //     },
+    //     {
+    //         label: "Degrad Cuanti",
+    //         asling: "lef",
+    //         isOcult: false,
+    //         width: ""
+    //     },
+    //     {
+    //         label: "Impact Cuanti",
+    //         asling: "lef",
+    //         isOcult: false,
+    //         width: ""
+    //     },
+    //     {
+    //         label: "Frecuen Cuali",
+    //         asling: "lef",
+    //         isOcult: true,
+    //         width: ""
+    //     },
+    //     {
+    //         label: "Riesg Cuanti",
+    //         asling: "lef",
+    //         isOcult: false,
+    //         width: ""
+    //     }
+    // ]);
+    // const [listHeaderTableAnalitic2, ] = useState([
+    //     {
+    //         label: "#",
+    //         asling: "lef",
+    //         isOcult: false,
+    //         width: "2%"
+    //     },
+    //     {
+    //         label: "Abrebiatura",
+    //         asling: "lef",
+    //         isOcult: false,
+    //         width: ""
+    //     },
+    //     {
+    //         label: "Degrad Cuali",
+    //         asling: "lef",
+    //         isOcult: true,
+    //         width: ""
+    //     },
+    //     {
+    //         label: "Impact Cuali",
+    //         asling: "lef",
+    //         isOcult: true,
+    //         width: ""
+    //     },
+    //     {
+    //         label: "Frecuen Cuali",
+    //         asling: "lef",
+    //         isOcult: true,
+    //         width: ""
+    //     },
+    //     {
+    //         label: "Riesg Cuali",
+    //         asling: "lef",
+    //         isOcult: true,
+    //         width: ""
+    //     }
+    // ]);
     // const dispatch = useNotification();
     
     useEffect(()=>{
@@ -225,42 +225,7 @@ export function ValoriAmenaz(props){
                     <div className="Container_valoriAmenaz_principal_header_subcontent_title">
                         <div className="Container_valoriAmenaz_principal_header_content_title">Valorizar Amenazas</div>
                     </div>
-                    <div className="Container_valoriAmenaz_principal_header_subcontent_search">
-                        <div className="Container_valoriAmenaz_principal_header_subcontent_search_cont">
-                            <ForminputRadioSliceOpccion 
-                                checkradio = {propstateradio} 
-                                setcheckradio = {propsetstateradio} 
-                                onChangeinput={(stade)=>{propsetstateradio(!stade)}}/>
-                            {(propstateradio)?<> 
-                            <div style={{width:'5px'}}></div> 
-                            <ForminputRadioSliceOpccion 
-                                Iconuno = {AreaChartOutlined} 
-                                Icontwo = {DotChartOutlined} 
-                                checkradio = {propstateradio2} 
-                                setcheckradio = {propsetstateradio2} 
-                                onChangeinput={(stade)=>{propsetstateradio2(!stade)}} 
-                            /> 
-                            </>:<></>}
-                            {(propstateradio2 && propstateradio)?<>
-                            <div style={{width:'5px'}}></div>
-                            <ForminputRadioSliceOpccion 
-                                sizeIcon = {'18px'} 
-                                Iconuno = {AiOutlineFieldBinary} 
-                                Icontwo = {AiOutlineFontColors} 
-                                checkradio = {propstateradio3} 
-                                setcheckradio = {propsetstateradio3} 
-                                onChangeinput={(stade)=>{propsetstateradio3(!stade)}} 
-                            />
-                            </>:<></>}
-                            <div style={{width:'5px'}}></div>
-                            <div className="Container_valoriAmenaz_principal_header_subcontent_information" onClick={()=>{
-                                setismodelaInfo(!ismodelaInfo)
-                            }}>
-                                <InfoOutlined className={'Container_valoriAmenaz_principal_header_subcontent_information_icon'} />
-                            </div>
-                        </div>
-                        <div style={{width:'25px'}}></div>
-                    </div>
+                    <div className="Container_valoriAmenaz_principal_header_subcontent_search"></div>
                 </div>
                 <div className="Container_valoriAmenaz_principal_body_naster">
                     <div className="Container_valoriAmenaz_principal_body_naster_information">
@@ -315,7 +280,7 @@ export function ValoriAmenaz(props){
                             </div>
                         </div>:<></>}
                         {/* Curpo */}
-                        {(!propstateradio)?
+                        {
                         <div className="Container_valoriAmenaz_principal_body">
                             <div className="Container_valoriAmenaz_principal_body_subContainer">
                                 {(listdata.length != 0)?listdata.map((item)=>{
@@ -328,41 +293,41 @@ export function ValoriAmenaz(props){
                                     }} keyitem = {item.id_afectaActiv} title = {item.nombreAmena} subtitle = {item.nombreTipoActiv} />)
                                 }):<></>}
                             </div>
-                        </div>:
-                        ((!propstateradio2)?
-                        <div className="Container_valoriAmenaz_principal_body">
-                        {/* <OpccionActions opccionSistem={opccionSistem} /> */}
-                            <div className="Container_valoriAmenaz_principal_body_subContainer">
-                                <ComponentTable>
-                                    <ComponentTableHead headers = {listHeaderTableAnalitic} />
-                                    <tbody>
-                                        {(listdata.length != 0)?listdata.filter((item)=>{
-                                            return (item.id_Frecuencia != null) && (item.id_DegradCualit != null)
-                                        }).map((item)=>{
-                                            console.log(item)
-                                            return (<ItemValorizAmenazTabCuat itemdate ={item}/>)
-                                        })
-                                        :<></>}
-                                    </tbody>
-                                </ComponentTable>
-                            </div>
-                        </div> :
-                        <div className="Container_valoriAmenaz_principal_body">
-                            <div className="Container_valoriAmenaz_principal_body_subContainer">
-                                <ComponentTable>
-                                    <ComponentTableHead headers = {listHeaderTableAnalitic2} />
-                                    <tbody>
-                                        {(listdata.length != 0)?listdata.filter((item)=>{
-                                            return (item.id_Frecuencia != null) && (item.id_DegradCualit != null)
-                                        }).map((item)=>{
-                                            console.log(item)
-                                            return (<ItemValorizAmenazTabCual isLabel = {propstateradio3} itemdate = {item}/>)
-                                        })
-                                        :<></>}
-                                    </tbody>
-                                </ComponentTable>
-                            </div>
-                        </div>)
+                        </div>
+                        // ((!propstateradio2)?
+                        // <div className="Container_valoriAmenaz_principal_body">
+                        // {/* <OpccionActions opccionSistem={opccionSistem} /> */}
+                        //     <div className="Container_valoriAmenaz_principal_body_subContainer">
+                        //         <ComponentTable>
+                        //             <ComponentTableHead headers = {listHeaderTableAnalitic} />
+                        //             <tbody>
+                        //                 {(listdata.length != 0)?listdata.filter((item)=>{
+                        //                     return (item.id_Frecuencia != null) && (item.id_DegradCualit != null)
+                        //                 }).map((item)=>{
+                        //                     console.log(item)
+                        //                     return (<ItemValorizAmenazTabCuat itemdate ={item}/>)
+                        //                 })
+                        //                 :<></>}
+                        //             </tbody>
+                        //         </ComponentTable>
+                        //     </div>
+                        // </div> :
+                        // <div className="Container_valoriAmenaz_principal_body">
+                        //     <div className="Container_valoriAmenaz_principal_body_subContainer">
+                        //         <ComponentTable>
+                        //             <ComponentTableHead headers = {listHeaderTableAnalitic2} />
+                        //             <tbody>
+                        //                 {(listdata.length != 0)?listdata.filter((item)=>{
+                        //                     return (item.id_Frecuencia != null) && (item.id_DegradCualit != null)
+                        //                 }).map((item)=>{
+                        //                     console.log(item)
+                        //                     return (<ItemValorizAmenazTabCual isLabel = {propstateradio3} itemdate = {item}/>)
+                        //                 })
+                        //                 :<></>}
+                        //             </tbody>
+                        //         </ComponentTable>
+                        //     </div>
+                        // </div>)
                         }
                     </div>
                 </div>

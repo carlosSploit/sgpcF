@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./style/index.css"
 // import {EditAdmin} from "../editEmpresas/editAdmin"
 // import { useNotification } from "../../../../../../service/Notifications/useNotificacion";
@@ -6,9 +6,9 @@ import "./style/index.css"
 export function ItemValorizeAmenaz(props){
     const {
         onChange = (id_options) => {}, 
-        onSelecteItem = (id_options, stade) => {},
-        keyitem,
-        title,subtitle,descrip
+        keyitem, 
+        title, 
+        subtitle 
     } = props;
     // const [isSeleteItem, setisSeleteItem] = useState(false);
 
@@ -22,7 +22,7 @@ export function ItemValorizeAmenaz(props){
                 onChange(keyitem);
             }}>
                  <div className="Container_ItemValorizeAmenaz_conten_secondary_seleccion_Infor">
-                    <div className="Container_ItemValorizeAmenaz_conten_InfoData_primary" >{(title.length > 50)? title.substring(0,50) + '...':title}</div>
+                    <p className="Container_ItemValorizeAmenaz_conten_InfoData_primary" >{title}</p>
                     <div style={{height: '1px'}} />
                     <div className="Container_ItemValorizeAmenaz_conten_InfoData_secundary" >{subtitle}</div>
                 </div>

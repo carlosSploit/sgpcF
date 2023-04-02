@@ -5,7 +5,7 @@ import { Componentfilter } from "../../../../service/morvius-service/component/c
 // import { ItemEmpresa } from './components/itemEmpresa/index';
 // import { getadmins } from '../../../../service/repository/Admin';
 import { DeleteOutlined, FileExclamationOutlined, PlusOutlined } from "@ant-design/icons";
-import { OpccionActions } from "./components/opccionActions";
+// import { OpccionActions } from "./components/opccionActions";
 // import { deleteEmpresa, getEmpresas } from "../../../../service/repository/RTEmpresas";
 import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mithelworks";
 // import { EditarEmpresa } from "./components/editEmpresas";
@@ -23,6 +23,7 @@ import { deleteVersionAnalitiv, getVersionAnalitiv } from "../../../../service/r
 import { ItemVersionAnalitit } from "./components/itemVersionAnalisis";
 import { AddVersionAnalitic } from "./components/addVersionAnalisis";
 import { EditarVesionAnalitic } from "./components/editVersionAnalisis";
+import { OpccionActions } from "../../../../service/morvius-service/component/complements/componetOpccionActions";
 
 export function VersionAnalisis(props){
     const [listdata,setlistdata] = useState([]);
@@ -252,7 +253,7 @@ export function VersionAnalisis(props){
                         </div>:<></>}
                         {/* Curpo */}
                         <div className="Container_VersionAnali_principal_body">
-                            <OpccionActions opccionSistem={opccionSistem} />
+                            <OpccionActions sise={35} opccionSistem={opccionSistem} />
                             <div className="Container_VersionAnali_principal_body_subContainer">
                                 {(listdata.length != 0)?listdata.map((item)=>{
                                     return (<ItemVersionAnalitit

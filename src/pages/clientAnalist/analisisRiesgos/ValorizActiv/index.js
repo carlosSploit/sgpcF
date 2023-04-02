@@ -220,7 +220,7 @@ export function ValoriActiv(props){
                         <div className="Container_ValoriActiv_principal_header_content_title">Valorizar un Activo</div>
                     </div>
                     <div className="Container_ValoriActiv_principal_header_subcontent_search">
-                    <div className="Container_ValoriActiv_principal_header_subcontent_search_cont">
+                        {/* <div className="Container_ValoriActiv_principal_header_subcontent_search_cont">
                             <ForminputRadioSliceOpccion 
                                 checkradio = {propstateradio} 
                                 setcheckradio = {propsetstateradio} 
@@ -242,7 +242,7 @@ export function ValoriActiv(props){
                                 <InfoOutlined className={'Container_ValoriActiv_principal_header_subcontent_information_icon'} />
                             </div>
                         </div>
-                        <div style={{width:'25px'}}></div>
+                        <div style={{width:'25px'}}></div> */}
                     </div>
                 </div>
                 <div className="Container_ValoriActiv_principal_body_naster">
@@ -285,9 +285,9 @@ export function ValoriActiv(props){
                             }} ></Componentfilter>
                         </div>:<></>}
                         {/* Curpo */}
-                        {(!propstateradio)?
+                        {
                         <div className="Container_ValoriActiv_principal_body">
-                            <OpccionActions opccionSistem={opccionSistem} />
+                            <OpccionActions sise={35} opccionSistem={opccionSistem} />
                             <div className="Container_ValoriActiv_principal_body_subContainer">
                                 {(listdata.length != 0)?listdata.map((item)=>{
                                     return (<ItemValorizeActiv
@@ -299,41 +299,41 @@ export function ValoriActiv(props){
                                     }} keyitem = {item.id_activProsVerAnali} title = {item.nombre_Activo} subtitle = {item.dependAbreb} />)
                                 }):<></>}
                             </div>
-                        </div>:
-                        ((propstateradio2)?
-                        <div className="Container_ValoriActiv_principal_body">
-                        {/* <OpccionActions opccionSistem={opccionSistem} /> */}
-                            <div className="Container_ValoriActiv_principal_body_subContainer">
-                                <ComponentTable>
-                                    <ComponentTableHead headers = {listHeaderTableAnalitic2} />
-                                    <tbody>
-                                        {(listdata.length != 0)?listdata.filter((item)=>{
-                                            return ((item.valorActivCuali != null) || (item.valorActivCuali != 0))
-                                        }).map((item)=>{
-                                            console.log(item)
-                                            return (<ItemValorizActivTabCual itemdate ={item}/>)
-                                        })
-                                        :<></>}
-                                    </tbody>
-                                </ComponentTable>
-                            </div>
-                        </div> :
-                        <div className="Container_ValoriActiv_principal_body">
-                            <div className="Container_ValoriActiv_principal_body_subContainer">
-                                <ComponentTable>
-                                    <ComponentTableHead headers = {listHeaderTableAnalitic} />
-                                    <tbody>
-                                        {(listdata.length != 0)?listdata.filter((item)=>{
-                                            return ((item.valorActivCuanti != null) || (item.valorActivCuanti != 0))
-                                        }).map((item)=>{
-                                            console.log(item)
-                                            return (<ItemValorizActivTabCuat itemdate ={item}/>)
-                                        })
-                                        :<></>}
-                                    </tbody>
-                                </ComponentTable>
-                            </div>
-                        </div>)
+                        </div>
+                        // :((propstateradio2)?
+                        // <div className="Container_ValoriActiv_principal_body">
+                        // {/* <OpccionActions opccionSistem={opccionSistem} /> */}
+                        //     <div className="Container_ValoriActiv_principal_body_subContainer">
+                        //         <ComponentTable>
+                        //             <ComponentTableHead headers = {listHeaderTableAnalitic2} />
+                        //             <tbody>
+                        //                 {(listdata.length != 0)?listdata.filter((item)=>{
+                        //                     return ((item.valorActivCuali != null) || (item.valorActivCuali != 0))
+                        //                 }).map((item)=>{
+                        //                     console.log(item)
+                        //                     return (<ItemValorizActivTabCual itemdate ={item}/>)
+                        //                 })
+                        //                 :<></>}
+                        //             </tbody>
+                        //         </ComponentTable>
+                        //     </div>
+                        // </div> :
+                        // <div className="Container_ValoriActiv_principal_body">
+                        //     <div className="Container_ValoriActiv_principal_body_subContainer">
+                        //         <ComponentTable>
+                        //             <ComponentTableHead headers = {listHeaderTableAnalitic} />
+                        //             <tbody>
+                        //                 {(listdata.length != 0)?listdata.filter((item)=>{
+                        //                     return ((item.valorActivCuanti != null) || (item.valorActivCuanti != 0))
+                        //                 }).map((item)=>{
+                        //                     console.log(item)
+                        //                     return (<ItemValorizActivTabCuat itemdate ={item}/>)
+                        //                 })
+                        //                 :<></>}
+                        //             </tbody>
+                        //         </ComponentTable>
+                        //     </div>
+                        // </div>)
                         }
                     </div>
                 </div>

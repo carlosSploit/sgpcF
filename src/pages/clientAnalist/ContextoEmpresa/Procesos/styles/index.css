@@ -139,78 +139,6 @@
     border-radius: 20px;
 }
 
-/* ----------------------------------------------------------- body/ content table */
-
-/* .content-table{
-    border: hidden;
-    width:100%;
-}
-
-.content-table-encabezado{
-    font-family: 'Poppins', sans-serif;
-    font-display: auto;
-    font-weight: bold;
-    color: #856FC5;
-    font-size: 18px;
-}
-
-.content-table-encabezado + .lef{
-    text-align: start;
-}
-
-.content-table-encabezado + .cent{
-    text-align: center;
-} */
-
-
-
-/* ----------------------------------------------------------- body/ content table - fin */
-
-/* .Container_ProcesEmpresas_principal_subbody{
-    width: 100%;
-    height: 10%;
-    background-color: transparent;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.Container_ProcesEmpresas_principal_subbody_title{
-    width: auto;
-    font-size: 18px;
-    margin-left: 50px;
-    color: rgba(0, 0, 0, 0.5);
-}
-
-.Container_ProcesEmpresas_principal_subbody_botton{
-    width: auto;
-    margin-right: 50px;
-}
-
-.Container_ProcesEmpresas_principal_scroller{
-    width: 90%;
-    height: 90%;
-    overflow-x: hidden;
-    overflow-y: scroll;
-}
-
-.Container_ProcesEmpresas_principal_scroller::-webkit-scrollbar{
-    width: 5px;
-    background-color: transparent;
-}
-
-.Container_ProcesEmpresas_principal_scroller::-webkit-scrollbar-thumb{
-    width: 5px;
-    background: linear-gradient(185deg, rgba(150,134,195,1) 0%, rgba(150,134,195,1) 36%, rgba(239,203,75,1) 100%, rgba(105,78,78,1) 120%);
-    border-radius: 20px;
-}
-
-.Container_ProcesEmpresas_principa_contain{
-    width: 100%;
-    height: auto;
-} */
-
 .Container_ProcesEmpresas_principal_body_naster {
     /* background-color: #856FC5; */
     display: flex;
@@ -243,8 +171,8 @@
 }
 
 .Container_ProcesEmpresas_principal_header_subcontent_search_Filer {
-    width: 26px;
-    height: 26px;
+    width: 35px;
+    height: 35px;
     background-color: var(--color-secundary);
     border-radius: 50%;
     margin-right: 20px;
@@ -254,7 +182,7 @@
 }
 
 .Container_ProcesEmpresas_principal_header_subcontent_search_Filer_icons {
-    font-size: 14px;
+    font-size: calc(35px / 2);
     color: #fff;
 }
 
@@ -283,6 +211,26 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .Container_ProcesEmpresas_principal_header_subcontent_search_cont {
+        width: auto;
+        max-width: 70%;
+        margin-right: 3px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .Container_ProcesEmpresas_principal_header_subcontent_search_cont2 {
+        width: auto;
+        /* max-width: 10%; */
+        margin-left: 5px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .Container_ProcesEmpresas_principal_body {

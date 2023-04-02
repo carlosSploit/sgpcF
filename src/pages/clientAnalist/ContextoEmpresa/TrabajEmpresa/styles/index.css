@@ -128,77 +128,6 @@
     border-radius: 20px;
 }
 
-/* ----------------------------------------------------------- body/ content table */
-
-/* .content-table{
-    border: hidden;
-    width:100%;
-}
-
-.content-table-encabezado{
-    font-family: 'Poppins', sans-serif;
-    font-display: auto;
-    font-weight: bold;
-    color: #856FC5;
-    font-size: 18px;
-}
-
-.content-table-encabezado + .lef{
-    text-align: start;
-}
-
-.content-table-encabezado + .cent{
-    text-align: center;
-} */
-
-
-
-/* ----------------------------------------------------------- body/ content table - fin */
-
-/* .Container_TrabjEmpresas_principal_subbody{
-    width: 100%;
-    height: 10%;
-    background-color: transparent;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.Container_TrabjEmpresas_principal_subbody_title{
-    width: auto;
-    font-size: 18px;
-    margin-left: 50px;
-    color: rgba(0, 0, 0, 0.5);
-}
-
-.Container_TrabjEmpresas_principal_subbody_botton{
-    width: auto;
-    margin-right: 50px;
-}
-
-.Container_TrabjEmpresas_principal_scroller{
-    width: 90%;
-    height: 90%;
-    overflow-x: hidden;
-    overflow-y: scroll;
-}
-
-.Container_TrabjEmpresas_principal_scroller::-webkit-scrollbar{
-    width: 5px;
-    background-color: transparent;
-}
-
-.Container_TrabjEmpresas_principal_scroller::-webkit-scrollbar-thumb{
-    width: 5px;
-    background: linear-gradient(185deg, rgba(150,134,195,1) 0%, rgba(150,134,195,1) 36%, rgba(239,203,75,1) 100%, rgba(105,78,78,1) 120%);
-    border-radius: 20px;
-}
-
-.Container_TrabjEmpresas_principa_contain{
-    width: 100%;
-    height: auto;
-} */
 
 @media (max-width: 500px) {
     .Container_TrabjEmpresas_principal_header_subcontent_title {
@@ -225,6 +154,15 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .Container_TrabjEmpresas_principal_header_subcontent_search_cont {
+        width: 80%;
+        margin-right: 3px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .Container_TrabjEmpresas_principal_body {

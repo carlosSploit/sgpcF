@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('../../../../../service/morvius-service/masterVarial.css');
+
+.Container_AnaliticRiesgo_principal {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.Container_AnaliticRiesgo_principal_subConteiner {
+    width: 95%;
+    margin-top: 2.5%;
+    min-height: 150px;
+    height: auto;
+    max-height: calc(100% - 5%);
+    background-color: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+/* ----------------------------------------------------------- Header */
+.Container_AnaliticRiesgo_principal_header {
+    width: 100%;
+    margin-top: 20px;
+    height: auto;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.Container_AnaliticRiesgo_principal_header_subcontent_title {
+    width: 50%;
+    /* background-color: aqua; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.Container_AnaliticRiesgo_principal_header_subcontent_search {
+    width: 50%;
+
+    /* background-color: aquamarine; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.Container_AnaliticRiesgo_principal_header_subcontent_search_cont {
+    width: 80%;
+    margin-right: 3px;
+    /* background-color: red; */
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    /* background-color: green; */
+}
+
+.Container_AnaliticRiesgo_principal_header_subcontent_search_opt {
+    width: 15%;
+    /* background-color: blueviolet; */
+    height: 40px;
+    display: flex;
+    align-items: center;
+    /* background-color: red; */
+    justify-content: center;
+}
+
+.Container_AnaliticRiesgo_principal_header_container_optinon {
+    height: 40px;
+    width: 40px;
+    /* background-color: #856FC5; */
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Container_AnaliticRiesgo_principal_header_content_title {
+    font-size: 24px;
+    color: var(--color-secundary);
+    font-family: 'Poppins', sans-serif;
+    margin-left: 20px;
+    font-display: auto;
+    font-weight: bold;
+}
+
+/* ----------------------------------------------------------- body */
+.Container_AnaliticRiesgo_principal_body {
+    margin-top: 30px;
+    max-height: 65vh;
+    height: auto;
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+}
+
+.Container_AnaliticRiesgo_principal_body_subContainer {
+    /* background-color: #856FC5 !important; */
+    width: calc(100% - 40px);
+    background-color: transparent;
+    margin-left: 20px;
+    margin-right: 20px;
+    min-height: 40px;
+    height: 65vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.Container_AnaliticRiesgo_principal_body_subContainer::-webkit-scrollbar {
+    width: 5px;
+    background-color: transparent;
+}
+
+.Container_AnaliticRiesgo_principal_body_subContainer::-webkit-scrollbar-thumb {
+    width: 5px;
+    background: linear-gradient(185deg, rgba(150, 134, 195, 1) 0%, rgba(150, 134, 195, 1) 36%, rgba(239, 203, 75, 1) 100%, rgba(105, 78, 78, 1) 120%);
+    border-radius: 20px;
+}
+
+.Container_AnaliticRiesgo_principal_header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Container_AnaliticRiesgo_principal_header_filter {
+    display: flex;
+    width: calc(100% - 7% - 25px);
+}
+
+.Container_AnaliticRiesgo_principal_header_tipLis {
+    display: flex;
+    width: 5%;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1%;
+}
+
+.Container_AnaliticRiesgo_principal_header_subcontent_information {
+    height: 36px;
+    width: 36px;
+    background-color: var(--color-text-secundary_trasparent);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Container_AnaliticRiesgo_principal_header_subcontent_information_icon {
+    color: white;
+    font-size: 14px;
+}
+
+@media (max-width: 500px) {
+    .Container_AnaliticRiesgo_principal_header_subcontent_title {
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .Container_AnaliticRiesgo_principal_header_content_title {
+        text-align: center;
+        margin-left: 0px;
+    }
+
+    .Container_AnaliticRiesgo_principal_header_subcontent_search {
+        margin-top: 15px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .Container_AnaliticRiesgo_principal_header_subcontent_search_cont {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .Container_AnaliticRiesgo_principal_body {
+        height: calc(60vh - 50px);
+    }
+
+    .Container_AnaliticRiesgo_principal_body_subContainer {
+        height: 100%;
+    }
+}

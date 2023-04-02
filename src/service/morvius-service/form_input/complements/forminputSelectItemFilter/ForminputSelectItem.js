@@ -144,21 +144,51 @@ export function ForminputSelectItemFilter(props){
 
 }
 
-export function ForminputSelectItemEdit(props){
+export function ForminputSelectItemFilterEdit(props){
     // encabezados
     const [stateindexinput, changesetindexinput] = useState(-1);
     const [indexinputmemory, changesetindexinputmemory] = useState("");
-    const [propdatacombo, changesetpropdatacombo] = useState([{id:1,label:"tecnologia"},{id:2,label:"computer"},{id:3,label:"cultura"}]);
+    const [propdatacombo, changesetpropdatacombo] = useState([
+        {
+            id: 1,
+            name: "basic1",
+            photo: "https://idisl.info/wp-content/uploads/2015/07/generic-avatar.png",
+            descr: '',
+            keyfilter: 1
+        },
+        {
+            id: 2,
+            name: "basic2",
+            photo: "https://idisl.info/wp-content/uploads/2015/07/generic-avatar.png",
+            descr: '',
+            keyfilter: 2
+        }
+    ]);
+    const [proplistfilter, setproplistfilter] = useState([
+        {
+            id: 0,
+            name: "default",
+        },
+        {
+            id: 1,
+            name: "basic1",
+        },
+        {
+            id: 2,
+            name: "basic2"
+        }
+    ]);
     const {
         datacombo = propdatacombo,
         setpropdatacombo = changesetpropdatacombo,
+        datacombofilter = proplistfilter,
+        setpropdatacombofilter = setproplistfilter,
         indexinput = stateindexinput,
         setindexinput = changesetindexinput,
         keyname="keyinputgeneric",
         valueInit = 0,
+        isVisibleDescri = false,
         placeHolder = "name"
-        // isVisibleErrorLabel = false,
-        // messValidator="Error. La casilla esta vacia.",
     } = props;
     // estados del componentes
     const [textinput, settextinput] = useState('');
@@ -202,10 +232,22 @@ export function ForminputSelectItemEdit(props){
                             {/* {(indexinput != -1)?<ForminputSelectItem valueInit={indexinput} keyname={keyname} isInvert={true} width={100} height={28} keyvalue={keyvalue} keylabel={keylabel} datacombo={datacombo} isdefault={true} onChangeinput={(jsonval)=>{
                                 nameIndexCapture({valueInit:jsonval.value})
                             }}/>:<></>} */}
-                            {(indexinput != -1)?<ForminputSelectItemFilter valueInit={indexinput} listaObj={datacombo} setlistaObj = {setpropdatacombo} keyname={keyname} checkbox={indexinput} setcheckbox={setindexinput} onChangeinput={(jsonval)=>{
-                                console.log(jsonval)
-                                nameIndexCapture({valueInit:jsonval.id})
-                            }} />:<></>}
+                            {(indexinput != -1)?
+                            <ForminputSelectItemFilter 
+                                keyname={keyname}
+                                checkbox={indexinput} 
+                                setcheckbox={setindexinput} 
+                                listaObj={datacombo} 
+                                setlistaObj = {setpropdatacombo} 
+                                valueInit={indexinput}
+                                listFilter = {datacombofilter} 
+                                setlistFilter = {setpropdatacombofilter} 
+                                isVisibleDescri = {isVisibleDescri}
+                                onChangeinput={(jsonval)=>{
+                                    // console.log(jsonval)
+                                    nameIndexCapture({valueInit:jsonval.id})
+                                }} 
+                            />:<></>}
                         </div>
                     </div>
                     {(!BottonData)?<div className="Container_FormSelectItem_subContainer_bottonEdit"> 

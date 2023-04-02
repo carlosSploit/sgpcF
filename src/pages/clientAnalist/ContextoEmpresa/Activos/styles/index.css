@@ -228,6 +228,16 @@
         align-items: center;
     }
 
+    .Container_ActivosEmpresas_principal_header_subcontent_search_cont {
+        width: auto;
+        max-width: 70%;
+        margin-right: 3px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     .Container_ActivosEmpresas_principal_body {
         height: calc(60vh - 50px);
     }

@@ -22,9 +22,9 @@ export function ItemVersionAnalitit(props){
                 onChange(keyitem);
             }}>
                  <div className="Container_ItemVersionAnalitit_conten_secondary_seleccion_Infor">
-                    <div className="Container_ItemVersionAnalitit_conten_InfoData_primary" >{(title.length > 20)? title.substring(0,20) + '...':title}</div>
+                    <p className="Container_ItemVersionAnalitit_conten_InfoData_primary" >{title}</p>
                     <div style={{height: '1px'}} />
-                    <div className="Container_ItemVersionAnalitit_conten_InfoData_secundary" >{subtitle}</div>
+                    <div className="Container_ItemVersionAnalitit_conten_InfoData_secundary" >{subtitle.split('T')[0]}</div>
                 </div>
                 <div className="Container_ItemVersionAnalitit_conten_secondary_seleccion_suInfor">
                     {/* <div className="Container_ItemVersionAnalitit_conten_InfoData_Descrip" >{descrip}</div> */}

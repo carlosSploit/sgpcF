@@ -5,7 +5,7 @@ import { Componentfilter, Componentsearchanimation} from "../../../../service/mo
 import { ItemTrabjEmpresa } from './components/itemActivos/index';
 import { getadmins } from '../../../../service/repository/Admin';
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
-import { OpccionActions } from "./components/opccionActions";
+// import { OpccionActions } from "./components/opccionActions";
 import { getEmpresas } from "../../../../service/repository/RTEmpresas";
 import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mithelworks";
 // import { EditarTrabEmpresa } from "./components/editProcesEmpresa";
@@ -17,14 +17,15 @@ import { handleNewNotification } from "../../../../service/Notifications/useNoti
 import { deleteActivosEmpresa, getActivosEmpresa } from "../../../../service/repository/RTActivos";
 import { AddActivoEmpresas } from "./components/addActivos";
 import { EditarActivosEmpresa } from "./components/editActivos";
+import { OpccionActions } from "../../../../service/morvius-service/component/complements/componetOpccionActions";
 
 export function ActivosEmpresa(props){
     const [propsListOpccion, prososetListOpccion] = useState([]);
     const [listdata,setlistdata] = useState([]);
-    const [listdataHistory,setlistdataHistory] = useState([]);
+    const [,setlistdataHistory] = useState([]);
     const [ismodeladd,setismodeladd] = useState(false);
     const [ismodelaEdit,setismodelaEdit] = useState(false);
-    const [textsearch,settextsearch] = useState("");
+    const [,settextsearch] = useState("");
     const [indexEmpresa,setindexEmpresa] = useState(0);
     const [indexOptionEmpresa,setindexOptionEmpresa] = useState(0);
     const [indexOptionEmpresaD,setindexOptionEmpresaD] = useState([]);
@@ -143,7 +144,7 @@ export function ActivosEmpresa(props){
                     </div>
                     <div className="Container_ActivosEmpresas_principal_header_subcontent_search">
                         <div className="Container_ActivosEmpresas_principal_header_subcontent_search_cont">
-                            <Componentsearchanimation onChangekey={onChangekey} onChangeseach={onChangeseach}/>
+                            <Componentsearchanimation height={'35px'} onChangekey={onChangekey} onChangeseach={onChangeseach}/>
                             <div style={{width: '20px'}}></div>
                         </div>
                     </div>
@@ -158,7 +159,7 @@ export function ActivosEmpresa(props){
                 
                 {/* Curpo */}
                 <div className="Container_ActivosEmpresas_principal_body">
-                    <OpccionActions opccionSistem={opccionSistem} />
+                    <OpccionActions sise={35} opccionSistem={opccionSistem} />
                     <div className="Container_ActivosEmpresas_principal_body_subContainer">
                         {listdata.map((item)=>{
                             return (<ItemTrabjEmpresa onSelecteItem={(index)=>{

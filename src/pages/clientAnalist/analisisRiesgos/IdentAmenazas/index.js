@@ -67,43 +67,6 @@ export function IndentifiAmenazas(props){
         })();
     },[]);
 
-    // const LoadOpccionFilter = async () => {
-    //     let LisOp = [...listOpccionFilter]
-    //     // inicializar el tipo de proceso
-    //     let result = await getGerarcProces();
-    //     let Opccion =  result.map((item)=>{
-    //         return {
-    //             label: item.nombre,
-    //             key: item.id_gerarProc
-    //         }
-    //     })
-    //     let ItemOpccion = {
-    //         label: "Gerarquia de Procesos",
-    //         keyFilter: 'id_gerarProc',
-    //         Icon: FileExclamationOutlined,
-    //         key: -1,
-    //         options: Opccion
-    //     }
-    //     LisOp.push(ItemOpccion)
-    //     // inicializar la gerarquia de proceso
-    //     let resultTipPro = await getTipoProces();
-    //     let Opccion2 =  resultTipPro.map((item)=>{
-    //         return {
-    //             label: item.nombre,
-    //             key: item.id_tipProce
-    //         }
-    //     })
-    //     let ItemOpccion2 = {
-    //         label: "Tipos de Procesos",
-    //         keyFilter: 'id_tipProce',
-    //         Icon: FileExclamationOutlined,
-    //         key: -1,
-    //         options: Opccion2
-    //     }
-    //     LisOp.push(ItemOpccion2)
-    //     setlistOpccionFilter(LisOp)
-    // }
-
     const LoadDataVersionAnalitic = async (id = 0) => {
         let result = await getAfectaAtiv((id == 0)?indexActivVersion:id);
         console.log(result)
@@ -115,23 +78,6 @@ export function IndentifiAmenazas(props){
             setindexOptionVersionAnaliD([]);
         }, 500);
     }
-
-    // const LoadDataProcesEmpresaHist = async (listSelFilteryaux = []) => {
-    //     // console.log(listSelFilteryaux)
-    //     let result = [...listdataHistory];
-    //     // filtraje por copciones de filtro
-    //     ((listSelFilteryaux.length == 0)?listSelFilter:listSelFilteryaux).forEach(element => {
-    //         let auxRes = [...result]
-    //         result = auxRes.filter((item)=>{
-    //             return element.value == item[element.key]
-    //         })
-    //     });
-    //     console.log(result)
-    //     setlistdata([]);
-    //     setTimeout(() => {
-    //         setlistdata(result);
-    //     }, 500);
-    // }
 
     const CompruebaExistencia = (listData = [], comrpeueb='default') => {
         const ListKeyData = listData.map((item) => {
@@ -313,7 +259,7 @@ export function IndentifiAmenazas(props){
                         </div>:<></>}
                         {/* Curpo */}
                         <div className="Container_IdentiAmenaz_principal_body">
-                            <OpccionActions opccionSistem={opccionSistem} />
+                            <OpccionActions sise={35} opccionSistem={opccionSistem} />
                             <div className="Container_IdentiAmenaz_principal_body_subContainer">
                                 {(listdata.length != 0)?listdata.map((item)=>{
                                     return (<ItemValorizeActiv

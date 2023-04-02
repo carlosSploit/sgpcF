@@ -1,25 +1,27 @@
 import React, { useEffect, useState } from "react";
 import "./styles/index.css"
 import { Componentfilter, Componentsearchanimation} from "../../../../service/morvius-service/component/components";
-import { AddEmpresas, AddTrabEmpresas } from "./components/addTrabjEmpresa";
+import { AddTrabEmpresas } from "./components/addTrabjEmpresa";
 import { ItemTrabjEmpresa } from './components/itemTrabjEmpresa/index';
 import { getadmins } from '../../../../service/repository/Admin';
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
-import { OpccionActions } from "./components/opccionActions";
-import { deleteEmpresa, getEmpresas } from "../../../../service/repository/RTEmpresas";
+// import { OpccionActions } from "./components/opccionActions";
+import { getEmpresas } from "../../../../service/repository/RTEmpresas";
 import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mithelworks";
-import { EditarEmpresa, EditarTrabEmpresa } from "./components/editTrabjEmpresa";
+import { EditarTrabEmpresa } from "./components/editTrabjEmpresa";
 import { useNotification } from "../../../../service/Notifications/NotificationProvider";
 import { handleNewNotification } from "../../../../service/Notifications/useNotificacion";
 import { deleteTrabajEmpresa, getTrabajEmpresa } from "../../../../service/repository/RTTrabajEmpresas";
+import { OpccionActions } from "../../../../service/morvius-service/component/complements/componetOpccionActions";
+// import { OpccionActions } from "../Empresa/components/editEmpresas/components/AreasEmpresa/components/opccionActions";
 
 export function TrabajoEmpresas(props){
     const [propsListOpccion, prososetListOpccion] = useState([]);
     const [listdata,setlistdata] = useState([]);
-    const [listdataHistory,setlistdataHistory] = useState([]);
+    const [,setlistdataHistory] = useState([]);
     const [ismodeladd,setismodeladd] = useState(false);
     const [ismodelaEdit,setismodelaEdit] = useState(false);
-    const [textsearch,settextsearch] = useState("");
+    const [,settextsearch] = useState("");
     const [indexEmpresa,setindexEmpresa] = useState(0);
     const [indexOptionEmpresa,setindexOptionEmpresa] = useState(0);
     const [indexOptionEmpresaD,setindexOptionEmpresaD] = useState([]);
@@ -149,7 +151,7 @@ export function TrabajoEmpresas(props){
                     </div>
                     <div className="Container_TrabjEmpresas_principal_header_subcontent_search">
                         <div className="Container_TrabjEmpresas_principal_header_subcontent_search_cont">
-                            <Componentsearchanimation onChangekey={onChangekey} onChangeseach={onChangeseach}/>
+                            <Componentsearchanimation height={'35px'} onChangekey={onChangekey} onChangeseach={onChangeseach}/>
                             <div style={{width: '20px'}}></div>
                         </div>
                     </div>
@@ -161,10 +163,9 @@ export function TrabajoEmpresas(props){
                         setindexEmpresa(id)
                     }} ></Componentfilter>
                 </div>:<></>}
-                
                 {/* Curpo */}
                 <div className="Container_TrabjEmpresas_principal_body">
-                    <OpccionActions opccionSistem={opccionSistem} />
+                    <OpccionActions sise={35} opccionSistem={opccionSistem} />
                     <div className="Container_TrabjEmpresas_principal_body_subContainer">
                         {listdata.map((item)=>{
                             return (<ItemTrabjEmpresa onSelecteItem={(index)=>{

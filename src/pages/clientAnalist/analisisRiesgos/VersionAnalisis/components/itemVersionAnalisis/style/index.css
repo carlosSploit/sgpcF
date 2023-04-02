@@ -11,7 +11,7 @@
 .Container_ItemVersionAnalitit_conten_secondary {
     width: 98%;
     height: 65px;
-    background-color: var(--color-backgraud);
+    background-color: #f0f2fc;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -65,9 +65,16 @@
 
 .Container_ItemVersionAnalitit_conten_InfoData_primary {
     color: var(--color-secundary);
+    width: auto;
+    /* max-height: 16px; */
+    height: 22px;
+    /* background-color: red; */
     font-size: 16px;
     font-weight: 600;
     text-overflow: initial;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0px;
 }
 
 .Container_ItemVersionAnalitit_conten_InfoData_secundary {
@@ -94,5 +101,20 @@
 
     .Container_ItemVersionAnalitit_conten_secondary_seleccion_conten_information {
         justify-content: flex-start;
+        /* background-color: green; */
+    }
+
+    .Container_ItemVersionAnalitit_conten_InfoData_Descrip {
+        display: none;
+    }
+
+    .Container_ItemVersionAnalitit_conten_InfoData_primary {
+        width: 100%;
+        /* background-color: rebeccapurple; */
+    }
+
+    .Container_ItemVersionAnalitit_conten_secondary_seleccion_Infor {
+        width: 100%;
+        /* background-color: aqua; */
     }
 }

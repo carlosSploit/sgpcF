@@ -1,0 +1,60 @@
+@import url('../../../../../../../service/morvius-service/masterVarial.css');
+
+.content-ValoriRiesgo-table-item-encabezado {
+    font-family: 'Poppins', sans-serif;
+    font-display: auto;
+    font-weight: 400;
+    color: var(--color-text-secundary);
+}
+
+.content-ValoriRiesgo-table-item-encabezado+.lef {
+    text-align: start;
+}
+
+.content-ValoriRiesgo-table-item-encabezado+.cent {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_ValoriRiesgo-Itemalumnos_conten_actions_item {
+    background-color: transparent;
+}
+
+.container_ValoriRiesgo-Itemalumnos_conten_actions_icondelect {
+    color: #EB6F65;
+    font-size: 25px;
+}
+
+.content-ValoriRiesgo-table-item-encabezado_chip {
+    width: 100%;
+}
+
+.content-ValoriRiesgo-table-item-encabezado.keyid {
+    color: var(--color-secundary);
+}
+
+.content-ValoriRiesgo-table-item-encabezado_chip_item {
+    background-color: red;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    color: white;
+}
+
+@media (max-width:500px) {
+    .content-ValoriRiesgo-table-item-encabezado+.ocp {
+        display: none;
+    }
+
+    .content-ValoriRiesgo-table-item-encabezado_chip.centvalacti {
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* background-color: #EB6F65; */
+    }
+}

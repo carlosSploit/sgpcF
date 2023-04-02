@@ -26,6 +26,9 @@ import { IndentifiAmenazas } from "./analisisRiesgos/IdentAmenazas";
 import { ValoriAmenaz } from "./analisisRiesgos/ValorizAmenaz";
 import { IndentifiSalvaguard } from "./gestionRiesgos/IdentSalvaguard";
 import { ValoriSalvaguard } from "./gestionRiesgos/ValorizSalvaguard";
+import { InsideProces } from "./insidenProces/InsidenProcess";
+import { AnaliticRiesgo } from "./analisisRiesgos/AnaliticRiesgo";
+import { AnaliticActivo } from "./analisisRiesgos/AnaliticActivo";
 
 export function ClientAnalist(props){
 
@@ -78,26 +81,41 @@ export function ClientAnalist(props){
             ]
         },
         {
+            label: "Insidencias de Procesos",
+            Icon: FormOutlined,
+            key: 4,
+            options:[]
+        },
+        {
             label: "Analisis de Riesgos",
             Icon: FormOutlined,
             key: -1,
             options:[
                 {
                     label: "Versiones de Analisis",
-                    key: 4
-                },
-                {
-                    label: "Valorizacion del Activo",
                     key: 5
                 },
                 {
-                    label: "Identificar Amenazas",
+                    label: "Valorizacion del Activo",
                     key: 6
                 },
                 {
-                    label: "Valorizacion de Amenazas",
+                    label: "Identificar Amenazas",
                     key: 7
+                },
+                {
+                    label: "Valorizacion de Amenazas",
+                    key: 8
+                },
+                {
+                    label: "Analiticas de valorizacion Activo",
+                    key: 9
+                },
+                {
+                    label: "Analiticas de Valorizacion Riesgos",
+                    key: 10
                 }
+                
             ]
         },
         {
@@ -107,17 +125,30 @@ export function ClientAnalist(props){
             options:[
                 {
                     label: "Identificar Salvaguardas",
-                    key: 8
+                    key: 11
                 },
                 {
                     label: "Valorizacion de Salvaguardas",
-                    key: 9
+                    key: 12
                 }
             ]
         }
     ]
 
-    const listInterface = [<Empresas/>, <TrabajoEmpresas/>, <ProcesEmpresas/>, <ActivosEmpresa/>, <VersionAnalisis />, <ValoriActiv />, <IndentifiAmenazas /> , <ValoriAmenaz />, <IndentifiSalvaguard /> , <ValoriSalvaguard />];
+    const listInterface = [
+        <Empresas/>, 
+        <TrabajoEmpresas/>, 
+        <ProcesEmpresas/>, 
+        <ActivosEmpresa/>, 
+        <InsideProces /> , 
+        <VersionAnalisis />, 
+        <ValoriActiv />, 
+        <IndentifiAmenazas />, 
+        <ValoriAmenaz />, 
+        <AnaliticActivo />, 
+        <AnaliticRiesgo />, 
+        <IndentifiSalvaguard />, 
+        <ValoriSalvaguard />];
 
     const onchageoption = (id) => {
         if (id <= (listInterface.length -1)){
