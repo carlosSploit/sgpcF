@@ -220,7 +220,12 @@ export function IndentifiSalvaguard(props){
                                             case 'Empresa':
                                                 const keyEmpFil = objJson[keyInteraccion]
                                                 listGeneri = await GenerateEmpresa(keyEmpFil, true, [])
-                                                listGeneri = await GenerateProces(keyEmpFil, 0, true, listGeneri)
+                                                const aux2 = await GenerateProces(keyEmpFil, 0, true, listGeneri)
+                                                if (aux2.length <= 1){
+                                                    handleNewNotification(dispatch,'No se encontro procesos ingresados en la empresa.', 404);
+                                                    break;
+                                                }
+                                                listGeneri = aux2
                                                 console.log(listGeneri)
                                                 setindexEmpresa(keyEmpFil)
                                             break;
@@ -228,7 +233,12 @@ export function IndentifiSalvaguard(props){
                                                 const keyProceses = objJson[keyInteraccion]
                                                 listGeneri = await GenerateEmpresa(-1, true, [])
                                                 listGeneri = await GenerateProces(0, keyProceses, true, listGeneri)
-                                                listGeneri = await GeneratVersionAnali(keyProceses, 0, true, listGeneri)
+                                                const aux3 = await GeneratVersionAnali(keyProceses, 0, true, listGeneri)
+                                                if (aux3.length <= 2){
+                                                    handleNewNotification(dispatch,'No se encontro ninguna version de analisis en este proceso.', 404);
+                                                    break;
+                                                }
+                                                listGeneri = aux3
                                                 console.log(listGeneri)
                                                 setkeyOpccionProces(keyProceses)
                                             break;
@@ -238,7 +248,12 @@ export function IndentifiSalvaguard(props){
                                                 listGeneri = await GenerateProces(0, -1, true, listGeneri)
                                                 listGeneri = await GeneratVersionAnali(0,keyVersiAnali, true, listGeneri)
                                                 //GeneratActivosVersion
-                                                listGeneri = await GeneratActivosVersion(keyVersiAnali, 0,true, listGeneri)
+                                                const aux4 = await GeneratActivosVersion(keyVersiAnali, 0,true, listGeneri)
+                                                if (aux4.length <= 3){
+                                                    handleNewNotification(dispatch,'No se encontro ningun activo enlazado a esta version de analisis.', 404);
+                                                    break;
+                                                }
+                                                listGeneri = aux4
                                                 setIndexVersion(keyVersiAnali)
                                             break;
                                             case 'ActivVersion':
@@ -248,7 +263,12 @@ export function IndentifiSalvaguard(props){
                                                 listGeneri = await GeneratVersionAnali(0, -1, true, listGeneri)
                                                 //GeneratActivosVersion
                                                 listGeneri = await GeneratActivosVersion(0, keyActivVersion, true, listGeneri)
-                                                listGeneri = await GeneratAfectActiv(keyActivVersion, true, listGeneri)
+                                                const aux5 = await GeneratAfectActiv(keyActivVersion, true, listGeneri)
+                                                if (aux5.length <= 4){
+                                                    handleNewNotification(dispatch,'No se encontro ninguna amenaza enlazada a este activo, en la version de analisis.', 404);
+                                                    break;
+                                                }
+                                                listGeneri = aux5
                                                 setActivVersion(keyActivVersion)
                                             break;
                                             default:

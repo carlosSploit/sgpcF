@@ -235,8 +235,12 @@ export function VersionAnalisis(props){
                                         case 'Empresa':
                                             const keyEmpFil = objJson[keysfilter[0]]
                                             listGeneri = await GenerateEmpresa(keyEmpFil, true, [])
-                                            listGeneri = await GenerateProces(keyEmpFil, true, listGeneri)
-                                            console.log(listGeneri)
+                                            const aux2 = await GenerateProces(keyEmpFil, true, listGeneri)
+                                            if (aux2.length <= 1){
+                                                handleNewNotification(dispatch,'No se encontro procesos ingresados en la empresa.', 404);
+                                                break;
+                                            }
+                                            listGeneri = aux2
                                             setindexEmpresa(keyEmpFil)
                                             setkeyOpccionProces(keyEmpFil) 
                                         break;

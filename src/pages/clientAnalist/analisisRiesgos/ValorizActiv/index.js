@@ -260,7 +260,12 @@ export function ValoriActiv(props){
                                         case 'Empresa':
                                             const keyEmpFil = objJson[keyInteraccion]
                                             listGeneri = await GenerateEmpresa(keyEmpFil, true, [])
-                                            listGeneri = await GenerateProces(keyEmpFil, 0, true, listGeneri)
+                                            const aux2 = await GenerateProces(keyEmpFil, 0, true, listGeneri)
+                                            if (aux2.length <= 1){
+                                                handleNewNotification(dispatch,'No se encontro procesos ingresados en la empresa.', 404);
+                                                break;
+                                            }
+                                            listGeneri = aux2
                                             console.log(listGeneri)
                                             setindexEmpresa(keyEmpFil)
                                         break;
@@ -268,7 +273,12 @@ export function ValoriActiv(props){
                                             const keyVersiAnali = objJson[keyInteraccion]
                                             listGeneri = await GenerateEmpresa(-1, true, [])
                                             listGeneri = await GenerateProces(0, keyVersiAnali, true, listGeneri)
-                                            listGeneri = await GeneratVersionAnali(keyVersiAnali, true, listGeneri)
+                                            const aux3 = await GeneratVersionAnali(keyVersiAnali, true, listGeneri)
+                                            if (aux3.length <= 2){
+                                                handleNewNotification(dispatch,'No se encontro ninguna vercion de analisis de este proceso.', 404);
+                                                break;
+                                            }
+                                            listGeneri = aux3
                                             console.log(listGeneri)
                                             setkeyOpccionProces(keyVersiAnali)
                                         break;

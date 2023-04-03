@@ -9,32 +9,34 @@ import { getProcesEmpresa } from "../../../../service/repository/RTProcesEmpresa
 // import { handleNewNotification } from "../../../../service/Notifications/useNotificacion";
 // import { OpccionActions } from "../../ContextoEmpresa/Empresa/components/opccionActions";
 import { getVersionAnalitiv } from "../../../../service/repository/RTVersionAnalitiv";
-import { ItemValorizeAmenaz, ItemValorSalvaguard } from "./components/itemValorizAmenaz";
+import { ItemValorSalvaguard } from "./components/itemValorizAmenaz";
 // import { AddIdentifyAmenazas } from "./components/addtValorizAmenaz";
 import { getActivProsAnali } from "../../../../service/repository/RTActivProsAnali";
 // import { EditaValotCuantitativo } from "./components/editValorizAmenaz";
 import { getAfectaAtiv } from "../../../../service/repository/RTAfectaActiv";
 import { EditaValorSalvaguard } from "./components/editValorizAmena";
-import { ForminputRadioSliceOpccion } from "../../../../service/morvius-service/form_input/form_input";
-import { ItemValorizAmenazTabCual } from "./components/itemValorizAmenazTabCual";
-import { ItemValorizAmenazTabCuat } from "./components/itemValorizAmenazTabCuat";
-import { InformationValori } from "./components/informationValori";
+// import { ForminputRadioSliceOpccion } from "../../../../service/morvius-service/form_input/form_input";
+// import { ItemValorizAmenazTabCual } from "./components/itemValorizAmenazTabCual";
+// import { ItemValorizAmenazTabCuat } from "./components/itemValorizAmenazTabCuat";
+// import { InformationValori } from "./components/informationValori";
 import { getSalvaguAmenaz } from "../../../../service/repository/RTSalvagAmenaz";
-import { AiOutlineFieldBinary, AiOutlineFontColors } from "react-icons/ai";
+// import { AiOutlineFieldBinary, AiOutlineFontColors } from "react-icons/ai";
+import { useNotification } from "../../../../service/Notifications/NotificationProvider";
+import { handleNewNotification } from "../../../../service/Notifications/useNotificacion";
 
 export function ValoriSalvaguard(props){
     const [listdata,setlistdata] = useState([]);
     const [,setlistdataHistory] = useState([]);
     const [ismodelaEdit,setismodelaEdit] = useState(false);
-    const [ismodelaInfo,setismodelaInfo] = useState(false);
+    // const [ismodelaInfo,setismodelaInfo] = useState(false);
     // const [indexAmenaza,setindexAmenaza] = useState(0);
     const [,setindexOptionVersionAnaliD] = useState([]);
     const [indexSalvaguarda,setindexSalvaguarda] = useState(0);
 
     const [,setlistOpccionFilter] = useState([]);
-    const [propstateradio,propsetstateradio] = useState(false);
-    const [propstateradio2,propsetstateradio2] = useState(false);
-    const [propstateradio3,propsetstateradio3] = useState(false);
+    // const [propstateradio,propsetstateradio] = useState(false);
+    // const [propstateradio2,propsetstateradio2] = useState(false);
+    // const [propstateradio3,propsetstateradio3] = useState(false);
     // opccion filtrajes
     const [propsListOpccion, prososetListOpccion] = useState([]);
     const [indexEmpresa,setindexEmpresa] = useState(0);
@@ -42,83 +44,83 @@ export function ValoriSalvaguard(props){
     const [indexVersion,setIndexVersion] = useState(0);
     const [indexActivVersion,setActivVersion] = useState(0);
     const [indexAmenazVersion,setAmenazVersion] = useState(0);
-    const [listHeaderTableAnalitic, ] = useState([
-        {
-            label: "#",
-            asling: "lef",
-            isOcult: false,
-            width: "2%"
-        },
-        {
-            label: "Salvaguarda",
-            asling: "lef",
-            isOcult: false,
-            width: ""
-        },
-        {
-            label: "Eficacia Impact",
-            asling: "lef",
-            isOcult: true,
-            width: ""
-        },
-        {
-            label: "Frecuen Resid",
-            asling: "lef",
-            isOcult: true,
-            width: ""
-        },
-        {
-            label: "Impact Resid",
-            asling: "lef",
-            isOcult: true,
-            width: ""
-        },
-        {
-            label: "Riesg Resid",
-            asling: "lef",
-            isOcult: false,
-            width: ""
-        }
-    ]);
-    const [listHeaderTableAnalitic2, ] = useState([
-        {
-            label: "#",
-            asling: "lef",
-            isOcult: false,
-            width: "2%"
-        },
-        {
-            label: "Salvaguarda",
-            asling: "lef",
-            isOcult: false,
-            width: ""
-        },
-        {
-            label: "Degrad Resid",
-            asling: "lef",
-            isOcult: true,
-            width: ""
-        },
-        {
-            label: "Frecuen Resid",
-            asling: "lef",
-            isOcult: true,
-            width: ""
-        },
-        {
-            label: "Impact Resid",
-            asling: "lef",
-            isOcult: true,
-            width: ""
-        },
-        {
-            label: "Riesg Resid",
-            asling: "lef",
-            isOcult: false,
-            width: ""
-        }
-    ]);
-    // const dispatch = useNotification();
+    // const [listHeaderTableAnalitic, ] = useState([
+    //     {
+    //         label: "#",
+    //         asling: "lef",
+    //         isOcult: false,
+    //         width: "2%"
+    //     },
+    //     {
+    //         label: "Salvaguarda",
+    //         asling: "lef",
+    //         isOcult: false,
+    //         width: ""
+    //     },
+    //     {
+    //         label: "Eficacia Impact",
+    //         asling: "lef",
+    //         isOcult: true,
+    //         width: ""
+    //     },
+    //     {
+    //         label: "Frecuen Resid",
+    //         asling: "lef",
+    //         isOcult: true,
+    //         width: ""
+    //     },
+    //     {
+    //         label: "Impact Resid",
+    //         asling: "lef",
+    //         isOcult: true,
+    //         width: ""
+    //     },
+    //     {
+    //         label: "Riesg Resid",
+    //         asling: "lef",
+    //         isOcult: false,
+    //         width: ""
+    //     }
+    // ]);
+    // const [listHeaderTableAnalitic2, ] = useState([
+    //     {
+    //         label: "#",
+    //         asling: "lef",
+    //         isOcult: false,
+    //         width: "2%"
+    //     },
+    //     {
+    //         label: "Salvaguarda",
+    //         asling: "lef",
+    //         isOcult: false,
+    //         width: ""
+    //     },
+    //     {
+    //         label: "Degrad Resid",
+    //         asling: "lef",
+    //         isOcult: true,
+    //         width: ""
+    //     },
+    //     {
+    //         label: "Frecuen Resid",
+    //         asling: "lef",
+    //         isOcult: true,
+    //         width: ""
+    //     },
+    //     {
+    //         label: "Impact Resid",
+    //         asling: "lef",
+    //         isOcult: true,
+    //         width: ""
+    //     },
+    //     {
+    //         label: "Riesg Resid",
+    //         asling: "lef",
+    //         isOcult: false,
+    //         width: ""
+    //     }
+    // ]);
+    const dispatch = useNotification();
     
     useEffect(()=>{
         (async()=>{
@@ -298,7 +300,12 @@ export function ValoriSalvaguard(props){
                                             case 'Empresa':
                                                 const keyEmpFil = objJson[keyInteraccion]
                                                 listGeneri = await GenerateEmpresa(keyEmpFil, true, [])
-                                                listGeneri = await GenerateProces(keyEmpFil, 0, true, listGeneri)
+                                                const aux2 = await GenerateProces(keyEmpFil, 0, true, listGeneri)
+                                                if (aux2.length <= 1){
+                                                    handleNewNotification(dispatch,'No se encontro procesos ingresados en la empresa.', 404);
+                                                    break;
+                                                }
+                                                listGeneri = aux2
                                                 console.log(listGeneri)
                                                 setindexEmpresa(keyEmpFil)
                                             break;
@@ -306,7 +313,12 @@ export function ValoriSalvaguard(props){
                                                 const keyProceses = objJson[keyInteraccion]
                                                 listGeneri = await GenerateEmpresa(-1, true, [])
                                                 listGeneri = await GenerateProces(0, keyProceses, true, listGeneri)
-                                                listGeneri = await GeneratVersionAnali(keyProceses, 0, true, listGeneri)
+                                                const aux3 = await GeneratVersionAnali(keyProceses, 0, true, listGeneri)
+                                                if (aux3.length <= 2){
+                                                    handleNewNotification(dispatch,'No se encontro ninguna version de analisis en este proceso.', 404);
+                                                    break;
+                                                }
+                                                listGeneri = aux3
                                                 console.log(listGeneri)
                                                 setkeyOpccionProces(keyProceses)
                                             break;
@@ -316,7 +328,12 @@ export function ValoriSalvaguard(props){
                                                 listGeneri = await GenerateProces(0, -1, true, listGeneri)
                                                 listGeneri = await GeneratVersionAnali(0,keyVersiAnali, true, listGeneri)
                                                 //GeneratActivosVersion
-                                                listGeneri = await GeneratActivosVersion(keyVersiAnali, 0,true, listGeneri)
+                                                const aux4 = await GeneratActivosVersion(keyVersiAnali, 0,true, listGeneri)
+                                                if (aux4.length <= 3){
+                                                    handleNewNotification(dispatch,'No se encontro ningun activo enlazado a esta version de analisis.', 404);
+                                                    break;
+                                                }
+                                                listGeneri = aux4
                                                 setIndexVersion(keyVersiAnali)
                                             break;
                                             case 'ActivVersion':
@@ -326,7 +343,12 @@ export function ValoriSalvaguard(props){
                                                 listGeneri = await GeneratVersionAnali(0, -1, true, listGeneri)
                                                 //GeneratActivosVersion
                                                 listGeneri = await GeneratActivosVersion(0, keyActivVersion, true, listGeneri)
-                                                listGeneri = await GeneratAfectActiv(keyActivVersion, true, listGeneri)
+                                                const aux5 = await GeneratAfectActiv(keyActivVersion, true, listGeneri)
+                                                if (aux5.length <= 4){
+                                                    handleNewNotification(dispatch,'No se encontro ninguna amenaza enlazada a este activo, en la version de analisis.', 404);
+                                                    break;
+                                                }
+                                                listGeneri = aux5
                                                 setActivVersion(keyActivVersion)
                                             break;
                                             default:

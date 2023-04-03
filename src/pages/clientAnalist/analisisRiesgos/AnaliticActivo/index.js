@@ -15,6 +15,8 @@ import { ForminputRadioSliceOpccion } from "../../../../service/morvius-service/
 import { InformationValori } from "./components/informationValori";
 import { ItemValorizActivTabCual } from "./components/itemValorizAmenazTabCual";
 import { ItemValorizActivTabCuat } from "./components/itemValorizAmenazTabCuat";
+import { useNotification } from "../../../../service/Notifications/NotificationProvider";
+import { handleNewNotification } from "../../../../service/Notifications/useNotificacion";
 // import { OpccionActions } from "../../../../service/morvius-service/component/complements/componetOpccionActions";
 
 export function AnaliticActivo(props){
@@ -77,8 +79,7 @@ export function AnaliticActivo(props){
     const [indexEmpresa,setindexEmpresa] = useState(0);
     const [keyOpccionProces,setkeyOpccionProces] = useState(0);
     const [indexVersion,setIndexVersion] = useState(0);
-    
-    // const dispatch = useNotification();
+    const dispatch = useNotification();
     
     useEffect(()=>{
         (async()=>{
@@ -229,7 +230,12 @@ export function AnaliticActivo(props){
                                         case 'Empresa':
                                             const keyEmpFil = objJson[keyInteraccion]
                                             listGeneri = await GenerateEmpresa(keyEmpFil, true, [])
-                                            listGeneri = await GenerateProces(keyEmpFil, 0, true, listGeneri)
+                                            const aux2 = await GenerateProces(keyEmpFil, 0, true, listGeneri)
+                                            if (aux2.length <= 1){
+                                                handleNewNotification(dispatch,'No se encontro procesos ingresados en la empresa.', 404);
+                                                break;
+                                            }
+                                            listGeneri = aux2
                                             console.log(listGeneri)
                                             setindexEmpresa(keyEmpFil)
                                         break;
@@ -237,7 +243,12 @@ export function AnaliticActivo(props){
                                             const keyVersiAnali = objJson[keyInteraccion]
                                             listGeneri = await GenerateEmpresa(-1, true, [])
                                             listGeneri = await GenerateProces(0, keyVersiAnali, true, listGeneri)
-                                            listGeneri = await GeneratVersionAnali(keyVersiAnali, true, listGeneri)
+                                            const aux3 = await GeneratVersionAnali(keyVersiAnali, true, listGeneri)
+                                            if (aux3.length <= 2){
+                                                handleNewNotification(dispatch,'No se encontro ninguna version de analisis en este proceso.', 404);
+                                                break;
+                                            }
+                                            listGeneri = aux3
                                             console.log(listGeneri)
                                             setkeyOpccionProces(keyVersiAnali)
                                         break;
