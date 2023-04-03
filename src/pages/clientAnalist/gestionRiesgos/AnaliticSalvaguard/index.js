@@ -1,33 +1,40 @@
 import React, { useEffect, useState } from "react";
 import "./styles/index.css"
-import { Componentfilter } from "../../../../service/morvius-service/component/components";
-// import { AddEmpresas } from "./components/addEmpresas";
-// import { ItemEmpresa } from './components/itemEmpresa/index';
-// import { getadmins } from '../../../../service/repository/Admin';
-import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
-import { useNotification } from "../../../../service/Notifications/NotificationProvider";
+import { ComponentTable, ComponentTableHead, Componentfilter } from "../../../../service/morvius-service/component/components";
+import { AreaChartOutlined, DotChartOutlined, InfoOutlined } from "@ant-design/icons";
+// import { useNotification } from "../../../../service/Notifications/NotificationProvider";
 import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mithelworks";
 import { getEmpresas } from "../../../../service/repository/RTEmpresas";
 import { getProcesEmpresa } from "../../../../service/repository/RTProcesEmpresas";
-import { handleNewNotification } from "../../../../service/Notifications/useNotificacion";
+// import { handleNewNotification } from "../../../../service/Notifications/useNotificacion";
 // import { OpccionActions } from "../../ContextoEmpresa/Empresa/components/opccionActions";
 import { getVersionAnalitiv } from "../../../../service/repository/RTVersionAnalitiv";
-import { ItemValorizeActiv } from "./components/itemIdentAmenazas";
-import { AddSalvaguarAmenaz } from "./components/addIdentAmenazas";
+// import { ItemValorSalvaguard } from "./components/itemValorizAmenaz";
+// import { AddIdentifyAmenazas } from "./components/addtValorizAmenaz";
 import { getActivProsAnali } from "../../../../service/repository/RTActivProsAnali";
-import { deleteSalvaguAmenaz, getSalvaguAmenaz } from "../../../../service/repository/RTSalvagAmenaz";
-import { EditarSalvagAmenaz } from "./components/editProcesEmpresa";
+// import { EditaValotCuantitativo } from "./components/editValorizAmenaz";
 import { getAfectaAtiv } from "../../../../service/repository/RTAfectaActiv";
-import { OpccionActions } from "../../../../service/morvius-service/component/complements/componetOpccionActions";
+import { EditaValorSalvaguard } from "./components/editValorizAmena";
+import { ForminputRadioSliceOpccion } from "../../../../service/morvius-service/form_input/form_input";
+import { ItemValorizAmenazTabCual } from "./components/itemValorizAmenazTabCual";
+import { ItemValorizAmenazTabCuat } from "./components/itemValorizAmenazTabCuat";
+import { InformationValori } from "./components/informationValori";
+import { getSalvaguAmenaz } from "../../../../service/repository/RTSalvagAmenaz";
+// import { AiOutlineFieldBinary, AiOutlineFontColors } from "react-icons/ai";
 
-export function IndentifiSalvaguard(props){
+export function AnaliticSalvaguard(props){
     const [listdata,setlistdata] = useState([]);
     const [,setlistdataHistory] = useState([]);
-    const [ismodeladd,setismodeladd] = useState(false);
     const [ismodelaEdit,setismodelaEdit] = useState(false);
-    const [indexAmenazValori,setindexAmenazValori] = useState(0);
-    const [indexOptionVersionAnaliD,setindexOptionVersionAnaliD] = useState([]);
+    const [ismodelaInfo,setismodelaInfo] = useState(false);
+    // const [indexAmenaza,setindexAmenaza] = useState(0);
+    const [,setindexOptionVersionAnaliD] = useState([]);
+    const [indexSalvaguarda,setindexSalvaguarda] = useState(0);
+
     const [,setlistOpccionFilter] = useState([]);
+    // const [propstateradio,propsetstateradio] = useState(false);
+    const [propstateradio2,propsetstateradio2] = useState(false);
+    // const [propstateradio3,propsetstateradio3] = useState(false);
     // opccion filtrajes
     const [propsListOpccion, prososetListOpccion] = useState([]);
     const [indexEmpresa,setindexEmpresa] = useState(0);
@@ -35,8 +42,83 @@ export function IndentifiSalvaguard(props){
     const [indexVersion,setIndexVersion] = useState(0);
     const [indexActivVersion,setActivVersion] = useState(0);
     const [indexAmenazVersion,setAmenazVersion] = useState(0);
-    
-    const dispatch = useNotification();
+    const [listHeaderTableAnalitic, ] = useState([
+        {
+            label: "#",
+            asling: "lef",
+            isOcult: false,
+            width: "2%"
+        },
+        {
+            label: "Salvaguarda",
+            asling: "lef",
+            isOcult: false,
+            width: ""
+        },
+        {
+            label: "EImpact",
+            asling: "lef",
+            isOcult: true,
+            width: ""
+        },
+        {
+            label: "FrecuenR",
+            asling: "lef",
+            isOcult: true,
+            width: ""
+        },
+        {
+            label: "ImpactR",
+            asling: "lef",
+            isOcult: true,
+            width: ""
+        },
+        {
+            label: "RiesgR",
+            asling: "lef",
+            isOcult: false,
+            width: ""
+        }
+    ]);
+    const [listHeaderTableAnalitic2, ] = useState([
+        {
+            label: "#",
+            asling: "lef",
+            isOcult: false,
+            width: "2%"
+        },
+        {
+            label: "Salvaguarda",
+            asling: "lef",
+            isOcult: false,
+            width: ""
+        },
+        {
+            label: "DegradR",
+            asling: "lef",
+            isOcult: true,
+            width: ""
+        },
+        {
+            label: "FrecuenR",
+            asling: "lef",
+            isOcult: true,
+            width: ""
+        },
+        {
+            label: "ImpactR",
+            asling: "lef",
+            isOcult: true,
+            width: ""
+        },
+        {
+            label: "RiesgR",
+            asling: "lef",
+            isOcult: false,
+            width: ""
+        }
+    ]);
+    // const dispatch = useNotification();
     
     useEffect(()=>{
         (async()=>{
@@ -154,62 +236,40 @@ export function IndentifiSalvaguard(props){
         prososetListOpccion(data);
     }
 
-    const AddItemDeleteSalvagAmenaz = (id_DeleteSalvAmen) => {
-        let data = indexOptionVersionAnaliD.filter((item)=>{return item == id_DeleteSalvAmen})
-        if(data.length != 0){
-            setindexOptionVersionAnaliD(indexOptionVersionAnaliD.filter((item)=>{return item != id_DeleteSalvAmen}))
-            return
-        }
-        let listdata = indexOptionVersionAnaliD;
-        listdata.push(id_DeleteSalvAmen);
-        setindexOptionVersionAnaliD(listdata);
-    }
-
-    const DeleteSalvaguAmenaz = async (id_salvAme) => {
-        await deleteSalvaguAmenaz({id_salvAmen: id_salvAme});
-    }
-
-    const opccionSistem = [
-        {
-            label: "Agregar",
-            icon: PlusOutlined,
-            onChange: () => {
-                setismodeladd(true);
-            }
-        },
-        {
-            label: "Eliminar",
-            icon: DeleteOutlined,
-            onChange: async () => {
-                if(indexOptionVersionAnaliD.length == 0){
-                    handleNewNotification(dispatch,'Selecciona una o varias empresas para poder eliminar', 404);
-                    return
-                }
-                console.log(indexOptionVersionAnaliD)
-                for (let index = 0; index < indexOptionVersionAnaliD.length; index++) {
-                    const element = indexOptionVersionAnaliD[index];
-                    await DeleteSalvaguAmenaz(element);
-                }
-                handleNewNotification(dispatch,'Se realizo la eliminacion en exito', 200);
-                await LoadDataSalvagAmenaz()
-            }
-        }
-    ]
-
     return (
-        <div className="Container_SalvagurdAmenaz_principal">
-            <div className="Container_SalvagurdAmenaz_principal_subConteiner">
+        <div className="Container_AnaliticSalvag_principal">
+            <div className="Container_AnaliticSalvag_principal_subConteiner">
                 {/* Encabezado */}
-                <div className="Container_SalvagurdAmenaz_principal_header">
-                    <div className="Container_SalvagurdAmenaz_principal_header_subcontent_title">
-                        <div className="Container_SalvagurdAmenaz_principal_header_content_title">Identificar Salvaguardas</div>
+                <div className="Container_AnaliticSalvag_principal_header">
+                    <div className="Container_AnaliticSalvag_principal_header_subcontent_title">
+                        <div className="Container_AnaliticSalvag_principal_header_content_title">Analiticas de Valorizacion Salvaguardas</div>
+                    </div>
+                    <div className="Container_AnaliticSalvag_principal_header_subcontent_search">
+                        <div className="Container_AnaliticSalvag_principal_header_subcontent_search_cont">
+                            <ForminputRadioSliceOpccion 
+                                Iconuno = {AreaChartOutlined} 
+                                Icontwo = {DotChartOutlined} 
+                                checkradio = {propstateradio2} 
+                                setcheckradio = {propsetstateradio2} 
+                                onChangeinput={(stade)=>{propsetstateradio2(!stade)}}
+                            />
+                            <div style={{width:'5px'}}></div>
+                            <div className="Container_AnaliticSalvag_principal_header_subcontent_information" onClick={()=>{
+                                setismodelaInfo(!ismodelaInfo)
+                            }}>
+                                <InfoOutlined className={'Container_AnaliticSalvag_principal_header_subcontent_information_icon'} />
+                            </div>
+                        </div>
+                        <div style={{width:'25px'}}></div>
                     </div>
                 </div>
-                <div className="Container_SalvagurdAmenaz_principal_body_naster">
-                    <div className="Container_SalvagurdAmenaz_principal_body_naster_information">
+                <div className="Container_AnaliticSalvag_principal_body_naster">
+                    <div className="Container_AnaliticSalvag_principal_body_naster_information">
                         {/* Generador */}
-                        {(propsListOpccion.length != 0)?<div className="Container_SalvagurdAmenaz_principal_header">
-                            <Componentfilter onSeleccionOpccion={async (objJson)=>{
+                        {(propsListOpccion.length != 0)?
+                        <div className="Container_AnaliticSalvag_principal_header">
+                            <div className="Container_AnaliticSalvag_principal_header_filter" style={{width:'100%'}}>
+                                <Componentfilter onSeleccionOpccion={async (objJson)=>{
                                     const keysfilter = Object.keys(objJson)
                                     const  keyInteraccion = keysfilter[keysfilter.length - 1]
                                     // validar si las opcciones de interaccion o de recarga
@@ -258,35 +318,55 @@ export function IndentifiSalvaguard(props){
                                     }
                                 }} 
                                 ListOpccion={propsListOpccion} onChangeseach={async (json)=>{
-                                console.log(json)
-                                let id = json['AmenazVers'];
-                                console.log(id)
-                                await LoadDataSalvagAmenaz(id);
-                                setAmenazVersion(id)
-                            }} ></Componentfilter>
+                                    console.log(json)
+                                    let id = json['AmenazVers'];
+                                    console.log(id)
+                                    await LoadDataSalvagAmenaz(id);
+                                    setAmenazVersion(id)
+                                }} ></Componentfilter>
+                            </div>
                         </div>:<></>}
                         {/* Curpo */}
-                        <div className="Container_SalvagurdAmenaz_principal_body">
-                            <OpccionActions sise={35} opccionSistem={opccionSistem} />
-                            <div className="Container_SalvagurdAmenaz_principal_body_subContainer">
-                                {(listdata.length != 0)?listdata.map((item)=>{
-                                    return (<ItemValorizeActiv
-                                     onSelecteItem={(index)=>{
-                                        AddItemDeleteSalvagAmenaz(index);
-                                    }} onChange={(index)=>{
-                                        setindexAmenazValori(index);
-                                        setismodelaEdit(true);
-                                    }} keyitem = {item.id_salvAfectAct} title = {item.descripc} subtitle = {item.abrebsalv} />)
-                                }):<></>}
+                        {((!propstateradio2)?
+                        <div className="Container_AnaliticSalvag_principal_body">
+                        {/* <OpccionActions opccionSistem={opccionSistem} /> */}
+                            <div className="Container_AnaliticSalvag_principal_body_subContainer">
+                                <ComponentTable>
+                                    <ComponentTableHead headers = {listHeaderTableAnalitic} />
+                                    <tbody>
+                                        {(parseInt(listdata.length) !== 0)?listdata.filter((item)=>{
+                                            return !(((item.id_escalEficDegr == 0) || (item.id_escalEficDegr == null)) && ((item.id_escalEficFrec == 0) || (item.id_escalEficFrec == null)))
+                                        }).map((item)=>{
+                                            console.log(item)
+                                            return (<ItemValorizAmenazTabCuat itemdate ={item}/>)
+                                        })
+                                        :<></>}
+                                    </tbody>
+                                </ComponentTable>
                             </div>
-                        </div>
+                        </div> :
+                        <div className="Container_AnaliticSalvag_principal_body">
+                            <div className="Container_AnaliticSalvag_principal_body_subContainer">
+                                <ComponentTable>
+                                    <ComponentTableHead headers = {listHeaderTableAnalitic2} />
+                                    <tbody>
+                                        {(parseInt(listdata.length) !== 0)?listdata.filter((item)=>{
+                                            return !(((item.id_escalEficDegr == 0) || (item.id_escalEficDegr == null)) && ((item.id_escalEficFrec == 0) || (item.id_escalEficFrec == null)))
+                                        }).map((item)=>{
+                                            console.log(item)
+                                            return (<ItemValorizAmenazTabCual itemdate ={item}/>)
+                                        })
+                                        :<></>}
+                                    </tbody>
+                                </ComponentTable>
+                            </div>
+                        </div>)
+                        }
                     </div>
                 </div>
             </div>
-            {(ismodeladd)?<AddSalvaguarAmenaz informacionActivAfec={indexAmenazVersion} onInsert={async ()=>{
-                await LoadDataSalvagAmenaz();
-            }} propismodalvisible = {ismodeladd} propsetismodalvisible = {setismodeladd} />:<></>}
-            {(ismodelaEdit)?<EditarSalvagAmenaz informationActivAnali={indexAmenazVersion} onAction = {LoadDataSalvagAmenaz} iskeyDatos = {indexAmenazValori} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>}
+            {(ismodelaEdit)?<EditaValorSalvaguard onAction = {LoadDataSalvagAmenaz} iskeyDatos = {indexSalvaguarda} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>}
+            {(ismodelaInfo)?<InformationValori ismodalvisible = {ismodelaInfo} setismodalvisible = {setismodelaInfo} />:<></>}
         </div>
     );
 }

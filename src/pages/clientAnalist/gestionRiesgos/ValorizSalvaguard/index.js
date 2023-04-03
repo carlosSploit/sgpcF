@@ -9,7 +9,7 @@ import { getProcesEmpresa } from "../../../../service/repository/RTProcesEmpresa
 // import { handleNewNotification } from "../../../../service/Notifications/useNotificacion";
 // import { OpccionActions } from "../../ContextoEmpresa/Empresa/components/opccionActions";
 import { getVersionAnalitiv } from "../../../../service/repository/RTVersionAnalitiv";
-import { ItemValorizeAmenaz } from "./components/itemValorizAmenaz";
+import { ItemValorizeAmenaz, ItemValorSalvaguard } from "./components/itemValorizAmenaz";
 // import { AddIdentifyAmenazas } from "./components/addtValorizAmenaz";
 import { getActivProsAnali } from "../../../../service/repository/RTActivProsAnali";
 // import { EditaValotCuantitativo } from "./components/editValorizAmenaz";
@@ -246,7 +246,7 @@ export function ValoriSalvaguard(props){
                     </div>
                     <div className="Container_valoriSalvaguar_principal_header_subcontent_search">
                         <div className="Container_valoriSalvaguar_principal_header_subcontent_search_cont">
-                            <ForminputRadioSliceOpccion 
+                            {/* <ForminputRadioSliceOpccion 
                                 checkradio = {propstateradio} 
                                 setcheckradio = {propsetstateradio} 
                                 onChangeinput={(stade)=>{propsetstateradio(!stade)}}/>
@@ -276,7 +276,7 @@ export function ValoriSalvaguard(props){
                                 setismodelaInfo(!ismodelaInfo)
                             }}>
                                 <InfoOutlined className={'Container_valoriSalvaguar_principal_header_subcontent_information_icon'} />
-                            </div>
+                            </div> */}
                         </div>
                         <div style={{width:'25px'}}></div>
                     </div>
@@ -345,12 +345,13 @@ export function ValoriSalvaguard(props){
                             </div>
                         </div>:<></>}
                         {/* Curpo */}
-                        {(!propstateradio)?
+                        {
                         <div className="Container_valoriSalvaguar_principal_body">
                             <div className="Container_valoriSalvaguar_principal_body_subContainer">
                                 {(parseInt(listdata.length) !== 0)?listdata.map((item)=>{
-                                    return (<ItemValorizeAmenaz
-                                     onSelecteItem={(index)=>{
+                                    return (<ItemValorSalvaguard
+                                    isValorize = {!(((item.id_escalEficDegr == 0) || (item.id_escalEficDegr == null)) && ((item.id_escalEficFrec == 0) || (item.id_escalEficFrec == null)))}
+                                    onSelecteItem={(index)=>{
                                         // AddItemDeleteAcivAmenaza(index);
                                     }} onChange={(index)=>{
                                         setindexSalvaguarda(index);
@@ -358,47 +359,47 @@ export function ValoriSalvaguard(props){
                                     }} keyitem = {item.id_salvAfectAct} title = {item.descripc} subtitle = {item.abrebsalv} />)
                                 }):<></>}
                             </div>
-                        </div>:
-                        ((!propstateradio2)?
-                        <div className="Container_valoriSalvaguar_principal_body">
-                        {/* <OpccionActions opccionSistem={opccionSistem} /> */}
-                            <div className="Container_valoriSalvaguar_principal_body_subContainer">
-                                <ComponentTable>
-                                    <ComponentTableHead headers = {listHeaderTableAnalitic} />
-                                    <tbody>
-                                        {(parseInt(listdata.length) !== 0)?listdata.filter((item)=>{
-                                            return !(((item.id_escalEficDegr == 0) || (item.id_escalEficDegr == null)) && ((item.id_escalEficFrec == 0) || (item.id_escalEficFrec == null)))
-                                        }).map((item)=>{
-                                            console.log(item)
-                                            return (<ItemValorizAmenazTabCuat itemdate ={item}/>)
-                                        })
-                                        :<></>}
-                                    </tbody>
-                                </ComponentTable>
-                            </div>
-                        </div> :
-                        <div className="Container_valoriSalvaguar_principal_body">
-                            <div className="Container_valoriSalvaguar_principal_body_subContainer">
-                                <ComponentTable>
-                                    <ComponentTableHead headers = {listHeaderTableAnalitic2} />
-                                    <tbody>
-                                        {(parseInt(listdata.length) !== 0)?listdata.filter((item)=>{
-                                            return !(((item.id_escalEficDegr == 0) || (item.id_escalEficDegr == null)) && ((item.id_escalEficFrec == 0) || (item.id_escalEficFrec == null)))
-                                        }).map((item)=>{
-                                            console.log(item)
-                                            return (<ItemValorizAmenazTabCual isLabel = {propstateradio3} itemdate ={item}/>)
-                                        })
-                                        :<></>}
-                                    </tbody>
-                                </ComponentTable>
-                            </div>
-                        </div>)
+                        </div>
+                        // ((!propstateradio2)?
+                        // <div className="Container_valoriSalvaguar_principal_body">
+                        // {/* <OpccionActions opccionSistem={opccionSistem} /> */}
+                        //     <div className="Container_valoriSalvaguar_principal_body_subContainer">
+                        //         <ComponentTable>
+                        //             <ComponentTableHead headers = {listHeaderTableAnalitic} />
+                        //             <tbody>
+                        //                 {(parseInt(listdata.length) !== 0)?listdata.filter((item)=>{
+                        //                     return !(((item.id_escalEficDegr == 0) || (item.id_escalEficDegr == null)) && ((item.id_escalEficFrec == 0) || (item.id_escalEficFrec == null)))
+                        //                 }).map((item)=>{
+                        //                     console.log(item)
+                        //                     return (<ItemValorizAmenazTabCuat itemdate ={item}/>)
+                        //                 })
+                        //                 :<></>}
+                        //             </tbody>
+                        //         </ComponentTable>
+                        //     </div>
+                        // </div> :
+                        // <div className="Container_valoriSalvaguar_principal_body">
+                        //     <div className="Container_valoriSalvaguar_principal_body_subContainer">
+                        //         <ComponentTable>
+                        //             <ComponentTableHead headers = {listHeaderTableAnalitic2} />
+                        //             <tbody>
+                        //                 {(parseInt(listdata.length) !== 0)?listdata.filter((item)=>{
+                        //                     return !(((item.id_escalEficDegr == 0) || (item.id_escalEficDegr == null)) && ((item.id_escalEficFrec == 0) || (item.id_escalEficFrec == null)))
+                        //                 }).map((item)=>{
+                        //                     console.log(item)
+                        //                     return (<ItemValorizAmenazTabCual isLabel = {propstateradio3} itemdate ={item}/>)
+                        //                 })
+                        //                 :<></>}
+                        //             </tbody>
+                        //         </ComponentTable>
+                        //     </div>
+                        // </div>)
                         }
                     </div>
                 </div>
             </div>
             {(ismodelaEdit)?<EditaValorSalvaguard onAction = {LoadDataSalvagAmenaz} iskeyDatos = {indexSalvaguarda} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>}
-            {(ismodelaInfo)?<InformationValori ismodalvisible = {ismodelaInfo} setismodalvisible = {setismodelaInfo} />:<></>}
+            {/* {(ismodelaInfo)?<InformationValori ismodalvisible = {ismodelaInfo} setismodalvisible = {setismodelaInfo} />:<></>} */}
         </div>
     );
 }

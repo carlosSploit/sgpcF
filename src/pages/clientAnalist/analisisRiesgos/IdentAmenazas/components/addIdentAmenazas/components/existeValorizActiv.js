@@ -4,24 +4,25 @@ import { useNotification } from "../../../../../../../service/Notifications/Noti
 // import { ConsuldataLogm, getKeysesion } from "../../../../../../../service/repository/mithelworks";
 import { handleNewNotification } from "../../../../../../../service/Notifications/useNotificacion";
 // import { ComponentModalFloting, ComponentModalFlotingBody, ComponentModalFlotingHeader } from "../../../../../../../service/morvius-service/components";
-import { ForminputBottonSubmit, ForminputComboBox, ForminputSelectItem } from "../../../../../../../service/morvius-service/form";
-import { addVersionAnalitiv } from "../../../../../../../service/repository/RTVersionAnalitiv";
-import { getActivosProceso } from "../../../../../../../service/repository/RTActivosProceso";
+import { ForminputBottonSubmit, ForminputComboBox } from "../../../../../../../service/morvius-service/form";
+// import { addVersionAnalitiv } from "../../../../../../../service/repository/RTVersionAnalitiv";
+// import { getActivosProceso } from "../../../../../../../service/repository/RTActivosProceso";
 import { addAfectaAtivGeneri } from "../../../../../../../service/repository/RTAfectaActiv";
 
 export function ExisteIdentifiAmenaz(props){
 
     const { onInsert=()=>{}, informacionActivAfec} = props;
     // input de contenidos
-    const [, setidselectInscrip] = useState(-1);
+    // const [, setidselectInscrip] = useState(-1);
     // listar los activos del proceso
     // const [listActivosProceso, setlistActivosProceso] = useState([]);
     // const [textActivosProceso, settextActivosProceso] = useState(0);
     // tipos de identificacion de amenazas
     const [textTipoProc, settextTipoProc] = useState(0)
     const [listTipoProc, setlistTipoProc] = useState([
-        {id_TipoIdenAmen:1, labelCrit:'Magerit'},
-        {id_TipoIdenAmen:2, labelCrit:'Pilar'}
+        {id_TipoIdenAmen:1, labelCrit:'Insidencias'},
+        {id_TipoIdenAmen:2, labelCrit:'Magerit'},
+        {id_TipoIdenAmen:3, labelCrit:'Pilar'}
     ]);
     const dispatch = useNotification();
 

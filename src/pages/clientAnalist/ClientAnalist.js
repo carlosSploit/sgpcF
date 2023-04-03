@@ -29,6 +29,7 @@ import { ValoriSalvaguard } from "./gestionRiesgos/ValorizSalvaguard";
 import { InsideProces } from "./insidenProces/InsidenProcess";
 import { AnaliticRiesgo } from "./analisisRiesgos/AnaliticRiesgo";
 import { AnaliticActivo } from "./analisisRiesgos/AnaliticActivo";
+import { AnaliticSalvaguard } from "./gestionRiesgos/AnaliticSalvaguard";
 
 export function ClientAnalist(props){
 
@@ -130,6 +131,10 @@ export function ClientAnalist(props){
                 {
                     label: "Valorizacion de Salvaguardas",
                     key: 12
+                },
+                {
+                    label: "Analiticas de Valorizacion Salvaguardas",
+                    key: 13
                 }
             ]
         }
@@ -148,7 +153,9 @@ export function ClientAnalist(props){
         <AnaliticActivo />, 
         <AnaliticRiesgo />, 
         <IndentifiSalvaguard />, 
-        <ValoriSalvaguard />];
+        <ValoriSalvaguard />,
+        <AnaliticSalvaguard />
+    ];
 
     const onchageoption = (id) => {
         if (id <= (listInterface.length -1)){

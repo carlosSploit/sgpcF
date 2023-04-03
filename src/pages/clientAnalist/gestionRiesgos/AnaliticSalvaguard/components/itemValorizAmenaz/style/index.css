@@ -11,7 +11,7 @@
 .Container_ItemValorSalvaguard_conten_secondary {
     width: 98%;
     height: 65px;
-    background-color: #f0f2fc;
+    background-color: var(--color-backgraud);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -45,35 +45,12 @@
 }
 
 .Container_ItemValorSalvaguard_conten_secondary_seleccion_conten_information {
-    width: calc(100% - 200px);
+    width: calc(100% - 50px);
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-left: 15px;
-}
-
-.Container_ItemValorSalvaguard_conten_secondary_seleccion_conten_action {
-    height: 100%;
-    width: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* background-color: green; */
-}
-
-.Container_ItemValorSalvaguard_conten_secondary_seleccion_conten_action_botton {
-    width: 150px;
-    height: 26px;
-    color: white;
-    border-radius: 12px;
-    background-color: blue;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
 
 .Container_ItemValorSalvaguard_conten_secondary_seleccion_Infor {
@@ -88,16 +65,9 @@
 
 .Container_ItemValorSalvaguard_conten_InfoData_primary {
     color: var(--color-secundary);
-    width: auto;
-    /* max-height: 16px; */
-    height: 22px;
-    /* background-color: red; */
     font-size: 16px;
     font-weight: 600;
     text-overflow: initial;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin: 0px;
 }
 
 .Container_ItemValorSalvaguard_conten_InfoData_secundary {
@@ -124,35 +94,5 @@
 
     .Container_ItemValorSalvaguard_conten_secondary_seleccion_conten_information {
         justify-content: flex-start;
-        width: calc(100% - 30px);
-        /* background-color: blueviolet; */
-        /* background-color: green; */
-    }
-
-    .Container_ItemValorSalvaguard_conten_InfoData_Descrip {
-        display: none;
-    }
-
-    .Container_ItemValorSalvaguard_conten_InfoData_primary {
-        /* background-color: aqua; */
-        width: 100%;
-        /* background-color: rebeccapurple; */
-    }
-
-    .Container_ItemValorSalvaguard_conten_secondary_seleccion_Infor {
-        /* background-color: green; */
-        width: 100%;
-        /* background-color: aqua; */
-    }
-
-    .Container_ItemValorSalvaguard_conten_secondary_seleccion_conten_action {
-        /* background-color: red; */
-        width: 60px;
-    }
-
-    .Container_ItemValorSalvaguard_conten_secondary_seleccion_conten_action_botton {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
     }
 }

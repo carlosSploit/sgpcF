@@ -1,0 +1,52 @@
+@import url('../../../../../../../service/morvius-service/masterVarial.css');
+
+.content-table-item-encabezado {
+    font-family: 'Poppins', sans-serif;
+    font-display: auto;
+    font-weight: 400;
+    color: var(--color-text-secundary);
+}
+
+.content-table-item-encabezado+.lef {
+    text-align: start;
+}
+
+.content-table-item-encabezado+.cent {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_Itemalumnos_conten_actions_item {
+    background-color: transparent;
+}
+
+.container_Itemalumnos_conten_actions_icondelect {
+    color: #EB6F65;
+    font-size: 25px;
+}
+
+.content-table-item-encabezado_chip {
+    width: 100%;
+}
+
+.content-table-item-encabezado.keyid {
+    color: var(--color-secundary);
+}
+
+.content-table-item-encabezado_chip>div {
+    background-color: red;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    color: white;
+}
+
+@media (max-width:500px) {
+    .content-table-item-encabezado+.ocp {
+        display: none;
+    }
+}

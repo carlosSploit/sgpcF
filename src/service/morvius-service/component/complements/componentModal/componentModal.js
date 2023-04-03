@@ -13,6 +13,7 @@ export function PopModal(props){
     const [ismodalvisible, setismodalvisible] = useState(false);
     const [idDivcontent, setidDivcontent] = useState(v4());
     const {children, 
+           zvisiblex = 0, 
            colorBackgroud = "#fff",
            colorTitle="#9686C3",
            width = '400px',
@@ -32,7 +33,7 @@ export function PopModal(props){
     }
 
     return ReactDOM.createPortal(<div id={idDivcontent} >
-        <ComponentModal width={width} colorBackgroud={colorBackgroud} colorTitle={colorTitle} idparens = {idDivcontent} propismodalvisible = {propismodalvisible} propsetismodalvisible = {propsetismodalvisible} onClosechange={onDeleteElement} namemodal = {namemodal}>
+        <ComponentModal zvisiblex={zvisiblex} width={width} colorBackgroud={colorBackgroud} colorTitle={colorTitle} idparens = {idDivcontent} propismodalvisible = {propismodalvisible} propsetismodalvisible = {propsetismodalvisible} onClosechange={onDeleteElement} namemodal = {namemodal}>
             {children}
         </ComponentModal>
     </div>, portalRoot);
@@ -43,6 +44,7 @@ export function ComponentModal(props){
     const [zvisible, setzvisible] = useState(0);
     const [ismodalvisible, setismodalvisible] = useState(false);
     const {idparens = "", 
+           zvisiblex = 0,
            propismodalvisible = ismodalvisible, 
            propsetismodalvisible = setismodalvisible,
            children,
@@ -64,7 +66,7 @@ export function ComponentModal(props){
             delectModal();
             // console.log(`${idparens} - cerro`);
         }
-        setzvisible(getAccesModal());
+        setzvisible((zvisiblex == 0)?getAccesModal():zvisiblex);
         //console.log(getAccesModal());
     },[propismodalvisible]);
 

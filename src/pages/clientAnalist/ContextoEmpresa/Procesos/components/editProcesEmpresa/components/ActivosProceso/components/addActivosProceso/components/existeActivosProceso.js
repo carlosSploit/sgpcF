@@ -1,20 +1,14 @@
 import React, { useEffect, useState } from "react";
 import './index.css';
 import { useNotification } from "../../../../../../../../../../../service/Notifications/NotificationProvider";
-// import { ConsuldataLogm, getKeysesion } from "../../../../../../../../../../../service/repository/mithelworks";
-// import { addEmpresa } from "../../../../../../../../../../../service/repository/RTEmpresas";
 import { handleNewNotification } from "../../../../../../../../../../../service/Notifications/useNotificacion";
 import { ForminputBotton, ForminputBottonSubmit, ForminputSelectItem } from "../../../../../../../../../../../service/morvius-service/form";
-// import { addAreasEmpresa, getAresEmpresa } from "../../../../../../../../../../../service/repository/RTAreasEmpresas";
-// import { addAreasInteraProces } from "../../../../../../../../../../../service/repository/RTAreasInteraProces";
-// import { getTrabajEmpresa } from "../../../../../../../../../../../service/repository/RTTrabajEmpresas";
-// import { addTrabajRespon } from "../../../../../../../../../../../service/repository/RTTrabajRespon";
 import { getActivosEmpresa } from "../../../../../../../../../../../service/repository/RTActivos";
 import { addActivosProceso } from "../../../../../../../../../../../service/repository/RTActivosProceso";
 
 export function ExisteActivosProceso(props){
 
-    const [propinformationDataGeneral, propsetinformationDataGeneral] = useState({});
+    const [propinformationDataGeneral, ] = useState({});
     const { onInsert=()=>{} ,informationDataGeneral = propinformationDataGeneral, informaDataEmpresa } = props;
 
     const [listActivosProceso, setlistActivosProceso] = useState([]);

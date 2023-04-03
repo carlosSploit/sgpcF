@@ -470,7 +470,7 @@ export function FormModalSelectItem(props){
     return (
         <>
             {/* <ComponentItemPuntosClass onchange={onchange} id_puntos = {item.id_tipo_puntos} name = {item.nombre} value = {item.value_point} photo = {item.photo} /> */}
-            <PopModal onClose={()=>{
+            <PopModal zvisiblex={11} onClose={()=>{
                 onChangeSelect(0);
                 propsetismodalvisible(false);
             }} colorTitle={'#183152'} propismodalvisible = {propismodalvisible} propsetismodalvisible = {propsetismodalvisible} namemodal={nameTitle}>

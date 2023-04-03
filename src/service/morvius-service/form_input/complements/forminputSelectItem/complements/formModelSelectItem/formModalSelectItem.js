@@ -76,7 +76,7 @@ export function FormModalSelectItem(props){
     return (
         <>
             {/* <ComponentItemPuntosClass onchange={onchange} id_puntos = {item.id_tipo_puntos} name = {item.nombre} value = {item.value_point} photo = {item.photo} /> */}
-            <PopModal colorTitle={'#183152'} propismodalvisible = {propismodalvisible} propsetismodalvisible = {propsetismodalvisible} namemodal={nameTitle}>
+            <PopModal colorTitle={'#183152'} zvisiblex={11} propismodalvisible = {propismodalvisible} propsetismodalvisible = {propsetismodalvisible} namemodal={nameTitle}>
                 <ComponentModalFlotingBody>
                     <div style={{height:"10px"}} ></div>
                     <Componentsearch height= "30px" onChangeseach = {onChangeseach} onChangekey = {onChangekey}/>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./style/index.css"
-import useScreenSize from "../../../../../../service/hooks/resolution.hooks";
 // import {EditAdmin} from "../editEmpresas/editAdmin"
 // import { useNotification } from "../../../../../../service/Notifications/useNotificacion";
 
@@ -9,11 +8,8 @@ export function ItemValorSalvaguard(props){
         onChange = (id_options) => {}, 
         onSelecteItem = (id_options, stade) => {},
         keyitem,
-        title,
-        subtitle,
-        isValorize = false
+        title,subtitle,descrip
     } = props;
-    const resolucion = useScreenSize()
     // const [isSeleteItem, setisSeleteItem] = useState(false);
 
     useEffect(()=>{
@@ -32,13 +28,6 @@ export function ItemValorSalvaguard(props){
                 </div>
                 <div className="Container_ItemValorSalvaguard_conten_secondary_seleccion_suInfor">
                     {/* <div className="Container_ItemValorSalvaguard_conten_InfoData_Descrip" >{descrip}</div> */}
-                </div>
-            </div>
-            <div className="Container_ItemValorizeAmenaz_conten_secondary_seleccion_conten_action" >
-                <div className="Container_ItemValorizeAmenaz_conten_secondary_seleccion_conten_action_botton" onClick={()=>{
-                onChange(keyitem);
-            }} style={{backgroundColor: `${(isValorize)?'#8BC34A':'#9E9E9E'}`}} >
-                    {(resolucion.width <= 500)?'':(isValorize)?'Valorizado':'No valorizado'}
                 </div>
             </div>
         </div>

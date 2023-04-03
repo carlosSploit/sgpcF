@@ -12,6 +12,16 @@ export async function getAfectaAtiv(id_activProsVerAnali = 0) {
   return result.data;
 }
 
+export async function getAfectaAtivInsidencia({id_activProsVerAnali = 0, id_amenaza = 0}) {
+  const url = `${domain_api}/afectaactiv/insiden/${id_activProsVerAnali}/${id_amenaza}`;
+  const result = await axios.get(url, {
+    headers: {
+      Authorization: `Bearer ${await gettoken()}`,
+    },
+  });
+  return result.data;
+}
+
 // export async function readprofesor(id) {
 //   const id_admin = id;
 //   const url = `${domain_api}/profe/read/${id_admin}`;

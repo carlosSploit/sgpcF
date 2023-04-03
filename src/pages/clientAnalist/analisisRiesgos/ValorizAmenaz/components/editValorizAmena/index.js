@@ -74,6 +74,10 @@ export function EditaValorAmenaza(props){
             "id_afectaActiv" : iskeyDatos,
             "id_escalaFrecuen": 1
         })
+        console.log({
+            "id_afectaActiv" : iskeyDatos,
+            "id_escalaFrecuen": 1
+        })
         handleNewNotification(dispatch,resul.messege, resul.status);
         setTimeout(() => {
                 (async ()=>{

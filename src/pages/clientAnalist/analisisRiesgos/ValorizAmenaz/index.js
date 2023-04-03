@@ -285,7 +285,8 @@ export function ValoriAmenaz(props){
                             <div className="Container_valoriAmenaz_principal_body_subContainer">
                                 {(listdata.length != 0)?listdata.map((item)=>{
                                     return (<ItemValorizeAmenaz
-                                     onSelecteItem={(index)=>{
+                                    isValorize = {(item.id_Frecuencia != null) && (item.id_DegradCualit != null)}
+                                    onSelecteItem={(index)=>{
                                         // AddItemDeleteAcivAmenaza(index);
                                     }} onChange={(index)=>{
                                         setindexAmenaza(index);

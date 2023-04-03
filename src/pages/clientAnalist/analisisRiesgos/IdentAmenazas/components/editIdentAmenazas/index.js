@@ -16,18 +16,19 @@ import { ComponentModalFloting, ComponentModalFlotingBody, ComponentModalFloting
 // import { AreasEmpresas } from "./components/AreasEmpresa";
 // import { ObjetivVersionAnalitic } from "./components/ObjVersionAnali/index";
 // import { ResponsablesEmpresa } from "./components/RespVersionAnali";
-import { EditarEcenarioAmenaza, EditarValorActivCuantiImformation } from "./components/ValoriProces";
+// import { EditarEcenarioAmenaza, EditarValorActivCuantiImformation } from "./components/ValoriProces";
 // import { getValoriActiv } from "../../../../../../service/repository/RTValorizarActivo";
 // import { EditarValorActivCualitativImformation } from "./components/valorizCualit";
 import { getAfectaAtiv } from "../../../../../../service/repository/RTAfectaActiv";
+import { InsidensAmenaza } from "./components/insidencias";
 
 export function EditaValotCuantitativo(props){
 
     const [propismodalvisible,propsetismodalvisible ] = useState(false);
     const [propiskeyDatos, ] = useState(0);
     const {
-        informationActivAnali,
-        iskeyDatos = propiskeyDatos,
+        informationActivAnali, // informacion del activo seleccionado
+        iskeyDatos = propiskeyDatos, // informacion del amenaza del activo
         ismodalvisible = propismodalvisible,
         setismodalvisible = propsetismodalvisible
     } = props;
@@ -52,7 +53,7 @@ export function EditaValotCuantitativo(props){
         const ListAmenasActiv = ListAmenasActivTotal.filter((item)=>{
             return parseInt(item.id_afectaActiv) === iskeyDatos
         });
-        setlistview([<EditarEcenarioAmenaza informationDataGeneral={ListAmenasActiv[0]}/>])
+        setlistview([<InsidensAmenaza informationDataGeneral={ListAmenasActiv[0]} informationActivAnali={informationActivAnali}/>])
     }
 
     // const listOpt = [
@@ -83,7 +84,7 @@ export function EditaValotCuantitativo(props){
                         indexinitial = {listOpt[0].id}
                     ></ComponentModalPrincipalListtabs>
                     <div className="LinerSeparator"></div> */}
-                    <div style={{height: '5px'}}></div>
+                    {/* <div style={{height: '5px'}}></div> */}
                     {listview[0]}
                 </>
                 </ComponentModalFlotingBody>

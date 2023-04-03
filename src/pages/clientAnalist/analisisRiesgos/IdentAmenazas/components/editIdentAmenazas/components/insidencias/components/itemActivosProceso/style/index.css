@@ -1,0 +1,157 @@
+@import url('../../../../../../../../.././../../service/morvius-service/masterVarial.css');
+
+
+.Container_ItemInsidensAmenas_conten_Pri {
+    width: 100%;
+    min-height: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+    background-color: var(--color-backgraud);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.Container_ItemInsidensAmenas_conten_secondary {
+    width: 98%;
+    height: 30px;
+    min-height: 40px;
+    /* background-color: var(--color-backgraud); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border-radius: 15px;
+    overflow: hidden; */
+}
+
+.Container_ItemInsidensAmenas_conten_secondary_seleccion {
+    width: 50px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Container_ItemInsidensAmenas_conten_secondary_seleccion_radio {
+    width: 24px;
+    height: 24px;
+    /* background-color: white; */
+    /* border-radius: 50%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Container_ItemInsidensAmenas_conten_secondary_seleccion_radio.active>div {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: var(--color-secundary);
+}
+
+.Container_ItemInsidensAmenas_conten_secondary_seleccion_conten_information {
+    width: calc(100% - 50px);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.Container_ItemInsidensAmenas_conten_secondary_seleccion_Infor {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    margin-left: 10px;
+    /* background-color: blueviolet; */
+}
+
+.Container_ItemInsidensAmenas_conten_InfoData_primary {
+    color: var(--color-secundary);
+    font-size: 16px;
+    font-weight: 600;
+    text-overflow: initial;
+}
+
+.Container_ItemInsidensAmenas_conten_InfoData_secundary {
+    color: var(--color-text-secundary);
+    font-size: 14px;
+    text-overflow: initial;
+}
+
+.Container_ItemInsidensAmenas_conten_secondary_seleccion_radio_icons {
+    color: var(--color-secundary);
+}
+
+.Container_ItemInsidensAmenas_conten_body {
+    /* background-color: brown; */
+    width: 100%;
+    height: 80px;
+}
+
+.Container_ItemInsidensAmenas_subconteiner_lainer {
+    /* height: 0.5px; */
+    border-top: 0.25px solid var(--color-backgroud4);
+    width: calc(100% - 20px);
+    /* background-color: var(--color-backgroud4); */
+}
+
+.Container_ItemInsidensAmenas_subconteiner_body {
+    width: calc(100% - 30px);
+    margin-bottom: 10px;
+    padding: 5px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 7.5px;
+    background-color: white;
+}
+
+.Container_ItemInsidensAmenas_subconteiner_body_title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-master);
+}
+
+.Container_ItemInsidensAmenas_subconteiner_body_subtitle {
+    font-size: 14px;
+    color: var(--color-text-secundary);
+}
+
+/* .Container_ItemInsidensAmenas_conten_InfoData_secundary {
+    color: var(--color-text-secundary);
+} */
+
+/* .Container_ItemInsidensAmenas_conten_secondary_seleccion_suInfor {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+} */
+
+/* .Container_ItemInsidensAmenas_conten_InfoData_Descrip {
+    color: var(--color-text-secundary);
+} */
+
+@media (max-width: 600px) {
+    .Container_ItemInsidensAmenas_conten_secondary_seleccion_suInfor {
+        display: none;
+    }
+
+    .Container_ItemInsidensAmenas_conten_secondary_seleccion_conten_information {
+        justify-content: flex-start;
+    }
+}
