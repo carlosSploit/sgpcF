@@ -2,25 +2,11 @@ import { useEffect, useState } from "react";
 // import { ComponentModalFloting, ComponentModalFlotingBody, ComponentModalFlotingHeader, ComponentModalPrincipalListtabs } from "../../../service/morvius-service/components";
 // import { AimOutlined, BulbOutlined, TeamOutlined } from "@ant-design/icons";
 import './style/index.css';
-// import { EditarUsuario } from "./components/Editar";
-// import { getKeysesion } from "../../../service/repository/mithelworks";
-// import { ConsuldataLog } from "../../../service/repository/Usuarios";
-// import { readclientAnalist } from "../../../service/repository/clientAnalist";
-// import { EditarUsuarioSecion } from "./components/EditarSeccion";
-// import { getEmpresas } from "../../../../../../service/repository/RTEmpresas";
-// import { useNotification } from "../../../../../../service/Notifications/useNotificacion";
-// import { EditarEmpresaInformation } from "./components/EditarInformacion/Editar";
-import { ComponentModalFloting, ComponentModalFlotingBody, ComponentModalFlotingHeader } from "../../../../../../service/morvius-service/components";
-// import { getKeysesion } from "../../../../../../service/repository/mithelworks";
-// import { ConsuldataLogm } from "../../../../../../service/repository/mithelworks";
-// import { AreasEmpresas } from "./components/AreasEmpresa";
-// import { ObjetivVersionAnalitic } from "./components/ObjVersionAnali/index";
-// import { ResponsablesEmpresa } from "./components/RespVersionAnali";
-// import { EditarEcenarioAmenaza, EditarValorActivCuantiImformation } from "./components/ValoriProces";
-// import { getValoriActiv } from "../../../../../../service/repository/RTValorizarActivo";
-// import { EditarValorActivCualitativImformation } from "./components/valorizCualit";
+import { ComponentModalFloting, ComponentModalFlotingBody, ComponentModalFlotingHeader, ComponentModalPrincipalListtabs } from "../../../../../../service/morvius-service/components";
 import { getAfectaAtiv } from "../../../../../../service/repository/RTAfectaActiv";
 import { InsidensAmenaza } from "./components/insidencias";
+import { BulbOutlined, TeamOutlined } from "@ant-design/icons";
+import { EditarEcenarioAmenaza } from "./components/ValoriProces";
 
 export function EditaValotCuantitativo(props){
 
@@ -32,7 +18,7 @@ export function EditaValotCuantitativo(props){
         ismodalvisible = propismodalvisible,
         setismodalvisible = propsetismodalvisible
     } = props;
-    // const [index,setindex] = useState(0);
+    const [index,setindex] = useState(0);
     const [stadeValoriActiv,setstadeValoriActiv] = useState(0);
     const [listview,setlistview] = useState([<></>]);
     // const dispatch = useNotification();
@@ -53,39 +39,39 @@ export function EditaValotCuantitativo(props){
         const ListAmenasActiv = ListAmenasActivTotal.filter((item)=>{
             return parseInt(item.id_afectaActiv) === iskeyDatos
         });
-        setlistview([<InsidensAmenaza informationDataGeneral={ListAmenasActiv[0]} informationActivAnali={informationActivAnali}/>])
+        setlistview([<EditarEcenarioAmenaza informationDataGeneral={ListAmenasActiv[0]} />,<InsidensAmenaza informationDataGeneral={ListAmenasActiv[0]} informationActivAnali={informationActivAnali}/>])
     }
 
-    // const listOpt = [
-    //     {
-    //         id: 0,
-    //         label : "Cuantitativa",
-    //         icontab : TeamOutlined
-    //     },{
-    //         id: 1,
-    //         label : "Cualitativa",
-    //         icontab : BulbOutlined
-    //     }
-    // ];
+    const listOpt = [
+        {
+            id: 0,
+            label : "Ecenario Predeterminado",
+            icontab : TeamOutlined
+        },{
+            id: 1,
+            label : "Incidencias Alienadas",
+            icontab : BulbOutlined
+        }
+    ];
 
-    // const onChangeindex = (index,titletab) => {
-    //     setindex(index);
-    // }
+    const onChangeindex = (index,titletab) => {
+        setindex(index);
+    }
 
     return (<ComponentModalFloting statemode={ismodalvisible} width = {'400px'} >
                 <ComponentModalFlotingHeader title="Ecenario de la Amenaza" colorTitle={'#183152'} onClosechange={()=>{setismodalvisible(false);}} />
                 <ComponentModalFlotingBody descripccion={""}>
                 <>
-                    {/* <ComponentModalPrincipalListtabs
+                    <ComponentModalPrincipalListtabs
                         listOptions = {listOpt}
                         onChangeindex = {onChangeindex}
                         chaindexselect = {index}
                         chasetindexselect = {setindex}
                         indexinitial = {listOpt[0].id}
                     ></ComponentModalPrincipalListtabs>
-                    <div className="LinerSeparator"></div> */}
-                    {/* <div style={{height: '5px'}}></div> */}
-                    {listview[0]}
+                    <div className="LinerSeparator"></div>
+                    <div style={{height: '5px'}}></div>
+                    {listview[index]}
                 </>
                 </ComponentModalFlotingBody>
             </ComponentModalFloting>);

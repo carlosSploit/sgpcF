@@ -4,7 +4,7 @@ import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
 // import {EditAdmin} from "../editEmpresas/editAdmin"
 // import { useNotification } from "../../../../../../service/Notifications/useNotificacion";
 
-export function ItemActivosProces(props){
+export function ItemInsidensAmenas(props){
     const {
         onChange = (id_options) => {}, 
         onSelecteItem = (id_options, stade) => {},
@@ -13,6 +13,7 @@ export function ItemActivosProces(props){
         descrip
     } = props;
     const [isSeleteItem, setisSeleteItem] = useState(false);
+    const [isInformation, setImformatioAmenaz] = useState(false);
 
     useEffect(()=>{
         // console.log(itemdate);
@@ -31,18 +32,24 @@ export function ItemActivosProces(props){
             </div>
             <div className="Container_ItemInsidensAmenas_conten_secondary_seleccion">
                 <div onClick={()=>{
-                    onSelecteItem(keyitem,!isSeleteItem);
-                    setisSeleteItem(!isSeleteItem);
-                }} className={`Container_ItemInsidensAmenas_conten_secondary_seleccion_radio`}>
-                    {(isSeleteItem)?
+                    // onSelecteItem(keyitem,!isSeleteItem);
+                    setImformatioAmenaz(!isInformation);
+                }} className={`Container_ItemInsidensAmenas_conten_secondary_seleccion_intera`}>
+                    {(isInformation)?
                         <AiOutlineUp className="Container_ItemInsidensAmenas_conten_secondary_seleccion_radio_icons"  />:
                         <AiOutlineDown className="Container_ItemInsidensAmenas_conten_secondary_seleccion_radio_icons" />
                     }
                 </div>
             </div>
+            <div className="Container_ItemInsidensAmenas_conten_secondary_seleccion">
+                <div onClick={()=>{
+                    onSelecteItem(keyitem,!isSeleteItem);
+                    setisSeleteItem(!isSeleteItem);
+                }} className={`Container_ItemInsidensAmenas_conten_secondary_seleccion_radio${(isSeleteItem)?' active':''}`}><div></div></div>
+            </div>
         </div>
         {
-            (isSeleteItem)?
+            (isInformation)?
             <>
                 <div className="Container_ItemInsidensAmenas_subconteiner_lainer"></div>
                 <div style={{height: '5px'}}/>

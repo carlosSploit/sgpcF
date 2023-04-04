@@ -7,15 +7,28 @@ import { updateAfectaAtiv } from "../../../../../../../../service/repository/RTA
 export function EditarEcenarioAmenaza(props){
 
     const [propinformationDataGeneral, ] = useState({
-        "id_afectaActiv": 9,
-        "id_activProsVerAnali": 22,
-        "id_amenaza": 9,
+        "id_afectaActiv": 62,
+        "id_activProsVerAnali": 35,
+        "valoriActivCuanti": 100,
+        "valoriActivCualiti": 9,
+        "id_valorAfectAmen": null,
+        "id_Frecuencia": null,
+        "valorFrecuenCuali": null,
+        "valorFrecuenCuanti": null,
+        "nameFrecuencia": null,
+        "valDegradCualit": null,
+        "id_DegradCualit": null,
+        "valImpacCualit": null,
+        "valImpacCuanti": null,
+        "valRiesgoCualit": null,
+        "valRiesgoCuanti": null,
+        "id_amenaza": 12,
         "esenario": "",
         "abreb": "I",
-        "nombreAmena": "Avería de origen físico o lógico",
+        "nombreAmena": "Fallo de servicios de comunicaciones",
         "id_tipoActiv": 2,
         "nombreTipoActiv": "De origen industrial"
-      });
+    });
     const {onAction, informationDataGeneral = propinformationDataGeneral} = props;
     const dispatch = useNotification();
 

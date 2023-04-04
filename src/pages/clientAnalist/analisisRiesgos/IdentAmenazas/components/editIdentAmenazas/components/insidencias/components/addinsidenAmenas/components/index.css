@@ -1,0 +1,16 @@
+@import url('../../../../../../../../../../../service/morvius-service/masterVarial.css');
+
+.container_addInsidenAmenas_selectet_data {
+    width: calc(100% + 20px);
+    margin-left: -10px;
+}
+
+.Container_addInsidenAmenas_principal_body_error {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* background-color: firebrick; */
+    color: var(--color-text-secundary);
+}

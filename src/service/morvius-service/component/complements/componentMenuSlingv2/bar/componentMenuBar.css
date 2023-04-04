@@ -258,11 +258,16 @@
 }
 
 .container_Menubar_Perfil_container_header {
-    width: 100%;
+    width: calc(100% - 12px);
     height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #f0f2fc;
+    margin: 6px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-radius: 12.5px;
 }
 
 .container_Menubar_Perfil_container_header_close {
@@ -374,7 +379,7 @@
 .container_Menubar_Perfil_container_body_opccion_photo_subcontainer {
     height: 30px;
     width: 30px;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: #f0f2fc;
     border-radius: 50%;
     display: flex;
     align-items: center;

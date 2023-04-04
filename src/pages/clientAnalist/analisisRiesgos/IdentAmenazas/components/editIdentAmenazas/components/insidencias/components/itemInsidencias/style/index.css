@@ -16,7 +16,7 @@
 
 .Container_ItemInsidensAmenas_conten_secondary {
     width: 98%;
-    height: 30px;
+    height: auto;
     min-height: 40px;
     /* background-color: var(--color-backgraud); */
     display: flex;
@@ -36,6 +36,16 @@
 
 .Container_ItemInsidensAmenas_conten_secondary_seleccion_radio {
     width: 24px;
+    height: 24px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Container_ItemInsidensAmenas_conten_secondary_seleccion_intera {
+    width: 14px;
     height: 24px;
     /* background-color: white; */
     /* border-radius: 50%; */
