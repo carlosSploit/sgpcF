@@ -30,6 +30,7 @@ import { InsideProces } from "./insidenProces/InsidenProcess";
 import { AnaliticRiesgo } from "./analisisRiesgos/AnaliticRiesgo";
 import { AnaliticActivo } from "./analisisRiesgos/AnaliticActivo";
 import { AnaliticSalvaguard } from "./gestionRiesgos/AnaliticSalvaguard";
+import { PlanesContingencias } from "./planesConting/ValorizActiv";
 
 export function ClientAnalist(props){
 
@@ -137,6 +138,12 @@ export function ClientAnalist(props){
                     key: 13
                 }
             ]
+        },
+        {
+            label: "Planes de Contingencia",
+            Icon: FormOutlined,
+            key: 14,
+            options:[]
         }
     ]
 
@@ -154,7 +161,8 @@ export function ClientAnalist(props){
         <AnaliticRiesgo />, 
         <IndentifiSalvaguard />, 
         <ValoriSalvaguard />,
-        <AnaliticSalvaguard />
+        <AnaliticSalvaguard />, 
+        <PlanesContingencias />
     ];
 
     const onchageoption = (id) => {

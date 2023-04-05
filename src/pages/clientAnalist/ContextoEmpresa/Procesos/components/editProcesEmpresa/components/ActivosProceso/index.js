@@ -78,31 +78,6 @@ export function ActivosProceso(props){
         await deleteActivosProceso({id_areasEmpresa:id_TrabajEmpresa});
     }
 
-    // const onUpdate = async () => {
-    //     let result = await getadmins(textsearch);
-    //     setlistdata(result);
-    // }
-
-    // const onInsert = async () =>{
-    //     let result = await getadmins(textsearch);
-    //     setlistdata(result);
-    // }
-
-    // ------------------------------------------------------------ Actions del Buscador
-    // const onChangeseach = async (search) => {
-    //     settextsearch(search);
-    //     let result = await getadmins(search);
-    //     setlistdata(result);
-    // }
-
-    // const onChangekey = async (seach) =>{
-    //     if(seach == ""){
-    //         settextsearch("");
-    //         let result = await getadmins();
-    //         setlistdata(result);
-    //     }
-    // }
-
     const opccionSistem = [
         {
             label: "Agregar",
