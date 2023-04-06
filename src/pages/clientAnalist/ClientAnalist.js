@@ -160,7 +160,7 @@ export function ClientAnalist(props){
         <AnaliticActivo />, 
         <AnaliticRiesgo />, 
         <IndentifiSalvaguard />, 
-        <ValoriSalvaguard />,
+        <ValoriSalvaguard />, 
         <AnaliticSalvaguard />, 
         <PlanesContingencias />
     ];

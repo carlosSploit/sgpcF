@@ -392,7 +392,7 @@ export function PlanesContingencias (props){
 function ContainerInformation (props) {
     const {title, children} = props;
     return (<>
-        <div style={{height: '10px'}} />
+        <div style={{height: '20px'}} />
         <div className="Container_planconting_principal_body_subContainer_information_subtitle" >
             {title} 
         </div>
