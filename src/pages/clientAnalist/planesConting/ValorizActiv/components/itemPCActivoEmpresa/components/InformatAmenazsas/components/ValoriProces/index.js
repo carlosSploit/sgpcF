@@ -237,6 +237,7 @@ export function EditarValorActivCuantiImformation(props){
             code: 'C',
             label: 'Controlable',
             range: '0 - 0',
+            valor: 1,
             color: '#9E9E9E'
         },
         {
@@ -244,6 +245,7 @@ export function EditarValorActivCuantiImformation(props){
             code: 'A',
             label: 'Aceptable',
             range: '1 - 5',
+            valor: 2,
             color: '#8BC34A'
         },
         {
@@ -251,6 +253,7 @@ export function EditarValorActivCuantiImformation(props){
             code: 'T',
             label: 'Tolerable',
             range: '6 - 16',
+            valor: 3,
             color: '#FFA000'
         },
         {
@@ -258,6 +261,7 @@ export function EditarValorActivCuantiImformation(props){
             code: 'I',
             label: 'Intolerable',
             range: '17 - 30',
+            valor: 4,
             color: '#FF5722'
         },
         {
@@ -265,6 +269,7 @@ export function EditarValorActivCuantiImformation(props){
             code: 'E',
             label: 'Extremo',
             range: '31 - 50',
+            valor: 5,
             color: '#FF5252'
         }
     ]);
@@ -313,6 +318,16 @@ export function EditarValorActivCuantiImformation(props){
         return listData[0].color
     }
 
+    const valorStadeRiesgCualiti = (ValCualiti) => {
+        if (ValCualiti == '??') return ValCualiti
+        const listData = DataRiesgo.filter((item)=>{
+            const itemsRange = item.range.split(' - ');
+            return (parseInt(itemsRange[0]) <= ValCualiti) && (ValCualiti <= parseInt(itemsRange[1]))
+        })
+        if (listData.length === 0) return 1
+        return listData[0].valor
+    }
+
     return (
         <div className="Container_MDinformAmeanzg_principal_body_subContainer_information">
             <div style={{height: '10px'}} />
@@ -337,7 +352,7 @@ export function EditarValorActivCuantiImformation(props){
                 }):<ContainerDescripccion content={'No se encontro ninguna insidencia alineada a esta amenaza.'} />}
                 <div style={{height: '8px'}} />
             </ContainerInformation>
-            <ContainerInformationChip value={(informationDataGeneral.valRiesgoCualit == null)? '??' : informationDataGeneral.valRiesgoCualit} color={colorStadeRiesgCualiti(informationDataGeneral.valRiesgoCualit)} title={'Valorizacion : '}  >
+            <ContainerInformationChip value={valorStadeRiesgCualiti((informationDataGeneral.valRiesgoCualit == null)? '??' : informationDataGeneral.valRiesgoCualit)} color={colorStadeRiesgCualiti(informationDataGeneral.valRiesgoCualit)} title={'Valorizacion : '}  >
                 <div style={{height: '8px'}} />
                 <CotainerValorInform dataInfo = {{
                     title: 'Valorizacion de la Degradacion (D)',

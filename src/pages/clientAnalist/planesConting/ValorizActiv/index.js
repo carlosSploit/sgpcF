@@ -323,63 +323,10 @@ export function PlanesContingencias (props){
                                             </ItemPCActivoEmpresa>);
                                         })}
                                     </ContainerInformation>
-                                    {/* <div style={{height: '10px'}} />
-                                    <div className="Container_planconting_principal_body_subContainer_information_subtitle" >
-                                         
-                                    </div>
-                                    <div className="Container_planconting_principal_body_subContainer_information_liner" />
-                                    <div className="Container_planconting_principal_body_subContainer_information_descrip" >
-                                        {informaData.descripccion}
-                                    </div> */}
                                 </div>
-                                // <ItemValorizeActiv
-                                //     onSelecteItem={(index)=>{
-                                //     // AddItemDeleteProsVerAnali(index);
-                                //     }} onChange={(index)=>{
-                                //         setindexActivValori(index);
-                                //         setismodelaEdit(true);
-                                //     }} 
-                                //     keyitem = {item.id_activProsVerAnali} 
-                                //     title = {item.nombre_Activo} 
-                                //     subtitle = {item.dependAbreb} 
-                                // />
                                 :<></>}
                             </div>
                         </div>
-                        // :((propstateradio2)?
-                        // <div className="Container_planconting_principal_body">
-                        // {/* <OpccionActions opccionSistem={opccionSistem} /> */}
-                        //     <div className="Container_planconting_principal_body_subContainer">
-                        //         <ComponentTable>
-                        //             <ComponentTableHead headers = {listHeaderTableAnalitic2} />
-                        //             <tbody>
-                        //                 {(listdata.length != 0)?listdata.filter((item)=>{
-                        //                     return ((item.valorActivCuali != null) || (item.valorActivCuali != 0))
-                        //                 }).map((item)=>{
-                        //                     console.log(item)
-                        //                     return (<ItemValorizActivTabCual itemdate ={item}/>)
-                        //                 })
-                        //                 :<></>}
-                        //             </tbody>
-                        //         </ComponentTable>
-                        //     </div>
-                        // </div> :
-                        // <div className="Container_planconting_principal_body">
-                        //     <div className="Container_planconting_principal_body_subContainer">
-                        //         <ComponentTable>
-                        //             <ComponentTableHead headers = {listHeaderTableAnalitic} />
-                        //             <tbody>
-                        //                 {(listdata.length != 0)?listdata.filter((item)=>{
-                        //                     return ((item.valorActivCuanti != null) || (item.valorActivCuanti != 0))
-                        //                 }).map((item)=>{
-                        //                     console.log(item)
-                        //                     return (<ItemValorizActivTabCuat itemdate ={item}/>)
-                        //                 })
-                        //                 :<></>}
-                        //             </tbody>
-                        //         </ComponentTable>
-                        //     </div>
-                        // </div>)
                         }
                     </div>
                     <div style={{height: '20px'}} />

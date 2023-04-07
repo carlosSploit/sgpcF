@@ -1,6 +1,6 @@
 import { CloseCircleOutlined, CloseOutlined, FileExclamationOutlined, MenuOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
-import { keyresolution } from '../../../../../repository/variables';
+// import { keyresolution } from '../../../../../repository/variables';
 import "./componentMenuBar.css";
 
 // component menu bar
