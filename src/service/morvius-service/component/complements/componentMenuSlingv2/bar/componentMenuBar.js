@@ -2,6 +2,7 @@ import { CloseCircleOutlined, CloseOutlined, FileExclamationOutlined, MenuOutlin
 import { useEffect, useState } from "react";
 // import { keyresolution } from '../../../../../repository/variables';
 import "./componentMenuBar.css";
+import LogoImage from "../../../../res/logo";
 
 // component menu bar
 export function ComponentMenuBar(props){
@@ -128,7 +129,11 @@ export function ComponentMenuBar(props){
             }}>
                 <MenuOutlined className="container_Menubar_icon" />
             </div>
-            <div className="container_Menubar_loginUsername"></div>
+            <div className="container_Menubar_loginUsername">
+                <LogoImage 
+                width={'15em'}
+                height={'50em'} />
+            </div>
             <div className="container_Menubar_imagePerfil" style={{backgroundImage: `url('${informationData.photo}')`}} onClick={()=>{
                 setisVisiblePerfilOpctions(!isVisiblePerfilOpctions);
             }}></div>

@@ -40,18 +40,6 @@
     align-items: center;
 }
 
-.container_login_descripccion {
-    /* background-color: #9686C3; */
-    width: 100%;
-    margin-left: 10px;
-    margin-right: 10px;
-    font-size: 14px;
-    text-align: center;
-    color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .container_login_logo {
     width: 200px;
@@ -79,7 +67,7 @@
     color: var(--color-secundary);
 }
 
-.container_login_information {
+/* .container_login_information {
     width: 100%;
     margin-left: 10px;
     margin-right: 10px;
@@ -98,7 +86,7 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-}
+} */
 
 .container_login_information_username {
     color: var(--color-secundary);

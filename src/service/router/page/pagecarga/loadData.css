@@ -15,12 +15,12 @@
 }
 
 .load_data_Container_subcontent_foto {
-    width: 200px;
+    width: 300px;
     height: 80px;
-    background-image: url('../../../../res/logo2.png');
+    background-image: url('../../../morvius-service/res/7-removebg-preview.png');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
 }
 
 .lds-ring {
@@ -37,10 +37,10 @@
     width: 64px;
     height: 64px;
     margin: 8px;
-    border: 8px solid #9686C3;
+    border: 8px solid #375D81;
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #9686C3 transparent transparent transparent;
+    border-color: #375D81 transparent transparent transparent;
 }
 
 .lds-ring div:nth-child(1) {

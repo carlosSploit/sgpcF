@@ -43,7 +43,7 @@ export function BasicSqueleton(props){
     }
 
     return (
-        <NotificationProvider>
+        // <NotificationProvider>
             <div className="Container_Squeleton">
                 <ComponentMenuBar onChangePerfil = {onChangePerfil} informationData = {informationData} opccionSistem = {opccionSistem} onOcultMenu = {onOcultMenu} isocultmenu = {propisocultmenu} setisocultmenu = {propsetisocultmenu} propiskeyoptions = {propiskeyoptions} propsetiskeyoptions = {propsetiskeyoptions} onchangeoption={onchageoption}  databasic={databasic} />
                 <div className="Container_Squeleton_body_content"> 
@@ -53,6 +53,6 @@ export function BasicSqueleton(props){
                     </div>
                 </div>
             </div>
-        </NotificationProvider>
+        // </NotificationProvider>
     );
 }

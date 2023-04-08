@@ -14,6 +14,7 @@ import {routerLinks} from './service/router/routers'
 import { ReconociLoginDat } from './service/router/routerscontroler';
 import { RouterDesconocido } from './service/router/page/routerdesconocido/routerdesconocido';
 import { RegisterCliente } from './pages/RegisterCliente/registerCliente';
+import NotificationProvider from './service/Notifications/NotificationProvider';
 // import socket from "./service/socket/socket";
 
 function App() {
@@ -63,6 +64,7 @@ function App() {
 
   return (
     <>
+    <NotificationProvider>
       <BrowserRouter basename='/'>
           {/* si ya se cargaron las rutas, se hacen uso de ellas, sino se ovia */}
           {(routers == null)?<></>:<Routes>
@@ -83,6 +85,7 @@ function App() {
                 <Route path="*" exact={true} element={(<RouterDesconocido />)}/>
             </Routes>}
         </BrowserRouter>
+      </NotificationProvider>
     </>
   );
 }

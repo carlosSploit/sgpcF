@@ -3,8 +3,13 @@ import { ConsulLog, InsertLog } from "../../service/repository/RTUsuarios";
 import "./style/login.css";
 import {  Forminputmail, Forminputpassword,ForminputBottonSubmit, Forminput} from "../../service/morvius-service/form";
 import { LeftOutlined } from "@ant-design/icons";
+import LogoImage from "../../service/morvius-service/res/logo";
+import { useNotification } from "../../service/Notifications/NotificationProvider";
+import { handleNewNotification } from "../../service/Notifications/useNotificacion";
 
 export function Login(props){
+
+    const dispatch = useNotification();
 
     const [stadenotLogin, setstadenotlogin] = useState(false);
     const [informaticonLogin, setinformaticonLogin] = useState({
@@ -26,9 +31,10 @@ export function Login(props){
             if (result.data.correo !== undefined){
                 setstadenotlogin(true);
                 setinformaticonLogin(result.data);
+                handleNewNotification(dispatch,'El contrasena ingresada es incorrecto', 404);
                 return;
             }
-            console.log("no existe")
+            handleNewNotification(dispatch,'El usuario o la contrasena no son correctos', 404);
             return;
         }
         await InsertLog(result);
@@ -42,6 +48,7 @@ export function Login(props){
 
     return (
         <div className="container_login">
+            <div className="container_login_Image"></div>
             <div className="container_login_subcontent">
                 <div className="container_login_form">
                     <div style={{height:"10px"}} />
@@ -97,7 +104,7 @@ export function Login(props){
                             <div className="container_login_descripccion" onClick={()=>{
                                 window.location.href = window.location.origin + '/register';
                             }} >
-                                Si no estas registrado, porfavor registrate.
+                                No estas registrado?, <b>!Registrate aqui!</b>
                             </div>
                         </>:<></>}
                     </form>

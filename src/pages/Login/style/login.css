@@ -5,11 +5,24 @@
     height: 100vh;
     background-color: var(--color-backgraud);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
+.container_login_Image {
+    width: 300px;
+    height: 50px;
+    background-image: url('../../../service/morvius-service/res/7-removebg-preview.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-color: red; */
+    margin-bottom: 15px;
+}
+
 .container_login_subcontent {
+    position: relative;
     width: 300px;
     height: auto;
     background-color: white;
@@ -18,6 +31,25 @@
     justify-content: center;
     border-radius: 15px;
     overflow: hidden;
+    box-shadow: 0 1px 3px var(--color-master-shadow), 0 1px 2px var(--color-master-shadow);
+}
+
+.container_login_subcontent {
+    animation: pulse 0.2s linear 1;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        transform: scale(1.0);
+    }
 }
 
 .container_login_form {
@@ -40,15 +72,16 @@
 
 .container_login_descripccion {
     /* background-color: #9686C3; */
-    width: 100%;
-    margin-left: 10px;
-    margin-right: 10px;
+    width: calc(100%);
+    /* margin-left: 10px; */
+    /* margin-right: 10px; */
     font-size: 14px;
     text-align: center;
     color: rgba(0, 0, 0, 0.5);
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
+    /* background-color: blue; */
 }
 
 .container_login_logo {
@@ -71,21 +104,22 @@
 }
 
 .container_login_back {
-    width: 100%;
-    margin-left: 10px;
-    margin-right: 10px;
+    /* width: 100%; */
+    /* margin-left: 10px; */
+    /* margin-right: 10px; */
     color: var(--color-secundary);
+    position: absolute;
+    right: -20px;
 }
 
 .container_login_information {
-    width: 100%;
-    margin-left: 10px;
-    margin-right: 10px;
+    width: calc(100%);
     height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    /* background-color: red; */
 }
 
 .container_login_information_photo {
@@ -96,6 +130,7 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+    margin-top: 20px;
 }
 
 .container_login_information_username {
