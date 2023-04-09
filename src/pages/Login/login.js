@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { ConsulLog, InsertLog } from "../../service/repository/RTUsuarios";
 import "./style/login.css";
-import {  Forminputmail, Forminputpassword,ForminputBottonSubmit, Forminput} from "../../service/morvius-service/form";
+import { Forminputpassword,ForminputBottonSubmit, Forminput} from "../../service/morvius-service/form";
 import { LeftOutlined } from "@ant-design/icons";
-import LogoImage from "../../service/morvius-service/res/logo";
+// import LogoImage from "../../service/morvius-service/res/logo";
 import { useNotification } from "../../service/Notifications/NotificationProvider";
 import { handleNewNotification } from "../../service/Notifications/useNotificacion";
 

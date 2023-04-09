@@ -82,6 +82,7 @@ export function ExisteEmpresa(props){
                     <div className="container_addEmpresa_selectet_data">
                         {(listdata.length == 0)?<></>:<ForminputSelectItem  listaObj={listdata} setlistaObj = {setlistdata} keyname={"selestInscrip"} checkbox={idselectInscrip} setcheckbox={setidselectInscrip} onChangeinput={onSelectItem} />}
                     </div>
+                    <div style={{height: '10px'}}></div>
                 </>
                 <ForminputBottonSubmit label = {'Enlazar Empresa'} />
                 {/* <ForminputBotton label = {"Cancelar"} isInvertColor = {true} /> */}

@@ -117,6 +117,11 @@
     width: 8%;
 }
 
+.container_text_bienvenid {
+    text-align: justify;
+    color: var(--color-text-secundary);
+}
+
 @media (max-width: 500px) {
     .conteiner_input_data {
         flex-direction: column;
