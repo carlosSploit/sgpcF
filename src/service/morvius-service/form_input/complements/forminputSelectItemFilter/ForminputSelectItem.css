@@ -125,10 +125,15 @@
     color: white;
     text-align: start;
     height: 24px;
+    /* background-color: brown; */
+    width: 100%;
     /* background-color: chartreuse; */
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
 }
 
 /* ----------------------------------------------- */

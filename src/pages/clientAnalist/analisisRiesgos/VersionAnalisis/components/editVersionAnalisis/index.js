@@ -23,6 +23,7 @@ export function EditarVesionAnalitic(props){
     const [propismodalvisible,propsetismodalvisible ] = useState(false);
     const [propiskeyDatos, ] = useState(0);
     const {
+        informatDataEmpre,
         iskeyDatos = propiskeyDatos,
         ismodalvisible = propismodalvisible,
         setismodalvisible = propsetismodalvisible
@@ -39,7 +40,7 @@ export function EditarVesionAnalitic(props){
     },[]);
 
     const actualizeData = async () => {
-        setlistview([<ResponsablesEmpresa informationDataGeneral={iskeyDatos}/>,<ObjetivVersionAnalitic informationDataGeneral={iskeyDatos}/> ,<EditarValorProces informationDataGeneral={iskeyDatos}/>])
+        setlistview([<ResponsablesEmpresa informatDataEmpre={informatDataEmpre} informationDataGeneral={iskeyDatos}/>,<ObjetivVersionAnalitic informationDataGeneral={iskeyDatos}/> ,<EditarValorProces informationDataGeneral={iskeyDatos}/>])
     }
 
     const listOpt = [

@@ -15,7 +15,7 @@ import { AddResponVersionAnalitic } from "./components/addRespVersionAnali";
 
 export function ResponsablesEmpresa(props){
 
-    const {informationDataGeneral } = props;
+    const {informationDataGeneral, informatDataEmpre } = props;
     const [listdata,setlistdata] = useState([]);
     // const [listdataHistory,setlistdataHistory] = useState([]);
     const [ismodeladd,setismodeladd] = useState(false);
@@ -108,7 +108,7 @@ export function ResponsablesEmpresa(props){
                     })}
                 </div>
             </div>
-            <AddResponVersionAnalitic informationDataGeneral = {informationDataGeneral} onInsert={async ()=>{
+            <AddResponVersionAnalitic informatDataEmpre={informatDataEmpre} informationDataGeneral = {informationDataGeneral} onInsert={async ()=>{
                 await LoadResponVersion();
             }} propismodalvisible = {ismodeladd} propsetismodalvisible = {setismodeladd} />
         </>

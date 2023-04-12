@@ -17,10 +17,10 @@ import { ExisteActivosProceso } from "./components/existeActivosProceso";
 export function AddResponVersionAnalitic(props){
     const [ismodalvisible, setismodalvisible] = useState(false);
     const [propinformationDataGeneral, propsetinformationDataGeneral] = useState({});
-    const [propinformaDataEmpresa, propsetinformaDataEmpresa] = useState({});
-    const { onInsert=()=>{}, informaDataEmpresa = propinformaDataEmpresa, setinformaDataEmpresa = propsetinformaDataEmpresa, propismodalvisible = ismodalvisible, propsetismodalvisible = setismodalvisible, informationDataGeneral = propinformationDataGeneral , setinformationDataGeneral = propsetinformationDataGeneral } = props;
+    // const [propinformaDataEmpresa, propsetinformaDataEmpresa] = useState({});
+    const { onInsert=()=>{}, informatDataEmpre, propismodalvisible = ismodalvisible, propsetismodalvisible = setismodalvisible, informationDataGeneral = propinformationDataGeneral , setinformationDataGeneral = propsetinformationDataGeneral } = props;
     // const [index,setindex] = useState(0);
-    const [listview,setlistview] = useState([<ExisteActivosProceso informaDataEmpresa={informaDataEmpresa}  onInsert = {onInsert} informationDataGeneral = {informationDataGeneral} />]);
+    const [listview,setlistview] = useState([<ExisteActivosProceso informatDataEmpre={informatDataEmpre} onInsert = {onInsert} informationDataGeneral = {informationDataGeneral} />]);
 
     return (
         <>

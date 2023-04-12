@@ -90,8 +90,16 @@ export function ExisteVersionEmpresa(props){
         handleNewNotification(dispatch,resulEn.messege, resulEn.status);
         setTimeout(() => {
             (async ()=>{await onInsert();})();
-            setidselectInscrip(-1);
+            limpiezCasillas();
         }, 500);
+    }
+
+    const limpiezCasillas = () => {
+        setidselectInscrip(-1);
+        settextActivosProceso(-1);
+        settextAmenaz(-1);
+        settextname('');
+        settextdescrip('');
     }
 
     const onSelectItemActiv = (json) => {

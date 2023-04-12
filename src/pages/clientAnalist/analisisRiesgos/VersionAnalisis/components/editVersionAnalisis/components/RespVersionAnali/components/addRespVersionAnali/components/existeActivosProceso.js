@@ -10,15 +10,16 @@ import { ForminputBotton, ForminputBottonSubmit, ForminputComboBox, ForminputSel
 // import { getTrabajEmpresa } from "../../../../../../../../../../../service/repository/RTTrabajEmpresas";
 // import { addTrabajRespon } from "../../../../../../../../../../../service/repository/RTTrabajRespon";
 // import { getActivosEmpresa } from "../../../../../../../../../../../service/repository/RTActivos";
-import { addActivosProceso } from "../../../../../../../../../../../service/repository/RTActivosProceso";
-import { getclientAnalis } from "../../../../../../../../../../../service/repository/RTclientAnalist";
+// import { addActivosProceso } from "../../../../../../../../../../../service/repository/RTActivosProceso";
+// import { getclientAnalis } from "../../../../../../../../../../../service/repository/RTclientAnalist";
 import { getRolrespono } from "../../../../../../../../../../../service/repository/RTRolrespono";
 import { addResponanalis } from "../../../../../../../../../../../service/repository/RTResponVersionAnalitiv";
+import { getEmpresasAnalis } from "../../../../../../../../../../../service/repository/RTEmpresas";
 
 export function ExisteActivosProceso(props){
 
-    const [propinformationDataGeneral, propsetinformationDataGeneral] = useState({});
-    const { onInsert=()=>{} ,informationDataGeneral = propinformationDataGeneral, informaDataEmpresa } = props;
+    const [propinformationDataGeneral,] = useState({});
+    const { onInsert=()=>{} ,informationDataGeneral = propinformationDataGeneral,informatDataEmpre } = props;
 
     const [listActivosProceso, setlistActivosProceso] = useState([]);
     const [textActivosProceso, settextActivosProceso] = useState(0);
@@ -34,14 +35,14 @@ export function ExisteActivosProceso(props){
     },[]);
 
     const onLoadClientAnalitic = async ()=>{
-        let result = await getclientAnalis();
+        let result = await getEmpresasAnalis(informatDataEmpre);
         setlistActivosProceso([]);
         // setlistdataHistory([]);
         setTimeout(() => {
             let data = result.map((item)=>{
                 return {
                     id: item.id_cliente,
-                    name: item.nombre + item.apellidos,
+                    name: item.nombreClientAna,
                     photo: item.photo
                 }
             })
@@ -105,12 +106,12 @@ export function ExisteActivosProceso(props){
                 <div style={{height:'5px'}} />
                 {(listActivosProceso.length != 0)? 
                     <div className="container_AreaInterProces_selectet_data">
-                        <ForminputSelectItem isVisibleFoto={true} listaObj={listActivosProceso} setlistaObj = {setlistActivosProceso} keyname={"selestProcesoDep"} checkbox={textActivosProceso} setcheckbox={settextActivosProceso} onChangeinput={onSelectItem} />
+                        <ForminputSelectItem nameTitle={'Selecciona el Responsables Analista'} isVisibleFoto={true} listaObj={listActivosProceso} setlistaObj = {setlistActivosProceso} keyname={"selestProcesoDep"} checkbox={textActivosProceso} setcheckbox={settextActivosProceso} onChangeinput={onSelectItem} />
                     </div>
                 :<></>}
                 <div style={{height:'15px'}} />
                 {(listRolesRespon.length != 0)? 
-                    <ForminputComboBox isInvert={true} width={100} height={30} keyvalue={'id_rolRespon'} keylabel={'nombreRolRespon'} datacombo={listRolesRespon} isdefault={true} onChangeinput={(jsonval)=>{
+                    <ForminputComboBox checkbox = {textRolesRespon} setcheckbox = {settextRolesRespon} isInvert={true} width={100} height={30} keyvalue={'id_rolRespon'} keylabel={'nombreRolRespon'} datacombo={listRolesRespon} isdefault={true} onChangeinput={(jsonval)=>{
                         settextRolesRespon(jsonval.value);
                     }} />
                 :<></>}

@@ -1,21 +1,9 @@
 import { useEffect, useState } from "react";
 // import { ComponentModalFloting, ComponentModalFlotingBody, ComponentModalFlotingHeader, ComponentModalPrincipalListtabs } from "../../../service/morvius-service/components";
-import { AimOutlined, BulbOutlined, TeamOutlined } from "@ant-design/icons";
+import { BulbOutlined } from "@ant-design/icons";
+import { FaCoins } from 'react-icons/fa'
 import './style/index.css';
-// import { EditarUsuario } from "./components/Editar";
-// import { getKeysesion } from "../../../service/repository/mithelworks";
-// import { ConsuldataLog } from "../../../service/repository/Usuarios";
-// import { readclientAnalist } from "../../../service/repository/clientAnalist";
-// import { EditarUsuarioSecion } from "./components/EditarSeccion";
-// import { getEmpresas } from "../../../../../../service/repository/RTEmpresas";
-// import { useNotification } from "../../../../../../service/Notifications/useNotificacion";
-// import { EditarEmpresaInformation } from "./components/EditarInformacion/Editar";
 import { ComponentModalFloting, ComponentModalFlotingBody, ComponentModalFlotingHeader, ComponentModalPrincipalListtabs } from "../../../../../../service/morvius-service/components";
-// import { getKeysesion } from "../../../../../../service/repository/mithelworks";
-// import { ConsuldataLogm } from "../../../../../../service/repository/mithelworks";
-// import { AreasEmpresas } from "./components/AreasEmpresa";
-// import { ObjetivVersionAnalitic } from "./components/ObjVersionAnali/index";
-// import { ResponsablesEmpresa } from "./components/RespVersionAnali";
 import { EditarValorActivCuantiImformation } from "./components/ValoriProces";
 import { getValoriActiv } from "../../../../../../service/repository/RTValorizarActivo";
 import { EditarValorActivCualitativImformation } from "./components/valorizCualit";
@@ -25,8 +13,6 @@ export function EditaValotCuantitativo(props){
     const [propismodalvisible,propsetismodalvisible ] = useState(false);
     const [propiskeyDatos, ] = useState(0);
     const {
-        informacionProceso,
-        informacionVersion,
         iskeyDatos = propiskeyDatos,
         ismodalvisible = propismodalvisible,
         setismodalvisible = propsetismodalvisible
@@ -57,7 +43,7 @@ export function EditaValotCuantitativo(props){
         {
             id: 0,
             label : "Cuantitativa",
-            icontab : TeamOutlined
+            icontab : FaCoins
         },{
             id: 1,
             label : "Cualitativa",

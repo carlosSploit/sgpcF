@@ -39,7 +39,7 @@ export function EditaValotCuantitativo(props){
         const ListAmenasActiv = ListAmenasActivTotal.filter((item)=>{
             return parseInt(item.id_afectaActiv) === iskeyDatos
         });
-        setlistview([<EditarEcenarioAmenaza informationDataGeneral={ListAmenasActiv[0]} />,<InsidensAmenaza informationDataGeneral={ListAmenasActiv[0]} informationActivAnali={informationActivAnali}/>])
+        setlistview([<EditarEcenarioAmenaza informationDataGeneral={ListAmenasActiv[0]} onAction={actualizeData} />,<InsidensAmenaza informationDataGeneral={ListAmenasActiv[0]} informationActivAnali={informationActivAnali} onAction={actualizeData}/>])
     }
 
     const listOpt = [

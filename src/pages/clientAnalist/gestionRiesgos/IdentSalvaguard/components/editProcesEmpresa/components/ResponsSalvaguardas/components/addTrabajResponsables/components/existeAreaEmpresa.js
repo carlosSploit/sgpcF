@@ -8,7 +8,7 @@ import { ForminputBotton, ForminputBottonSubmit, ForminputSelectItem } from "../
 // import { addAreasEmpresa, getAresEmpresa } from "../../../../../../../../../../../service/repository/RTAreasEmpresas";
 // import { addAreasInteraProces } from "../../../../../../../../../../../service/repository/RTAreasInteraProces";
 import { getTrabajEmpresa } from "../../../../../../../../../../../service/repository/RTTrabajEmpresas";
-import { addTrabajRespon } from "../../../../../../../../../../../service/repository/RTTrabajRespon";
+// import { addTrabajRespon } from "../../../../../../../../../../../service/repository/RTTrabajRespon";
 import { addResponSalvAfectAct } from "../../../../../../../../../../../service/repository/RTresponSalvAfectAct";
 
 export function ExisteTrabajResponsabless(props){
@@ -34,7 +34,8 @@ export function ExisteTrabajResponsabless(props){
             let data = result.map((item)=>{
                 return {
                     id: item.Id_trabajador,
-                    name: item.nombre_apellido
+                    name: item.nombre_apellido,
+                    descr: item.cargo
                 }
             })
             setlistTrabajResponsabless(data)
@@ -85,7 +86,9 @@ export function ExisteTrabajResponsabless(props){
                 <div style={{height:'5px'}} />
                 {(listTrabajResponsabless.length != 0)? 
                     <div className="container_AreaInterProces_selectet_data">
-                        <ForminputSelectItem  
+                        <ForminputSelectItem
+                            nameTitle = {'Selecciona un trabajador'}  
+                            isVisibleDescri = {true}
                             listaObj={listTrabajResponsabless} 
                             setlistaObj = {setlistTrabajResponsabless} 
                             keyname={"selestProcesoDep"} 
@@ -97,7 +100,7 @@ export function ExisteTrabajResponsabless(props){
                 :<></>}
                 <div style={{height: '20px'}}></div></>
                 <ForminputBottonSubmit label = {'Registrar el Responsable'} />
-                <ForminputBotton label = {'Cancelar'} isInvertColor = {true} />
+                {/* <ForminputBotton label = {'Cancelar'} isInvertColor = {true} /> */}
                 {/* <ForminputBotton label = {"Cancelar"} isInvertColor = {true} /> */}
             </form>
         </>

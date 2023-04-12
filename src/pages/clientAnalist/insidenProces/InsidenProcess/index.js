@@ -8,8 +8,8 @@ import { handleNewNotification } from "../../../../service/Notifications/useNoti
 import { getProcesEmpresa } from "../../../../service/repository/RTProcesEmpresas";
 import { getEmpresas } from "../../../../service/repository/RTEmpresas";
 import { ItemInsidenProces } from "./components/itemInsidenProcess";
-import { AddInsidenciaProceso, AddVersionAnalitic } from "./components/addInsidenProcess";
-import { EditarInsidenProces, EditarVesionAnalitic } from "./components/editInsidenProcess";
+import { AddInsidenciaProceso } from "./components/addInsidenProcess";
+import { EditarInsidenProces } from "./components/editInsidenProcess";
 import { OpccionActions } from "../../../../service/morvius-service/component/complements/componetOpccionActions";
 import { deleteInsideProces, getInsideProces } from "../../../../service/repository/RTInsidencias";
 
@@ -176,7 +176,7 @@ export function InsideProces(props){
                                     }} onChange={(index)=>{
                                         setindexOptionVersionAnali(index);
                                         setismodelaEdit(true);
-                                    }} keyitem = {item.id_insidencia} title = {item.nombroInsid} subtitle = {item.dependAbreb} descrip = {item.descrpInsid} />)
+                                    }} keyitem = {item.id_insidencia} title = {(item.fechainside.split('T')[0]) + ' : ' +item.nombroInsid} subtitle = {item.dependAbreb} descrip = {item.descrpInsid} />)
                                 }):<></>}
                             </div>
                         </div>

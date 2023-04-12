@@ -74,14 +74,20 @@ export function ManualIdentifiAmenaz(props){
             "id_control": textControles,
             "id_salvaguarda" :  textSalvaguard,
             "extrategia": event.target.extrat.value
-            // "id_activProc": textActivosProceso
         };
         let resulEn = await addSalvaguAmenaz(data);
         handleNewNotification(dispatch,resulEn.messege, resulEn.status);
         setTimeout(() => {
             (async ()=>{await onInsert();})();
             // settextActivosProceso(-1);
+            limparCasillas();
         }, 500);
+    }
+
+    const limparCasillas = () => {
+        settextSalvaguard(-1);
+        settextControles(-1);
+        settextExtrategia('');
     }
 
     return (
@@ -129,6 +135,8 @@ export function ManualIdentifiAmenaz(props){
                                 keyid = {"id_control"} 
                                 keylabe = {'DescripccionControl'} 
                                 keydepende = {'id_depencontrol'} 
+                                checkbox = {textControles}
+                                setcheckbox = {settextControles}
                                 listaObj={listtextControles} 
                                 setlistaObj = {setlisttextControles} 
                                 onChangeinput={(jsop) => {

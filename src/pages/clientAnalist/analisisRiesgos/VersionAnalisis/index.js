@@ -92,23 +92,6 @@ export function VersionAnalisis(props){
         }, 500);
     }
 
-    // const LoadDataProcesEmpresaHist = async (listSelFilteryaux = []) => {
-    //     // console.log(listSelFilteryaux)
-    //     let result = [...listdataHistory];
-    //     // filtraje por copciones de filtro
-    //     ((listSelFilteryaux.length == 0)?listSelFilter:listSelFilteryaux).forEach(element => {
-    //         let auxRes = [...result]
-    //         result = auxRes.filter((item)=>{
-    //             return element.value == item[element.key]
-    //         })
-    //     });
-    //     console.log(result)
-    //     setlistdata([]);
-    //     setTimeout(() => {
-    //         setlistdata(result);
-    //     }, 500);
-    // }
-
     const GenerateEmpresa = async (keyInitSelectet = -1, isInitialData = false, lisDataGeneral = []) => {
         let secionkey = await getKeysesion();
         let dataUser = await ConsuldataLogm({seccionkey: secionkey});
@@ -266,7 +249,7 @@ export function VersionAnalisis(props){
             {(ismodeladd)?<AddVersionAnalitic informacionProceso={indexProceso} onInsert={async ()=>{
                 await LoadDataVersionAnalitic();
             }} propismodalvisible = {ismodeladd} propsetismodalvisible = {setismodeladd} />:<></>}
-            {(ismodelaEdit)?<EditarVesionAnalitic informationDataGeneral = {indexProceso} onAction = {LoadDataVersionAnalitic} iskeyDatos = {indexOptionVersionAnali} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>}
+            {(ismodelaEdit)?<EditarVesionAnalitic informatDataEmpre = {indexEmpresa} informationDataGeneral = {indexProceso} onAction = {LoadDataVersionAnalitic} iskeyDatos = {indexOptionVersionAnali} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>}
             {/* 
             {(ismodelaEdit)?<EditarProcesEmpresa informationDataGeneral = {indexEmpresa} onAction = {LoadDataProcesEmpresa} iskeyDatos = {indexOptionEmpresa} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>} */}
         </div>

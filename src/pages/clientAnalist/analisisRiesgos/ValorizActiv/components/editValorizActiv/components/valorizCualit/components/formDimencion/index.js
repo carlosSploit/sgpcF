@@ -153,6 +153,7 @@ export function FormDimension (props){
                                         settextinformationData(JSON.stringify(dataObj))
                                         settvaloriOpccion(item.id)
                                     }} 
+                                    nameTitle = 'Selecciona valor de escala'
                                     valueInit = {textvaloriOpccion}
                                     isVisibleDescri={true} 
                                     checkbox={textvaloriOpccion} 
@@ -177,7 +178,7 @@ export function FormDimension (props){
                                     keyvalue={'id_nivelCrit'} 
                                     keylabel={'labelCrit'} 
                                     datacombo={listTipoProc} 
-                                    placeHolder = {'Escala de Valorizacion'}
+                                    placeHolder = {'Nivel de Criticidad'}
                                     onChangeinput = {(json) => {
                                         let dataObj = {...propinformationData}
                                         dataObj['valorAcivCualit'] = parseInt(json.label.split(' - ')[1]);

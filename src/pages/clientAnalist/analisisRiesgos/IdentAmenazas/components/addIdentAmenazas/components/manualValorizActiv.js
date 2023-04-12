@@ -97,6 +97,7 @@ export function ManualIdentifiAmenaz(props){
                                     console.log(item)
                                     settvaloriOpccion(item.id)
                                 }} 
+                                nameTitle = {'Selecciona una amenaza'}
                                 valueInit = {textvaloriOpccion}
                                 isVisibleDescri={true} 
                                 checkbox={textvaloriOpccion} 
