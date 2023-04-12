@@ -8,7 +8,7 @@ export function ItemEmpresa(props){
         onChange = (id_options) => {}, 
         onSelecteItem = (id_options, stade) => {},
         keyitem,
-        title,subtitle,descrip
+        title,subtitle,descrip,permis
     } = props;
     const [isSeleteItem, setisSeleteItem] = useState(false);
 
@@ -32,10 +32,10 @@ export function ItemEmpresa(props){
                 </div>
             </div>
             <div className="Container_ItemEmpresa_conten_secondary_seleccion">
-                <div onClick={()=>{
+            {(permis == 'A')?<div onClick={()=>{
                     onSelecteItem(keyitem,!isSeleteItem);
                     setisSeleteItem(!isSeleteItem);
-                }} className={`Container_ItemEmpresa_conten_secondary_seleccion_radio${(isSeleteItem)?' active':''}`}><div></div></div>
+                }} className={`Container_ItemEmpresa_conten_secondary_seleccion_radio${(isSeleteItem)?' active':''}`}><div></div></div>:<></>}
             </div>
         </div>
     </div>);

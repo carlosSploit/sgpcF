@@ -12,6 +12,16 @@ export async function getEmpresas(idUsername = 0) {
   return result.data;
 }
 
+export async function getEmpresasAnalis(idEmpresa = 0) {
+  const url = `${domain_api}/empresa/enlace/${idEmpresa}`;
+  const result = await axios.get(url, {
+    headers: {
+      Authorization: `Bearer ${await gettoken()}`,
+    },
+  });
+  return result.data;
+}
+
 // export async function readprofesor(id) {
 //   const id_admin = id;
 //   const url = `${domain_api}/profe/read/${id_admin}`;
@@ -71,8 +81,18 @@ export async function updateEmpresa(id, jsondat = {}) {
   return result.data;
 }
 
-export async function deleteEmpresa({id_empresa, id_clienAnalit}) {
-  const url = `${domain_api}/empresa/${id_clienAnalit}/${id_empresa}`;
+export async function deleteEmpresaEnlace({id_empresa, id_clienAnalit}) {
+  const url = `${domain_api}/empresa/enlace/${id_clienAnalit}/${id_empresa}`;
+  const result = await axios.delete(url, {
+    headers: {
+      Authorization: `Bearer ${await gettoken()}`,
+    },
+  });
+  return result.data;
+}
+
+export async function deleteEmpresa({id_empresa}) {
+  const url = `${domain_api}/empresa/${id_empresa}`;
   const result = await axios.delete(url, {
     headers: {
       Authorization: `Bearer ${await gettoken()}`,

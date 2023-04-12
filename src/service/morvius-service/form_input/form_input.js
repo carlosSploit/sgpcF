@@ -6,6 +6,37 @@ import { FormModalSelectIcon } from "./complements/forminputSelectIcon/formModal
 import { ForminputSelectItem } from "./complements/forminputSelectItem/ForminputSelectItem";
 import "./form_input.css";
 
+export function FormInformatView(props){
+    // encabezados
+    const [statetextinput, changesettextinput] = useState("");
+    const [textinputmemory, changesettextinputmemory] = useState("");
+    let {
+        textinput = statetextinput,
+        settextinput = changesettextinput,
+        valueInit= "",
+        placeHolder = "name"
+    } = props;
+
+    useEffect(()=>{
+        settextinput(valueInit);
+        changesettextinputmemory(valueInit);
+    },[]);
+
+    return (
+        <>
+            <div className="Container_ForminputEdit_principal_master">
+                <div className="Container_ForminputEdit_principal">
+                    <div className="Container_ForminputEdit_subContainer_information">
+                        <div className="Container_ForminputEdit_subContainer_information_value">{textinput}</div>
+                        <div className="Container_ForminputEdit_subContainer_information_placeholder">{placeHolder}</div>
+                    </div>
+                </div>
+            </div>
+            {/*  */}
+        </>
+    );
+}
+
 /**
  * <input para form de tipo text>
  * @param   {<string>} key <Id del input>

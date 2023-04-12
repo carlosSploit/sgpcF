@@ -4,8 +4,8 @@ import { useNotification } from "../../../../../../../service/Notifications/Noti
 // import { addEmpresa } from "../../../../../../../service/repository/RTEmpresas";
 // import { ConsuldataLogm, getKeysesion } from "../../../../../../../service/repository/mithelworks";
 import { handleNewNotification } from "../../../../../../../service/Notifications/useNotificacion";
-import { Forminput, ForminputArea, ForminputBotton, ForminputBottonSubmit, ForminputComboBox, ForminputRadioSlice, ForminputSelectItem, Forminputmail } from "../../../../../../../service/morvius-service/form";
-import { addTrabajEmpresa } from "../../../../../../../service/repository/RTTrabajEmpresas";
+import { Forminput, ForminputArea, ForminputBotton, ForminputBottonSubmit, ForminputComboBox, ForminputRadioSlice, ForminputSelectItem } from "../../../../../../../service/morvius-service/form";
+// import { addTrabajEmpresa } from "../../../../../../../service/repository/RTTrabajEmpresas";
 import { getTipoProces } from "../../../../../../../service/repository/RTTiposProces";
 import { getGerarcProces } from "../../../../../../../service/repository/RTGerarcProces";
 import { addPrcesEmpresa, getProcesEmpresa } from "../../../../../../../service/repository/RTProcesEmpresas";
@@ -25,8 +25,8 @@ export function NoExisteEmpresa(props){
     const [textProcEmpre, settexProcEmpre] = useState(0);
     const [textProcEmpreMemoryInit, settextProcEmpreMemoryInit] = useState(0);
 
-    const [textCorreo, settextCorreo] = useState("");
-    const [textCodigo, settextCodigo] = useState("");
+    // const [textCorreo, settextCorreo] = useState("");
+    // const [textCodigo, settextCodigo] = useState("");
     // const [textvision, settextvision] = useState("");
 
     const [listTipoProc, setlistTipoProc] = useState([]);
@@ -124,13 +124,13 @@ export function NoExisteEmpresa(props){
                 <div style={{height:'5px'}} />
                 <ForminputArea textinput ={textdescrip} settextinput = {settextdescrip} placeHolder="Descripccion" keyname ={`descr`}/>
                 <div style={{height:'5px'}} />
-                <ForminputComboBox valueInit={textTipoProc} keyname={'tiproc'} isInvert={true} width={100} height={28} keyvalue={'id_tipProce'} keylabel={'nombre'} datacombo={listTipoProc} isdefault={true} onChangeinput={(jsonval)=>{
+                {(listTipoProc.length != 0) ? <ForminputComboBox valueInit={textTipoProc} keyname={'tiproc'} isInvert={true} width={100} height={28} keyvalue={'id_tipProce'} keylabel={'nombre'} datacombo={listTipoProc} onChangeinput={(jsonval)=>{
                     settextTipoProc(jsonval.value)
-                }} />
+                }} />:<></>}
                 <div style={{height:'5px'}} />
-                <ForminputComboBox valueInit={textGerarProc} keyname={'gerproc'} isInvert={true} width={100} height={28} keyvalue={'id_gerarProc'} keylabel={'nombre'} datacombo={listGerarProc} isdefault={true} onChangeinput={(jsonval)=>{
+                {(listGerarProc.length != 0) ? <ForminputComboBox valueInit={textGerarProc} keyname={'gerproc'} isInvert={true} width={100} height={28} keyvalue={'id_gerarProc'} keylabel={'nombre'} datacombo={listGerarProc} onChangeinput={(jsonval)=>{
                     settexGerarProc(jsonval.value)
-                }} />
+                }} />:<></> }
                 <div style={{height:'5px'}} />
                 <ForminputRadioSlice checkradio = {isdependepader} setcheckradio = {setisdependepader} label={'El proceso tiene un proceso padre'} onChangeinput={(stade)=>{
                     console.log(stade)
@@ -144,7 +144,7 @@ export function NoExisteEmpresa(props){
                     </div>
                 :<></>}
                 <div style={{height: '20px'}}></div></>
-                <ForminputBottonSubmit label = {'Registrar a la Empresa'} />
+                <ForminputBottonSubmit label = {'Registrar el Proceso'} />
                 <ForminputBotton label = {'Cancelar'} isInvertColor = {true} onChange={limpiartext}/>
                 {/* <ForminputBotton label = {"Cancelar"} isInvertColor = {true} /> */}
             </form>

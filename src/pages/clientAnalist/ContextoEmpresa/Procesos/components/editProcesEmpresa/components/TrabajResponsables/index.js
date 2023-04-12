@@ -2,31 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./styles/index.css"
 import { useNotification } from "../../../../../../../../service/Notifications/NotificationProvider";
 import { deleteTrabajRespon, getTrabajRespon } from "../../../../../../../../service/repository/RTTrabajRespon";
-// import { deleteAreasInteraProces } from "../../../../../../../../service/repository/RTAreasInteraProces";
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { handleNewNotification } from "../../../../../../../../service/Notifications/useNotificacion";
 import { OpccionActions } from "../AreasInterviene/components/opccionActions";
-// import { ItemAreasEmpresa } from "../AreasInterviene/components/itemAreasEmpresa";
-// import { AddAreasInteraProces } from "../AreasInterviene/components/addAreasInterviene";
-// import { deleteTrabajEmpresa } from "../../../../../../../../service/repository/RTTrabajEmpresas";
 import { AddTrabajResponsabless } from "./components/addTrabajResponsables";
 import { ItemTrabajResponsab } from "./components/itemTrabajResponsables";
-// import { useNotification } from "../../../../../../../../service/Notifications/NotificationProvider";
-// // import { ConsuldataLogm, getKeysesion } from "../../../../../../../../service/repository/mithelworks";
-// // import { deleteEmpresa, getEmpresas } from "../../../../../../../../service/repository/RTEmpresas";
-// import { ControlOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
-// import { handleNewNotification } from "../../../../../../../../service/Notifications/useNotificacion";
-// import { ItemAreasEmpresa, ItemEmpresa } from "./components/itemAreasEmpresa";
-// import { OpccionActions } from "./components/opccionActions";
-// // import { deleteAreasEmpresa, getAresEmpresa } from "../../../../../../../../service/repository/RTAreasEmpresas";
-// import { AddAreasInteraProces } from "./components/addAreasInterviene";
-// // import { EditarAreasEmpresa } from "./components/editAreasInterviene";
-// import { deleteAreasInteraProces } from "../../../../../../../../service/repository/RTAreasInteraProces";
-// import { getTrabajRespon } from "../../../../../../../../service/repository/RTTrabajRespon";
-// import { Componentsearchanimation} from "../../../../service/morvius-service/component/components";
-// import { AddEmpresas } from "./components/addEmpresas";
-// import { getadmins } from '../../../../service/repository/Admin';
-// import { EditarEmpresa } from "./components/editEmpresas";
 
 export function TrabajResponsables(props){
 

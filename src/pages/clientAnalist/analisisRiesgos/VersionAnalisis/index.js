@@ -1,20 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./styles/index.css"
 import { Componentfilter } from "../../../../service/morvius-service/component/components";
-// import { AddEmpresas } from "./components/addEmpresas";
-// import { ItemEmpresa } from './components/itemEmpresa/index';
-// import { getadmins } from '../../../../service/repository/Admin';
 import { DeleteOutlined, FileExclamationOutlined, PlusOutlined } from "@ant-design/icons";
-// import { OpccionActions } from "./components/opccionActions";
-// import { deleteEmpresa, getEmpresas } from "../../../../service/repository/RTEmpresas";
 import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mithelworks";
-// import { EditarEmpresa } from "./components/editEmpresas";
 import { useNotification } from "../../../../service/Notifications/NotificationProvider";
 import { handleNewNotification } from "../../../../service/Notifications/useNotificacion";
-// import { EditarProcesEmpresa } from "../../ContextoEmpresa/Procesos/components/editProcesEmpresa";
-// import { AddProcesEmpresas } from "../../ContextoEmpresa/Procesos/components/addProcesEmpresa";
-// import { ItemTrabjEmpresa } from "../../ContextoEmpresa/TrabajEmpresa/components/itemTrabjEmpresa";
-// import { ComponentFilterBar } from "../../../../service/morvius-service/component/complements/componentFilterBar";
 import { getProcesEmpresa } from "../../../../service/repository/RTProcesEmpresas";
 import { getTipoProces } from "../../../../service/repository/RTTiposProces";
 import { getGerarcProces } from "../../../../service/repository/RTGerarcProces";

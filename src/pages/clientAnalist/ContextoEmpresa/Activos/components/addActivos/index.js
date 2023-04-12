@@ -44,7 +44,7 @@ export function AddActivoEmpresas(props){
     return (
         <>
            <ComponentModalFloting statemode={propismodalvisible} width = {'400px'} >
-                <ComponentModalFlotingHeader title="Insertar un Proceso" colorTitle={'#183152'} onClosechange={()=>{propsetismodalvisible(false);}} />
+                <ComponentModalFlotingHeader title="Insertar un Activo" colorTitle={'#183152'} onClosechange={()=>{propsetismodalvisible(false);}} />
                 <ComponentModalFlotingBody descripccion={""}>
                 <div style={{height: '10px'}}></div>
                 {/* <ComponentModalPrincipalListtabs

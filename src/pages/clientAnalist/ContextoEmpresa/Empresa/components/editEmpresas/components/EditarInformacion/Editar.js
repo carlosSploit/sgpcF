@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 // import { uploudImage } from "../../../../service/repository/uploudimage";
 // import { updateclientAnalist } from "../../../../service/repository/clientAnalist";
-import { ForminputAreatEdit, ForminputBottonSubmit, ForminputEdit } from "../../../../../../../../service/morvius-service/form_input/form_input";
+import { FormInformatView, ForminputAreatEdit, ForminputBottonSubmit, ForminputEdit } from "../../../../../../../../service/morvius-service/form_input/form_input";
 import { handleNewNotification, useNotification } from "../../../../../../../../service/Notifications/useNotificacion";
 import { updateEmpresa } from "../../../../../../../../service/repository/RTEmpresas";
 
@@ -92,13 +92,28 @@ export function EditarEmpresaInformation(props){
         {/* apace cuando no se a seleccionado nada */}
         {/* <ForminputImageCircle oncallbackchange={oncallbackchange} urlphoto={informationDataGeneral.photo} keyname ={`photo${informationDataGeneral.id_usuario}`}/> */}
         {/* <div style={{height:"20px"}}></div> */}
-        <ForminputEdit valueInit={informationDataGeneral.nombreempresa} placeHolder="Nombre de la Empresa" keyname ={`nombrEmp${informationDataGeneral.id_empresa}`}/>
-        <ForminputEdit valueInit={informationDataGeneral.ruc} placeHolder="RUC" keyname ={`ruc${informationDataGeneral.id_empresa}`}/>
-        <ForminputAreatEdit valueInit={informationDataGeneral.descripc} placeHolder="Descripccion" keyname ={`descr${informationDataGeneral.id_empresa}`}/>
-        <ForminputEdit valueInit={informationDataGeneral.telefono} placeHolder="Telefono" keyname ={`telf${informationDataGeneral.id_empresa}`}/>
-        <ForminputEdit valueInit={informationDataGeneral.rubroEmpresa} placeHolder="Rubro de la empresa" keyname ={`rubemp${informationDataGeneral.id_empresa}`}/>
-        <ForminputAreatEdit valueInit={informationDataGeneral.mision} placeHolder="Mision" keyname ={`mision${informationDataGeneral.id_empresa}`}/>
-        <ForminputAreatEdit valueInit={informationDataGeneral.vision} placeHolder="Vision" keyname ={`vision${informationDataGeneral.id_empresa}`}/>
+        {/* <FormInformatView  /> */}
+        {(informationDataGeneral.permis == 'A')?<>
+            <ForminputEdit valueInit={informationDataGeneral.nombreempresa} placeHolder="Nombre de la Empresa" keyname ={`nombrEmp${informationDataGeneral.id_empresa}`}/>
+            <ForminputEdit valueInit={informationDataGeneral.ruc} placeHolder="RUC" keyname ={`ruc${informationDataGeneral.id_empresa}`}/>
+            <ForminputAreatEdit valueInit={informationDataGeneral.descripc} placeHolder="Descripccion" keyname ={`descr${informationDataGeneral.id_empresa}`}/>
+            <ForminputEdit valueInit={informationDataGeneral.telefono} placeHolder="Telefono" keyname ={`telf${informationDataGeneral.id_empresa}`}/>
+            <ForminputEdit valueInit={informationDataGeneral.rubroEmpresa} placeHolder="Rubro de la empresa" keyname ={`rubemp${informationDataGeneral.id_empresa}`}/>
+            <ForminputAreatEdit valueInit={informationDataGeneral.mision} placeHolder="Mision" keyname ={`mision${informationDataGeneral.id_empresa}`}/>
+            <ForminputAreatEdit valueInit={informationDataGeneral.vision} placeHolder="Vision" keyname ={`vision${informationDataGeneral.id_empresa}`}/>
+            <div style={{height: '20px'}}></div>
+            <ForminputBottonSubmit label = {'Editar'} />
+        </>:<>
+            <FormInformatView valueInit={informationDataGeneral.nombreempresa} placeHolder="Nombre de la Empresa"/>
+            <FormInformatView valueInit={informationDataGeneral.ruc} placeHolder="RUC"/>
+            <FormInformatView valueInit={informationDataGeneral.descripc} placeHolder="Descripccion"/>
+            <FormInformatView valueInit={informationDataGeneral.telefono} placeHolder="Telefono"/>
+            <FormInformatView valueInit={informationDataGeneral.rubroEmpresa} placeHolder="Rubro de la empresa"/>
+            <FormInformatView valueInit={informationDataGeneral.mision} placeHolder="Mision"/>
+            <FormInformatView valueInit={informationDataGeneral.vision} placeHolder="Vision" />
+            <div style={{height: '20px'}}></div>
+        </>}
+        
         {/* <ForminputEdit valueInit={'Seciones 1'} placeHolder="sesion" keyname ={"sesion"}/> */}
         {/* {(itemselet == null)?
         
@@ -107,8 +122,6 @@ export function EditarEmpresaInformation(props){
         {/* {(itemselet != null)?
         <Forminput valueInit={itemselet.name} placeHolder="Tipo de Curso" keyname ={"tipcurso"}/>:
         <></>} */}
-        <div style={{height: '20px'}}></div>
-        <ForminputBottonSubmit label = {'Editar'} />
         {/* <ForminputBotton label = {"Cancelar"} isInvertColor = {true} /> */}
     </form>);
 }

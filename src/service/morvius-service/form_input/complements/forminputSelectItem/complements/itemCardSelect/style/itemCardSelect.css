@@ -1,5 +1,5 @@
 /* puntos class */
-
+@import url('../../../../../../masterVarial.css');
 
 .container_item_selectItem_conte_bueno {
     width: 100%;
@@ -65,9 +65,13 @@
     /* background-color: blueviolet; */
 }
 
-.container_item_selectItem_subcontaion_subtext {
+.container_item_selectItem_subcontaion_subtext1 {
     font-size: 14px;
-    color: forestgreen;
+    background-color: var(--color-text-secundary);
+    border-radius: 12px;
+    padding: 5px;
+    margin-top: 5px;
+    /* color: forestgreen; */
     /* background-color: blueviolet; */
 }
 

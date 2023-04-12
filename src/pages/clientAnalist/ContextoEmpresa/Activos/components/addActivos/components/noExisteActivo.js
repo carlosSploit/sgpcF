@@ -108,12 +108,12 @@ export function NoExisteActivpEmpresa(props){
             >
                 <>{/* apace cuando no se a seleccionado nada */}
                 <div style={{height:'20px'}} />
-                <Forminput textinput ={textname} settextinput = {settextname} placeHolder="Nombre" keyname ={`nombrEmp`}/>
+                <Forminput textinput ={textname} settextinput = {settextname} placeHolder="Nombre del Activo" keyname ={`nombrEmp`}/>
                 <div style={{height:'5px'}} />
-                <ForminputArea textinput ={textdescrip} settextinput = {settextdescrip} placeHolder="Descripccion" keyname ={`descr`}/>
+                <ForminputArea textinput ={textdescrip} settextinput = {settextdescrip} placeHolder="Descripccion del Activo" keyname ={`descr`}/>
                 <div style={{height:'5px'}} />
                 {(listActivProc.length != 0)?<div className="container_inserproces_selectet_data">
-                    <ForminputSelectItemDependenci isVisibleDescri = {true} keydescr = {'dependAbreb'} keyname = {"keyseletcTipActiv"} keyid = {"id_tipoActivo"} keylabe = {'nombreTipoActivo'} keydepende = {'id_dependeTipoPad'} listaObj={listActivProc} setlistaObj = {setlistActivProc} onChangeinput={onSelectItem} />
+                    <ForminputSelectItemDependenci checkbox = {textTipoActiv} setcheckbox = {settextTipoActiv} nameTitle="Selecciona el tipo de activo" isVisibleDescri = {true} keydescr = {'dependAbreb'} keyname = {"keyseletcTipActiv"} keyid = {"id_tipoActivo"} keylabe = {'nombreTipoActivo'} keydepende = {'id_dependeTipoPad'} listaObj={listActivProc} setlistaObj = {setlistActivProc} onChangeinput={onSelectItem} />
                 </div>:<></>}
                 <div style={{height: '20px'}}></div></>
                 <ForminputBottonSubmit label = {'Registrar un Activo'} />

@@ -126,9 +126,9 @@ export function ActivosProceso(props){
                     })}
                 </div>
             </div>
-            <AddActivosProceso informaDataEmpresa = {informaDataEmpresa} informationDataGeneral = {informationDataGeneral} onInsert={async ()=>{
+            {(ismodeladd)?<AddActivosProceso informaDataEmpresa = {informaDataEmpresa} informationDataGeneral = {informationDataGeneral} onInsert={async ()=>{
                 await LoadDataActivosProceso();
-            }} propismodalvisible = {ismodeladd} propsetismodalvisible = {setismodeladd} />
+            }} propismodalvisible = {ismodeladd} propsetismodalvisible = {setismodeladd} />:<></>}
             {(ismodelaEdit)?<EditarDependenActivosProceso informationProceses={informationDataGeneral} iskeyDatos = {indexSelectObjActivosProces} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>}
             {/* 
              */}

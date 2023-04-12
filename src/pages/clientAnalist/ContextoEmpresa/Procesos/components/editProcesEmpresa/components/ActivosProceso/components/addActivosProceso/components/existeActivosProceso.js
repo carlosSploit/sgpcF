@@ -23,13 +23,15 @@ export function ExisteActivosProceso(props){
 
     const onLoadAreas = async ()=>{
         let result = await getActivosEmpresa(informaDataEmpresa);
+        console.log(result)
         setlistActivosProceso([]);
         // setlistdataHistory([]);
         setTimeout(() => {
             let data = result.map((item)=>{
                 return {
                     id: item.id_activo,
-                    name: item.nombre_Activo
+                    name: item.nombre_Activo,
+                    descr: item.dependAbreb
                 }
             })
             setlistActivosProceso(data)
@@ -80,7 +82,7 @@ export function ExisteActivosProceso(props){
                 <div style={{height:'5px'}} />
                 {(listActivosProceso.length != 0)? 
                     <div className="container_AreaInterProces_selectet_data">
-                        <ForminputSelectItem  listaObj={listActivosProceso} setlistaObj = {setlistActivosProceso} keyname={"selestProcesoDep"} checkbox={textActivosProceso} setcheckbox={settextActivosProceso} onChangeinput={onSelectItem} />
+                        <ForminputSelectItem nameTitle={'Selecciona un activo'} isVisibleDescri={true} listaObj={listActivosProceso} setlistaObj = {setlistActivosProceso} keyname={"selestProcesoDep"} checkbox={textActivosProceso} setcheckbox={settextActivosProceso} onChangeinput={onSelectItem} />
                     </div>
                 :<></>}
                 <div style={{height: '20px'}}></div></>

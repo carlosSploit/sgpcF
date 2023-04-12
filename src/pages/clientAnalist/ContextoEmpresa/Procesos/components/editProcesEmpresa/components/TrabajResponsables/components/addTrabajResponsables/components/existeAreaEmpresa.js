@@ -5,8 +5,8 @@ import { useNotification } from "../../../../../../../../../../../service/Notifi
 // import { addEmpresa } from "../../../../../../../../../../../service/repository/RTEmpresas";
 import { handleNewNotification } from "../../../../../../../../../../../service/Notifications/useNotificacion";
 import { ForminputBotton, ForminputBottonSubmit, ForminputSelectItem } from "../../../../../../../../../../../service/morvius-service/form";
-import { addAreasEmpresa, getAresEmpresa } from "../../../../../../../../../../../service/repository/RTAreasEmpresas";
-import { addAreasInteraProces } from "../../../../../../../../../../../service/repository/RTAreasInteraProces";
+// import { addAreasEmpresa, getAresEmpresa } from "../../../../../../../../../../../service/repository/RTAreasEmpresas";
+// import { addAreasInteraProces } from "../../../../../../../../../../../service/repository/RTAreasInteraProces";
 import { getTrabajEmpresa } from "../../../../../../../../../../../service/repository/RTTrabajEmpresas";
 import { addTrabajRespon } from "../../../../../../../../../../../service/repository/RTTrabajRespon";
 
@@ -27,13 +27,15 @@ export function ExisteTrabajResponsabless(props){
 
     const onLoadAreas = async ()=>{
         let result = await getTrabajEmpresa(informaDataEmpresa);
+        console.log(result)
         setlistTrabajResponsabless([]);
         // setlistdataHistory([]);
         setTimeout(() => {
             let data = result.map((item)=>{
                 return {
                     id: item.Id_trabajador,
-                    name: item.nombre_apellido
+                    name: item.nombre_apellido,
+                    descr: item.cargo
                 }
             })
             setlistTrabajResponsabless(data)
@@ -84,7 +86,7 @@ export function ExisteTrabajResponsabless(props){
                 <div style={{height:'5px'}} />
                 {(listTrabajResponsabless.length != 0)? 
                     <div className="container_AreaInterProces_selectet_data">
-                        <ForminputSelectItem  listaObj={listTrabajResponsabless} setlistaObj = {setlistTrabajResponsabless} keyname={"selestProcesoDep"} checkbox={textTrabajResponsabless} setcheckbox={settextTrabajResponsabless} onChangeinput={onSelectItem} />
+                        <ForminputSelectItem isVisibleDescri = {true} nameTitle="Selecciona a un trabajador" listaObj={listTrabajResponsabless} setlistaObj = {setlistTrabajResponsabless} keyname={"selestProcesoDep"} checkbox={textTrabajResponsabless} setcheckbox={settextTrabajResponsabless} onChangeinput={onSelectItem} />
                     </div>
                 :<></>}
                 <div style={{height: '20px'}}></div></>

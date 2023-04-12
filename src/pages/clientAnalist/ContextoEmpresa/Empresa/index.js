@@ -15,10 +15,10 @@ import { OpccionActions } from "../../../../service/morvius-service/component/co
 
 export function Empresas(props){
     const [listdata,setlistdata] = useState([]);
-    const [listdataHistory,setlistdataHistory] = useState([]);
+    const [,setlistdataHistory] = useState([]);
     const [ismodeladd,setismodeladd] = useState(false);
     const [ismodelaEdit,setismodelaEdit] = useState(false);
-    const [textsearch,settextsearch] = useState("");
+    const [,settextsearch] = useState("");
     const [indexOptionEmpresa,setindexOptionEmpresa] = useState(0);
     const [indexOptionEmpresaD,setindexOptionEmpresaD] = useState([]);
     const dispatch = useNotification();
@@ -53,19 +53,9 @@ export function Empresas(props){
         setindexOptionEmpresaD(listdata);
     }
 
-    const DeleteEmpresa = async (id_Empresa,id_clienAnalit) => {
-        let result = await deleteEmpresa({id_empresa:id_Empresa, id_clienAnalit:id_clienAnalit});
+    const DeleteEmpresa = async (id_Empresa) => {
+        await deleteEmpresa({id_empresa:id_Empresa});
     }
-
-    // const onUpdate = async () => {
-    //     let result = await getadmins(textsearch);
-    //     setlistdata(result);
-    // }
-
-    // const onInsert = async () =>{
-    //     let result = await getadmins(textsearch);
-    //     setlistdata(result);
-    // }
 
     // ------------------------------------------------------------ Actions del Buscador
     const onChangeseach = async (search) => {
@@ -98,11 +88,9 @@ export function Empresas(props){
                     handleNewNotification(dispatch,'Selecciona una o varias empresas para poder eliminar', 404);
                     return
                 }
-                let secionkey = await getKeysesion();
-                let dataUser = await ConsuldataLogm({seccionkey: secionkey});
                 for (let index = 0; index < indexOptionEmpresaD.length; index++) {
                     const element = indexOptionEmpresaD[index];
-                    await DeleteEmpresa(element, dataUser.id_inform);
+                    await DeleteEmpresa(element);
                 }
                 handleNewNotification(dispatch,'Se realizo la eliminacion en exito', 200);
                 await LoadDataEmpresa()
@@ -135,7 +123,7 @@ export function Empresas(props){
                             }} onChange={(index)=>{
                                 setindexOptionEmpresa(index);
                                 setismodelaEdit(true);
-                            }} keyitem = {item.id_empresa} title = {item.nombreempresa} subtitle = {item.ruc} descrip = {item.descripc}></ItemEmpresa>)
+                            }} keyitem = {item.id_empresa} permis = {item.permis}  title = {item.nombreempresa} subtitle = {item.ruc} descrip = {item.descripc}></ItemEmpresa>)
                         })}
                     </div>
                 </div>
