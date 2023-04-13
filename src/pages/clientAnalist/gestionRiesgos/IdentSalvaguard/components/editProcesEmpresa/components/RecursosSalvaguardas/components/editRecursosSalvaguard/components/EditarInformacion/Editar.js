@@ -2,22 +2,11 @@ import { useEffect, useState } from "react";
 import { ForminputBottonSubmit } from "../../../../../../../../../../../../service/morvius-service/form";
 import { ForminputAreatEdit, ForminputEdit, ForminputnumberEdit } from "../../../../../../../../../../../../service/morvius-service/form_input/form_input";
 import { handleNewNotification, useNotification } from "../../../../../../../../../../../../service/Notifications/useNotificacion";
-// import { updateEmpresa } from "../../../../../../../../../../../../service/repository/RTEmpresas";
-// import { updateAreasEmpresa } from "../../../../../../../../../../../../service/repository/RTAreasEmpresas";
-// import { updateObjetivEmpresa } from "../../../../../../../../../../../../service/repository/RTObjetivEmpresas";
 import { updateRecursSalvAfectAct } from "../../../../../../../../../../../../service/repository/RTRecursSalvAfectAct";
-// import { useNotification } from "../../../../service/Notifications/NotificationProvider";
-// import { handleNewNotification } from "../../../../service/Notifications/useNotificacion";
-
-// import { uploudImage } from "../../../../service/repository/uploudimage";
-// import { updateclientAnalist } from "../../../../service/repository/clientAnalist";
-// import { ForminputAreatEdit, ForminputBottonSubmit, ForminputEdit } from "../../../../../../../../service/morvius-service/form_input/form_input";
-// import { handleNewNotification, useNotification } from "../../../../../../../../service/Notifications/useNotificacion";
-// // import { updateEmpresa } from "../../../../../../../../service/repository/Empresas";
 
 export function EditarRecursoSalvaguarImform(props){
 
-    const [propinformationDataGeneral, propsetinformationDataGeneral] = useState({
+    const [propinformationDataGeneral, ] = useState({
         "id_recurSalvAfectAct":8,
         "id_salvAfectAct":11,
         "nombreRecurSalvAfect":"PC",

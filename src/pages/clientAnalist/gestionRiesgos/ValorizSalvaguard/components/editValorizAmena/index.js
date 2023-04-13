@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import './style/index.css';
 import { ComponentModalFloting, ComponentModalFlotingBody, ComponentModalFlotingHeader } from "../../../../../../service/morvius-service/components";
 import { EditarValorActivCuantiImformation } from "./components/ValoriProces";
-import { EditarValorActivCualitativImformation } from "./components/valorizCualit";
+// import { EditarValorActivCualitativImformation } from "./components/valorizCualit";
 import { getValoriSalvaguard } from "../../../../../../service/repository/RTValoriSalvaguard";
 
 export function EditaValorSalvaguard(props){
@@ -42,7 +42,7 @@ export function EditaValorSalvaguard(props){
             setlistview([<EditarValorActivCuantiImformation onAction={async ()=>{
                 await onAction();
                 await actualizeData();
-            }} informationDataGeneral={objValoritCualiti}/>,<EditarValorActivCualitativImformation informationDataGeneral={objValoritCualiti}/>])
+            }} informationDataGeneral={objValoritCualiti}/>])
         }, 500);
     }
 

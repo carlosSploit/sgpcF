@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./styles/index.css"
 import { Componentfilter } from "../../../../service/morvius-service/component/components";
-// import { AddEmpresas } from "./components/addEmpresas";
-// import { ItemEmpresa } from './components/itemEmpresa/index';
-// import { getadmins } from '../../../../service/repository/Admin';
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { useNotification } from "../../../../service/Notifications/NotificationProvider";
 import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mithelworks";
 import { getEmpresas } from "../../../../service/repository/RTEmpresas";
 import { getProcesEmpresa } from "../../../../service/repository/RTProcesEmpresas";
 import { handleNewNotification } from "../../../../service/Notifications/useNotificacion";
-// import { OpccionActions } from "../../ContextoEmpresa/Empresa/components/opccionActions";
 import { getVersionAnalitiv } from "../../../../service/repository/RTVersionAnalitiv";
 import { ItemValorizeActiv } from "./components/itemIdentAmenazas";
 import { AddSalvaguarAmenaz } from "./components/addIdentAmenazas";
@@ -41,9 +37,7 @@ export function IndentifiSalvaguard(props){
     useEffect(()=>{
         (async()=>{
             setlistOpccionFilter([]);
-            // await LoadDataEmpresa();
             await GenerateEmpresa();
-            // await LoadOpccionFilter();
         })();
     },[]);
 
@@ -208,7 +202,8 @@ export function IndentifiSalvaguard(props){
                 <div className="Container_SalvagurdAmenaz_principal_body_naster">
                     <div className="Container_SalvagurdAmenaz_principal_body_naster_information">
                         {/* Generador */}
-                        {(propsListOpccion.length != 0)?<div className="Container_SalvagurdAmenaz_principal_header">
+                        {/* {(propsListOpccion.length != 0)?:<></>} */}
+                        <div className="Container_SalvagurdAmenaz_principal_header">
                             <Componentfilter onSeleccionOpccion={async (objJson)=>{
                                     const keysfilter = Object.keys(objJson)
                                     const  keyInteraccion = keysfilter[keysfilter.length - 1]
@@ -284,7 +279,7 @@ export function IndentifiSalvaguard(props){
                                 await LoadDataSalvagAmenaz(id);
                                 setAmenazVersion(id)
                             }} ></Componentfilter>
-                        </div>:<></>}
+                        </div>
                         {/* Curpo */}
                         <div className="Container_SalvagurdAmenaz_principal_body">
                             <OpccionActions sise={35} opccionSistem={opccionSistem} />

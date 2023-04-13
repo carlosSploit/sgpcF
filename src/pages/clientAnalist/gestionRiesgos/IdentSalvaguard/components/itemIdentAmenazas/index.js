@@ -27,6 +27,7 @@ export function ItemValorizeActiv(props){
                     <div className="Container_ItemIdentiSalvaguar_conten_InfoData_secundary" >{subtitle}</div>
                 </div>
                 <div className="Container_ItemIdentiSalvaguar_conten_secondary_seleccion_suInfor">
+                    {/* <div className="Container_ItemIdentiSalvaguar_conten_press_ativ" ></div> */}
                     {/* <div className="Container_ItemIdentiSalvaguar_conten_InfoData_Descrip" >{descrip}</div> */}
                 </div>
             </div>

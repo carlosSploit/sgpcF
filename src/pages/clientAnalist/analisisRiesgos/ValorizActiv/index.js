@@ -248,7 +248,8 @@ export function ValoriActiv(props){
                 <div className="Container_ValoriActiv_principal_body_naster">
                     <div className="Container_ValoriActiv_principal_body_naster_information">
                         {/* Generador */}
-                        {(propsListOpccion.length != 0)?<div className="Container_ValoriActiv_principal_header">
+                        {/* {(propsListOpccion.length != 0)?:<></>} */}
+                        <div className="Container_ValoriActiv_principal_header">
                             <Componentfilter onSeleccionOpccion={async (objJson)=>{
                                 const keysfilter = Object.keys(objJson)
                                 const  keyInteraccion = keysfilter[keysfilter.length - 1]
@@ -293,7 +294,7 @@ export function ValoriActiv(props){
                                 await LoadDataVersionAnalitic(id);
                                 setIndexVersion(id)
                             }} ></Componentfilter>
-                        </div>:<></>}
+                        </div>
                         {/* Curpo */}
                         {
                         <div className="Container_ValoriActiv_principal_body">

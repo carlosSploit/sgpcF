@@ -286,7 +286,7 @@ export function ValoriSalvaguard(props){
                 <div className="Container_valoriSalvaguar_principal_body_naster">
                     <div className="Container_valoriSalvaguar_principal_body_naster_information">
                         {/* Generador */}
-                        {(propsListOpccion.length != 0)?
+                        {/* {(propsListOpccion.length != 0)?:<></>} */}
                         <div className="Container_valoriSalvaguar_principal_header">
                             <div className="Container_valoriSalvaguar_principal_header_filter" style={{width:'100%'}}>
                                 <Componentfilter onSeleccionOpccion={async (objJson)=>{
@@ -365,7 +365,7 @@ export function ValoriSalvaguard(props){
                                     setAmenazVersion(id)
                                 }} ></Componentfilter>
                             </div>
-                        </div>:<></>}
+                        </div>
                         {/* Curpo */}
                         {
                         <div className="Container_valoriSalvaguar_principal_body">

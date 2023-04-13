@@ -131,13 +131,14 @@ export function InsideProces(props){
                 {/* Encabezado */}
                 <div className="Container_InsidenProces_principal_header">
                     <div className="Container_InsidenProces_principal_header_subcontent_title">
-                        <div className="Container_InsidenProces_principal_header_content_title">Insidencias de Procesos</div>
+                        <div className="Container_InsidenProces_principal_header_content_title">Incidencias de Procesos</div>
                     </div>
                 </div>
                 <div className="Container_InsidenProces_principal_body_naster">
                     <div className="Container_InsidenProces_principal_body_naster_information">
                         {/* Generador */}
-                        {(propsListOpccion.length != 0)?<div className="Container_InsidenProces_principal_header">
+                        {/* {(propsListOpccion.length != 0)?:<></>} */}
+                        <div className="Container_InsidenProces_principal_header">
                             <Componentfilter onSeleccionOpccion={async (objJson)=>{
                                 const keysfilter = Object.keys(objJson)
                                 const  keyInteraccion = keysfilter[keysfilter.length - 1]
@@ -164,7 +165,7 @@ export function InsideProces(props){
                                 await LoadDataInsideProces(id);
                                 setindexProceso(id)
                             }} ></Componentfilter>
-                        </div>:<></>}
+                        </div>
                         {/* Curpo */}
                         <div className="Container_InsidenProces_principal_body">
                             <OpccionActions sise={35} opccionSistem={opccionSistem} />

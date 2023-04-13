@@ -46,9 +46,9 @@ export function EditarValorActivCuantiImformation(props){
         {id_nivelCrit:6, labelCrit:'Medio Eficiente - 50'},
         {id_nivelCrit:7, labelCrit:'Eficiente - 60'},
         {id_nivelCrit:8, labelCrit:'Eficiente - 70'},
-        {id_nivelCrit:8, labelCrit:'Eficiente - 80'},
-        {id_nivelCrit:9, labelCrit:'Muy Eficiente - 90'},
-        {id_nivelCrit:10, labelCrit:'Muy Eficiente - 100'},
+        {id_nivelCrit:9, labelCrit:'Eficiente - 80'},
+        {id_nivelCrit:10, labelCrit:'Muy Eficiente - 90'},
+        {id_nivelCrit:11, labelCrit:'Muy Eficiente - 100'},
     ]);
     // escala de Degradacion de la Eficacia
     const [textDegradEficas, setDegradEficas] = useState(0)

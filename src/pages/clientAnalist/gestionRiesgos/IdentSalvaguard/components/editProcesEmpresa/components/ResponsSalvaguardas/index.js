@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./styles/index.css"
 import { useNotification } from "../../../../../../../../service/Notifications/NotificationProvider";
-// import { deleteTrabajRespon } from "../../../../../../../../service/repository/RTTrabajRespon";
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { handleNewNotification } from "../../../../../../../../service/Notifications/useNotificacion";
 import { AddTrabajResponsabless } from "./components/addTrabajResponsables";
@@ -13,11 +12,8 @@ export function TrabajResponsables(props){
 
     const {informationDataGeneral} = props;
     const [listdata,setlistdata] = useState([]);
-    // const [listdataHistory,setlistdataHistory] = useState([]);
     const [ismodeladd,setismodeladd] = useState(false);
     const [,setismodelaEdit] = useState(false);
-    // const [textsearch,settextsearch] = useState("");
-    // const [indexOpccionAreasInteraProces,setindexOpccionAreasInteraProcesa] = useState(0);
     const [indexOpccionTrabajResponsablesD,setindexOpccionTrabajResponsablesD] = useState([]);
     const dispatch = useNotification();
     
@@ -90,16 +86,13 @@ export function TrabajResponsables(props){
                             AddItemDeleteResponSalvaguard(index);
                         }} onChange={(index)=>{
                             setismodelaEdit(true);
-                        }} keyitem = {item.id_responSalvAfectAct} title = {item.nombre_apellido} descrip = {item.cargo} />)
+                        }} keyitem = {item.id_responSalvAfectAct} subtitle={item.cargo} title = {item.nombre_apellido} descrip = {item.cargo} />)
                     })}
                 </div>
             </div>
             {(ismodeladd)?<AddTrabajResponsabless informationDataGeneral = {informationDataGeneral} onInsert={async ()=>{
                 await LoadDataTrabajResponsables();
             }} propismodalvisible = {ismodeladd} propsetismodalvisible = {setismodeladd} />:<></>}
-            {/* {(ismodelaEdit)?<EditarAreasEmpresa informationDataGeneralEmpre={informationDataGeneral} onAction = {LoadDataAreasInteraProces} iskeyDatos = {indexOpccionAreasInteraProces} ismodalvisible = {ismodelaEdit} setismodalvisible = {setismodelaEdit} />:<></>} */}
-            {/* 
-             */}
         </>
     );
 }

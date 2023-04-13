@@ -12,7 +12,7 @@ export function AddInsidenciaProceso(props){
     return (
         <>
            <ComponentModalFloting statemode={propismodalvisible} width = {'400px'} >
-                <ComponentModalFlotingHeader title="Insertar ua Insidencia" colorTitle={'#183152'} onClosechange={()=>{propsetismodalvisible(false);}} />
+                <ComponentModalFlotingHeader title="Insertar ua Incidencia" colorTitle={'#183152'} onClosechange={()=>{propsetismodalvisible(false);}} />
                 <ComponentModalFlotingBody descripccion={""}>
                 <div style={{height: '10px'}}></div>
                 {listview[0]}

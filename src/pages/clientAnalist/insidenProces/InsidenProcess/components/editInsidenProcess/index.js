@@ -41,7 +41,7 @@ export function EditarInsidenProces(props){
     }
 
     return (<ComponentModalFloting statemode={ismodalvisible} width = {'400px'} >
-                <ComponentModalFlotingHeader title="Editar Insidencia" colorTitle={'#183152'} onClosechange={()=>{setismodalvisible(false);}} />
+                <ComponentModalFlotingHeader title="Editar Incidencia" colorTitle={'#183152'} onClosechange={()=>{setismodalvisible(false);}} />
                 <ComponentModalFlotingBody descripccion={""}>
                 <div style={{height: '10px'}}></div>
                 {listview[0]}

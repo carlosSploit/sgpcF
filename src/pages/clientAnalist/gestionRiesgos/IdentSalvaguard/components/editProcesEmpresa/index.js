@@ -70,7 +70,9 @@ export function EditarSalvagAmenaz(props){
         setindex(index);
     }
 
-    return (<ComponentModalFloting statemode={ismodalvisible} width = {'400px'} >
+    return (
+        <>
+            <ComponentModalFloting statemode={ismodalvisible} width = {'400px'} >
                 <ComponentModalFlotingHeader title="Mantenimiento de Salvaguardas" colorTitle={'#183152'} onClosechange={()=>{setismodalvisible(false);}} />
                 <ComponentModalFlotingBody descripccion={""}>
                 <div style={{height: '10px'}}></div>
@@ -85,5 +87,7 @@ export function EditarSalvagAmenaz(props){
                 <div style={{height: '5px'}}></div>
                 {listview[index]}
                 </ComponentModalFlotingBody>
-            </ComponentModalFloting>);
+            </ComponentModalFloting>
+        </>
+    );
 }

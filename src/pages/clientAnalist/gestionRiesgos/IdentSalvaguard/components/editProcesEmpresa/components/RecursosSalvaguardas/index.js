@@ -4,38 +4,17 @@ import { useNotification } from "../../../../../../../../service/Notifications/N
 // import { deleteObjetivEmpresa, getObjetivEmpresa } from "../../../../../../../../service/repository/RTObjetivEmpresas";
 import { DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import { handleNewNotification } from "../../../../../../../../service/Notifications/useNotificacion";
-// import { OpccionActions } from "../AreasEmpresa/components/opccionActions";
-import { ItemObjetivEmpresa } from "./components/itemRecursosSalvaguard";
+import { ItemObjetivEmpresa, ItemRecurSalvaguard } from "./components/itemRecursosSalvaguard";
 import { AddRecursSalvaguard } from "./components/addRecursosSalvaguard";
-// import { EditarObjetivEmpresaInformation } from "./components/editObjetivEmpresas/components/EditarInformacion/Editar";
-// import { EditarObjetivEmpresa } from "./components/editObjetivEmpresas/index";
 import { deleteRecursSalvAfectAct, getRecursSalvAfectAct } from "../../../../../../../../service/repository/RTRecursSalvAfectAct";
 import { OpccionActionsRecurSalvagur } from "./components/opccionActions";
-// import { EditarRecursoSalvaguarImform } from "./components/editObjetivEmpresas/components/EditarInformacion/Editar";
 import { EditarRecursoSalvag } from "./components/editRecursosSalvaguard";
-// import { ConsuldataLogm, getKeysesion } from "../../../../../../../../service/repository/mithelworks";
-// import { deleteEmpresa, getEmpresas } from "../../../../../../../../service/repository/RTEmpresas";
-// import { ControlOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
-// import { handleNewNotification } from "../../../../../../../../service/Notifications/useNotificacion";
-// import { ItemObjetivEmpresa, ItemEmpresa } from "./components/itemObjetivEmpresa/index";
-// import { OpccionActions } from "./components/opccionActions";
-// import { deleteObjetivEmpresa, getAresEmpresa } from "../../../../../../../../service/repository/RTObjetivEmpresas";
-// import { AddAreaEmpresas } from "./components/addAreaEmpresas";
-// import { EditarObjetivEmpresa } from "./components/editObjetivEmpresas";
-// import { getObjetivEmpresa } from "../../../../../../../../service/repository/RTObjetivEmpresas";
-// import { Componentsearchanimation} from "../../../../service/morvius-service/component/components";
-// import { AddEmpresas } from "./components/addEmpresas";
-// import { getadmins } from '../../../../service/repository/Admin';
-// import { EditarEmpresa } from "./components/editEmpresas";
-
 export function RecurSalvaguard(props){
 
     const {informationDataGeneral} = props;
     const [listdata,setlistdata] = useState([]);
-    // const [listdataHistory,setlistdataHistory] = useState([]);
     const [ismodeladd,setismodeladd] = useState(false);
     const [ismodelaEdit,setismodelaEdit] = useState(false);
-    // const [textsearch,settextsearch] = useState("");
     const [indexOpccionObjetivEmpresa,setindexOpccionObjetivEmpresa] = useState(0);
     const [indexOpccionObjetivEmpresaD,setindexOpccionObjetivEmpresaD] = useState([]);
     const dispatch = useNotification();
@@ -43,7 +22,6 @@ export function RecurSalvaguard(props){
     useEffect(()=>{
         (async()=>{
             await LoadDataResurSalvaguard();
-            // console.log(informationDataGeneral)
         })();
     },[]);
 
@@ -106,12 +84,12 @@ export function RecurSalvaguard(props){
                 <OpccionActionsRecurSalvagur opccionSistem={opccionSistem} />
                 <div className="Container_RecursSalvaguard_principal_body_subContainer">
                     {listdata.map((item)=>{
-                        return (<ItemObjetivEmpresa onSelecteItem={(index)=>{
+                        return (<ItemRecurSalvaguard onSelecteItem={(index)=>{
                             AddItemDeleteRecursoSalvag(index);
                         }} onChange={(index)=>{
                             setindexOpccionObjetivEmpresa(index);
                             setismodelaEdit(true);
-                        }} keyitem = {item.id_recurSalvAfectAct } title = {item.nombreRecurSalvAfect } />)
+                        }} keyitem = {item.id_recurSalvAfectAct } subtitle={`S/. ${item.presioRecurSalvAfect}`} title = {item.nombreRecurSalvAfect } />)
                     })}
                 </div>
             </div>

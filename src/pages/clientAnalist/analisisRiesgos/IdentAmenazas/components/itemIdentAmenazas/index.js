@@ -8,7 +8,8 @@ export function ItemValorizeActiv(props){
         onChange = (id_options) => {}, 
         onSelecteItem = (id_options, stade) => {},
         keyitem,
-        title,subtitle,descrip
+        title,
+        subtitle
     } = props;
     const [isSeleteItem, setisSeleteItem] = useState(false);
 

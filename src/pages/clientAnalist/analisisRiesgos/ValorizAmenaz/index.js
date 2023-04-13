@@ -232,7 +232,7 @@ export function ValoriAmenaz(props){
                 <div className="Container_valoriAmenaz_principal_body_naster">
                     <div className="Container_valoriAmenaz_principal_body_naster_information">
                         {/* Generador */}
-                        {(propsListOpccion.length != 0)?
+                        {/* {(propsListOpccion.length != 0)?:<></>} */}
                         <div className="Container_valoriAmenaz_principal_header">
                             <div className="Container_valoriAmenaz_principal_header_filter" style={{width:'100%'}}>
                                 <Componentfilter onSeleccionOpccion={async (objJson)=>{
@@ -295,7 +295,7 @@ export function ValoriAmenaz(props){
                                     setActivVersion(id)
                                 }} ></Componentfilter>
                             </div>
-                        </div>:<></>}
+                        </div>
                         {/* Curpo */}
                         {
                         <div className="Container_valoriAmenaz_principal_body">
