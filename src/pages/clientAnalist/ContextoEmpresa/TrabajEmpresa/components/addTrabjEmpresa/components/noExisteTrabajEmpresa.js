@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNotification } from "../../../../../../../service/Notifications/NotificationProvider";
-import { addEmpresa } from "../../../../../../../service/repository/RTEmpresas";
-import { ConsuldataLogm, getKeysesion } from "../../../../../../../service/repository/mithelworks";
+// import { addEmpresa } from "../../../../../../../service/repository/RTEmpresas";
+// import { ConsuldataLogm, getKeysesion } from "../../../../../../../service/repository/mithelworks";
 import { handleNewNotification } from "../../../../../../../service/Notifications/useNotificacion";
-import { Forminput, ForminputArea, ForminputBotton, ForminputBottonSubmit, Forminputmail, Forminputnumber } from "../../../../../../../service/morvius-service/form";
+import { Forminput, ForminputArea, ForminputBotton, ForminputBottonSubmit, Forminputmail } from "../../../../../../../service/morvius-service/form";
 import { addTrabajEmpresa } from "../../../../../../../service/repository/RTTrabajEmpresas";
 
 export function NoExisteEmpresa(props){
@@ -79,8 +79,8 @@ export function NoExisteEmpresa(props){
                 <div style={{height:'5px'}} />
                 <Forminput textinput ={textCodigo} settextinput = {settextCodigo} placeHolder="Codigo Empresa" keyname ={`codig`}/>
                 <div style={{height: '20px'}}></div></>
-                <ForminputBottonSubmit label = {'Registrar a la Empresa'} />
-                <ForminputBotton label = {'Cancelar'} isInvertColor = {true} />
+                <ForminputBottonSubmit label = {'Registrar el Trabajador'} />
+                {/* <ForminputBotton label = {'Cancelar'} isInvertColor = {true} /> */}
                 {/* <ForminputBotton label = {"Cancelar"} isInvertColor = {true} /> */}
             </form>
         </>
