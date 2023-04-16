@@ -63,7 +63,7 @@ export function ExisteObjetivoEmpresa(props){
                 <div style={{height:'5px'}} />
                 <Forminput textinput ={textname} settextinput = {settextname} placeHolder="Nombre" keyname ={`nombrEmp`}/>
                 <div style={{height: '20px'}}></div></>
-                <ForminputBottonSubmit label = {'Registrar Area de la Empresa'} />
+                <ForminputBottonSubmit label = {'Registrar el Objetivo de la Empresa'} />
                 <ForminputBotton label = {'Cancelar'} isInvertColor = {true} onChange={limpiartext} />
                 {/* <ForminputBotton label = {"Cancelar"} isInvertColor = {true} /> */}
             </form>
