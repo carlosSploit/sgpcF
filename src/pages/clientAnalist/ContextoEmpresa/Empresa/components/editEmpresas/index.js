@@ -11,7 +11,7 @@ import { getKeysesion } from "../../../../../../service/repository/mithelworks";
 import { ConsuldataLogm } from "../../../../../../service/repository/mithelworks";
 import { AreasEmpresas } from "./components/AreasEmpresa";
 import { ObjetivEmpresas } from "./components/ObjetivosEmpresa";
-import { AnalistEmpresa } from "./components/RespVersionAnali";
+import { AnalistEmpresa } from "./components/AnalistaEmpresa";
 
 export function EditarEmpresa(props){
 

@@ -106,7 +106,7 @@ export function ExisteAnalistEmpresa(props){
                 <div style={{height:'5px'}} />
                 {(listActivosProceso.length != 0)? 
                     <div className="container_AreaInterProces_selectet_data">
-                        <ForminputSelectItem isVisibleFoto={true} listaObj={listActivosProceso} setlistaObj = {setlistActivosProceso} keyname={"selestProcesoDep"} checkbox={textClienAnalit} setcheckbox={settextClienAnalit} onChangeinput={onSelectItem} />
+                        <ForminputSelectItem nameTitle={'Selecciona un Analista'} isVisibleFoto={true} listaObj={listActivosProceso} setlistaObj = {setlistActivosProceso} keyname={"selestProcesoDep"} checkbox={textClienAnalit} setcheckbox={settextClienAnalit} onChangeinput={onSelectItem} />
                     </div>
                 :<></>}
                 {/* <div style={{height:'15px'}} />
@@ -116,7 +116,7 @@ export function ExisteAnalistEmpresa(props){
                     }} />
                 :<></>} */}
                 <div style={{height: '20px'}}></div></>
-                <ForminputBottonSubmit label = {'Enlazar Responsable'} />
+                <ForminputBottonSubmit label = {'Enlazar Analista'} />
                 {/* <ForminputBotton label = {'Cancelar'} isInvertColor = {true} /> */}
                 <ForminputBotton label = {"Cancelar"} isInvertColor = {true} onChange = {limpiartext} />
             </form>
