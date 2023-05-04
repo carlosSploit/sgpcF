@@ -69,7 +69,7 @@ export function PerfildeUsuario(props){
     }
 
     return (<ComponentModalFloting statemode={ismodalvisible} width = {'400px'} >
-                <ComponentModalFlotingHeader title="Editar a un usaurio" colorTitle={'#183152'} onClosechange={()=>{setismodalvisible(false);}} />
+                <ComponentModalFlotingHeader title="Editar Perfil" colorTitle={'#183152'} onClosechange={()=>{setismodalvisible(false);}} />
                 <ComponentModalFlotingBody descripccion={""}>
                 <ComponentModalPrincipalListtabs
                     listOptions = {listOpt}

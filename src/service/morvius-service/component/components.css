@@ -64,6 +64,22 @@
     /* background-color: aqua; */
 }
 
+.component_filter_containert_filtOptions_load {
+    width: 80%;
+    height: 50px;
+    /* margin-top: 10px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* overflow-x: scroll; */
+    overflow-y: hidden;
+
+    padding-left: 20px;
+    padding-right: 10px;
+    /* background-color: red */
+    /* background-color: aqua; */
+}
+
 .component_filter_containert_filtOptions:last-child {
     margin-right: 0px;
 }

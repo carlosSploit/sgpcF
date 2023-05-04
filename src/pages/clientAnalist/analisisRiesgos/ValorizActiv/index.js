@@ -47,51 +47,51 @@ export function ValoriActiv(props){
     const [ismodeladd,setismodeladd] = useState(false);
     const [ismodelaEdit,setismodelaEdit] = useState(false);
     const [ismodelaInfo,setismodelaInfo] = useState(false);
-    const [propstateradio,propsetstateradio] = useState(false);
-    const [propstateradio2,propsetstateradio2] = useState(false);
+    // const [propstateradio,propsetstateradio] = useState(false);
+    // const [propstateradio2,propsetstateradio2] = useState(false);
     // const [textsearch,settextsearch] = useState("");
     const [indexActivValori,setindexActivValori] = useState(0);
     const [indexOptionVersionAnaliD,setindexOptionVersionAnaliD] = useState([]);
-    const [listHeaderTableAnalitic, ] = useState([
-        {
-            label: "#",
-            asling: "lef",
-            isOcult: false,
-            width: "10px"
-        },
-        {
-            label: "Abrebiatura",
-            asling: "lef",
-            isOcult: false,
-            width: ""
-        },
-        {
-            label: "Presio Activo",
-            asling: "lef",
-            isOcult: false,
-            width: ""
-        }
-    ]);
-    const [listHeaderTableAnalitic2, ] = useState([
-        {
-            label: "#",
-            asling: "lef",
-            isOcult: false,
-            width: "2%"
-        },
-        {
-            label: "Abrebiatura",
-            asling: "lef",
-            isOcult: false,
-            width: ""
-        },
-        {
-            label: "Valor Cuali",
-            asling: "lef",
-            isOcult: false,
-            width: ""
-        }
-    ]);
+    // const [listHeaderTableAnalitic, ] = useState([
+    //     {
+    //         label: "#",
+    //         asling: "lef",
+    //         isOcult: false,
+    //         width: "10px"
+    //     },
+    //     {
+    //         label: "Abrebiatura",
+    //         asling: "lef",
+    //         isOcult: false,
+    //         width: ""
+    //     },
+    //     {
+    //         label: "Presio Activo",
+    //         asling: "lef",
+    //         isOcult: false,
+    //         width: ""
+    //     }
+    // ]);
+    // const [listHeaderTableAnalitic2, ] = useState([
+    //     {
+    //         label: "#",
+    //         asling: "lef",
+    //         isOcult: false,
+    //         width: "2%"
+    //     },
+    //     {
+    //         label: "Abrebiatura",
+    //         asling: "lef",
+    //         isOcult: false,
+    //         width: ""
+    //     },
+    //     {
+    //         label: "Valor Cuali",
+    //         asling: "lef",
+    //         isOcult: false,
+    //         width: ""
+    //     }
+    // ]);
     // const [isModelFilter,setisModelFilter] = useState(false);
     const [listOpccionFilter,setlistOpccionFilter] = useState([]);
     // const [listSelFilter,setlistSelFilter] = useState([]);
@@ -101,7 +101,7 @@ export function ValoriActiv(props){
     const [indexEmpresa,setindexEmpresa] = useState(0);
     const [keyOpccionProces,setkeyOpccionProces] = useState(0);
     const [indexVersion,setIndexVersion] = useState(0);
-    
+    const [isFilter, setIsFilter] = useState(false);
     const dispatch = useNotification();
     
     useEffect(()=>{
@@ -251,6 +251,7 @@ export function ValoriActiv(props){
                         {/* {(propsListOpccion.length != 0)?:<></>} */}
                         <div className="Container_ValoriActiv_principal_header">
                             <Componentfilter onSeleccionOpccion={async (objJson)=>{
+                                setIsFilter(false);
                                 const keysfilter = Object.keys(objJson)
                                 const  keyInteraccion = keysfilter[keysfilter.length - 1]
                                 // validar si las opcciones de interaccion o de recarga
@@ -293,11 +294,11 @@ export function ValoriActiv(props){
                                 let id = json['VersiAnali'];
                                 await LoadDataVersionAnalitic(id);
                                 setIndexVersion(id)
+                                setIsFilter(true);
                             }} ></Componentfilter>
                         </div>
                         {/* Curpo */}
-                        {
-                        <div className="Container_ValoriActiv_principal_body">
+                        {(isFilter)?<div className="Container_ValoriActiv_principal_body">
                             <OpccionActions sise={35} opccionSistem={opccionSistem} />
                             <div className="Container_ValoriActiv_principal_body_subContainer">
                                 {(listdata.length != 0)?listdata.map((item)=>{
@@ -310,7 +311,7 @@ export function ValoriActiv(props){
                                     }} keyitem = {item.id_activProsVerAnali} title = {item.nombre_Activo} subtitle = {item.dependAbreb} />)
                                 }):<></>}
                             </div>
-                        </div>
+                        </div>:<></>
                         // :((propstateradio2)?
                         // <div className="Container_ValoriActiv_principal_body">
                         // {/* <OpccionActions opccionSistem={opccionSistem} /> */}

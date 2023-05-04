@@ -16,6 +16,7 @@ import { ComponentModalPrincipal,
         ComponentModalPrincipalBody,
         ComponentModalPrincipalFooter} from "./complements/componentModalPrincipal/componentModalPrincipal";
 import useScreenSize from "../../hooks/resolution.hooks";
+import { CargarInformation } from "../../router/page/pagecarga/loadData";
 
 // component Item secion
 export function ComponentItemSecionActions(props){
@@ -401,23 +402,33 @@ export function Componentfilter(props){
                     {(resoluWindows.width >= 500)?
                     <>
                         {/* --------------------- Iten de Generacion de datatos */}
-                        <div className="component_filter_containert_filtOptions">
-                            {(ListOpccion.map((item)=>{
-                                console.log(item)
-                                return (<div className="component_search_input_combofilter">
-                                {(item.opccions != null && item.opccions.length != 0)?<ForminputComboBox valueInit={(compruebeValueInit(item)?item.initValue:0)} keyname={item.nomenclature} isInvert={true} width={100} height={35} keyvalue={item.keyvalue} keylabel={item.masterLabel} datacombo={item.opccions} isdefault={true} onChangeinput={(jsonval)=>{
-                                    let data = checkfilter;
-                                    data[jsonval.nomenclature] = jsonval.value
-                                    // detectar el ultimo ingresado
-                                    const objData = {...data}
-                                    delete objData[jsonval.nomenclature];
-                                    objData[jsonval.nomenclature] = jsonval.value
-                                    onSeleccionOpccion(objData);
-                                    setcheckfilter(data);
-                                }} />:<></>}
-                            </div>);
-                            }))}
-                        </div>
+                        {
+                            (Array.isArray(ListOpccion))?
+                            ((ListOpccion.length != 0)?
+                            <div className="component_filter_containert_filtOptions">
+                                {(ListOpccion.map((item)=>{
+                                    // console.log(item)
+                                    return (<div className="component_search_input_combofilter">
+                                    {(item.opccions != null && item.opccions.length != 0)?<ForminputComboBox valueInit={(compruebeValueInit(item)?item.initValue:0)} keyname={item.nomenclature} isInvert={true} width={100} height={35} keyvalue={item.keyvalue} keylabel={item.masterLabel} datacombo={item.opccions} isdefault={true} onChangeinput={(jsonval)=>{
+                                        let data = checkfilter;
+                                        data[jsonval.nomenclature] = jsonval.value
+                                        // detectar el ultimo ingresado
+                                        const objData = {...data}
+                                        delete objData[jsonval.nomenclature];
+                                        objData[jsonval.nomenclature] = jsonval.value
+                                        onSeleccionOpccion(objData);
+                                        setcheckfilter(data);
+                                    }} />:<></>}
+                                </div>);
+                                }))}
+                            </div>:
+                            <div className="component_filter_containert_filtOptions_load">
+                                <CargarInformation height = {40} width = {40} color = {'#375D81'} borderwidth = {4} />
+                            </div>):
+                            <div className="component_filter_containert_filtOptions_load">
+                                <CargarInformation height = {40} width = {40} color = {'#375D81'} borderwidth = {4} />
+                            </div>
+                        }
                         {/* --------------------------------------------------- */}
                         <div className="component_filter_containert_filtButtons">
                             <div className="component_filter_containert_filtButtons_button" onClick={()=>{
@@ -442,7 +453,7 @@ export function Componentfilter(props){
                             {/* --------------------- Iten de Generacion de datatos */}
                             <div className="component_filter_containert_filtOptions">
                                 {(ListOpccion.map((item)=>{
-                                    console.log(item)
+                                    // console.log(item)
                                     return (<div className="component_search_input_combofilter">
                                     {(item.opccions != null && item.opccions.length != 0)?<ForminputComboBox valueInit={(compruebeValueInit(item)?item.initValue:0)} keyname={item.nomenclature} isInvert={true} width={100} height={35} keyvalue={item.keyvalue} keylabel={item.masterLabel} datacombo={item.opccions} isdefault={true} onChangeinput={(jsonval)=>{
                                         let data = checkfilter;

@@ -12,6 +12,16 @@ export async function getValorizarAmenaz(idUsername = 0) {
   return result.data;
 }
 
+export async function getValorizProcesEmpresa(idEmpresa = 0) {
+  const url = `${domain_api}/valorafectamen/procesoValori/${idEmpresa}`;
+  const result = await axios.get(url, {
+    headers: {
+      Authorization: `Bearer ${await gettoken()}`,
+    },
+  });
+  return result.data;
+}
+
 export async function addValorizarAmenaz(jsondat = {}) {
   const data = jsondat;
   const url = `${domain_api}/valorafectamen/`;

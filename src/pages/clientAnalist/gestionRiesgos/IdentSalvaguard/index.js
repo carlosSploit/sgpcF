@@ -31,7 +31,7 @@ export function IndentifiSalvaguard(props){
     const [indexVersion,setIndexVersion] = useState(0);
     const [indexActivVersion,setActivVersion] = useState(0);
     const [indexAmenazVersion,setAmenazVersion] = useState(0);
-    
+    const [isFilter,setIsFilter] = useState(false);
     const dispatch = useNotification();
     
     useEffect(()=>{
@@ -205,6 +205,7 @@ export function IndentifiSalvaguard(props){
                         {/* {(propsListOpccion.length != 0)?:<></>} */}
                         <div className="Container_SalvagurdAmenaz_principal_header">
                             <Componentfilter onSeleccionOpccion={async (objJson)=>{
+                                    setIsFilter(false);
                                     const keysfilter = Object.keys(objJson)
                                     const  keyInteraccion = keysfilter[keysfilter.length - 1]
                                     // validar si las opcciones de interaccion o de recarga
@@ -278,10 +279,11 @@ export function IndentifiSalvaguard(props){
                                 console.log(id)
                                 await LoadDataSalvagAmenaz(id);
                                 setAmenazVersion(id)
+                                setIsFilter(true);
                             }} ></Componentfilter>
                         </div>
                         {/* Curpo */}
-                        <div className="Container_SalvagurdAmenaz_principal_body">
+                        {(isFilter)?<div className="Container_SalvagurdAmenaz_principal_body">
                             <OpccionActions sise={35} opccionSistem={opccionSistem} />
                             <div className="Container_SalvagurdAmenaz_principal_body_subContainer">
                                 {(listdata.length != 0)?listdata.map((item)=>{
@@ -294,7 +296,7 @@ export function IndentifiSalvaguard(props){
                                     }} keyitem = {item.id_salvAfectAct} title = {item.descripc} subtitle = {item.abrebsalv} />)
                                 }):<></>}
                             </div>
-                        </div>
+                        </div>:<></>}
                     </div>
                 </div>
             </div>

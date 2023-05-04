@@ -31,6 +31,7 @@ import { AnaliticRiesgo } from "./analisisRiesgos/AnaliticRiesgo";
 import { AnaliticActivo } from "./analisisRiesgos/AnaliticActivo";
 import { AnaliticSalvaguard } from "./gestionRiesgos/AnaliticSalvaguard";
 import { PlanesContingencias } from "./planesConting/ValorizActiv";
+import { AnaliticProcesCritic } from "./analisisRiesgos/AnaliticProduCriti";
 
 export function ClientAnalist(props){
 
@@ -116,6 +117,10 @@ export function ClientAnalist(props){
                 {
                     label: "Analiticas de Valorizacion Riesgos",
                     key: 10
+                },
+                {
+                    label: "Analiticas de Procesos Criticos",
+                    key: 11
                 }
                 
             ]
@@ -127,22 +132,22 @@ export function ClientAnalist(props){
             options:[
                 {
                     label: "Identificar Salvaguardas",
-                    key: 11
-                },
-                {
-                    label: "Valorizacion de Salvaguardas",
                     key: 12
                 },
                 {
-                    label: "Analiticas de Valorizacion Salvaguardas",
+                    label: "Valorizacion de Salvaguardas",
                     key: 13
+                },
+                {
+                    label: "Analiticas de Valorizacion Salvaguardas",
+                    key: 14
                 }
             ]
         },
         {
             label: "Planes de Contingencia",
             Icon: FormOutlined,
-            key: 14,
+            key: 15,
             options:[]
         }
     ]
@@ -159,6 +164,7 @@ export function ClientAnalist(props){
         <ValoriAmenaz />, 
         <AnaliticActivo />, 
         <AnaliticRiesgo />, 
+        <AnaliticProcesCritic />,
         <IndentifiSalvaguard />, 
         <ValoriSalvaguard />, 
         <AnaliticSalvaguard />, 

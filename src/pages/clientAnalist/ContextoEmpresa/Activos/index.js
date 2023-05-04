@@ -29,6 +29,7 @@ export function ActivosEmpresa(props){
     const [indexEmpresa,setindexEmpresa] = useState(0);
     const [indexOptionEmpresa,setindexOptionEmpresa] = useState(0);
     const [indexOptionEmpresaD,setindexOptionEmpresaD] = useState([]);
+    const [isFilter, setIsFilter] = useState(false);
     const dispatch = useNotification();
     
     useEffect(()=>{
@@ -150,15 +151,18 @@ export function ActivosEmpresa(props){
                     </div>
                 </div>
                 {(propsListOpccion.length != 0)?<div className="Container_ActivosEmpresas_principal_header">
-                    <Componentfilter ListOpccion={propsListOpccion} onChangeseach={async (json)=>{
+                    <Componentfilter onSeleccionOpccion={async (objJson)=>{
+                        setIsFilter(false);
+                    }}  ListOpccion={propsListOpccion} onChangeseach={async (json)=>{
                         let id = json['Empresa'];
                         await LoadDataActivosEmpresa(id);
                         setindexEmpresa(id)
+                        setIsFilter(true);
                     }} ></Componentfilter>
                 </div>:<></>}
                 
                 {/* Curpo */}
-                <div className="Container_ActivosEmpresas_principal_body">
+                {(isFilter)?<div className="Container_ActivosEmpresas_principal_body">
                     <OpccionActions sise={35} opccionSistem={opccionSistem} />
                     <div className="Container_ActivosEmpresas_principal_body_subContainer">
                         {listdata.map((item)=>{
@@ -170,7 +174,7 @@ export function ActivosEmpresa(props){
                             }} keyitem = {item.id_activo} title = {item.nombre_Activo} subtitle = {item.dependAbreb} descrip = {item.descripc} />)
                         })}
                     </div>
-                </div>
+                </div>:<></>}
             </div>
             {(ismodeladd)?<AddActivoEmpresas informacionGeneral={indexEmpresa} onInsert={async ()=>{
                 await LoadDataActivosEmpresa();

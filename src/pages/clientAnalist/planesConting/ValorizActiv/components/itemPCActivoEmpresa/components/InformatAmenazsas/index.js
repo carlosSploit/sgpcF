@@ -1,24 +1,6 @@
 import { useEffect, useState } from "react";
-// import { ComponentModalFloting, ComponentModalFlotingBody, ComponentModalFlotingHeader, ComponentModalPrincipalListtabs } from "../../../service/morvius-service/components";
-// import { AimOutlined, BulbOutlined, TeamOutlined } from "@ant-design/icons";
 import './style/index.css';
-// import { EditarUsuario } from "./components/Editar";
-// import { getKeysesion } from "../../../service/repository/mithelworks";
-// import { ConsuldataLog } from "../../../service/repository/Usuarios";
-// import { readclientAnalist } from "../../../service/repository/clientAnalist";
-// import { EditarUsuarioSecion } from "./components/EditarSeccion";
-// import { getEmpresas } from "../../../../../../service/repository/RTEmpresas";
-// import { useNotification } from "../../../../../../service/Notifications/useNotificacion";
-// import { EditarEmpresaInformation } from "./components/EditarInformacion/Editar";
-// import { ComponentModalFloting, ComponentModalFlotingBody, ComponentModalFlotingHeader } from "../../../../../../service/morvius-service/components";
-// import { getKeysesion } from "../../../../../../service/repository/mithelworks";
-// import { ConsuldataLogm } from "../../../../../../service/repository/mithelworks";
-// import { AreasEmpresas } from "./components/AreasEmpresa";
-// import { ObjetivVersionAnalitic } from "./components/ObjVersionAnali/index";
-// import { ResponsablesEmpresa } from "./components/RespVersionAnali";
 import { EditarValorActivCuantiImformation } from "./components/ValoriProces";
-// import { getValoriActiv } from "../../../../../../service/repository/RTValorizarActivo";
-// import { EditarValorActivCualitativImformation } from "./components/valorizCualit";
 import { getInformationAmenaz } from "../../../../../../../../service/repository/RTPlanesConting";
 import { ComponentModalFloting, ComponentModalFlotingBody, ComponentModalFlotingHeader } from "../../../../../../../../service/morvius-service/components";
 

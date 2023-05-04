@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./styles/index.css"
 import { Componentfilter } from "../../../../service/morvius-service/component/components";
-// import { AddEmpresas } from "./components/addEmpresas";
-// import { ItemEmpresa } from './components/itemEmpresa/index';
-// import { getadmins } from '../../../../service/repository/Admin';
-// import { AreaChartOutlined, DeleteOutlined, DotChartOutlined, InfoOutlined, PlusOutlined } from "@ant-design/icons";
 import { useNotification } from "../../../../service/Notifications/NotificationProvider";
 import { ConsuldataLogm, getKeysesion } from "../../../../service/repository/mithelworks";
 import { getEmpresas } from "../../../../service/repository/RTEmpresas";
@@ -77,7 +73,7 @@ export function PlanesContingencias (props){
     const [indexEmpresa,setindexEmpresa] = useState(0);
     const [keyOpccionProces,setkeyOpccionProces] = useState(0);
     const [indexVersion,setIndexVersion] = useState(0);
-    
+    const [isFilter,setIsFilter] = useState(false);
     const dispatch = useNotification();
     
     useEffect(()=>{
@@ -88,6 +84,49 @@ export function PlanesContingencias (props){
             // await LoadOpccionFilter();
         })();
     },[]);
+
+    const [DataRiesgo,] = useState([
+        {
+            key : 1,
+            code: 'C',
+            label: 'Controlable',
+            range: '0 - 0',
+            valor: 1,
+            color: '#9E9E9E'
+        },
+        {
+            key : 2,
+            code: 'A',
+            label: 'Aceptable',
+            range: '1 - 5',
+            valor: 2,
+            color: '#8BC34A'
+        },
+        {
+            key : 3,
+            code: 'T',
+            label: 'Tolerable',
+            range: '6 - 16',
+            valor: 3,
+            color: '#FFA000'
+        },
+        {
+            key : 4,
+            code: 'I',
+            label: 'Intolerable',
+            range: '17 - 30',
+            valor: 4,
+            color: '#FF5722'
+        },
+        {
+            key : 5,
+            code: 'E',
+            label: 'Extremo',
+            range: '31 - 50',
+            valor: 5,
+            color: '#FF5252'
+        }
+    ]);
 
     const LoadDataVersionAnalitic = async (id = 0) => {
         let result = await getInformationProces((id == 0)?indexVersion:id);
@@ -162,6 +201,25 @@ export function PlanesContingencias (props){
         prososetListOpccion(data);
     }
 
+    const colorStadeRiesgCualiti = (ValCualiti) => {
+        const listData = DataRiesgo.filter((item)=>{
+            const itemsRange = item.range.split(' - ');
+            return (parseInt(itemsRange[0]) <= ValCualiti) && (ValCualiti <= parseInt(itemsRange[1]))
+        })
+        if (listData.length === 0) return '#9E9E9E'
+        return listData[0].color
+    }
+
+    const valorStadeRiesgCualiti = (ValCualiti) => {
+        if (ValCualiti == '??') return ValCualiti
+        const listData = DataRiesgo.filter((item)=>{
+            const itemsRange = item.range.split(' - ');
+            return (parseInt(itemsRange[0]) <= ValCualiti) && (ValCualiti <= parseInt(itemsRange[1]))
+        })
+        if (listData.length === 0) return 1
+        return listData[0].valor
+    }
+
     return (
         <div className="Container_planconting_principal">
             <div className="Container_planconting_principal_subConteiner">
@@ -176,8 +234,10 @@ export function PlanesContingencias (props){
                 <div className="Container_planconting_principal_body_naster">
                     <div className="Container_planconting_principal_body_naster_information">
                         {/* Generador */}
-                        {(propsListOpccion.length != 0)?<div className="Container_planconting_principal_header">
+                        {/* {(propsListOpccion.length != 0)? */}
+                        <div className="Container_planconting_principal_header">
                             <Componentfilter onSeleccionOpccion={async (objJson)=>{
+                                setIsFilter(false);
                                 const keysfilter = Object.keys(objJson)
                                 const  keyInteraccion = keysfilter[keysfilter.length - 1]
                                 // validar si las opcciones de interaccion o de recarga
@@ -220,11 +280,13 @@ export function PlanesContingencias (props){
                                 let id = json['VersiAnali'];
                                 await LoadDataVersionAnalitic(id);
                                 setIndexVersion(id)
+                                setIsFilter(true);
                             }} ></Componentfilter>
-                        </div>:<></>}
+                        </div>
+                        {/* :<></>} */}
                         {/* Curpo */}
                         {
-                        <div className="Container_planconting_principal_body">
+                        (isFilter)?<div className="Container_planconting_principal_body">
                             {/* <OpccionActions sise={35} opccionSistem={opccionSistem} /> */}
                             <div className="Container_planconting_principal_body_subContainer">
                                 {(informaData != null)?
@@ -233,6 +295,8 @@ export function PlanesContingencias (props){
                                         {informaData.nombreProce}
                                     </div>
                                     <div style={{height: '10px'}} />
+                                    {/* Criticidad del Proceso */}
+                                    <ContainerInformationChip value={informaData.valorProcesCritis} color={colorStadeRiesgCualiti(informaData.valorProcesCritis)} title={'Criticidad del Proceso : '}  ></ContainerInformationChip>
                                     {/* Descripccion del proceso */}
                                     <ContainerInformation title={'Descripccion : '} >
                                         <ContainerDescripccion content={informaData.descripccion} />
@@ -326,7 +390,7 @@ export function PlanesContingencias (props){
                                 </div>
                                 :<></>}
                             </div>
-                        </div>
+                        </div>:<></>
                         }
                     </div>
                     <div style={{height: '20px'}} />
@@ -356,6 +420,18 @@ function ContainerDescripccion (props) {
             {content}
         </div>
     );
+}
+
+function ContainerInformationChip (props) {
+    const {title, value, color = '#9E9E9E'} = props;
+    return (<>
+        <div style={{height: '10px'}} />
+        <div className="Container_planconting_principal_body_subContainer_information_subtitle" >
+            <div className="Container_planconting_principal_body_subContainer_information_subtitle_text">{title}</div>
+            <div className="Container_planconting_principal_body_subContainer_information_subtitle_chip" style={{backgroundColor: color}}>{value}</div> 
+        </div>
+        <div className="Container_planconting_principal_body_subContainer_information_liner" />
+    </>);
 }
 
 function CotainerValorInform (props) {

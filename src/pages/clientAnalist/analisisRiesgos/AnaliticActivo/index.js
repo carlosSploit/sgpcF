@@ -79,6 +79,7 @@ export function AnaliticActivo(props){
     const [indexEmpresa,setindexEmpresa] = useState(0);
     const [keyOpccionProces,setkeyOpccionProces] = useState(0);
     const [indexVersion,setIndexVersion] = useState(0);
+    const [isFilter,setIsFilter] = useState(false)
     const dispatch = useNotification();
     
     useEffect(()=>{
@@ -221,6 +222,7 @@ export function AnaliticActivo(props){
                         {/*(propsListOpccion.length != 0)?*/
                         <div className="Container_ValoriActiv_principal_header">
                             <Componentfilter onSeleccionOpccion={async (objJson)=>{
+                                setIsFilter(false);
                                 const keysfilter = Object.keys(objJson)
                                 const  keyInteraccion = keysfilter[keysfilter.length - 1]
                                 // validar si las opcciones de interaccion o de recarga
@@ -263,6 +265,7 @@ export function AnaliticActivo(props){
                                 let id = json['VersiAnali'];
                                 await LoadDataVersionAnalitic(id);
                                 setIndexVersion(id)
+                                setIsFilter(true);
                             }} ></Componentfilter>
                         </div>
                         /*:<></>*/}
@@ -283,7 +286,7 @@ export function AnaliticActivo(props){
                         //         }):<></>}
                         //     </div>
                         // </div>:
-                        ((propstateradio2)?
+                        (isFilter)?((propstateradio2)?
                         <div className="Container_ValoriActiv_principal_body">
                         {/* <OpccionActions opccionSistem={opccionSistem} /> */}
                             <div className="Container_ValoriActiv_principal_body_subContainer">
@@ -316,7 +319,7 @@ export function AnaliticActivo(props){
                                     </tbody>
                                 </ComponentTable>
                             </div>
-                        </div>)
+                        </div>):<></>
                         }
                     </div>
                 </div>

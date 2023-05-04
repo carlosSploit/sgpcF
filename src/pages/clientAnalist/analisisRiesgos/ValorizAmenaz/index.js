@@ -118,6 +118,7 @@ export function ValoriAmenaz(props){
     //         width: ""
     //     }
     // ]);
+    const [isFilter,setIsFilter] = useState(false);
     const dispatch = useNotification();
     
     useEffect(()=>{
@@ -236,6 +237,7 @@ export function ValoriAmenaz(props){
                         <div className="Container_valoriAmenaz_principal_header">
                             <div className="Container_valoriAmenaz_principal_header_filter" style={{width:'100%'}}>
                                 <Componentfilter onSeleccionOpccion={async (objJson)=>{
+                                    setIsFilter(false);
                                     const keysfilter = Object.keys(objJson)
                                     const  keyInteraccion = keysfilter[keysfilter.length - 1]
                                     // validar si las opcciones de interaccion o de recarga
@@ -293,25 +295,26 @@ export function ValoriAmenaz(props){
                                     console.log(id)
                                     await LoadDataVersionAnalitic(id);
                                     setActivVersion(id)
+                                    setIsFilter(true);
                                 }} ></Componentfilter>
                             </div>
                         </div>
                         {/* Curpo */}
                         {
-                        <div className="Container_valoriAmenaz_principal_body">
-                            <div className="Container_valoriAmenaz_principal_body_subContainer">
-                                {(listdata.length != 0)?listdata.map((item)=>{
-                                    return (<ItemValorizeAmenaz
-                                    isValorize = {(item.id_Frecuencia != null) && (item.id_DegradCualit != null)}
-                                    onSelecteItem={(index)=>{
-                                        // AddItemDeleteAcivAmenaza(index);
-                                    }} onChange={(index)=>{
-                                        setindexAmenaza(index);
-                                        setismodelaEdit(true);
-                                    }} keyitem = {item.id_afectaActiv} title = {item.nombreAmena} subtitle = {item.nombreTipoActiv} />)
-                                }):<></>}
-                            </div>
+                        (isFilter)?<div className="Container_valoriAmenaz_principal_body">
+                        <div className="Container_valoriAmenaz_principal_body_subContainer">
+                            {(listdata.length != 0)?listdata.map((item)=>{
+                                return (<ItemValorizeAmenaz
+                                isValorize = {(item.id_Frecuencia != null) && (item.id_DegradCualit != null)}
+                                onSelecteItem={(index)=>{
+                                    // AddItemDeleteAcivAmenaza(index);
+                                }} onChange={(index)=>{
+                                    setindexAmenaza(index);
+                                    setismodelaEdit(true);
+                                }} keyitem = {item.id_afectaActiv} title = {item.nombreAmena} subtitle = {item.nombreTipoActiv} />)
+                            }):<></>}
                         </div>
+                        </div>:<></>
                         // ((!propstateradio2)?
                         // <div className="Container_valoriAmenaz_principal_body">
                         // {/* <OpccionActions opccionSistem={opccionSistem} /> */}

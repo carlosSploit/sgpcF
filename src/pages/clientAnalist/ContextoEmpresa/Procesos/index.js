@@ -32,6 +32,7 @@ export function ProcesEmpresas(props){
     const [isModelFilter,setisModelFilter] = useState(false);
     const [listOpccionFilter,setlistOpccionFilter] = useState([]);
     const [listSelFilter,setlistSelFilter] = useState([]);
+    const [isFilter ,setIsFilter] = useState(false)
     const dispatch = useNotification();
     
     useEffect(()=>{
@@ -203,7 +204,7 @@ export function ProcesEmpresas(props){
                         <div className="Container_ProcesEmpresas_principal_header_content_title">Lista de Procesos de Empresas</div>
                     </div>
                     <div className="Container_ProcesEmpresas_principal_header_subcontent_search">
-                        <div className="Container_ProcesEmpresas_principal_header_subcontent_search_cont">
+                        {/* <div className="Container_ProcesEmpresas_principal_header_subcontent_search_cont">
                             <Componentsearchanimation height={'35px'} onChangekey={onChangekey} onChangeseach={onChangeseach}/>
                         </div>
                         <div className="Container_ProcesEmpresas_principal_header_subcontent_search_cont2">
@@ -218,7 +219,7 @@ export function ProcesEmpresas(props){
                             }}>
                                 <SlidersOutlined className="Container_ProcesEmpresas_principal_header_subcontent_search_Filer_icons" />
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div className="Container_ProcesEmpresas_principal_body_naster">
@@ -231,14 +232,17 @@ export function ProcesEmpresas(props){
                     <div className="Container_ProcesEmpresas_principal_body_naster_information">
                         {/* Generador */}
                         {(propsListOpccion.length != 0)?<div className="Container_ProcesEmpresas_principal_header">
-                            <Componentfilter ListOpccion={propsListOpccion} onChangeseach={async (json)=>{
+                            <Componentfilter onSeleccionOpccion={async (objJson)=>{
+                                setIsFilter(false);
+                            }} ListOpccion={propsListOpccion} onChangeseach={async (json)=>{
                                 let id = json['Empresa'];
                                 await LoadDataProcesEmpresa(id);
                                 setindexEmpresa(id)
+                                setIsFilter(true);
                             }} ></Componentfilter>
                         </div>:<></>}
                         {/* Curpo */}
-                        <div className="Container_ProcesEmpresas_principal_body">
+                        {(isFilter)?<div className="Container_ProcesEmpresas_principal_body">
                             <OpccionActions sise={35} opccionSistem={opccionSistem} />
                             <div className="Container_ProcesEmpresas_principal_body_subContainer">
                                 {(listdata.length != 0)?listdata.map((item)=>{
@@ -250,7 +254,7 @@ export function ProcesEmpresas(props){
                                     }} keyitem = {item.id_proceso} title = {item.nombreProce} subtitle = {item.nombreTip} descrip = {item.descripccion} />)
                                 }):<></>}
                             </div>
-                        </div>
+                        </div>:<></>}
                     </div>
                 </div>
             </div>

@@ -25,6 +25,7 @@ export function TrabajoEmpresas(props){
     const [indexEmpresa,setindexEmpresa] = useState(0);
     const [indexOptionEmpresa,setindexOptionEmpresa] = useState(0);
     const [indexOptionEmpresaD,setindexOptionEmpresaD] = useState([]);
+    const [isFilter ,setIsFilter] = useState(false);
     const dispatch = useNotification();
     
     useEffect(()=>{
@@ -157,14 +158,17 @@ export function TrabajoEmpresas(props){
                     </div>
                 </div>
                 {(propsListOpccion.length != 0)?<div className="Container_TrabjEmpresas_principal_header">
-                    <Componentfilter ListOpccion={propsListOpccion} onChangeseach={async (json)=>{
-                        let id = json['Empresa'];
-                        await LoadDataTrabjEmpresa(id);
-                        setindexEmpresa(id)
+                    <Componentfilter onSeleccionOpccion={async (objJson)=>{
+                            setIsFilter(false);
+                        }} ListOpccion={propsListOpccion} onChangeseach={async (json)=>{
+                            let id = json['Empresa'];
+                            await LoadDataTrabjEmpresa(id);
+                            setindexEmpresa(id);
+                            setIsFilter(true);
                     }} ></Componentfilter>
                 </div>:<></>}
                 {/* Curpo */}
-                <div className="Container_TrabjEmpresas_principal_body">
+                {(isFilter)?<div className="Container_TrabjEmpresas_principal_body">
                     <OpccionActions sise={35} opccionSistem={opccionSistem} />
                     <div className="Container_TrabjEmpresas_principal_body_subContainer">
                         {listdata.map((item)=>{
@@ -176,7 +180,7 @@ export function TrabajoEmpresas(props){
                             }} keyitem = {item.Id_trabajador} title = {item.nombre_apellido} subtitle = {item.cargo} descrip = {item.descripc} />)
                         })}
                     </div>
-                </div>
+                </div>:<></>}
             </div>
             {(ismodeladd)?<AddTrabEmpresas informacionGeneral={indexEmpresa} onInsert={async ()=>{
                 await LoadDataTrabjEmpresa();

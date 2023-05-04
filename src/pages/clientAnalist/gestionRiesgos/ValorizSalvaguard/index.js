@@ -120,6 +120,7 @@ export function ValoriSalvaguard(props){
     //         width: ""
     //     }
     // ]);
+    const [isFilter,setIsFilter] = useState(false);
     const dispatch = useNotification();
     
     useEffect(()=>{
@@ -290,6 +291,7 @@ export function ValoriSalvaguard(props){
                         <div className="Container_valoriSalvaguar_principal_header">
                             <div className="Container_valoriSalvaguar_principal_header_filter" style={{width:'100%'}}>
                                 <Componentfilter onSeleccionOpccion={async (objJson)=>{
+                                    setIsFilter(false);
                                     const keysfilter = Object.keys(objJson)
                                     const  keyInteraccion = keysfilter[keysfilter.length - 1]
                                     // validar si las opcciones de interaccion o de recarga
@@ -363,25 +365,26 @@ export function ValoriSalvaguard(props){
                                     console.log(id)
                                     await LoadDataSalvagAmenaz(id);
                                     setAmenazVersion(id)
+                                    setIsFilter(true);
                                 }} ></Componentfilter>
                             </div>
                         </div>
                         {/* Curpo */}
                         {
-                        <div className="Container_valoriSalvaguar_principal_body">
-                            <div className="Container_valoriSalvaguar_principal_body_subContainer">
-                                {(parseInt(listdata.length) !== 0)?listdata.map((item)=>{
-                                    return (<ItemValorSalvaguard
-                                    isValorize = {!(((item.id_escalEficDegr == 0) || (item.id_escalEficDegr == null)) && ((item.id_escalEficFrec == 0) || (item.id_escalEficFrec == null)))}
-                                    onSelecteItem={(index)=>{
-                                        // AddItemDeleteAcivAmenaza(index);
-                                    }} onChange={(index)=>{
-                                        setindexSalvaguarda(index);
-                                        setismodelaEdit(true);
-                                    }} keyitem = {item.id_salvAfectAct} title = {item.descripc} subtitle = {item.abrebsalv} />)
-                                }):<></>}
-                            </div>
+                        (isFilter)?<div className="Container_valoriSalvaguar_principal_body">
+                        <div className="Container_valoriSalvaguar_principal_body_subContainer">
+                            {(parseInt(listdata.length) !== 0)?listdata.map((item)=>{
+                                return (<ItemValorSalvaguard
+                                isValorize = {!(((item.id_escalEficDegr == 0) || (item.id_escalEficDegr == null)) && ((item.id_escalEficFrec == 0) || (item.id_escalEficFrec == null)))}
+                                onSelecteItem={(index)=>{
+                                    // AddItemDeleteAcivAmenaza(index);
+                                }} onChange={(index)=>{
+                                    setindexSalvaguarda(index);
+                                    setismodelaEdit(true);
+                                }} keyitem = {item.id_salvAfectAct} title = {item.descripc} subtitle = {item.abrebsalv} />)
+                            }):<></>}
                         </div>
+                        </div>:<></>
                         // ((!propstateradio2)?
                         // <div className="Container_valoriSalvaguar_principal_body">
                         // {/* <OpccionActions opccionSistem={opccionSistem} /> */}

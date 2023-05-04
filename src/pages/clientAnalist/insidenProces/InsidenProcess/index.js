@@ -26,7 +26,7 @@ export function InsideProces(props){
     const [propsListOpccion, prososetListOpccion] = useState([]);
     const [indexEmpresa,setindexEmpresa] = useState(0);
     const [keyOpccionProces,setkeyOpccionProces] = useState(0);
-    
+    const [isFilter, setIsFilter] = useState(false);
     const dispatch = useNotification();
     
     useEffect(()=>{
@@ -140,16 +140,20 @@ export function InsideProces(props){
                         {/* {(propsListOpccion.length != 0)?:<></>} */}
                         <div className="Container_InsidenProces_principal_header">
                             <Componentfilter onSeleccionOpccion={async (objJson)=>{
+                                setIsFilter(false);
                                 const keysfilter = Object.keys(objJson)
                                 const  keyInteraccion = keysfilter[keysfilter.length - 1]
                                 // validar si las opcciones de interaccion o de recarga
+                                console.log(keyInteraccion)
                                 if(keyInteraccion != 'Procesos'){
                                     prososetListOpccion([]) 
                                     let listGeneri = []
-                                    switch (keysfilter[0]) {
+                                    // console.log(keysfilter)
+                                    switch (keyInteraccion) {
                                         case 'Empresa':
-                                            const keyEmpFil = objJson[keysfilter[0]]
+                                            const keyEmpFil = objJson[keyInteraccion]
                                             listGeneri = await GenerateEmpresa(keyEmpFil, true, [])
+                                            console.log(listGeneri)
                                             listGeneri = await GenerateProces(keyEmpFil, true, listGeneri)
                                             console.log(listGeneri)
                                             setindexEmpresa(keyEmpFil)
@@ -164,13 +168,14 @@ export function InsideProces(props){
                                 let id = json['Procesos'];
                                 await LoadDataInsideProces(id);
                                 setindexProceso(id)
+                                setIsFilter(true);
                             }} ></Componentfilter>
                         </div>
                         {/* Curpo */}
-                        <div className="Container_InsidenProces_principal_body">
+                        {(isFilter)?<div className="Container_InsidenProces_principal_body">
                             <OpccionActions sise={35} opccionSistem={opccionSistem} />
                             <div className="Container_InsidenProces_principal_body_subContainer">
-                                {(listdata.length != 0)?listdata.map((item)=>{
+                                {(listdata !== undefined)?((listdata.length != 0)?listdata.map((item)=>{
                                     return (<ItemInsidenProces
                                      onSelecteItem={(index)=>{
                                         AddItemDeleteInsidenProces(index);
@@ -178,9 +183,9 @@ export function InsideProces(props){
                                         setindexOptionVersionAnali(index);
                                         setismodelaEdit(true);
                                     }} keyitem = {item.id_insidencia} title = {(item.fechainside.split('T')[0]) + ' : ' +item.nombroInsid} subtitle = {item.dependAbreb} descrip = {item.descrpInsid} />)
-                                }):<></>}
+                                }):<></>):<></>}
                             </div>
-                        </div>
+                        </div>:<></>}
                     </div>
                 </div>
             </div>

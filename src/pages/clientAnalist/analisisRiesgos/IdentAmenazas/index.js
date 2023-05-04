@@ -55,7 +55,7 @@ export function IndentifiAmenazas(props){
     const [keyOpccionProces,setkeyOpccionProces] = useState(0);
     const [indexVersion,setIndexVersion] = useState(0);
     const [indexActivVersion,setActivVersion] = useState(0);
-    
+    const [isFilter ,setIsFilter] = useState(false);
     const dispatch = useNotification();
     
     useEffect(()=>{
@@ -214,6 +214,7 @@ export function IndentifiAmenazas(props){
                         {/* {(propsListOpccion.length != 0)? */}
                         <div className="Container_IdentiAmenaz_principal_header">
                             <Componentfilter onSeleccionOpccion={async (objJson)=>{
+                                setIsFilter(false);
                                 const keysfilter = Object.keys(objJson)
                                 const  keyInteraccion = keysfilter[keysfilter.length - 1]
                                 // validar si las opcciones de interaccion o de recarga
@@ -271,11 +272,12 @@ export function IndentifiAmenazas(props){
                                 console.log(id)
                                 await LoadDataVersionAnalitic(id);
                                 setActivVersion(id)
+                                setIsFilter(true);
                             }} ></Componentfilter>
                         </div>
                         {/* :<></>} */}
                         {/* Curpo */}
-                        <div className="Container_IdentiAmenaz_principal_body">
+                        {(isFilter)?<div className="Container_IdentiAmenaz_principal_body">
                             <OpccionActions sise={35} opccionSistem={opccionSistem} />
                             <div className="Container_IdentiAmenaz_principal_body_subContainer">
                                 {(listdata.length != 0)?listdata.map((item)=>{
@@ -288,7 +290,7 @@ export function IndentifiAmenazas(props){
                                     }} keyitem = {item.id_afectaActiv} title = {item.nombreAmena} subtitle = {item.nombreTipoActiv} />)
                                 }):<></>}
                             </div>
-                        </div>
+                        </div>:<></>}
                     </div>
                 </div>
             </div>

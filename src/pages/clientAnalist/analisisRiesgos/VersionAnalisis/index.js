@@ -31,7 +31,7 @@ export function VersionAnalisis(props){
     const [propsListOpccion, prososetListOpccion] = useState([]);
     const [indexEmpresa,setindexEmpresa] = useState(0);
     const [keyOpccionProces,setkeyOpccionProces] = useState(0);
-    
+    const [isFilter, setIsFilter] = useState(false);
     const dispatch = useNotification();
     
     useEffect(()=>{
@@ -199,15 +199,16 @@ export function VersionAnalisis(props){
                         {/* {(propsListOpccion.length != 0)?:<></>} */}
                         <div className="Container_VersionAnali_principal_header">
                             <Componentfilter onSeleccionOpccion={async (objJson)=>{
+                                setIsFilter(false);
                                 const keysfilter = Object.keys(objJson)
                                 const  keyInteraccion = keysfilter[keysfilter.length - 1]
                                 // validar si las opcciones de interaccion o de recarga
                                 if(keyInteraccion != 'Procesos'){
                                     prososetListOpccion([]) 
                                     let listGeneri = []
-                                    switch (keysfilter[0]) {
+                                    switch (keyInteraccion) {
                                         case 'Empresa':
-                                            const keyEmpFil = objJson[keysfilter[0]]
+                                            const keyEmpFil = objJson[keyInteraccion]
                                             listGeneri = await GenerateEmpresa(keyEmpFil, true, [])
                                             const aux2 = await GenerateProces(keyEmpFil, true, listGeneri)
                                             if (aux2.length <= 1){
@@ -227,10 +228,11 @@ export function VersionAnalisis(props){
                                 let id = json['Procesos'];
                                 await LoadDataVersionAnalitic(id);
                                 setindexProceso(id)
+                                setIsFilter(true);
                             }} ></Componentfilter>
                         </div>
                         {/* Curpo */}
-                        <div className="Container_VersionAnali_principal_body">
+                        {(isFilter)?<div className="Container_VersionAnali_principal_body">
                             <OpccionActions sise={35} opccionSistem={opccionSistem} />
                             <div className="Container_VersionAnali_principal_body_subContainer">
                                 {(listdata.length != 0)?listdata.map((item)=>{
@@ -243,7 +245,7 @@ export function VersionAnalisis(props){
                                     }} keyitem = {item.id_versionAnali} title = {item.abreb} subtitle = {item.fechaVersionAnali} descrip = {item.descripccion} />)
                                 }):<></>}
                             </div>
-                        </div>
+                        </div>:<></>}
                     </div>
                 </div>
             </div>

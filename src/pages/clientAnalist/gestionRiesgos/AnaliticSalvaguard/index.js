@@ -120,6 +120,7 @@ export function AnaliticSalvaguard(props){
             width: ""
         }
     ]);
+    const [isFilter,setIsFilter] = useState(false);
     const dispatch = useNotification();
     
     useEffect(()=>{
@@ -272,6 +273,7 @@ export function AnaliticSalvaguard(props){
                         <div className="Container_AnaliticSalvag_principal_header">
                             <div className="Container_AnaliticSalvag_principal_header_filter" style={{width:'100%'}}>
                                 <Componentfilter onSeleccionOpccion={async (objJson)=>{
+                                    setIsFilter(false);
                                     const keysfilter = Object.keys(objJson)
                                     const  keyInteraccion = keysfilter[keysfilter.length - 1]
                                     // validar si las opcciones de interaccion o de recarga
@@ -345,11 +347,13 @@ export function AnaliticSalvaguard(props){
                                     console.log(id)
                                     await LoadDataSalvagAmenaz(id);
                                     setAmenazVersion(id)
+                                    setIsFilter(true);
                                 }} ></Componentfilter>
                             </div>
                         </div>:<></>}
                         {/* Curpo */}
-                        {((!propstateradio2)?
+                        {
+                        (isFilter)?((!propstateradio2)?
                         <div className="Container_AnaliticSalvag_principal_body">
                         {/* <OpccionActions opccionSistem={opccionSistem} /> */}
                             <div className="Container_AnaliticSalvag_principal_body_subContainer">
@@ -382,7 +386,7 @@ export function AnaliticSalvaguard(props){
                                     </tbody>
                                 </ComponentTable>
                             </div>
-                        </div>)
+                        </div>):<></>
                         }
                     </div>
                 </div>
