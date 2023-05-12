@@ -1,10 +1,12 @@
-import { ConsuldataLogm, getKeysesion, gettoken, isExistDataLog, isExistKeyApi } from "../repository/mithelworks";
+import { ConsuldataLogm, getKeysesion, isExistDataLog, isExistKeyApi } from "../repository/mithelworks";
 
 // valida si se inicio secion
 export const valideInicioSecion = async () => {
     // comprueva si se a iniciado secion como administrador
     let keysecciona = await getKeysesion();
+    console.log(keysecciona)
     if (!keysecciona) return false;
+    // if (JSON.parse())
     // comprueba si ya se tiene una api rest
     let valudeExKeyAp = isExistKeyApi();
     if (!valudeExKeyAp) return false;
@@ -20,9 +22,10 @@ export const validationAdmin = async () => {
     if (!valueSesion) return false;
     // valida si el usuario es administrador
     let keysecciona = await getKeysesion()
-    let dataUs = await ConsuldataLogm({
-        seccionkey: `${keysecciona}`
-    });
+    // let dataUs = await ConsuldataLogm({
+    //     seccionkey: `${keysecciona}`
+    // });
+    if (!keysecciona) return false
     // console.log(dataUs)
     // // console.log(dataUs);
     // if (dataUs.tipo_user != 'C') return false

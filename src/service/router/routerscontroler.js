@@ -140,7 +140,7 @@ export const ComponentLoadDataProf = (props) => {
 export function RouterController(props){
 
     const {children, path = '/generic', permision = ()=> {return true;}} = props;
-    const [isAcceso, setisAcceso] = useState(true);
+    const [isAcceso, setisAcceso] = useState(null);
 
     useEffect(()=>{
         (async ()=>{
@@ -157,7 +157,7 @@ export function RouterController(props){
 
     return (
         <>
-            {(isAcceso)?children:<MessegePermision />}
+            {(isAcceso != null)?((isAcceso)?children:<MessegePermision />):<></>}
         </>
     );
 }
