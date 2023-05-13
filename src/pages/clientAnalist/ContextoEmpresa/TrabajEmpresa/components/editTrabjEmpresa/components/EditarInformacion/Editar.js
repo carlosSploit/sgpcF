@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 // import { uploudImage } from "../../../../service/repository/uploudimage";
 // import { updateclientAnalist } from "../../../../service/repository/clientAnalist";
-import { ForminputAreatEdit, ForminputBottonSubmit, ForminputEdit, ForminputmailEdit } from "../../../../../../../../service/morvius-service/form_input/form_input";
+import { ForminputAreatEdit, ForminputBottonSubmit, ForminputEdit, ForminputmailEdit, ForminputnumberEdit } from "../../../../../../../../service/morvius-service/form_input/form_input";
 import { handleNewNotification, useNotification } from "../../../../../../../../service/Notifications/useNotificacion";
 import { updateEmpresa } from "../../../../../../../../service/repository/RTEmpresas";
 import { updateTrabajEmpresa } from "../../../../../../../../service/repository/RTTrabajEmpresas";
@@ -100,7 +100,7 @@ export function EditarTrabjEmpresaInformation(props){
         <div style={{height:'5px'}} />
         <ForminputAreatEdit valueInit={informationDataGeneral.descripc} placeHolder="Descripccion" keyname ={`descr${informationDataGeneral.Id_trabajador}`}/>
         <div style={{height:'5px'}} />
-        <ForminputEdit valueInit={informationDataGeneral.telefono} placeHolder="Telefono" keyname ={`telf${informationDataGeneral.Id_trabajador}`}/>
+        <ForminputnumberEdit Limitchar={9}t valueInit={informationDataGeneral.telefono} placeHolder="Telefono" keyname ={`telf${informationDataGeneral.Id_trabajador}`}/>
         <div style={{height:'5px'}} />
         <ForminputmailEdit valueInit={informationDataGeneral.correo} placeHolder="Correo" keyname ={`correo${informationDataGeneral.Id_trabajador}`}/>
         <div style={{height:'5px'}} />

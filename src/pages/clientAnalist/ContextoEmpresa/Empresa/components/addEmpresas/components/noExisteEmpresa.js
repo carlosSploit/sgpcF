@@ -73,11 +73,11 @@ export function NoExisteEmpresa(props){
                 <div style={{height:'5px'}} />
                 <Forminput textinput ={textname} settextinput = {settextname} placeHolder="Nombre" keyname ={`nombrEmp`}/>
                 <div style={{height:'5px'}} />
-                <Forminputnumber textinput ={textruc} settextinput = {settextruc} placeHolder="RUC" keyname ={`ruc`}/>
+                <Forminputnumber Limitchar={11} textinput ={textruc} settextinput = {settextruc} placeHolder="RUC" keyname ={`ruc`}/>
                 <div style={{height:'5px'}} />
                 <ForminputArea textinput ={textdescrip} settextinput = {settextdescrip} placeHolder="Descripccion" keyname ={`descr`}/>
                 <div style={{height:'5px'}} />
-                <Forminput textinput ={texttelefono} settextinput = {settexttelefono} placeHolder="Telefono" keyname ={`telf`}/>
+                <Forminputnumber Limitchar={9} textinput ={texttelefono} settextinput = {settexttelefono} placeHolder="Telefono" keyname ={`telf`}/>
                 <div style={{height:'5px'}} />
                 <Forminput textinput ={textrubroEm} settextinput = {settextrubroEm} placeHolder="Rubro de la empresa" keyname ={`rubemp`}/>
                 <div style={{height:'5px'}} />
@@ -86,7 +86,7 @@ export function NoExisteEmpresa(props){
                 <ForminputArea textinput ={textvision} settextinput = {settextvision} placeHolder="Vision" keyname ={`vision`}/>
                 <div style={{height: '20px'}}></div></>
                 <ForminputBottonSubmit label = {'Registrar a la Empresa'} />
-                <ForminputBotton label = {'Cancelar'} isInvertColor = {true} />
+                {/* <ForminputBotton label = {'Cancelar'} isInvertColor = {true} /> */}
                 {/* <ForminputBotton label = {"Cancelar"} isInvertColor = {true} /> */}
             </form>
         </>

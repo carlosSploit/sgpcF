@@ -3,7 +3,7 @@ import { useNotification } from "../../../../../../../service/Notifications/Noti
 // import { addEmpresa } from "../../../../../../../service/repository/RTEmpresas";
 // import { ConsuldataLogm, getKeysesion } from "../../../../../../../service/repository/mithelworks";
 import { handleNewNotification } from "../../../../../../../service/Notifications/useNotificacion";
-import { Forminput, ForminputArea, ForminputBotton, ForminputBottonSubmit, Forminputmail } from "../../../../../../../service/morvius-service/form";
+import { Forminput, ForminputArea, ForminputBotton, ForminputBottonSubmit, Forminputmail, Forminputnumber } from "../../../../../../../service/morvius-service/form";
 import { addTrabajEmpresa } from "../../../../../../../service/repository/RTTrabajEmpresas";
 
 export function NoExisteEmpresa(props){
@@ -73,7 +73,7 @@ export function NoExisteEmpresa(props){
                 <div style={{height:'5px'}} />
                 <ForminputArea textinput ={textdescrip} settextinput = {settextdescrip} placeHolder="Descripccion" keyname ={`descr`}/>
                 <div style={{height:'5px'}} />
-                <Forminput textinput ={texttelefono} settextinput = {settexttelefono} placeHolder="Telefono" keyname ={`telf`}/>
+                <Forminputnumber Limitchar={9} textinput ={texttelefono} settextinput = {settexttelefono} placeHolder="Telefono" keyname ={`telf`}/>
                 <div style={{height:'5px'}} />
                 <Forminputmail textinput ={textCorreo} settextinput = {settextCorreo} placeHolder="Correo" keyname ={`correo`}/>
                 <div style={{height:'5px'}} />

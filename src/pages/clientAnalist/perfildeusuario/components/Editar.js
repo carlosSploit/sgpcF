@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNotification } from "../../../../service/Notifications/NotificationProvider";
 import { handleNewNotification } from "../../../../service/Notifications/useNotificacion";
-import { ForminputBotton, ForminputBottonSubmit, ForminputEdit, ForminputImageCircle } from "../../../../service/morvius-service/form_input/form_input";
+import { ForminputBotton, ForminputBottonSubmit, ForminputEdit, ForminputImageCircle, ForminputnumberEdit } from "../../../../service/morvius-service/form_input/form_input";
 import { uploudImage } from "../../../../service/repository/uploudimage";
 import { updateclientAnalist } from "../../../../service/repository/RTclientAnalist";
 
@@ -84,7 +84,7 @@ export function EditarUsuario(props){
         <div style={{height:"20px"}}></div>
         <ForminputEdit valueInit={informationDataGeneral.nombre} placeHolder="Nombre" keyname ={`nombr${informationDataGeneral.id_usuario}`}/>
         <ForminputEdit valueInit={informationDataGeneral.apellidos} placeHolder="Apellido" keyname ={`apell${informationDataGeneral.id_usuario}`}/>
-        <ForminputEdit valueInit={informationDataGeneral.telefono} placeHolder="Telefono" keyname ={`telf${informationDataGeneral.id_usuario}`}/>
+        <ForminputnumberEdit Limitchar={9} valueInit={informationDataGeneral.telefono} placeHolder="Telefono" keyname ={`telf${informationDataGeneral.id_usuario}`}/>
         {/* <ForminputEdit valueInit={'Seciones 1'} placeHolder="sesion" keyname ={"sesion"}/> */}
         {/* {(itemselet == null)?
         

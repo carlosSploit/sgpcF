@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 // import { uploudImage } from "../../../../service/repository/uploudimage";
 // import { updateclientAnalist } from "../../../../service/repository/clientAnalist";
-import { FormInformatView, ForminputAreatEdit, ForminputBottonSubmit, ForminputEdit } from "../../../../../../../../service/morvius-service/form_input/form_input";
+import { FormInformatView, ForminputAreatEdit, ForminputBottonSubmit, ForminputEdit, ForminputnumberEdit } from "../../../../../../../../service/morvius-service/form_input/form_input";
 import { handleNewNotification, useNotification } from "../../../../../../../../service/Notifications/useNotificacion";
 import { updateEmpresa } from "../../../../../../../../service/repository/RTEmpresas";
 
@@ -95,9 +95,9 @@ export function EditarEmpresaInformation(props){
         {/* <FormInformatView  /> */}
         {(informationDataGeneral.permis == 'A')?<>
             <ForminputEdit valueInit={informationDataGeneral.nombreempresa} placeHolder="Nombre de la Empresa" keyname ={`nombrEmp${informationDataGeneral.id_empresa}`}/>
-            <ForminputEdit valueInit={informationDataGeneral.ruc} placeHolder="RUC" keyname ={`ruc${informationDataGeneral.id_empresa}`}/>
+            <ForminputnumberEdit Limitchar={11} valueInit={informationDataGeneral.ruc} placeHolder="RUC" keyname ={`ruc${informationDataGeneral.id_empresa}`}/>
             <ForminputAreatEdit valueInit={informationDataGeneral.descripc} placeHolder="Descripccion" keyname ={`descr${informationDataGeneral.id_empresa}`}/>
-            <ForminputEdit valueInit={informationDataGeneral.telefono} placeHolder="Telefono" keyname ={`telf${informationDataGeneral.id_empresa}`}/>
+            <ForminputnumberEdit Limitchar={9} valueInit={informationDataGeneral.telefono} placeHolder="Telefono" keyname ={`telf${informationDataGeneral.id_empresa}`}/>
             <ForminputEdit valueInit={informationDataGeneral.rubroEmpresa} placeHolder="Rubro de la empresa" keyname ={`rubemp${informationDataGeneral.id_empresa}`}/>
             <ForminputAreatEdit valueInit={informationDataGeneral.mision} placeHolder="Mision" keyname ={`mision${informationDataGeneral.id_empresa}`}/>
             <ForminputAreatEdit valueInit={informationDataGeneral.vision} placeHolder="Vision" keyname ={`vision${informationDataGeneral.id_empresa}`}/>
